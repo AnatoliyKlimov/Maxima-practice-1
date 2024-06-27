@@ -8,7 +8,9 @@ Maxima practice group 1
 2. Имена компонентов в CamelCase, как и их файлы
 	```javascript
 		// ./MyComponent.tsx
-		export default const MyComponent: React.FC<IMyComponentProps> = (...)
+		export const MyComponent: React.FC<IMyComponentProps> = (...)
+
+		export default MyComponent;
 
 		// ./MyComponent.module.css
 		.my-component {
@@ -22,7 +24,7 @@ Maxima practice group 1
 3. Имена всего остального в lowerCamelCase, их файлы в kebab-case
 	```javascript
 		// ./lib/utils/some-util.ts
-		export default const someUtil = (...)
+		export const someUtil = (...)
 
 		// ./lib/utils/index.ts
 		export * from "./some-util";
