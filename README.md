@@ -7,27 +7,27 @@ Maxima practice group 1
 1. В целом по файлу .prettierrc
 2. Имена компонентов в CamelCase, как и их файлы
 	```javascript
-		// ./MyComponent.tsx
-		export const MyComponent: React.FC<IMyComponentProps> = (...)
+	// ./MyComponent.tsx
+	export const MyComponent: React.FC<IMyComponentProps> = (...)
 
-		export default MyComponent;
+	export default MyComponent;
 
-		// ./MyComponent.module.css
-		.my-component {
-			display: block;
-		}
+	// ./MyComponent.module.css
+	.myComponent {
+	    display: block;
+	}
 
-		// ./index.ts
-		export { default } from "./MyComponent";
-		export * from "./MyComponent";
+	// ./index.ts
+	export { default } from "./MyComponent";
+	export * from "./MyComponent";
 	```
 3. Имена всего остального в lowerCamelCase, их файлы в kebab-case
 	```javascript
-		// ./lib/utils/some-util.ts
-		export const someUtil = (...)
+	// ./lib/utils/some-util.ts
+	export const someUtil = (...)
 
-		// ./lib/utils/index.ts
-		export * from "./some-util";
+	// ./lib/utils/index.ts
+	export * from "./some-util";
 	```
 3. Порядок импортов:
 	- Импорты из react, next, etc...
@@ -37,13 +37,18 @@ Maxima practice group 1
 	- Импорты из компонентов
 	- Импорты из lib/store/auth/etc...
 	- (пустая строка)
+	- Импорты картинок
+	- (пустая строка)
 	- Локальные импорты (в текущей директории, напр. из "./style.css")
 	```javascript
-		// Пример
-		import { useState } from "react";
-		import Image from "next/image";
+	// Пример
+	import { useState } from "react";
+	import Image from "next/image";
 
-		import MyComponent from "@/components/MyComponent";
+	import MyComponent from "@/components/MyComponent";
 
-		import styles from "./page.module.css";
+	import MyImage from "@/images/image.png";
+	import MyImage2 from "@/images/image2.png";
+
+	import styles from "./page.module.css";
 	```

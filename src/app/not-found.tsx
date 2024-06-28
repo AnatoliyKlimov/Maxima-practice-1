@@ -1,9 +1,15 @@
-import styles from "./not-found.module.css";
-
 function NotFoundPage() {
 	return (
-		<div className={styles.className}>
-			<h2>Ошибка 404: Не найдено</h2>
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
+				justifyContent: "center",
+				padding: "48px 0"
+			}}
+		>
+			<h2>Error 404: Not found</h2>
 		</div>
 	);
 }

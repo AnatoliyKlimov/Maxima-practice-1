@@ -1,0 +1,25 @@
+.select {
+	display: grid;
+	grid-template-areas: "select";
+	align-items: center;
+	position: relative;
+
+	cursor: pointer;
+
+	& select,
+	&::after {
+		grid-area: select;
+	}
+
+	&::after {
+		justify-self: end;
+
+		content: "";
+
+		width: 24px;
+		height: 24px;
+
+		background: url("../../../../images/icons/drop-down.svg");
+		filter: invert(100%);
+	}
+}
