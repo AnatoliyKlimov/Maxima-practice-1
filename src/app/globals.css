@@ -10,23 +10,99 @@
 
 * {
 	box-sizing: border-box;
+
 	padding: 0;
 	margin: 0;
 }
 
 html,
 body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
 	max-width: 100vw;
+
 	overflow-x: hidden;
 }
 
 body {
+	font-size: 16px;
 	color: rgb(var(--foreground-rgb));
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 400;
 }
 
 a {
 	color: inherit;
 	text-decoration: none;
+}
+
+a:hover {
+	opacity: .8;
+}
+
+select {
+	appearance: none;
+
+	width: 100%;
+
+	padding: 0 24px 0 0;
+	margin: 0;
+
+	background-color: transparent;
+
+	outline: none;
+	border: none;
+	
+	font-family: inherit;
+	font-size: inherit;
+	cursor: inherit;
+	color: inherit;
+	line-height: inherit;
+
+	z-index: 1;
+
+	& option {
+		color: #000;
+	}
+}
+
+input[type="text"] {
+	appearance: none;
+
+	padding: 0 8px 0 0;
+	margin: 0;
+
+	background-color: transparent;
+
+	outline: none;
+	border: none;
+	
+	font-family: inherit;
+	font-size: inherit;
+	cursor: inherit;
+	color: inherit;
+	line-height: inherit;
+}
+
+.container-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+
+	min-width: 1440px;
+}
+
+.container {
+	width: 1170px;
 }
 
 @media (prefers-color-scheme: dark) {
