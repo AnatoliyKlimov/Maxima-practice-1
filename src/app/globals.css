@@ -1,10 +1,20 @@
 :root {
-	--foreground-rgb: 0, 0, 0;
+	--foreground: #000;
+	--background-secondary: #F5F5F5;
+
+	--button-primary: #DB4444;
+	--button-primary-text: #FAFAFA;
+	--button-primary-hover: #E07575;
+	--button-primary-hover-text: #FAFAFA;
+	--button-secondary: #00000080;
+	--button-secondary-text: #000;
+	--button-secondary-hover: #00000080;
+	--button-secondary-hover-text: #7D8184;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--foreground-rgb: 255, 255, 255;
+		--foreground: #fff;
 	}
 }
 
@@ -28,7 +38,7 @@ body {
 
 body {
 	font-size: 16px;
-	color: rgb(var(--foreground-rgb));
+	color: var(--foreground);
 }
 
 h1,
@@ -49,32 +59,8 @@ a:hover {
 	opacity: .8;
 }
 
-select {
-	appearance: none;
-
-	width: 100%;
-
-	padding: 0 24px 0 0;
-	margin: 0;
-
-	background-color: transparent;
-
-	outline: none;
-	border: none;
-	
-	font-family: inherit;
-	font-size: inherit;
-	cursor: inherit;
-	color: inherit;
-	line-height: inherit;
-
-	z-index: 1;
-
-	& option {
-		color: #000;
-	}
-}
-
+button,
+select,
 input[type="text"] {
 	appearance: none;
 
@@ -91,6 +77,20 @@ input[type="text"] {
 	cursor: inherit;
 	color: inherit;
 	line-height: inherit;
+}
+
+button {
+	padding: 0;
+}
+
+select {
+	padding: 0 24px 0 0;
+
+	z-index: 1;
+
+	& option {
+		color: #000;
+	}
 }
 
 .container-wrapper {
