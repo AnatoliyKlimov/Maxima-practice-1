@@ -2,12 +2,8 @@
 	font-weight: 500;
 
 	border-bottom: 1px solid transparent;
-
-	&_active {
-		border-bottom-color: #000;
-	}
 }
 
 .navMenuItemActive {
-	border-bottom-color: #000;
+	border-bottom-color: #808080;
 }
