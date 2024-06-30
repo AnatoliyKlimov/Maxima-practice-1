@@ -26,6 +26,10 @@
 	}
 }
 
+.button_small {
+	padding: 10px 48px;
+}
+
 .button_icon {
 	padding: 11px;
 
@@ -64,8 +68,4 @@
 
 		color: var(--button-secondary-hover-text);
 	}
-}
-
-.button_small {
-	padding: 10px 48px;
 }

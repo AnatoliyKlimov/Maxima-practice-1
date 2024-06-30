@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { fontInter } from "@/app/fonts";
-import Subscribe from "@/lib/ui/elements/Subscribe";
+import Subscribe from "@/lib/ui/components/Subscribe";
 
 import ImageQRCode from "@/images/qr-code.jpg";
 import ImageGooglePlay from "@/images/google-play.png";

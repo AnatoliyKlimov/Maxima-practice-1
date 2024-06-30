@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { fontInter } from "@/app/fonts";
 import Navigation from "@/components/Navigation";
-import Search from "@/lib/ui/elements/Search";
+import Search from "@/lib/ui/components/Search";
 
 import ImageWishlist from "@/images/icons/wishlist.svg";
 import ImageCart from "@/images/icons/cart.svg";
