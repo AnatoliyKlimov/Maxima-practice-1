@@ -20,7 +20,7 @@ export const Search: React.FC<ISearchProps> = ({ inputStyle, style, ...props }) 
 				alignItems: "center",
 				gap: 4,
 				padding: "7px 20px",
-				backgroundColor: "#F5F5F5",
+				backgroundColor: "var(--background-secondary)",
 				borderRadius: 4,
 				...style
 			}}

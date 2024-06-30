@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { fontInter } from "@/app/fonts";
-import Subscribe from "@/lib/ui/elements/Subscribe";
+import Subscribe from "@/lib/ui/components/Subscribe";
 
 import ImageQRCode from "@/images/qr-code.jpg";
 import ImageGooglePlay from "@/images/google-play.png";
@@ -16,7 +16,10 @@ import styles from "./Footer.module.css";
 
 export const Footer: React.FC = () => {
 	return (
-		<div style={{ backgroundColor: "#000" }}>
+		<div
+			className="container-wrapper"
+			style={{ flexDirection: "column", backgroundColor: "#000" }}
+		>
 			<div
 				className="container-wrapper"
 				style={{

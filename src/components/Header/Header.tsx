@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { fontInter } from "@/app/fonts";
 import Navigation from "@/components/Navigation";
-import Search from "@/lib/ui/elements/Search";
+import Search from "@/lib/ui/components/Search";
 
 import ImageWishlist from "@/images/icons/wishlist.svg";
 import ImageCart from "@/images/icons/cart.svg";
@@ -25,7 +25,9 @@ export const Header: React.FC = () => {
 						display: "flex",
 						alignItems: "center",
 						justifyContent: "space-between",
-						width: "100%"
+						width: "100%",
+						paddingBottom: 16,
+						borderBottom: "0.5px solid var(--border)"
 					}}
 				>
 					<Link href="/">
