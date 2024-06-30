@@ -25,7 +25,8 @@ export default function RootLayout({
 						display: "flex",
 						flexDirection: "column",
 						height: "100%",
-						minHeight: "100vh"
+						minHeight: "100vh",
+						overflow: "auto"
 					}}
 				>
 					<TopHeader />

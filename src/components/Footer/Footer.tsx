@@ -16,7 +16,10 @@ import styles from "./Footer.module.css";
 
 export const Footer: React.FC = () => {
 	return (
-		<div style={{ backgroundColor: "#000" }}>
+		<div
+			className="container-wrapper"
+			style={{ flexDirection: "column", backgroundColor: "#000" }}
+		>
 			<div
 				className="container-wrapper"
 				style={{
