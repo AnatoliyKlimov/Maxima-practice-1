@@ -40,7 +40,7 @@
 }
 
 .button_primary,
-.button_cart {
+.button_small {
 	background-color: var(--button-primary);
 
 	color: var(--button-primary-text);
@@ -66,6 +66,6 @@
 	}
 }
 
-.button_cart {
+.button_small {
 	padding: 10px 48px;
 }
