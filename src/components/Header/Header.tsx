@@ -25,7 +25,9 @@ export const Header: React.FC = () => {
 						display: "flex",
 						alignItems: "center",
 						justifyContent: "space-between",
-						width: "100%"
+						width: "100%",
+						paddingBottom: 16,
+						borderBottom: "0.5px solid var(--border)"
 					}}
 				>
 					<Link href="/">
