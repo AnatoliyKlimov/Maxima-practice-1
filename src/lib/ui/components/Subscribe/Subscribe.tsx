@@ -17,7 +17,7 @@ export const Subscribe: React.FC<ISubscribeProps> = ({
 	inputStyle,
 	iconStyle,
 	style,
-	...props
+	...otherProps
 }) => {
 	return (
 		<div
@@ -40,7 +40,7 @@ export const Subscribe: React.FC<ISubscribeProps> = ({
 					lineHeight: "24px",
 					...inputStyle
 				}}
-				{...props}
+				{...otherProps}
 			/>
 			<Image
 				src={IconSend}
