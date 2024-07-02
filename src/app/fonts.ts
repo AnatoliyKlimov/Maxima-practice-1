@@ -6,6 +6,6 @@ export const fontPoppins = Poppins({
 });
 
 export const fontInter = Inter({
-	weight: "800",
+	weight: ["600", "800"],
 	subsets: ["latin"]
 });
