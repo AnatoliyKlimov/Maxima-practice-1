@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import SlickSlider from "react-slick";
 
-import { SliderClass, SliderConfig } from "@/lib/vendors/slider";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import "./Slider.css";
 
@@ -12,48 +13,34 @@ type TSlide = {
 };
 
 interface ISliderProps {
-	config: SliderConfig;
 	slides: TSlide[];
 }
 
-// TODO: Отрефакторить, чтобы было без использования класса SliderClass
-const Slider: React.FC<ISliderProps> = ({ slides, config }) => {
-	useEffect(() => {
-		window.slider = new SliderClass("slider-container", config);
-
-		return () => {
-			if (window.slider) {
-				window.slider.destroy();
-			}
-		};
-	}, [config]);
+const Slider: React.FC<ISliderProps> = ({ slides }) => {
+	const config = {
+		arrows: false,
+		speed: 600,
+		autoplay: true,
+		autoplaySpeed: 6000,
+		dots: true,
+		adaptiveHeight: true,
+		slidesToShow: 1,
+		slidesToScroll: 1
+	};
 
 	return (
 		<div
 			className="slider-section"
 			style={{
 				padding: "40px 0 0 40px",
-				flexGrow: 1
+				width: "calc(1170px - 217px - 16px - 1px)"
 			}}
 		>
-			<div
-				className="slider-container"
-				id="slider-container"
-				style={{
-					height: "100%",
-					backgroundColor: "#000",
-					color: "#fff"
-				}}
-			>
-				<div className="slider-wrapper">
-					{slides.map(({ key, content }) => (
-						<div key={key} className="slider-slide">
-							{content}
-						</div>
-					))}
-				</div>
-				<div className="slider-pagination"></div>
-			</div>
+			<SlickSlider {...config}>
+				{slides.map(({ key, content }) => (
+					<div key={key}>{content}</div>
+				))}
+			</SlickSlider>
 		</div>
 	);
 };

@@ -22,20 +22,11 @@ export default function Home() {
 				<div
 					style={{
 						width: 1,
-						backgroundColor: "var(--border)"
+						backgroundColor: "var(--border)",
+						flexShrink: 0
 					}}
 				/>
 				<Slider
-					config={{
-						speed: 600,
-
-						autoplay: { delay: 6000 },
-
-						pagination: {
-							element: ".slider-pagination",
-							clickable: true
-						}
-					}}
 					slides={[
 						{
 							key: "slide-01",
@@ -44,7 +35,9 @@ export default function Home() {
 									style={{
 										display: "flex",
 										justifyContent: "space-between",
-										height: 300
+										height: 344,
+										backgroundColor: "#000",
+										color: "#fff"
 									}}
 								>
 									<div
@@ -125,7 +118,9 @@ export default function Home() {
 									style={{
 										display: "flex",
 										justifyContent: "space-between",
-										height: 300
+										height: 344,
+										backgroundColor: "#000",
+										color: "#fff"
 									}}
 								>
 									<div
@@ -206,7 +201,9 @@ export default function Home() {
 									style={{
 										display: "flex",
 										justifyContent: "space-between",
-										height: 300
+										height: 344,
+										backgroundColor: "#000",
+										color: "#fff"
 									}}
 								>
 									<div
