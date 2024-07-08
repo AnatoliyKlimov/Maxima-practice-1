@@ -1,16 +1,20 @@
-interface ICaptionProps {
+import { TBaseComponent } from "@/types";
+
+interface ICaptionProps extends TBaseComponent {
 	text?: string;
 }
 
-export const Caption: React.FC<ICaptionProps> = ({ text }) => {
+export const Caption: React.FC<ICaptionProps> = ({ text, style, ...otherProps }) => {
 	return (
 		<div
 			style={{
 				display: "flex",
 				alignItems: "center",
 				gap: 16,
-				marginBottom: 20
+				marginBottom: 20,
+				...style
 			}}
+			{...otherProps}
 		>
 			<div
 				style={{

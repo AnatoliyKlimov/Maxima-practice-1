@@ -1,14 +1,11 @@
 import { CSSProperties } from "react";
 import Image from "next/image";
 
+import { TBaseComponent } from "@/types";
+
 import IconSend from "@/images/icons/send.svg";
 
-type TSubscribeProps = React.DetailedHTMLProps<
-	React.InputHTMLAttributes<HTMLInputElement>,
-	HTMLInputElement
->;
-
-interface ISubscribeProps extends TSubscribeProps {
+interface ISubscribeProps extends TBaseComponent<HTMLInputElement> {
 	inputStyle?: CSSProperties;
 	iconStyle?: CSSProperties;
 }
