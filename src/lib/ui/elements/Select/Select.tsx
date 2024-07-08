@@ -1,21 +1,15 @@
 import { CSSProperties } from "react";
 
+import { TBaseComponent } from "@/types";
+
 import styles from "./Select.module.css";
 
-type TSelectOption = React.DetailedHTMLProps<
-	React.OptionHTMLAttributes<HTMLOptionElement>,
-	HTMLOptionElement
-> & {
-	text: string; // Текст элемента списка
+interface ISelectOption extends TBaseComponent<"option"> {
+	text: string;
 };
 
-type TSelectProps = React.DetailedHTMLProps<
-	React.SelectHTMLAttributes<HTMLSelectElement>,
-	HTMLSelectElement
->;
-
-interface ISelectProps extends TSelectProps {
-	options: TSelectOption[];
+interface ISelectProps extends TBaseComponent<"select"> {
+	options: ISelectOption[];
 	selectStyle?: CSSProperties;
 }
 
@@ -24,9 +18,9 @@ export const Select: React.FC<ISelectProps> = ({ options, selectStyle, style, ..
 	return (
 		<div className={styles.select} style={style}>
 			<select style={selectStyle} {...otherProps}>
-				{options.map(({ key, ...otherProps }) => (
+				{options.map(({ key, text, ...otherProps }) => (
 					<option key={key} {...otherProps}>
-						{otherProps.text}
+						{text}
 					</option>
 				))}
 			</select>

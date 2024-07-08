@@ -1,10 +1,10 @@
-import React, { ComponentProps, ElementType } from "react";
+import { ComponentProps, ElementType } from "react";
 
 import styles from "./Button.module.css";
 
 interface IButtonOwnProps<E extends ElementType = ElementType> extends React.PropsWithChildren {
 	as?: E;
-	type?: "primary" | "secondary"  | "small" | "icon";
+	type?: "primary" | "secondary" | "small" | "incard" | "icon";
 }
 
 type TButtonProps<E extends ElementType> = IButtonOwnProps<E> &
@@ -27,7 +27,7 @@ export const Button: React.FC<TButtonProps<ElementType>> = <
 		<TagName
 			{...otherProps}
 			href={href}
-			className={`${styles.button} ${styles["button_" + type]}`}
+			className={`${styles.button} ${styles["button_" + type]} ${otherProps.className}`}
 		>
 			{children}
 		</TagName>

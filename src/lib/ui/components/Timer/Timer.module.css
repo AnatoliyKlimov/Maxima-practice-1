@@ -1,0 +1,31 @@
+.timerStrokeWrapper {
+	position: relative;
+}
+
+.timerStrokeWrapper::before {
+	content: attr(data-label);
+
+	display: block;
+	position: absolute;
+
+	top: -24px;
+
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 18px;
+}
+
+.timerStroke,
+.timerSeparator {
+	font-size: 32px;
+	font-weight: 700;
+	line-height: 30px;
+	letter-spacing: 0.04em;
+}
+
+.timerSeparator {
+	line-height: 22px;
+	color: var(--background-primary);
+
+	cursor: default;
+}

@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { v4 as uuid } from "uuid";
 
+import { TBaseComponent } from "@/types";
+
 import ImageArrow from "@/images/icons/drop-down.svg";
 
 const menuItems: {
@@ -59,7 +61,9 @@ const menuItems: {
 	}
 ];
 
-export const CategoriesMenu: React.FC = () => {
+type TCategoriesMenu = TBaseComponent<"ul">;
+
+export const CategoriesMenu: React.FC<TCategoriesMenu> = ({ style, ...otherProps }) => {
 	return (
 		<ul
 			style={{
@@ -69,8 +73,10 @@ export const CategoriesMenu: React.FC = () => {
 				width: 217,
 				marginTop: 40,
 				marginRight: 16.25,
-				lineHeight: "24px"
+				lineHeight: "24px",
+				...style
 			}}
+			{...otherProps}
 		>
 			{menuItems.map((item) => (
 				<li key={item.key}>

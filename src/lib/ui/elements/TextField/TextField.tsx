@@ -1,30 +1,23 @@
+import { TBaseComponent } from "@/types";
+
 import styles from "./TextField.module.css";
 
-interface ITextFieldOwnProps {
+interface ITextFieldProps extends TBaseComponent<"input"> {
 	type?: "primary" | "flat";
 }
 
-type TTextFieldProps = ITextFieldOwnProps &
-	Omit<
-		React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
-		keyof ITextFieldOwnProps
-	>;
+type TTextArea = TBaseComponent<"textarea">;
 
-type TTextAreaProps = React.DetailedHTMLProps<
-	React.TextareaHTMLAttributes<HTMLTextAreaElement>,
-	HTMLTextAreaElement
->;
-
-export const TextField: React.FC<TTextFieldProps> = ({ type = "primary", ...otherProps }) => {
+export const TextField: React.FC<ITextFieldProps> = ({ type = "primary", ...otherProps }) => {
 	return (
 		<input
 			{...otherProps}
-			className={`${styles.textField} ${styles["textField_" + type]}`}
+			className={`${styles.textField} ${styles["textField_" + type]} ${otherProps.className}`}
 			type="text"
 		/>
 	);
 };
 
-export const TextArea: React.FC<TTextAreaProps> = ({ ...otherProps }) => {
-	return <textarea {...otherProps} className={styles.textArea} />;
+export const TextArea: React.FC<TTextArea> = ({ ...otherProps }) => {
+	return <textarea {...otherProps} className={`${styles.textArea} ${otherProps.className}`} />;
 };

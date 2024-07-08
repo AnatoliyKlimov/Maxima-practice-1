@@ -39,3 +39,8 @@
 		& button { opacity: 0; }
 	}
 }
+
+.carousel .slick-track {
+	display: flex;
+	gap: 30px;
+}
