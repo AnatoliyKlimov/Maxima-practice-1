@@ -7,7 +7,7 @@ import IconGoogle from "@/images/icons/google.svg";
 export const LoginGoogleButton: React.FC = () => {
 	return (
 		<Button type="secondary">
-			<Image src={IconGoogle} alt="Google" />
+			<Image src={IconGoogle} alt="Google" draggable={false} />
 			Sign up with Google
 		</Button>
 	);

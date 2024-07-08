@@ -63,6 +63,10 @@ a {
 	text-decoration: none;
 }
 
+ul {
+	list-style: none;
+}
+
 a:hover {
 	opacity: 0.8;
 }
@@ -110,8 +114,19 @@ select {
 	width: 1170px;
 }
 
+main {
+	display: flex;
+	flex-direction: column;
+	gap: 140px;
+}
+
 @media (prefers-color-scheme: dark) {
 	html {
 		color-scheme: dark;
 	}
+}
+
+@keyframes fadeIn { /* stylelint-disable-line */
+	from { opacity: 0; }
+	to { opacity: 1; }
 }
