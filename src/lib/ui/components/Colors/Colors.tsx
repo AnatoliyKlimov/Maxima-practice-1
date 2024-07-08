@@ -8,7 +8,18 @@ interface IColorsProps extends TBaseComponent<"input"> {
 export const Colors: React.FC<IColorsProps> = ({ name, colors, style, ...otherProps }) => {
 	return (
 		<div style={style} {...otherProps}>
-			<input type="radio" name={`colors-${name}`} />
+			{colors.map((color) => (
+				<input
+					type="radio"
+					name={`colors-${name}`}
+					value={color.value}
+					style={{
+						borderRadius: "50%",
+						width: 16,
+						height: 16
+					}}
+				/>
+			))}
 		</div>
 	);
 };
