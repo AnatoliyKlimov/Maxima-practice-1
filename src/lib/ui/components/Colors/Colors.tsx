@@ -1,4 +1,9 @@
+"use client";
+
 import { TBaseComponent, TColors } from "@/types";
+import { useRadioButtons } from "@/lib/utils/hooks";
+
+import styles from "./Colors.module.css";
 
 interface IColorsProps extends TBaseComponent<"input"> {
 	name: string;
@@ -6,20 +11,33 @@ interface IColorsProps extends TBaseComponent<"input"> {
 }
 
 export const Colors: React.FC<IColorsProps> = ({ name, colors, style, ...otherProps }) => {
+	const [colorsValue, colorsInputProps] = useRadioButtons(`colors-${name}`, colors[0].value);
+
 	return (
 		<div style={style} {...otherProps}>
-			{colors.map((color) => (
-				<input
-					type="radio"
-					name={`colors-${name}`}
-					value={color.value}
-					style={{
-						borderRadius: "50%",
-						width: 16,
-						height: 16
-					}}
-				/>
-			))}
+			<form>
+				{colors.map((color) => (
+					<input
+						key={`colors-${name}-${color.value}`}
+						className={styles.colors}
+						style={{
+							borderRadius: "50%",
+							width: 18,
+							height: 18,
+							marginLeft: 2,
+							marginRight: 8,
+							backgroundColor: color.value,
+							outline: `2px solid ${color.value}`,
+							cursor: "pointer"
+						}}
+						value={color.value}
+						checked={colorsValue === color.value}
+						{...colorsInputProps}
+					/>
+				))}
+			</form>
 		</div>
 	);
 };
+
+export default Colors;

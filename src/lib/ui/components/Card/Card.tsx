@@ -9,6 +9,7 @@ import IconFavorite from "@/images/icons/favorite.svg";
 import IconView from "@/images/icons/view.svg";
 
 import "./Card.css";
+import Colors from "@/lib/ui/components/Colors";
 
 interface ICardProps extends TBaseComponent {
 	product: TProduct;
@@ -22,7 +23,7 @@ export const Card: React.FC<ICardProps> = ({ product, style, ...otherProps }) =>
 				display: "flex",
 				flexDirection: "column",
 				gap: 8,
-				//height: 350,
+				minHeight: 350,
 				width: 270,
 				...style
 			}}
@@ -119,7 +120,7 @@ export const Card: React.FC<ICardProps> = ({ product, style, ...otherProps }) =>
 			>
 				<Link href={`/product/${product.id}`}>{product.title}</Link>
 			</h4>
-			<p
+			<div
 				style={{
 					display: "flex",
 					flexWrap: "wrap",
@@ -140,7 +141,18 @@ export const Card: React.FC<ICardProps> = ({ product, style, ...otherProps }) =>
 					</span>
 				)}
 				<Rating rating={product.rating} />
-			</p>
+			</div>
+			{product.colors && (
+				<Colors
+					name={product.id}
+					colors={product.colors}
+					style={{
+						display: "flex",
+						padding: "2px 0",
+						marginTop: 4
+					}}
+				/>
+			)}
 		</div>
 	);
 };

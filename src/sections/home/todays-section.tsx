@@ -92,16 +92,13 @@ export const TodaysSection: React.FC = () => {
 					arrows: false,
 					speed: 600,
 					slidesToShow: 4,
-					slidesToScroll: 4,
-					lazyLoad: "progressive",
-					variableWidth: true
+					slidesToScroll: 4
 				}}
 				slides={DefaultTodaysProducts.map((product) => ({
 					key: `todays-product-${product.id}`,
 					content: <Card product={product} />
 				}))}
 				style={{
-					height: 350,
 					marginBottom: 60
 				}}
 			/>
