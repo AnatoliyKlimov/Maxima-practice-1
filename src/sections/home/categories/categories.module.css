@@ -1,0 +1,15 @@
+.category {
+	border: 1px solid var(--border);
+
+	&:hover {
+		border-color: transparent;
+
+		background-color: var(--background-primary);
+
+		color: #fff;
+
+		& img {
+			filter: invert(100%);
+		}
+	}
+}

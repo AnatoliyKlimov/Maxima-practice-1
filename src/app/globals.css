@@ -15,6 +15,7 @@
 	--button-secondary-text: #000;
 	--button-secondary-hover: #00000080;
 	--button-secondary-hover-text: #7d8184;
+	--button-green: #0f6;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -83,7 +84,7 @@ ul {
 	list-style: none;
 }
 
-a:hover {
+a:not(a.no-hover-link):hover {
 	opacity: 0.8;
 }
 
@@ -137,8 +138,11 @@ main {
 }
 
 hr {
-	border-width: 0.5px;
-	border-color: #d7d7d7;
+	height: 0.5px;
+
+	border: 0;
+
+	background-color: #d7d7d7;
 }
 
 @media (prefers-color-scheme: dark) {

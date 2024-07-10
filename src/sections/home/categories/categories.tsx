@@ -1,22 +1,23 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import SlickSlider from "react-slick";
 
 import { fontInter } from "@/app/fonts";
 import Slider from "@/components/Slider";
-import Timer from "@/lib/ui/components/Timer";
 import Caption from "@/lib/ui/components/Caption";
 import Button from "@/lib/ui/elements/Button";
-import Card from "@/lib/ui/components/Card";
 
-import { DefaultTodaysProducts } from "@/types/__mocks__/product";
+import { DefaultCategories } from "@/types/__mocks__";
 
 import ImageArrow from "@/images/icons/arrow-left.svg";
 
-export const TodaysSection: React.FC = () => {
-	const todaysSliderRef = useRef<SlickSlider>(null);
+import styles from "./categories.module.css";
+
+export const CategoriesSection: React.FC = () => {
+	const categoriesSliderRef = useRef<SlickSlider>(null);
 
 	return (
 		<section
@@ -25,13 +26,13 @@ export const TodaysSection: React.FC = () => {
 				flexDirection: "column"
 			}}
 		>
-			<Caption text="Today's" style={{ marginBottom: 17 }} />
+			<Caption text="Categories" style={{ marginBottom: 17 }} />
 			<div
 				style={{
 					display: "flex",
 					alignItems: "flex-end",
 					justifyContent: "space-between",
-					marginBottom: 40
+					marginBottom: 60
 				}}
 			>
 				<div>
@@ -45,32 +46,19 @@ export const TodaysSection: React.FC = () => {
 							letterSpacing: "0.04em"
 						}}
 					>
-						Flash Sales
+						Browse By Category
 					</h1>
-					<Timer
-						remainingTime={{
-							days: 3,
-							hours: 23,
-							minutes: 19,
-							seconds: 56
-						}}
-						direction="backward"
-						style={{
-							marginLeft: 87
-						}}
-					/>
 				</div>
 				<div
 					style={{
 						display: "flex",
-						gap: 8,
-						marginBottom: 12
+						gap: 8
 					}}
 				>
 					<Button
 						type="icon"
 						onClick={() => {
-							todaysSliderRef?.current?.slickPrev();
+							categoriesSliderRef?.current?.slickPrev();
 						}}
 					>
 						<Image src={ImageArrow} alt="" />
@@ -78,7 +66,7 @@ export const TodaysSection: React.FC = () => {
 					<Button
 						type="icon"
 						onClick={() => {
-							todaysSliderRef?.current?.slickNext();
+							categoriesSliderRef?.current?.slickNext();
 						}}
 					>
 						<Image src={ImageArrow} alt="" style={{ transform: "rotate(180deg)" }} />
@@ -86,30 +74,46 @@ export const TodaysSection: React.FC = () => {
 				</div>
 			</div>
 			<Slider
-				ref={todaysSliderRef}
+				ref={categoriesSliderRef}
 				config={{
 					className: "carousel",
 					arrows: false,
 					speed: 600,
-					slidesToShow: 4,
-					slidesToScroll: 4
+					slidesToShow: 6,
+					slidesToScroll: 6
 				}}
-				slides={DefaultTodaysProducts.map((product) => ({
-					key: `todays-product-${product.id}`,
-					content: <Card product={product} />
+				slides={DefaultCategories.map((category) => ({
+					key: `categories-${category.id}`,
+					content: (
+						<Link href={category.url} className="no-hover-link">
+							<div
+								className={styles.category}
+								style={{
+									display: "flex",
+									flexDirection: "column",
+									alignItems: "center",
+									justifyContent: "center",
+									gap: 16,
+									height: 145,
+									width: 170,
+									borderRadius: 4
+								}}
+							>
+								<Image
+									src={category.icon}
+									alt={category.title}
+									style={{
+										height: 56,
+										width: 56
+									}}
+								/>
+								<span style={{ lineHeight: "24px" }}>{category.title}</span>
+							</div>
+						</Link>
+					)
 				}))}
-				style={{
-					marginBottom: 60
-				}}
+				style={{ marginBottom: 70 }}
 			/>
-			<Button
-				style={{
-					alignSelf: "center",
-					marginBottom: 60
-				}}
-			>
-				View All Products
-			</Button>
 			<hr />
 		</section>
 	);

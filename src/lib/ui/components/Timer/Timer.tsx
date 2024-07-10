@@ -21,6 +21,7 @@ interface IRemainingState extends IRemaining {
 interface ITimerProps extends TBaseComponent {
 	remainingTime?: IRemaining;
 	direction?: "forward" | "backward";
+	inBanner?: boolean;
 }
 
 export const Timer: React.FC<ITimerProps> = ({
@@ -31,6 +32,7 @@ export const Timer: React.FC<ITimerProps> = ({
 		seconds: 0
 	},
 	direction = "forward",
+	inBanner = false,
 	style,
 	...otherProps
 }) => {
@@ -79,25 +81,37 @@ export const Timer: React.FC<ITimerProps> = ({
 			}}
 			{...otherProps}
 		>
-			<span className={styles.timerStrokeWrapper} data-label="Days">
+			<span
+				className={`${styles.timerStrokeWrapper} ${inBanner ? styles.timerStrokeWrapperInBanner : ""}`}
+				data-label="Days"
+			>
 				<span className={`${styles.timerStroke} ${fontInter.className}`}>
 					{`${remaining.days.toString().padStart(2, "0")}`}
 				</span>
 			</span>
-			<span className={styles.timerSeparator}>:</span>
-			<span className={styles.timerStrokeWrapper} data-label="Hours">
+			{!inBanner && <span className={styles.timerSeparator}>:</span>}
+			<span
+				className={`${styles.timerStrokeWrapper} ${inBanner ? styles.timerStrokeWrapperInBanner : ""}`}
+				data-label="Hours"
+			>
 				<span className={`${styles.timerStroke} ${fontInter.className}`}>
 					{`${remaining.hours.toString().padStart(2, "0")}`}
 				</span>
 			</span>
-			<span className={styles.timerSeparator}>:</span>
-			<span className={styles.timerStrokeWrapper} data-label="Minutes">
+			{!inBanner && <span className={styles.timerSeparator}>:</span>}
+			<span
+				className={`${styles.timerStrokeWrapper} ${inBanner ? styles.timerStrokeWrapperInBanner : ""}`}
+				data-label="Minutes"
+			>
 				<span className={`${styles.timerStroke} ${fontInter.className}`}>
 					{`${remaining.minutes.toString().padStart(2, "0")}`}
 				</span>
 			</span>
-			<span className={styles.timerSeparator}>:</span>
-			<span className={styles.timerStrokeWrapper} data-label="Seconds">
+			{!inBanner && <span className={styles.timerSeparator}>:</span>}
+			<span
+				className={`${styles.timerStrokeWrapper} ${inBanner ? styles.timerStrokeWrapperInBanner : ""}`}
+				data-label="Seconds"
+			>
 				<span className={`${styles.timerStroke} ${fontInter.className}`}>
 					{`${remaining.seconds.toString().padStart(2, "0")}`}
 				</span>

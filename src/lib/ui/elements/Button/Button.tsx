@@ -4,7 +4,7 @@ import styles from "./Button.module.css";
 
 interface IButtonOwnProps<E extends ElementType = ElementType> extends React.PropsWithChildren {
 	as?: E;
-	type?: "primary" | "secondary" | "small" | "incard" | "icon";
+	type?: "primary" | "secondary" | "green" | "small" | "incard" | "icon";
 }
 
 type TButtonProps<E extends ElementType> = IButtonOwnProps<E> &
