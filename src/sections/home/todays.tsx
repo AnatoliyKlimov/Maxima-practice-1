@@ -10,13 +10,16 @@ import Timer from "@/lib/ui/components/Timer";
 import Caption from "@/lib/ui/components/Caption";
 import Button from "@/lib/ui/elements/Button";
 import Card from "@/lib/ui/components/Card";
+import { useProducts } from "@/service/products";
 
-import { DefaultTodaysProducts } from "@/types/__mocks__";
+import { TProduct } from "@/types";
 
 import ImageArrow from "@/images/icons/arrow-left.svg";
 
 export const TodaysSection: React.FC = () => {
 	const todaysSliderRef = useRef<SlickSlider>(null);
+
+	const [todaysProducts] = useProducts({ type: "todays" });
 
 	return (
 		<section
@@ -92,7 +95,7 @@ export const TodaysSection: React.FC = () => {
 					slidesToShow: 4,
 					slidesToScroll: 4
 				}}
-				slides={DefaultTodaysProducts.map((product) => ({
+				slides={(todaysProducts as TProduct[]).map((product) => ({
 					key: `todays-product-${product.id}`,
 					content: <Card product={product} />
 				}))}

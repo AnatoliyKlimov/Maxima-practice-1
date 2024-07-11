@@ -6,10 +6,13 @@ import { fontInter } from "@/app/fonts";
 import Caption from "@/lib/ui/components/Caption";
 import Button from "@/lib/ui/elements/Button";
 import Card from "@/lib/ui/components/Card";
+import { useProducts } from "@/service/products";
 
-import { DefaultThisMonthProducts } from "@/types/__mocks__";
+import { TProduct } from "@/types";
 
 export const ThisMonthProductsSection: React.FC = () => {
+	const [thisMonthProducts] = useProducts({ type: "this-month" });
+
 	return (
 		<section
 			style={{
@@ -50,7 +53,7 @@ export const ThisMonthProductsSection: React.FC = () => {
 					justifyContent: "space-between"
 				}}
 			>
-				{DefaultThisMonthProducts.map((product) => (
+				{(thisMonthProducts as TProduct[]).map((product) => (
 					<Card product={product} key={`this-month-product-${product.id}`} />
 				))}
 			</div>

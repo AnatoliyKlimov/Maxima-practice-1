@@ -12,16 +12,14 @@
 		"isolatedModules": true,
 		"jsx": "preserve",
 		"incremental": true,
-		"plugins": [
-			{
-				"name": "next"
-			}
-		],
+		"plugins": [{ "name": "next" }],
 		"paths": {
-			"@/*": ["./src/*"]
-		}
+			"@/*": ["./src/*"],
+			"@/store/*": ["./src/lib/store/*"],
+			"@/store": ["./src/lib/store"]
+		},
+		"types": ["redux-persist"]
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
 	"exclude": ["node_modules"]
 }
-
