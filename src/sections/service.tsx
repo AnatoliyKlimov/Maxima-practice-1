@@ -25,7 +25,7 @@ export const ServiceSection: React.FC = () => {
 				}}
 			>
 				<Image src={ImageDelivery} alt="Delivery" draggable={false} />
-				<p>
+				<div>
 					<h2
 						style={{
 							fontSize: 20,
@@ -44,7 +44,7 @@ export const ServiceSection: React.FC = () => {
 					>
 						Free delivery for all orders over $140
 					</span>
-				</p>
+				</div>
 			</div>
 			<div
 				style={{
@@ -56,7 +56,7 @@ export const ServiceSection: React.FC = () => {
 				}}
 			>
 				<Image src={ImageCustomer} alt="Customer Service" draggable={false} />
-				<p>
+				<div>
 					<h2
 						style={{
 							fontSize: 20,
@@ -75,7 +75,7 @@ export const ServiceSection: React.FC = () => {
 					>
 						Friendly 24/7 customer support
 					</span>
-				</p>
+				</div>
 			</div>
 			<div
 				style={{
@@ -87,7 +87,7 @@ export const ServiceSection: React.FC = () => {
 				}}
 			>
 				<Image src={ImageMoneyBack} alt="Money Back" draggable={false} />
-				<p>
+				<div>
 					<h2
 						style={{
 							fontSize: 20,
@@ -106,7 +106,7 @@ export const ServiceSection: React.FC = () => {
 					>
 						We return money within 30 days
 					</span>
-				</p>
+				</div>
 			</div>
 		</section>
 	);
