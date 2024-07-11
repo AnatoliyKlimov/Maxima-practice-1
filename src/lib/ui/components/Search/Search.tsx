@@ -1,18 +1,15 @@
 import { CSSProperties } from "react";
 import Image from "next/image";
 
+import { TBaseComponent } from "@/types";
+
 import IconSearch from "@/images/icons/search.svg";
 
-type TSearchProps = React.DetailedHTMLProps<
-	React.InputHTMLAttributes<HTMLInputElement>,
-	HTMLInputElement
->;
-
-interface ISearchProps extends TSearchProps {
+interface ISearchProps extends TBaseComponent<"input"> {
 	inputStyle?: CSSProperties;
 }
 
-export const Search: React.FC<ISearchProps> = ({ inputStyle, style, ...props }) => {
+export const Search: React.FC<ISearchProps> = ({ inputStyle, style, ...otherProps }) => {
 	return (
 		<div
 			style={{
@@ -34,7 +31,7 @@ export const Search: React.FC<ISearchProps> = ({ inputStyle, style, ...props }) 
 					lineHeight: "19px",
 					...inputStyle
 				}}
-				{...props}
+				{...otherProps}
 			/>
 			<Image src={IconSearch} alt="" draggable={false} style={{ cursor: "pointer" }} />
 		</div>

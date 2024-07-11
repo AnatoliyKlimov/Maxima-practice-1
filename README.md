@@ -37,6 +37,8 @@ Maxima practice group 1
 	- Импорты из компонентов
 	- Импорты из lib/store/auth/etc...
 	- (пустая строка)
+	- Импорты типов
+	- (пустая строка)
 	- Импорты картинок
 	- (пустая строка)
 	- Локальные импорты (в текущей директории, напр. из "./style.css")
@@ -46,6 +48,8 @@ Maxima practice group 1
 	import Image from "next/image";
 
 	import MyComponent from "@/components/MyComponent";
+
+	import { MyType } from "@/types";
 
 	import MyImage from "@/images/image.png";
 	import MyImage2 from "@/images/image2.png";

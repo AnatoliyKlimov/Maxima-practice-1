@@ -1,0 +1,53 @@
+.slick-slider {
+	display: flex;
+	flex-direction: column;
+}
+
+.slick-dots {
+	display: flex !important;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	align-self: center;
+	gap: 12px;
+
+	bottom: 11px;
+
+	width: unset;
+
+	& li {
+		display: flex;
+
+		height: 12px;
+		width: 12px;
+
+		margin: 0;
+
+		background-color: #808080;
+
+		border: 2px solid transparent;
+		border-radius: 50%;
+
+		cursor: pointer;
+
+		&.slick-active {
+			background-color: var(--background-primary);
+			border-color: #fff;
+		}
+
+		& button {
+			opacity: 0;
+		}
+	}
+}
+
+.carousel {
+	& .slick-track {
+		display: flex;
+		gap: 30px;
+	}
+
+	& .slick-list {
+		margin-left: -30px;
+	}
+}

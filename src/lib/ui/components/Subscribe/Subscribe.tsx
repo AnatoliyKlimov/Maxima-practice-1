@@ -1,14 +1,11 @@
 import { CSSProperties } from "react";
 import Image from "next/image";
 
+import { TBaseComponent } from "@/types";
+
 import IconSend from "@/images/icons/send.svg";
 
-type TSubscribeProps = React.DetailedHTMLProps<
-	React.InputHTMLAttributes<HTMLInputElement>,
-	HTMLInputElement
->;
-
-interface ISubscribeProps extends TSubscribeProps {
+interface ISubscribeProps extends TBaseComponent<"input"> {
 	inputStyle?: CSSProperties;
 	iconStyle?: CSSProperties;
 }
@@ -17,7 +14,7 @@ export const Subscribe: React.FC<ISubscribeProps> = ({
 	inputStyle,
 	iconStyle,
 	style,
-	...props
+	...otherProps
 }) => {
 	return (
 		<div
@@ -40,7 +37,7 @@ export const Subscribe: React.FC<ISubscribeProps> = ({
 					lineHeight: "24px",
 					...inputStyle
 				}}
-				{...props}
+				{...otherProps}
 			/>
 			<Image
 				src={IconSend}
