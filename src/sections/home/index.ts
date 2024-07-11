@@ -5,4 +5,3 @@ export * from "./this-month";
 export * from "./banner";
 export * from "./our-products";
 export * from "./featured";
-export * from "./service";

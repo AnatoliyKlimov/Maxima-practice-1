@@ -5,9 +5,9 @@ import {
 	OurProductsSection,
 	TodaysSection,
 	ThisMonthProductsSection,
-	FeaturedSection,
-	ServiceSection
+	FeaturedSection
 } from "@/sections/home";
+import { ServiceSection } from "@/sections";
 
 export default function Home() {
 	return (
