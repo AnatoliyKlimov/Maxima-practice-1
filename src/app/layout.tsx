@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { fontPoppins } from "@/app/fonts";
+import StoreProvider from "@/store/provider";
 import TopHeader from "@/components/TopHeader";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -20,22 +21,24 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={fontPoppins.className}>
-				<div
-					style={{
-						display: "flex",
-						flexDirection: "column",
-						height: "100%",
-						minHeight: "100vh",
-						overflow: "auto"
-					}}
-				>
-					<TopHeader />
-					<Header />
-					<div className="container-wrapper" style={{ flexGrow: 1 }}>
-						<div className="container">{children}</div>
+				<StoreProvider>
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							height: "100%",
+							minHeight: "100vh",
+							overflow: "auto"
+						}}
+					>
+						<TopHeader />
+						<Header />
+						<div className="container-wrapper" style={{ flexGrow: 1 }}>
+							<div className="container">{children}</div>
+						</div>
+						<Footer />
 					</div>
-					<Footer />
-				</div>
+				</StoreProvider>
 			</body>
 		</html>
 	);

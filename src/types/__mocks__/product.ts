@@ -2,10 +2,11 @@ import { v4 as uuid } from "uuid";
 
 import { TProduct } from "@/types";
 
-export const DefaultTodaysProducts: TProduct[] = [
+export const defaultTodaysProducts: TProduct[] = [
 	{
 		id: uuid(),
 		title: "HAVIT HV-G92 Gamepad",
+		type: "todays",
 		image: "/images/products/havit-hv-g92-gamepad.png",
 		price: 120,
 		priceOld: 160,
@@ -18,6 +19,7 @@ export const DefaultTodaysProducts: TProduct[] = [
 	{
 		id: uuid(),
 		title: "AK-900 Wired Keyboard",
+		type: "todays",
 		image: "/images/products/ak-900-wired-keyboard.png",
 		imageFit: "cover",
 		price: 960,
@@ -31,6 +33,7 @@ export const DefaultTodaysProducts: TProduct[] = [
 	{
 		id: uuid(),
 		title: "IPS LCD Gaming Monitor",
+		type: "todays",
 		image: "/images/products/ips-lcd-gaming-monitor.png",
 		price: 370,
 		priceOld: 400,
@@ -43,6 +46,7 @@ export const DefaultTodaysProducts: TProduct[] = [
 	{
 		id: uuid(),
 		title: "S-Series Comfort Chair ",
+		type: "todays",
 		image: "/images/products/s-series-comfort-chair.png",
 		price: 375,
 		priceOld: 400,
@@ -54,10 +58,11 @@ export const DefaultTodaysProducts: TProduct[] = [
 	}
 ];
 
-export const DefaultThisMonthProducts: TProduct[] = [
+export const defaultThisMonthProducts: TProduct[] = [
 	{
 		id: uuid(),
 		title: "The North Coat",
+		type: "this-month",
 		image: "/images/products/the-north-coat.png",
 		price: 260,
 		priceOld: 360,
@@ -69,6 +74,7 @@ export const DefaultThisMonthProducts: TProduct[] = [
 	{
 		id: uuid(),
 		title: "Gucci Duffle Bag",
+		type: "this-month",
 		image: "/images/products/gucci-duffle-bag.png",
 		price: 960,
 		priceOld: 1160,
@@ -80,6 +86,7 @@ export const DefaultThisMonthProducts: TProduct[] = [
 	{
 		id: uuid(),
 		title: "RGB Liquid CPU Cooler",
+		type: "this-month",
 		image: "/images/products/rgb-liquid-cpu-cooler.png",
 		imageFit: "cover",
 		price: 160,
@@ -92,6 +99,7 @@ export const DefaultThisMonthProducts: TProduct[] = [
 	{
 		id: uuid(),
 		title: "Small BookSelf",
+		type: "this-month",
 		image: "/images/products/small-book-self.png",
 		imageFit: "cover",
 		price: 360,
@@ -102,10 +110,11 @@ export const DefaultThisMonthProducts: TProduct[] = [
 	}
 ];
 
-export const DefaultOurProducts: TProduct[] = [
+export const defaultOurProducts: TProduct[] = [
 	{
 		id: uuid(),
 		title: "Breed Dry Dog Food",
+		type: "our-products",
 		image: "/images/products/breed-dry-dog-food.jpg",
 		price: 100,
 		rating: {
@@ -116,6 +125,7 @@ export const DefaultOurProducts: TProduct[] = [
 	{
 		id: uuid(),
 		title: "CANON EOS DSLR Camera",
+		type: "our-products",
 		image: "/images/products/canon-eos-dslr-camera.png",
 		price: 360,
 		rating: {
@@ -126,6 +136,7 @@ export const DefaultOurProducts: TProduct[] = [
 	{
 		id: uuid(),
 		title: "ASUS FHD Gaming Laptop",
+		type: "our-products",
 		image: "/images/products/asus-fhd-gaming-laptop.png",
 		imageFit: "cover",
 		price: 700,
@@ -137,6 +148,7 @@ export const DefaultOurProducts: TProduct[] = [
 	{
 		id: uuid(),
 		title: "Curology Product Set",
+		type: "our-products",
 		image: "/images/products/curology-product-set.png",
 		imageFit: "cover",
 		price: 500,
@@ -148,6 +160,7 @@ export const DefaultOurProducts: TProduct[] = [
 	{
 		id: uuid(),
 		title: "Kids Electric Car",
+		type: "our-products",
 		image: "/images/products/kids-electric-car.png",
 		price: 960,
 		isNew: true,
@@ -169,6 +182,7 @@ export const DefaultOurProducts: TProduct[] = [
 	{
 		id: uuid(),
 		title: "Jr. Zoom Soccer Cleats",
+		type: "our-products",
 		image: "/images/products/jr-zoom-soccer-cleats.png",
 		imageFit: "cover",
 		price: 1160,
@@ -190,6 +204,7 @@ export const DefaultOurProducts: TProduct[] = [
 	{
 		id: uuid(),
 		title: "GP11 Shooter USB Gamepad",
+		type: "our-products",
 		image: "/images/products/gp11-shooter-usb-gamepad.png",
 		imageFit: "cover",
 		price: 660,
@@ -212,6 +227,7 @@ export const DefaultOurProducts: TProduct[] = [
 	{
 		id: uuid(),
 		title: "Quilted Satin Jacket",
+		type: "our-products",
 		image: "/images/products/quilted-satin-jacket.png",
 		imageFit: "cover",
 		price: 660,
@@ -230,4 +246,10 @@ export const DefaultOurProducts: TProduct[] = [
 			}
 		]
 	}
+];
+
+export const defaultProducts = [
+	...defaultTodaysProducts,
+	...defaultThisMonthProducts,
+	...defaultOurProducts
 ];

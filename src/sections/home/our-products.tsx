@@ -9,14 +9,17 @@ import Slider from "@/components/Slider";
 import Caption from "@/lib/ui/components/Caption";
 import Button from "@/lib/ui/elements/Button";
 import Card from "@/lib/ui/components/Card";
+import { useProducts } from "@/service/products";
 
-import { DefaultOurProducts } from "@/types/__mocks__";
+import { TProduct } from "@/types";
 
 import ImageArrow from "@/images/icons/arrow-left.svg";
 
 export const OurProductsSection: React.FC = () => {
 	const outProductsSlider1Ref = useRef<SlickSlider>(null);
 	const outProductsSlider2Ref = useRef<SlickSlider>(null);
+
+	const [ourProducts] = useProducts({ type: "our-products" });
 
 	return (
 		<section
@@ -83,7 +86,7 @@ export const OurProductsSection: React.FC = () => {
 					slidesToShow: 4,
 					slidesToScroll: 4
 				}}
-				slides={DefaultOurProducts.slice(0, 4).map((product) => ({
+				slides={(ourProducts as TProduct[]).slice(0, 4).map((product) => ({
 					key: `our-product-${product.id}`,
 					content: <Card product={product} wrapRating={false} />
 				}))}
@@ -98,7 +101,7 @@ export const OurProductsSection: React.FC = () => {
 					slidesToShow: 4,
 					slidesToScroll: 4
 				}}
-				slides={DefaultOurProducts.slice(4).map((product) => ({
+				slides={(ourProducts as TProduct[]).slice(4).map((product) => ({
 					key: `our-product-${product.id}`,
 					content: <Card product={product} wrapRating={false} />
 				}))}

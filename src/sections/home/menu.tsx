@@ -115,6 +115,7 @@ export const MenuSection: React.FC = () => {
 									src={ImageIphone}
 									alt="iPhone"
 									draggable={false}
+									priority
 									style={{ marginTop: 16 }}
 								/>
 							</div>
@@ -199,6 +200,7 @@ export const MenuSection: React.FC = () => {
 									src={ImageIphone}
 									alt="iPhone"
 									draggable={false}
+									priority
 									style={{ marginTop: 16 }}
 								/>
 							</div>
@@ -283,6 +285,7 @@ export const MenuSection: React.FC = () => {
 									src={ImageIphone}
 									alt="iPhone"
 									draggable={false}
+									priority
 									style={{ marginTop: 16 }}
 								/>
 							</div>
