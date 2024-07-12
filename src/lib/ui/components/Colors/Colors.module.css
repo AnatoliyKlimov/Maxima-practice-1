@@ -1,0 +1,6 @@
+.colors {
+	&:checked {
+		outline-color: #000 !important;
+		border: 2px solid #fff;
+	}
+}

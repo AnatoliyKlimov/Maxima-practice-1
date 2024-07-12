@@ -1,13 +1,16 @@
 import Image from "next/image";
 
 import Button from "@/lib/ui/elements/Button";
+import { TBaseComponent } from "@/types";
 
 import IconGoogle from "@/images/icons/google.svg";
 
-export const LoginGoogleButton: React.FC = () => {
+type TLoginGoogleButton = TBaseComponent<"button">;
+
+export const LoginGoogleButton: React.FC<TLoginGoogleButton> = ({ ...otherProps }) => {
 	return (
-		<Button type="secondary">
-			<Image src={IconGoogle} alt="Google" />
+		<Button {...otherProps} type="secondary">
+			<Image src={IconGoogle} alt="Google" draggable={false} />
 			Sign up with Google
 		</Button>
 	);

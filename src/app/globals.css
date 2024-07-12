@@ -1,5 +1,6 @@
 :root {
 	--foreground: #000;
+	--foreground-semi: #00000080;
 
 	--background-primary: #db4444;
 	--background-secondary: #f5f5f5;
@@ -14,11 +15,27 @@
 	--button-secondary-text: #000;
 	--button-secondary-hover: #00000080;
 	--button-secondary-hover-text: #7d8184;
+	--button-green: #0f6;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--foreground: #fff;
+		--foreground: #000;
+		--foreground-semi: #00000080;
+
+		--background-primary: #db4444;
+		--background-secondary: #f5f5f5;
+
+		--border: #d9d9d9;
+
+		--button-primary: #db4444;
+		--button-primary-text: #fafafa;
+		--button-primary-hover: #e07575;
+		--button-primary-hover-text: #fafafa;
+		--button-secondary: #00000080;
+		--button-secondary-text: #000;
+		--button-secondary-hover: #00000080;
+		--button-secondary-hover-text: #7d8184;
 	}
 }
 
@@ -63,7 +80,11 @@ a {
 	text-decoration: none;
 }
 
-a:hover {
+ul {
+	list-style: none;
+}
+
+a:not(a.no-hover-link):hover {
 	opacity: 0.8;
 }
 
@@ -108,6 +129,20 @@ select {
 
 .container {
 	width: 1170px;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	gap: 140px;
+}
+
+hr {
+	height: 0.5px;
+
+	border: 0;
+
+	background-color: #d7d7d7;
 }
 
 @media (prefers-color-scheme: dark) {
