@@ -70,7 +70,7 @@ export const Header: React.FC = () => {
 							<Link href="/cart" style={{ display: "flex" }}>
 								<Image src={ImageCart} alt="Cart" draggable={false} />
 							</Link>
-							<Link href="/create-account" style={{ display: "flex" }}>
+							<Link href="/login" style={{ display: "flex" }}>
 								<Image src={ImageUser} alt="User" draggable={false} />
 							</Link>
 						</div>
