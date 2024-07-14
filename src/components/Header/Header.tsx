@@ -8,6 +8,7 @@ import Search from "@/lib/ui/components/Search";
 import ImageWishlist from "@/images/icons/wishlist.svg";
 import ImageCart from "@/images/icons/cart.svg";
 import ImageUser from "@/images/icons/user.svg";
+import CreateAccountPage from "@/app/sign-up/page";
 
 export const Header: React.FC = () => {
 	return (
@@ -70,7 +71,7 @@ export const Header: React.FC = () => {
 							<Link href="/cart" style={{ display: "flex" }}>
 								<Image src={ImageCart} alt="Cart" draggable={false} />
 							</Link>
-							<Link href="/login" style={{ display: "flex" }}>
+							<Link href="/sign-up" style={{ display: "flex" }}>
 								<Image src={ImageUser} alt="User" draggable={false} />
 							</Link>
 						</div>

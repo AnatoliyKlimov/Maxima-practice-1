@@ -3,17 +3,16 @@ import { TBaseComponent } from "@/types";
 import styles from "./TextField.module.css";
 
 interface ITextFieldProps extends TBaseComponent<"input"> {
-	type?: "primary" | "flat";
+	as?: "primary" | "flat";
 }
 
 type TTextArea = TBaseComponent<"textarea">;
 
-export const TextField: React.FC<ITextFieldProps> = ({ type = "primary", ...otherProps }) => {
+export const TextField: React.FC<ITextFieldProps> = ({ as = "primary", ...otherProps }) => {
 	return (
 		<input
 			{...otherProps}
-			className={`${styles.textField} ${styles["textField_" + type]} ${otherProps.className}`}
-			type="text"
+			className={`${styles.textField} ${styles["textField_" + as]} ${otherProps.className}`}
 		/>
 	);
 };
