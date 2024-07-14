@@ -4,7 +4,7 @@ import Image from "next/image";
 import { fontInter } from "@/app/fonts";
 import Navigation from "@/components/Navigation";
 import Search from "@/lib/ui/components/Search";
-import Register from "@/components/Login/register";
+// Удалите лишний импорт Register
 import ImageWishlist from "@/images/icons/wishlist.svg";
 import ImageCart from "@/images/icons/cart.svg";
 import ImageUser from "@/images/icons/user.svg";
@@ -70,7 +70,7 @@ export const Header: React.FC = () => {
 							<Link href="/cart" style={{ display: "flex" }}>
 								<Image src={ImageCart} alt="Cart" draggable={false} />
 							</Link>
-							<Link href="/register" style={{ display: "flex" }}>
+							<Link href="/create-account" style={{ display: "flex" }}>
 								<Image src={ImageUser} alt="User" draggable={false} />
 							</Link>
 						</div>
