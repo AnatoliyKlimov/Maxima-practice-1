@@ -1,0 +1,25 @@
+.featuredBlock {
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+
+	padding: 32px;
+
+	border-radius: 4px;
+
+	background-color: #000;
+
+	color: #fff;
+
+	overflow: hidden;
+
+	& a {
+		align-self: flex-start;
+
+		border-bottom: 1px solid #fff;
+
+		font-weight: 500;
+	}
+}

@@ -91,3 +91,14 @@
 		color: var(--button-secondary-hover-text);
 	}
 }
+
+.button_green {
+	background-color: var(--button-green);
+
+	color: #fff;
+
+	&:hover,
+	&:active {
+		opacity: 80%;
+	}
+}

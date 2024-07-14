@@ -5,7 +5,7 @@ import { TBaseComponent } from "@/types";
 
 import IconSend from "@/images/icons/send.svg";
 
-interface ISubscribeProps extends TBaseComponent<HTMLInputElement> {
+interface ISubscribeProps extends TBaseComponent<"input"> {
 	inputStyle?: CSSProperties;
 	iconStyle?: CSSProperties;
 }

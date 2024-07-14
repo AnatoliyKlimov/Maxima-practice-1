@@ -1,7 +1,6 @@
 .slick-slider {
 	display: flex;
-    flex-direction: column;
-	justify-content: center;
+	flex-direction: column;
 }
 
 .slick-dots {
@@ -23,12 +22,12 @@
 		width: 12px;
 
 		margin: 0;
-	
+
 		background-color: #808080;
-	
+
 		border: 2px solid transparent;
 		border-radius: 50%;
-	
+
 		cursor: pointer;
 
 		&.slick-active {
@@ -36,11 +35,19 @@
 			border-color: #fff;
 		}
 
-		& button { opacity: 0; }
+		& button {
+			opacity: 0;
+		}
 	}
 }
 
-.carousel .slick-track {
-	display: flex;
-	gap: 30px;
+.carousel {
+	& .slick-track {
+		display: flex;
+		gap: 30px;
+	}
+
+	& .slick-list {
+		margin-left: -30px;
+	}
 }

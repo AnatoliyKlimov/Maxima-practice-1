@@ -1,5 +1,30 @@
 .timerStrokeWrapper {
 	position: relative;
+
+	font-size: 32px;
+	font-weight: 700;
+	line-height: 30px;
+	letter-spacing: 0.04em;
+}
+
+.timerStrokeWrapperInBanner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	height: 62px;
+	width: 62px;
+
+	padding-top: 4px;
+
+	border-radius: 50%;
+
+	background-color: #fff;
+
+	font-size: 16px;
+	line-height: 20px;
+	letter-spacing: 0;
 }
 
 .timerStrokeWrapper::before {
@@ -15,16 +40,22 @@
 	line-height: 18px;
 }
 
-.timerStroke,
-.timerSeparator {
-	font-size: 32px;
-	font-weight: 700;
-	line-height: 30px;
-	letter-spacing: 0.04em;
+.timerStrokeWrapperInBanner::before {
+	position: relative;
+	top: -4px;
+
+	font-size: 11px;
+	font-weight: 400;
+
+	order: 1;
 }
 
 .timerSeparator {
+	font-size: 32px;
+	font-weight: 700;
 	line-height: 22px;
+	letter-spacing: 0.04em;
+
 	color: var(--background-primary);
 
 	cursor: default;

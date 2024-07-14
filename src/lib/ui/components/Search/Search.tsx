@@ -5,7 +5,7 @@ import { TBaseComponent } from "@/types";
 
 import IconSearch from "@/images/icons/search.svg";
 
-interface ISearchProps extends TBaseComponent<HTMLInputElement> {
+interface ISearchProps extends TBaseComponent<"input"> {
 	inputStyle?: CSSProperties;
 }
 

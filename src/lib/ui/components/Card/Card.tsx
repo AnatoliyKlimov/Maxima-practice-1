@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import Button from "@/lib/ui/elements/Button";
 import Rating from "@/lib/ui/components/Rating";
+import Colors from "@/lib/ui/components/Colors";
 import { TBaseComponent, TProduct } from "@/types";
 
 import IconFavorite from "@/images/icons/favorite.svg";
@@ -12,9 +13,15 @@ import "./Card.css";
 
 interface ICardProps extends TBaseComponent {
 	product: TProduct;
+	wrapRating?: boolean;
 }
 
-export const Card: React.FC<ICardProps> = ({ product, style, ...otherProps }) => {
+export const Card: React.FC<ICardProps> = ({
+	product,
+	wrapRating = true,
+	style,
+	...otherProps
+}) => {
 	return (
 		<div
 			className="card"
@@ -22,7 +29,7 @@ export const Card: React.FC<ICardProps> = ({ product, style, ...otherProps }) =>
 				display: "flex",
 				flexDirection: "column",
 				gap: 8,
-				//height: 350,
+				minHeight: 350,
 				width: 270,
 				...style
 			}}
@@ -50,7 +57,7 @@ export const Card: React.FC<ICardProps> = ({ product, style, ...otherProps }) =>
 					style={{
 						width: 200,
 						height: 190,
-						objectFit: "contain"
+						objectFit: product.imageFit || "contain"
 					}}
 				/>
 				<Button
@@ -63,24 +70,47 @@ export const Card: React.FC<ICardProps> = ({ product, style, ...otherProps }) =>
 				>
 					Add To Cart
 				</Button>
-				{product.discountPercent && (
-					<div
-						style={{
-							position: "absolute",
-							top: 12,
-							left: 12,
-							padding: "4px 12px",
-							backgroundColor: "var(--background-primary)",
-							borderRadius: 4,
-							fontSize: 12,
-							fontWeight: 400,
-							lineHeight: "18px",
-							color: "#fff"
-						}}
-					>
-						-{product.discountPercent}%
-					</div>
-				)}
+				<div
+					style={{
+						display: "flex",
+						flexDirection: "column",
+						gap: 12,
+						position: "absolute",
+						top: 12,
+						left: 12
+					}}
+				>
+					{product.discountPercent && (
+						<div
+							style={{
+								padding: "4px 12px",
+								backgroundColor: "var(--background-primary)",
+								borderRadius: 4,
+								fontSize: 12,
+								fontWeight: 400,
+								lineHeight: "18px",
+								color: "#fff"
+							}}
+						>
+							-{product.discountPercent}%
+						</div>
+					)}
+					{product.isNew && (
+						<div
+							style={{
+								padding: "4px 12px",
+								backgroundColor: "var(--button-green)",
+								borderRadius: 4,
+								fontSize: 12,
+								fontWeight: 400,
+								lineHeight: "18px",
+								color: "#fff"
+							}}
+						>
+							NEW
+						</div>
+					)}
+				</div>
 				<div
 					style={{
 						display: "flex",
@@ -119,12 +149,11 @@ export const Card: React.FC<ICardProps> = ({ product, style, ...otherProps }) =>
 			>
 				<Link href={`/product/${product.id}`}>{product.title}</Link>
 			</h4>
-			<p
+			<div
 				style={{
 					display: "flex",
 					flexWrap: "wrap",
-					gap: "6px 12px",
-					width: "74%",
+					gap: 12,
 					fontWeight: 500
 				}}
 			>
@@ -139,8 +168,20 @@ export const Card: React.FC<ICardProps> = ({ product, style, ...otherProps }) =>
 						${product.priceOld}
 					</span>
 				)}
-				<Rating rating={product.rating} />
-			</p>
+				{!wrapRating && <Rating rating={product.rating} />}
+			</div>
+			{wrapRating && <Rating rating={product.rating} />}
+			{product.colors && (
+				<Colors
+					name={product.id}
+					colors={product.colors}
+					style={{
+						display: "flex",
+						padding: "2px 0",
+						marginTop: 4
+					}}
+				/>
+			)}
 		</div>
 	);
 };
