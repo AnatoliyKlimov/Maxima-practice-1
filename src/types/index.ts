@@ -3,3 +3,4 @@ export * from "./rating";
 export * from "./colors";
 export * from "./product";
 export * from "./category";
+export * from "./wishlist";

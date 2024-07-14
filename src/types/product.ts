@@ -14,7 +14,7 @@ export type TProduct = {
 	priceOld?: number;
 	isNew?: boolean;
 	discountPercent?: number;
-	rating: TRating;
+	rating?: TRating;
 	colors?: TColors;
 	createdAt?: string;
 };

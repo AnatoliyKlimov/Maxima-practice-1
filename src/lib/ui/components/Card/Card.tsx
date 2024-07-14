@@ -168,9 +168,9 @@ export const Card: React.FC<ICardProps> = ({
 						${product.priceOld}
 					</span>
 				)}
-				{!wrapRating && <Rating rating={product.rating} />}
+				{!wrapRating && product.rating && <Rating rating={product.rating} />}
 			</div>
-			{wrapRating && <Rating rating={product.rating} />}
+			{wrapRating && product.rating && <Rating rating={product.rating} />}
 			{product.colors && (
 				<Colors
 					name={product.id}

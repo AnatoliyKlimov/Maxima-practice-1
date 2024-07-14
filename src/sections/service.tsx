@@ -11,7 +11,6 @@ export const ServiceSection: React.FC = () => {
 				display: "flex",
 				justifyContent: "center",
 				gap: 88,
-				marginBottom: 140,
 				textAlign: "center"
 			}}
 		>
