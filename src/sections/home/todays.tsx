@@ -28,12 +28,13 @@ export const TodaysSection: React.FC = () => {
 				flexDirection: "column"
 			}}
 		>
-			<Caption text="Today's" style={{ marginBottom: 17 }} />
+			<Caption text="Today's" style={{ marginBottom: 24 }} />
 			<div
 				style={{
 					display: "flex",
 					alignItems: "flex-end",
 					justifyContent: "space-between",
+					position: "relative",
 					marginBottom: 40
 				}}
 			>
@@ -65,6 +66,9 @@ export const TodaysSection: React.FC = () => {
 					style={{
 						display: "flex",
 						gap: 8,
+						position: "absolute",
+						bottom: 0,
+						right: 0,
 						marginBottom: 12
 					}}
 				>

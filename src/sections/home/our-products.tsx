@@ -28,7 +28,7 @@ export const OurProductsSection: React.FC = () => {
 				flexDirection: "column"
 			}}
 		>
-			<Caption text="Our Products" style={{ marginBottom: 17 }} />
+			<Caption text="Our Products" style={{ marginBottom: 24 }} />
 			<div
 				style={{
 					display: "flex",
@@ -37,20 +37,18 @@ export const OurProductsSection: React.FC = () => {
 					marginBottom: 40
 				}}
 			>
-				<div>
-					<h1
-						className={fontInter.className}
-						style={{
-							display: "inline",
-							fontSize: 36,
-							fontWeight: 600,
-							lineHeight: "48px",
-							letterSpacing: "0.04em"
-						}}
-					>
-						Explore Our Products
-					</h1>
-				</div>
+				<h1
+					className={fontInter.className}
+					style={{
+						display: "inline",
+						fontSize: 36,
+						fontWeight: 600,
+						lineHeight: "48px",
+						letterSpacing: "0.04em"
+					}}
+				>
+					Explore Our Products
+				</h1>
 				<div
 					style={{
 						display: "flex",

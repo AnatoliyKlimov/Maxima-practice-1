@@ -20,30 +20,33 @@ export const ThisMonthProductsSection: React.FC = () => {
 				flexDirection: "column"
 			}}
 		>
-			<Caption text="This Month" style={{ marginBottom: 17 }} />
+			<Caption text="This Month" style={{ marginBottom: 24 }} />
 			<div
 				style={{
 					display: "flex",
 					alignItems: "flex-end",
 					justifyContent: "space-between",
+					position: "relative",
 					marginBottom: 60
 				}}
 			>
-				<div>
-					<h1
-						className={fontInter.className}
-						style={{
-							display: "inline",
-							fontSize: 36,
-							fontWeight: 600,
-							lineHeight: "48px",
-							letterSpacing: "0.04em"
-						}}
-					>
-						Best Selling Products
-					</h1>
-				</div>
-				<Button type="primary" as={Link} href="/products">
+				<h1
+					className={fontInter.className}
+					style={{
+						display: "inline",
+						fontSize: 36,
+						fontWeight: 600,
+						lineHeight: "48px",
+						letterSpacing: "0.04em"
+					}}
+				>
+					Best Selling Products
+				</h1>
+				<Button type="primary" as={Link} href="/products" style={{
+					position: "absolute",
+					bottom: -2,
+					right: 0
+				}}>
 					View All
 				</Button>
 			</div>
