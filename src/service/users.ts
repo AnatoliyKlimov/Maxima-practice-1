@@ -1,17 +1,29 @@
 import { usersSlice, usersSelectors } from "@/domain/users";
+import { RootState } from "@/store";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { ArrayElement } from "@/lib/utils";
 
-import { TUser, TUserLoginDTO } from "@/types";
+import { TDeleteUserDTO, TUpdateUserDTO, TUser, TUserLoginDTO } from "@/types";
 
-const { selectUsers, selectCurrentUser } = usersSelectors;
+const { selectUsers, selectUserByName, selectCurrentUser } = usersSelectors;
 
-export const useUsers = () => {
+type TUsersHookOptions = {
+	name: ArrayElement<RootState["users"]["users"]>["name"];
+};
+
+export const useUsers = (params?: TUsersHookOptions) => {
 	const dispatch = useAppDispatch();
+
+	const selector = useAppSelector((state) =>
+		params?.name ? selectUserByName(state, params.name) : selectUsers(state)
+	);
 
 	const {
 		registerUser: registerUserAction,
 		loginUser: loginUserAction,
 		logoutUser: logoutUserAction,
+		updateUser: updateUserAction,
+		deleteUser: deleteUserAction,
 		clearUsers: clearUsersAction
 	} = usersSlice.slice.actions;
 
@@ -27,13 +39,21 @@ export const useUsers = () => {
 		dispatch(logoutUserAction());
 	};
 
+	const updateUser = (data: TUpdateUserDTO) => {
+		dispatch(updateUserAction(data));
+	};
+
+	const deleteUser = (data: TDeleteUserDTO) => {
+		dispatch(deleteUserAction(data));
+	};
+
 	const clearWishlist = () => {
 		dispatch(clearUsersAction());
 	};
 
 	return [
-		useAppSelector((state) => selectUsers(state)),
+		selector,
 		useAppSelector((state) => selectCurrentUser(state)),
-		{ registerUser, loginUser, logoutUser, clearWishlist }
+		{ registerUser, loginUser, logoutUser, updateUser, deleteUser, clearWishlist }
 	] as const;
 };

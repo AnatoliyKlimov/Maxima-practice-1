@@ -94,7 +94,7 @@ export const Footer: React.FC = () => {
 									<Link href="/cabinet">My Account</Link>
 								</li>
 								<li>
-									<Link href="/login">Login / Register</Link>
+									<Link href="/sign-in">Login / Register</Link>
 								</li>
 								<li>
 									<Link href="/cart">Cart</Link>
@@ -111,7 +111,7 @@ export const Footer: React.FC = () => {
 							<h4>Quick Link</h4>
 							<ul>
 								<li>
-									<Link href="/cabinet">Privacy Policy</Link>
+									<Link href="/policy">Privacy Policy</Link>
 								</li>
 								<li>
 									<Link href="/terms">Terms Of Use</Link>
