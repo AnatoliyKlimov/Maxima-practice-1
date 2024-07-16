@@ -1,6 +1,6 @@
 "use client";
 
-import { Caption, Card } from "@/lib/ui/components";
+import { Caption, Card, TCardButtons } from "@/lib/ui/components";
 import { Button } from "@/lib/ui/elements";
 import { useProducts, useWishlist } from "@/service";
 
@@ -46,7 +46,11 @@ export const WishlistSection: React.FC = () => {
 				}}
 			>
 				{wishlistProducts.map((product) => (
-					<Card product={product} key={`wishlist-product-${product.id}`} />
+					<Card
+						product={product}
+						buttons={["delete"]}
+						key={`wishlist-product-${product.id}`}
+					/>
 				))}
 			</div>
 		</section>

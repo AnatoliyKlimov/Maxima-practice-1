@@ -4,24 +4,71 @@ import Link from "next/link";
 import Button from "@/lib/ui/elements/Button";
 import Rating from "@/lib/ui/components/Rating";
 import Colors from "@/lib/ui/components/Colors";
+import { unique } from "@/lib/utils";
+
 import { TBaseComponent, TProduct } from "@/types";
 
 import IconFavorite from "@/images/icons/favorite.svg";
 import IconView from "@/images/icons/view.svg";
+import IconDelete from "@/images/icons/delete.svg";
 
 import "./Card.css";
 
+type TCardButton = "wishlist" | "view" | "delete";
+type TCardButtons = TCardButton[];
+
 interface ICardProps extends TBaseComponent {
 	product: TProduct;
+	buttons: TCardButtons;
 	wrapRating?: boolean;
 }
 
 export const Card: React.FC<ICardProps> = ({
 	product,
+	buttons,
 	wrapRating = true,
 	style,
 	...otherProps
 }) => {
+	const renderButtons = () =>
+		unique<string>(buttons).map((button) => {
+			let icon: any,
+				key: string = "";
+
+			switch (button) {
+				case "wishlist":
+					icon = IconFavorite;
+					key = "wishlist";
+					break;
+
+				case "view":
+					icon = IconView;
+					key = "view";
+					break;
+
+				case "delete":
+					icon = IconDelete;
+					key = "delete";
+					break;
+
+				default:
+					break;
+			}
+
+			return (
+				<Button
+					key={`card-button-${key}`}
+					type="icon"
+					style={{
+						padding: 4,
+						backgroundColor: "#fff"
+					}}
+				>
+					<Image src={icon} alt="" />
+				</Button>
+			);
+		});
+
 	return (
 		<div
 			className="card"
@@ -121,24 +168,7 @@ export const Card: React.FC<ICardProps> = ({
 						right: 12
 					}}
 				>
-					<Button
-						type="icon"
-						style={{
-							padding: 4,
-							backgroundColor: "#fff"
-						}}
-					>
-						<Image src={IconFavorite} alt="" />
-					</Button>
-					<Button
-						type="icon"
-						style={{
-							padding: 4,
-							backgroundColor: "#fff"
-						}}
-					>
-						<Image src={IconView} alt="" />
-					</Button>
+					{renderButtons()}
 				</div>
 			</div>
 			<h4

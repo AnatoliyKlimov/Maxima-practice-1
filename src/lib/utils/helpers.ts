@@ -4,6 +4,6 @@ export type ArrayElement<MaybeArrayType> = MaybeArrayType extends readonly (infe
 		: ElementType
 	: MaybeArrayType;
 
-export function sleep(ms: number) {
-	return new Promise((resolve) => setTimeout(resolve, ms));
-}
+export const unique = <T>(value: T[]) => Array.from(new Set<T>(value));
+
+export const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));

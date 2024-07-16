@@ -101,7 +101,7 @@ export const TodaysSection: React.FC = () => {
 				}}
 				slides={(todaysProducts as TProduct[]).map((product) => ({
 					key: `todays-product-${product.id}`,
-					content: <Card product={product} />
+					content: <Card product={product} buttons={["wishlist", "view"]} />
 				}))}
 				style={{ marginBottom: 60 }}
 			/>

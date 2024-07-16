@@ -86,7 +86,9 @@ export const OurProductsSection: React.FC = () => {
 				}}
 				slides={(ourProducts as TProduct[]).slice(0, 4).map((product) => ({
 					key: `our-product-${product.id}`,
-					content: <Card product={product} wrapRating={false} />
+					content: (
+						<Card product={product} buttons={["wishlist", "view"]} wrapRating={false} />
+					)
 				}))}
 				style={{ marginBottom: 60 }}
 			/>
@@ -101,7 +103,9 @@ export const OurProductsSection: React.FC = () => {
 				}}
 				slides={(ourProducts as TProduct[]).slice(4).map((product) => ({
 					key: `our-product-${product.id}`,
-					content: <Card product={product} wrapRating={false} />
+					content: (
+						<Card product={product} buttons={["wishlist", "view"]} wrapRating={false} />
+					)
 				}))}
 				style={{ marginBottom: 60 }}
 			/>

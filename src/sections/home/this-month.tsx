@@ -42,11 +42,16 @@ export const ThisMonthProductsSection: React.FC = () => {
 				>
 					Best Selling Products
 				</h1>
-				<Button type="primary" as={Link} href="/products" style={{
-					position: "absolute",
-					bottom: -2,
-					right: 0
-				}}>
+				<Button
+					type="primary"
+					as={Link}
+					href="/products"
+					style={{
+						position: "absolute",
+						bottom: -2,
+						right: 0
+					}}
+				>
 					View All
 				</Button>
 			</div>
@@ -57,7 +62,11 @@ export const ThisMonthProductsSection: React.FC = () => {
 				}}
 			>
 				{(thisMonthProducts as TProduct[]).map((product) => (
-					<Card product={product} key={`this-month-product-${product.id}`} />
+					<Card
+						product={product}
+						buttons={["wishlist", "view"]}
+						key={`this-month-product-${product.id}`}
+					/>
 				))}
 			</div>
 		</section>
