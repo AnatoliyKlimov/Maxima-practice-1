@@ -1,0 +1,61 @@
+.contactContainer {
+	padding: 20px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.contactContent {
+	background-color: white;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contactInfo {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.box {
+	width: 45%;
+}
+
+.box h3 {
+	font-size: 1.5em;
+	margin-bottom: 10px;
+}
+
+.box p {
+	font-size: 1em;
+}
+
+.contactForm {
+	display: flex;
+	flex-direction: column;
+}
+
+.inputField,
+.textArea {
+	margin-bottom: 10px;
+	padding: 10px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+}
+
+.textArea {
+	height: 100px;
+}
+
+.submitButton {
+	background-color: #000;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.submitButton:hover {
+	background-color: #333;
+}
