@@ -1,6 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
+import { RootState } from "@/store/store";
+import { loginUser } from "@/lib/store/userSlise";
 import { validatePhone, validatePassword } from "@/lib/utils/validation";
 import { Button, TextField } from "@/lib/ui/elements";
 import Link from "next/link";
@@ -8,28 +12,31 @@ import Link from "next/link";
 const LoginForm: React.FC = () => {
 	const [phone, setPhone] = useState("");
 	const [password, setPassword] = useState("");
-	const [errors, setErrors] = useState<{ phone?: string; password?: string; loginError?: string }>({});
+	const [errors, setErrors] = useState<{ phone?: string; password?: string; loginError?: string }>();
+	const currentUser = useSelector((state: RootState) => state.user.currentUser);
+	const dispatch = useDispatch();
+	const router = useRouter();
+
+	useEffect(() => {
+		if (currentUser) {
+			router.push("/");
+		}
+	}, [currentUser, router]);
 
 	const handleLogin = (e: React.FormEvent) => {
 		e.preventDefault();
 
 		// Проверки и валидация
-		let phoneError = validatePhone(phone);
-		let passwordError = validatePassword(password);
+		const phoneError = validatePhone(phone);
+		const passwordError = validatePassword(password);
 
 		if (phoneError || passwordError) {
 			setErrors({ phone: phoneError, password: passwordError });
 		} else {
-			// Проверка пользователя в localStorage
-			const users = JSON.parse(localStorage.getItem("users") || "[]");
-			const user = users.find(
-				(user: { phone: string; password: string }) => user.phone === phone && user.password === password
-			);
+			// Проверка пользователя в Redux
+			dispatch(loginUser({ phone, password }));
 
-			if (user) {
-				// Перенаправление на главную страницу
-				window.location.href = "/";
-			} else {
+			if (!currentUser) {
 				setErrors({ loginError: "Invalid phone number or password" });
 			}
 		}
@@ -40,18 +47,18 @@ const LoginForm: React.FC = () => {
 			<h2>Log in to Exclusive</h2>
 			<p style={{
 				margin: '24px 0 45px'
-			}}>Enter your details below</p>
+			}}> Enter your details below</p>
 			<form
 				onSubmit={handleLogin}
 				style={{
 					display: "flex",
 					flexDirection: "column",
 					alignItems: "stretch",
-					maxWidth: 345,
+					maxWidth: 293,
 					textAlign: "start"
 				}}
 			>
-				{errors.loginError && <span className="error">{errors.loginError}</span>}
+				{errors?.loginError && <span className="error">{errors.loginError}</span>}
 				<div className="form-group" style={{ position: "relative" }}>
 					<label htmlFor="phone"></label>
 					<TextField
@@ -61,7 +68,7 @@ const LoginForm: React.FC = () => {
 						placeholder="Email or Phone Number"
 						value={phone}
 						onChange={(e) => setPhone(e.target.value)}
-						error={errors.phone}
+						error={errors?.phone}
 					/>
 				</div>
 
@@ -74,7 +81,7 @@ const LoginForm: React.FC = () => {
 						id="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						error={errors.password}
+						error={errors?.password}
 					/>
 				</div>
 
@@ -104,7 +111,7 @@ const LoginForm: React.FC = () => {
 
 
 		</div>
-	);
+);
 };
 
 export default LoginForm;

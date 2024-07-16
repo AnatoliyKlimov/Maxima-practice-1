@@ -1,6 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/navigation';
+import { registerUser } from '@/lib/store/userSlise';
 import { validatePhone, validatePassword } from '@/lib/utils/validation';
 import { Button, TextField } from '@/lib/ui/elements';
 import { LoginGoogleButton } from '@/lib/ui/components';
@@ -10,6 +13,9 @@ const RegisterForm: React.FC = () => {
 	const [phone, setPhone] = useState('');
 	const [password, setPassword] = useState('');
 	const [errors, setErrors] = useState<{ name?: string; phone?: string; password?: string }>({});
+
+	const dispatch = useDispatch();
+	const router = useRouter();
 
 	const handleRegister = (e: React.FormEvent) => {
 		e.preventDefault();
@@ -21,13 +27,11 @@ const RegisterForm: React.FC = () => {
 		if (phoneError || passwordError) {
 			setErrors({ phone: phoneError, password: passwordError });
 		} else {
-			// Сохранение пользователя в localStorage
-			const users = JSON.parse(localStorage.getItem('users') || '[]');
-			users.push({ name, phone, password });
-			localStorage.setItem('users', JSON.stringify(users));
+			// Сохранение пользователя в Redux
+			dispatch(registerUser({ name, phone, password }));
 
 			// Перенаправление на страницу входа
-			window.location.href = '/login';
+			router.push('/login');
 		}
 	};
 
@@ -42,7 +46,7 @@ const RegisterForm: React.FC = () => {
 					flexDirection: 'column',
 					alignItems: 'stretch',
 					maxWidth: 293,
-					textAlign: 'start'
+					textAlign: 'start',
 				}}
 			>
 				<div className='form-group' style={{ position: 'relative' }}>
@@ -62,7 +66,7 @@ const RegisterForm: React.FC = () => {
 					className='form-group'
 					style={{
 						margin: '40px 0',
-						position: 'relative'
+						position: 'relative',
 					}}
 				>
 					<label htmlFor='phone'></label>
@@ -96,7 +100,7 @@ const RegisterForm: React.FC = () => {
 					type='primary'
 					className='btn-create-account'
 					style={{
-						margin: '40px 0 16px'
+						margin: '40px 0 16px',
 					}}
 				>
 					Create Account

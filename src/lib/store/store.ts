@@ -1,18 +1,20 @@
+
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer } from "redux-persist";
-
 import storage from "@/store/storage";
 import { productsSlice } from "@/domain/products";
+import userReducer from "@/lib/store/userSlise"; // Импортируем userReducer
 
 const persistConfig = {
 	key: "state",
-	safelist: ["products"],
+	safelist: ["products", "user"], // Добавляем 'user' в safelist
 	timeout: 200,
 	storage
 };
 
 const rootReducer = combineReducers({
-	products: productsSlice.slice.reducer
+	products: productsSlice.slice.reducer,
+	user: userReducer // Добавляем userReducer в rootReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
