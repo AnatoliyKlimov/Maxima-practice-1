@@ -11,9 +11,14 @@ import Search from "@/lib/ui/components/Search";
 import ImageWishlist from "@/images/icons/wishlist.svg";
 import ImageCart from "@/images/icons/cart.svg";
 import ImageUser from "@/images/icons/user.svg";
+import DropUser from "@/images/icons/user-dropd.svg";
+import DropOrder from "@/images/icons/order.svg";
+import DropCancallations from "@/images/icons/cancallations-dropd.svg";
+import DropReviews from "@/images/icons/reviews-dropd.svg";
+import DropLogout from "@/images/icons/logout-dropd.svg"
 import { useState } from "react";
 
-import styles from './Header.module.css';
+import styles from "./Header.module.css";
 
 const Header: React.FC = () => {
 	const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -99,7 +104,7 @@ const Header: React.FC = () => {
 										src={ImageUser}
 										alt="User"
 										draggable={false}
-										className={currentUser ? styles.userIconActive : ''}
+										className={currentUser ? styles.userIconActive : ""}
 									/>
 								</Link>
 								{currentUser && dropdownVisible && (
@@ -107,22 +112,59 @@ const Header: React.FC = () => {
 										<ul>
 											<li>
 												<Link href="/manage-account">
+													<span style={{
+														display: "flex",
+														alignItems: "center",
+														fontWeight: "400",
+														fontSize: 14
+													}}>
+													<Image src={DropUser} alt="Account Icon" width={32} height={32}
+														   style={{ marginRight: 16 }} />
 													Account
+													</span>
 												</Link>
 											</li>
 											<li>
 												<Link href="/my-orders">
+													<span style={{
+														display: "flex",
+														alignItems: "center",
+														fontWeight: "400",
+														fontSize: 14
+													}}>
+													<Image src={DropOrder} alt="Account Icon" width={32} height={32}
+														   style={{ marginRight: 16 }} />
 													My Orders
+													</span>
 												</Link>
 											</li>
 											<li>
 												<Link href="/my-cancellations">
+													<span style={{
+														display: "flex",
+														alignItems: "center",
+														fontWeight: "400",
+														fontSize: 14
+													}}>
+													<Image src={DropCancallations} alt="Account Icon" width={32} height={32}
+														   style={{ marginRight: 16 }} />
 													My Cancellations
+													</span>
 												</Link>
 											</li>
 											<li>
 												<Link href="/my-reviews">
+													<span style={{
+														display: "flex",
+														alignItems: "center",
+														fontWeight: "400",
+														fontSize: 14
+													}}>
+														<Image src={DropReviews} alt="Account Icon" width={32} height={32}
+															   style={{ marginRight: 16 }} />
 													My Reviews
+													</span>
+
 												</Link>
 											</li>
 											<li>
@@ -130,7 +172,17 @@ const Header: React.FC = () => {
 													onClick={handleLogout}
 													className={styles.logout}
 												>
+													<span style={{
+														display: "flex",
+														alignItems: "center",
+														fontWeight: "400",
+														fontSize: 14
+													}}>
+														<Image src={DropLogout} alt="Account Icon" width={32} height={32}
+															   style={{ marginRight: 16 }} />
 													Logout
+													</span>
+
 												</a>
 											</li>
 										</ul>
