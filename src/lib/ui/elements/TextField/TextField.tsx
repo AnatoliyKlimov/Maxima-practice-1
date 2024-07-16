@@ -1,23 +1,48 @@
 import { TBaseComponent } from "@/types";
-
 import styles from "./TextField.module.css";
 
+// Описание интерфейса для TextField
 interface ITextFieldProps extends TBaseComponent<"input"> {
 	type?: "primary" | "flat";
+	error?: string;
 }
 
-type TTextArea = TBaseComponent<"textarea">;
-
-export const TextField: React.FC<ITextFieldProps> = ({ type = "primary", ...otherProps }) => {
+// Компонент TextField
+export const TextField: React.FC<ITextFieldProps> = ({
+	type = "primary",
+	error,
+	...otherProps
+}) => {
 	return (
-		<input
-			{...otherProps}
-			className={`${styles.textField} ${styles["textField_" + type]} ${otherProps.className}`}
-			type="text"
-		/>
+		<div className={`${styles.textFieldContainer}`}>
+			<input
+				{...otherProps}
+				className={`${styles.textField} ${styles["textField_" + type]} ${
+					error ? styles.inputError : ""
+				} ${otherProps.className}`}
+			/>
+			{error && <span className={styles.errorMessage}>{error}</span>}
+		</div>
 	);
 };
 
-export const TextArea: React.FC<TTextArea> = ({ ...otherProps }) => {
-	return <textarea {...otherProps} className={`${styles.textArea} ${otherProps.className}`} />;
+// Описание интерфейса для TextArea
+interface TTextAreaProps extends TBaseComponent<"textarea"> {
+	error?: string;
+}
+
+// Компонент TextArea
+export const TextArea: React.FC<TTextAreaProps> = ({ error, ...otherProps }) => {
+	return (
+		<div className={`${styles.textAreaContainer}`}>
+			<textarea
+				{...otherProps}
+				className={`${styles.textArea} ${error ? styles.inputError : ""} ${
+					otherProps.className
+				}`}
+			/>
+			{error && <span className={styles.errorMessage}>{error}</span>}
+		</div>
+	);
 };
+

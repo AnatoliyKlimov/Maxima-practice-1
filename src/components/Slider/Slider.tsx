@@ -20,17 +20,19 @@ interface ISliderProps extends TBaseComponent {
 	slides: TSlide[];
 }
 
-export const Slider = forwardRef<SlickSlider, ISliderProps>(({ slides, config, ...otherProps }, ref) => {
-	return (
-		<div className="slider-section" {...otherProps}>
-			<SlickSlider {...config} ref={ref}>
-				{slides.map(({ key, content }) => (
-					<div key={key}>{content}</div>
-				))}
-			</SlickSlider>
-		</div>
-	);
-});
+export const Slider = forwardRef<SlickSlider, ISliderProps>(
+	({ slides, config, ...otherProps }, ref) => {
+		return (
+			<div className="slider-section" {...otherProps}>
+				<SlickSlider {...config} ref={ref}>
+					{slides.map(({ key, content }) => (
+						<div key={key}>{content}</div>
+					))}
+				</SlickSlider>
+			</div>
+		);
+	}
+);
 
 Slider.displayName = "Slider";
 
