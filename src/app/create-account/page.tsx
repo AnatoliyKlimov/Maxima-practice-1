@@ -29,27 +29,30 @@ const CreateAccount = () => {
 
 	return (
 		<div>
-			<main role="main" className="main-content" style={{
-				display: 'flex',
-				flexDirection: 'row',
-				alignItems: "center",
-				margin: "60px 0 140px"
-			}}>
+			<main
+				role="main"
+				className="main-content"
+				style={{
+					display: "flex",
+					flexDirection: "row",
+					alignItems: "center",
+					margin: "60px 0 140px"
+				}}
+			>
 				<div className="image-container">
-					<Image src={productImage} 
-						   width={805}
-						   height={781}
-						   alt="Product" />
+					<Image src={productImage} width={805} height={781} alt="Product" />
 				</div>
 				<aside>
-					<RegisterForm/>
-					<span style={{
-						display: "flex",
-						gap: 16,
-						marginTop: 32
-					}}>
+					<RegisterForm />
+					<span
+						style={{
+							display: "flex",
+							gap: 16,
+							marginTop: 32
+						}}
+					>
 						<p>Already have account?</p>
-						<Link href='/login'>Log in</Link>
+						<Link href="/login">Log in</Link>
 					</span>
 				</aside>
 			</main>

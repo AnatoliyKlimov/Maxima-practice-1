@@ -8,12 +8,18 @@ interface ITextFieldProps extends TBaseComponent<"input"> {
 }
 
 // Компонент TextField
-export const TextField: React.FC<ITextFieldProps> = ({ type = "primary", error, ...otherProps }) => {
+export const TextField: React.FC<ITextFieldProps> = ({
+	type = "primary",
+	error,
+	...otherProps
+}) => {
 	return (
 		<div className={`${styles.textFieldContainer}`}>
 			<input
 				{...otherProps}
-				className={`${styles.textField} ${styles["textField_" + type]} ${error ? styles.inputError : ""} ${otherProps.className}`}
+				className={`${styles.textField} ${styles["textField_" + type]} ${
+					error ? styles.inputError : ""
+				} ${otherProps.className}`}
 			/>
 			{error && <span className={styles.errorMessage}>{error}</span>}
 		</div>
@@ -29,11 +35,14 @@ interface TTextAreaProps extends TBaseComponent<"textarea"> {
 export const TextArea: React.FC<TTextAreaProps> = ({ error, ...otherProps }) => {
 	return (
 		<div className={`${styles.textAreaContainer}`}>
-            <textarea
+			<textarea
 				{...otherProps}
-				className={`${styles.textArea} ${error ? styles.inputError : ""} ${otherProps.className}`}
+				className={`${styles.textArea} ${error ? styles.inputError : ""} ${
+					otherProps.className
+				}`}
 			/>
 			{error && <span className={styles.errorMessage}>{error}</span>}
 		</div>
 	);
 };
+

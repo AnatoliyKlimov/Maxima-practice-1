@@ -15,7 +15,7 @@ import DropUser from "@/images/icons/user-dropd.svg";
 import DropOrder from "@/images/icons/order.svg";
 import DropCancallations from "@/images/icons/cancallations-dropd.svg";
 import DropReviews from "@/images/icons/reviews-dropd.svg";
-import DropLogout from "@/images/icons/logout-dropd.svg"
+import DropLogout from "@/images/icons/logout-dropd.svg";
 import { useState } from "react";
 
 import styles from "./Header.module.css";
@@ -80,7 +80,10 @@ const Header: React.FC = () => {
 							gap: 24
 						}}
 					>
-						<Search placeholder="What are you looking for?" inputStyle={{ minWidth: 162 }} />
+						<Search
+							placeholder="What are you looking for?"
+							inputStyle={{ minWidth: 162 }}
+						/>
 						<div
 							style={{
 								display: "flex",
@@ -99,7 +102,10 @@ const Header: React.FC = () => {
 								onMouseLeave={handleMouseLeave}
 								style={{ position: "relative", display: "flex", cursor: "pointer" }}
 							>
-								<Link href={currentUser ? "#" : "/create-account"} style={{ display: "flex" }}>
+								<Link
+									href={currentUser ? "#" : "/create-account"}
+									style={{ display: "flex" }}
+								>
 									<Image
 										src={ImageUser}
 										alt="User"
@@ -112,77 +118,107 @@ const Header: React.FC = () => {
 										<ul>
 											<li>
 												<Link href="/manage-account">
-													<span style={{
-														display: "flex",
-														alignItems: "center",
-														fontWeight: "400",
-														fontSize: 14
-													}}>
-													<Image src={DropUser} alt="Account Icon" width={32} height={32}
-														   style={{ marginRight: 16 }} />
-													Account
+													<span
+														style={{
+															display: "flex",
+															alignItems: "center",
+															fontWeight: "400",
+															fontSize: 14
+														}}
+													>
+														<Image
+															src={DropUser}
+															alt="Account Icon"
+															width={32}
+															height={32}
+															style={{ marginRight: 16 }}
+														/>
+														Account
 													</span>
 												</Link>
 											</li>
 											<li>
 												<Link href="/my-orders">
-													<span style={{
-														display: "flex",
-														alignItems: "center",
-														fontWeight: "400",
-														fontSize: 14
-													}}>
-													<Image src={DropOrder} alt="Account Icon" width={32} height={32}
-														   style={{ marginRight: 16 }} />
-													My Orders
+													<span
+														style={{
+															display: "flex",
+															alignItems: "center",
+															fontWeight: "400",
+															fontSize: 14
+														}}
+													>
+														<Image
+															src={DropOrder}
+															alt="Account Icon"
+															width={32}
+															height={32}
+															style={{ marginRight: 16 }}
+														/>
+														My Orders
 													</span>
 												</Link>
 											</li>
 											<li>
 												<Link href="/my-cancellations">
-													<span style={{
-														display: "flex",
-														alignItems: "center",
-														fontWeight: "400",
-														fontSize: 14
-													}}>
-													<Image src={DropCancallations} alt="Account Icon" width={32} height={32}
-														   style={{ marginRight: 16 }} />
-													My Cancellations
+													<span
+														style={{
+															display: "flex",
+															alignItems: "center",
+															fontWeight: "400",
+															fontSize: 14
+														}}
+													>
+														<Image
+															src={DropCancallations}
+															alt="Account Icon"
+															width={32}
+															height={32}
+															style={{ marginRight: 16 }}
+														/>
+														My Cancellations
 													</span>
 												</Link>
 											</li>
 											<li>
 												<Link href="/my-reviews">
-													<span style={{
-														display: "flex",
-														alignItems: "center",
-														fontWeight: "400",
-														fontSize: 14
-													}}>
-														<Image src={DropReviews} alt="Account Icon" width={32} height={32}
-															   style={{ marginRight: 16 }} />
-													My Reviews
+													<span
+														style={{
+															display: "flex",
+															alignItems: "center",
+															fontWeight: "400",
+															fontSize: 14
+														}}
+													>
+														<Image
+															src={DropReviews}
+															alt="Account Icon"
+															width={32}
+															height={32}
+															style={{ marginRight: 16 }}
+														/>
+														My Reviews
 													</span>
-
 												</Link>
 											</li>
 											<li>
-												<a
-													onClick={handleLogout}
-													className={styles.logout}
-												>
-													<span style={{
-														display: "flex",
-														alignItems: "center",
-														fontWeight: "400",
-														fontSize: 14
-													}}>
-														<Image src={DropLogout} alt="Account Icon" width={32} height={32}
-															   style={{ marginRight: 16 }} />
-													Logout
+												<a onClick={handleLogout} className={styles.logout}>
+													<span
+														style={{
+															display: "flex",
+															alignItems: "center",
+															fontWeight: "400",
+															fontSize: 14
+														}}
+													>
+														<Image
+															src={DropLogout}
+															alt="Account Icon"
+															width={32}
+															height={32}
+															style={{ marginRight: 16 }}
+														/>
+														Logout
 													</span>
-
 												</a>
 											</li>
 										</ul>
@@ -198,3 +234,4 @@ const Header: React.FC = () => {
 };
 
 export default Header;
+

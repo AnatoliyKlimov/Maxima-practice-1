@@ -12,7 +12,11 @@ import Link from "next/link";
 const LoginForm: React.FC = () => {
 	const [phone, setPhone] = useState("");
 	const [password, setPassword] = useState("");
-	const [errors, setErrors] = useState<{ phone?: string; password?: string; loginError?: string }>();
+	const [errors, setErrors] = useState<{
+		phone?: string;
+		password?: string;
+		loginError?: string;
+	}>();
 	const currentUser = useSelector((state: RootState) => state.user.currentUser);
 	const dispatch = useDispatch();
 	const router = useRouter();
@@ -45,9 +49,14 @@ const LoginForm: React.FC = () => {
 	return (
 		<div className="login-form-container">
 			<h2>Log in to Exclusive</h2>
-			<p style={{
-				margin: '24px 0 45px'
-			}}> Enter your details below</p>
+			<p
+				style={{
+					margin: "24px 0 45px"
+				}}
+			>
+				{" "}
+				Enter your details below
+			</p>
 			<form
 				onSubmit={handleLogin}
 				style={{
@@ -85,11 +94,14 @@ const LoginForm: React.FC = () => {
 					/>
 				</div>
 
-				<div className="login-btn-group" style={{
-					display: "flex",
-					alignItems: "center",
-					gap: 40
-				}}>
+				<div
+					className="login-btn-group"
+					style={{
+						display: "flex",
+						alignItems: "center",
+						gap: 40
+					}}
+				>
 					<Button
 						type="primary"
 						className="btn-login"
@@ -100,18 +112,19 @@ const LoginForm: React.FC = () => {
 						Log In
 					</Button>
 
-					<Link href="/forgot-password" style={{
-						color: "red",
-						marginTop: 25
-					}}>
+					<Link
+						href="/forgot-password"
+						style={{
+							color: "red",
+							marginTop: 25
+						}}
+					>
 						Forgot Password?
 					</Link>
 				</div>
 			</form>
-
-
 		</div>
-);
+	);
 };
 
 export default LoginForm;
