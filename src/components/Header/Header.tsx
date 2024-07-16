@@ -4,7 +4,6 @@ import Image from "next/image";
 import { fontInter } from "@/app/fonts";
 import Navigation from "@/components/Navigation";
 import Search from "@/lib/ui/components/Search";
-// Удалите лишний импорт Register
 import ImageWishlist from "@/images/icons/wishlist.svg";
 import ImageCart from "@/images/icons/cart.svg";
 import ImageUser from "@/images/icons/user.svg";
@@ -51,12 +50,7 @@ export const Header: React.FC = () => {
 							gap: 24
 						}}
 					>
-						<Search
-							placeholder="What are you looking for?"
-							inputStyle={{
-								minWidth: 162
-							}}
-						/>
+						<Search placeholder="What are you looking for?" inputStyle={{ minWidth: 162 }} />
 						<div
 							style={{
 								display: "flex",

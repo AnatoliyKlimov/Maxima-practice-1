@@ -5,12 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08cc29c3-f8bb-4131-9ac7-bfd75d95f842" name="Changes" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/src/lib/store/userSlise.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/register/page.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/LoginForm/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginForm/LoginForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RegisterForm/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterForm/RegisterForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/store/store.ts" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/src/app/sign-in/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/sign-up/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/CreateAccountPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/create-account.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navigation/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation/Navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RegisterForm/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterForm/RegisterForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Slider/Slider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Slider/Slider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopHeader/TopHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopHeader/TopHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/ui/elements/TextField/TextField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/ui/elements/TextField/TextField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sections/home/todays.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sections/home/todays.tsx" afterDir="false" />
+>>>>>>> 39ebac80fe920d7327ee82fadcf20410cdfe8996
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,25 +68,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Denis&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/denisshagimardanov/Desktop/Projects/Maxima-practice-1&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.stylelint&quot;: &quot;/Users/denisshagimardanov/Desktop/Projects/Maxima-practice-1/node_modules/stylelint&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/denisshagimardanov/Desktop/Projects/Maxima-practice-1/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Denis",
+    "last_opened_file_path": "/Users/denisshagimardanov/Desktop/Projects/Maxima-practice-1/src/app",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.stylelint": "/Users/denisshagimardanov/Desktop/Projects/Maxima-practice-1/node_modules/stylelint",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "/usr/local/lib/node_modules/prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "/Users/denisshagimardanov/Desktop/Projects/Maxima-practice-1/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/app" />
       <recent name="$PROJECT_DIR$/src/images" />
@@ -103,6 +124,12 @@
       <workItem from="1720922014189" duration="2128000" />
       <workItem from="1720933288824" duration="1793000" />
       <workItem from="1720936134122" duration="92000" />
+      <workItem from="1720953408303" duration="938000" />
+      <workItem from="1720962732655" duration="972000" />
+      <workItem from="1720963714972" duration="35000" />
+      <workItem from="1720963759343" duration="259000" />
+      <workItem from="1720964026473" duration="112000" />
+      <workItem from="1720964146810" duration="2757000" />
     </task>
     <servers />
   </component>

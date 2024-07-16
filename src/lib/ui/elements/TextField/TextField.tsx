@@ -1,11 +1,13 @@
 import { TBaseComponent } from "@/types";
 import styles from "./TextField.module.css";
 
+// Описание интерфейса для TextField
 interface ITextFieldProps extends TBaseComponent<"input"> {
 	type?: "primary" | "flat";
 	error?: string;
 }
 
+// Компонент TextField
 export const TextField: React.FC<ITextFieldProps> = ({ type = "primary", error, ...otherProps }) => {
 	return (
 		<div className={`${styles.textFieldContainer}`}>
@@ -18,10 +20,12 @@ export const TextField: React.FC<ITextFieldProps> = ({ type = "primary", error, 
 	);
 };
 
+// Описание интерфейса для TextArea
 interface TTextAreaProps extends TBaseComponent<"textarea"> {
 	error?: string;
 }
 
+// Компонент TextArea
 export const TextArea: React.FC<TTextAreaProps> = ({ error, ...otherProps }) => {
 	return (
 		<div className={`${styles.textAreaContainer}`}>
