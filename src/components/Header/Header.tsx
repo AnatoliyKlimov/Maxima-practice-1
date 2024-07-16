@@ -1,13 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/store/store";
-import { logoutUser } from "@/store/userSlise";
+
 import { fontInter } from "@/app/fonts";
 import Navigation from "@/components/Navigation";
 import Search from "@/lib/ui/components/Search";
+
+import { useUsers } from "@/service/users";
+
 import ImageWishlist from "@/images/icons/wishlist.svg";
 import ImageCart from "@/images/icons/cart.svg";
 import ImageUser from "@/images/icons/user.svg";
@@ -16,14 +18,13 @@ import DropOrder from "@/images/icons/order.svg";
 import DropCancallations from "@/images/icons/cancallations-dropd.svg";
 import DropReviews from "@/images/icons/reviews-dropd.svg";
 import DropLogout from "@/images/icons/logout-dropd.svg";
-import { useState } from "react";
 
 import styles from "./Header.module.css";
 
 const Header: React.FC = () => {
 	const [dropdownVisible, setDropdownVisible] = useState(false);
-	const currentUser = useSelector((state: RootState) => state.user.currentUser);
-	const dispatch = useDispatch();
+
+	const [, currentUser, { logoutUser }] = useUsers();
 
 	const handleMouseEnter = () => {
 		if (currentUser) {
@@ -36,7 +37,7 @@ const Header: React.FC = () => {
 	};
 
 	const handleLogout = () => {
-		dispatch(logoutUser());
+		logoutUser();
 	};
 
 	return (
@@ -103,7 +104,7 @@ const Header: React.FC = () => {
 								style={{ position: "relative", display: "flex", cursor: "pointer" }}
 							>
 								<Link
-									href={currentUser ? "#" : "/create-account"}
+									href={currentUser ? "#" : "/sign-up"}
 									style={{ display: "flex" }}
 								>
 									<Image
@@ -234,4 +235,3 @@ const Header: React.FC = () => {
 };
 
 export default Header;
-

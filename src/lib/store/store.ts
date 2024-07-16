@@ -4,11 +4,11 @@ import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer } fro
 import storage from "@/store/storage";
 import { productsSlice } from "@/domain/products";
 import { wishlistSlice } from "@/domain/wishlist";
-import userReducer from "@/lib/store/userSlise"; // Импортируем userReducer
+import { usersSlice } from "@/domain/users";
 
 const persistConfig = {
 	key: "state",
-	safelist: ["products", "wishlist", "user"], // Добавляем 'user' в safelist
+	safelist: ["products", "wishlist", "user"],
 	timeout: 200,
 	storage
 };
@@ -16,7 +16,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
 	products: productsSlice.slice.reducer,
 	wishlist: wishlistSlice.slice.reducer,
-	user: userReducer // Добавляем userReducer в rootReducer
+	users: usersSlice.slice.reducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
