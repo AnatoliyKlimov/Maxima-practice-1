@@ -1,6 +1,6 @@
 "use client";
 
-import { Caption, Card, TCardButtons } from "@/lib/ui/components";
+import { Caption, Card } from "@/lib/ui/components";
 import { Button } from "@/lib/ui/elements";
 import { useProducts, useWishlist } from "@/service";
 
