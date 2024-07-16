@@ -3,10 +3,16 @@ import styles from "./Contact.module.css";
 import callIcon from "@/images/icons/phone-contact.svg";
 import mailIcon from "@/images/icons/mail-contact.svg";
 import Image from "next/image";
+import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 
 export default function Contact() {
 	return (
-		<main className={styles.contactContainer}>
+		<main style={{
+			display: "flex",
+			flexDirection: "column",
+			gap: 0
+		}}>
+			<Breadcrumb />
 			<section style={{
 				display: "flex",
 				margin: "80px 0 140px"
