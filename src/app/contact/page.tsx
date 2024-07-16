@@ -40,7 +40,7 @@ export default function Contact() {
 					</div>
 				</aside>
 				<form className={styles.contactForm}>
-					<input type="text" placeholder="Your Name*"  className={styles.inputField} />
+					<input type="text" placeholder="Your Name*" className={styles.inputField} />
 					<input type="email" placeholder="Your Email*" className={styles.inputField} />
 					<input type="text" placeholder="Your Phone*" className={styles.inputField} />
 					<textarea placeholder="Your Message" className={styles.textArea}></textarea>
