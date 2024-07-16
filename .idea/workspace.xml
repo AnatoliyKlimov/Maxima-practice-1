@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08cc29c3-f8bb-4131-9ac7-bfd75d95f842" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/login/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/register/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LoginForm/LoginForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/create-account/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/create-account/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RegisterForm/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterForm/RegisterForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/ui/elements/TextField/TextField.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/ui/elements/TextField/TextField.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/ui/elements/TextField/TextField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/ui/elements/TextField/TextField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/utils/validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils/validation.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +72,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app" />
       <recent name="$PROJECT_DIR$/src/images" />
       <recent name="$PROJECT_DIR$/src/components/Login" />
     </key>

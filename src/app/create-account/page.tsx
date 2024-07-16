@@ -4,6 +4,7 @@ import { useState } from "react";
 import productImage from "@/images/SideImage.png";
 import Image from "next/image";
 import RegisterForm from "@/components/RegisterForm/RegisterForm";
+import Link from "next/link";
 
 interface User {
 	email: string;
@@ -31,6 +32,7 @@ const CreateAccount = () => {
 			<main role="main" className="main-content" style={{
 				display: 'flex',
 				flexDirection: 'row',
+				alignItems: "center",
 				margin: "60px 0 140px"
 			}}>
 				<div className="image-container">
@@ -41,6 +43,14 @@ const CreateAccount = () => {
 				</div>
 				<aside>
 					<RegisterForm/>
+					<span style={{
+						display: "flex",
+						gap: 16,
+						marginTop: 32
+					}}>
+						<p>Already have account?</p>
+						<Link href='/login'>Log in</Link>
+					</span>
 				</aside>
 			</main>
 		</div>
