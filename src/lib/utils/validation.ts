@@ -1,5 +1,5 @@
 export const validatePhone = (phone: string): string | null => {
-	const phoneRegex = /^\+?[1-9]\d{1,14}$/; // Пример регулярного выражения для проверки номера телефона
+	const phoneRegex = /^\+?[1-9]\d{1,14}$/; 
 	if (!phoneRegex.test(phone)) {
 		return "Invalid phone number.";
 	}

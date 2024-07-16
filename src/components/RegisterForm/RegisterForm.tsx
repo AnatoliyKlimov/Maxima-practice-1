@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { validatePhone, validatePassword } from "@/lib/utils/validation";
 import { Button, TextField } from "@/lib/ui/elements";
 import { LoginGoogleButton } from "@/lib/ui/components";
@@ -10,21 +10,28 @@ const RegisterForm: React.FC = () => {
 	const [phone, setPhone] = useState("");
 	const [password, setPassword] = useState("");
 	const [errors, setErrors] = useState<{ name?: string; phone?: string; password?: string }>({});
-	const [isPhoneFocused, setIsPhoneFocused] = useState(false);
 
 	const handleRegister = (e: React.FormEvent) => {
 		e.preventDefault();
 
-		// Проверки и валидация
-		let phoneError = validatePhone(phone);
-		let passwordError = validatePassword(password);
+		const phoneError = validatePhone(phone);
+		const passwordError = validatePassword(password);
 
 		if (phoneError || passwordError) {
 			setErrors({ phone: phoneError, password: passwordError });
 		} else {
 			// Логика отправки данных на сервер
+			console.log("Form submitted successfully");
 		}
 	};
+
+	useEffect(() => {
+		setErrors((prevErrors) => ({
+			...prevErrors,
+			phone: phone ? "" : prevErrors.phone,
+			password: password ? "" : prevErrors.password,
+		}));
+	}, [phone, password]);
 
 	return (
 		<div className="register-form-container">
@@ -40,52 +47,46 @@ const RegisterForm: React.FC = () => {
 					textAlign: "start"
 				}}
 			>
-				<div className="form-group">
+				<div className="form-group" style={{ position: "relative" }}>
 					<label htmlFor="name"></label>
 					<TextField
-						as="flat"
-						type="text"
+						type="flat"
 						id="name"
 						placeholder="Name"
 						value={name}
 						onChange={(e) => setName(e.target.value)}
+						error={errors.name}
 					/>
-					{errors.name && <span className="error">{errors.name}</span>}
 				</div>
 
 				<div
 					className="form-group"
 					style={{
-						margin: "40px 0"
+						margin: "40px 0",
+						position: "relative"
 					}}
 				>
 					<label htmlFor="phone"></label>
-					<div style={{ position: "relative" }}>
-						<TextField
-							as="flat"
-							type="text"
-							id="phone"
-							value={phone}
-							placeholder="Email or Phone Number"
-							onFocus={() => setIsPhoneFocused(true)}
-							onBlur={() => setIsPhoneFocused(false)}
-							onChange={(e) => setPhone(e.target.value)}
-						/>
-					</div>
-					{errors.phone && <span className="error">{errors.phone}</span>}
+					<TextField
+						type="flat"
+						id="phone"
+						value={phone}
+						placeholder="Email or Phone Number"
+						onChange={(e) => setPhone(e.target.value)}
+						error={errors.phone}
+					/>
 				</div>
 
-				<div className="form-group">
+				<div className="form-group" style={{ position: "relative" }}>
 					<label htmlFor="password"></label>
 					<TextField
-						as="flat"
+						type="flat"
 						placeholder="Password"
-						type="password"
 						id="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
+						error={errors.password}
 					/>
-					{errors.password && <span className="error">{errors.password}</span>}
 				</div>
 
 				<Button
