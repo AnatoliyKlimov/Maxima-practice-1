@@ -54,7 +54,7 @@ const LoginForm: React.FC = () => {
 					display: "flex",
 					flexDirection: "column",
 					alignItems: "stretch",
-					maxWidth: 293,
+					maxWidth: 345,
 					textAlign: "start"
 				}}
 			>
