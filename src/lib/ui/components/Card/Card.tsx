@@ -1,10 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import Button from "@/lib/ui/elements/Button";
 import Rating from "@/lib/ui/components/Rating";
 import Colors from "@/lib/ui/components/Colors";
 import { unique } from "@/lib/utils";
+
+import { useWishlist } from "@/service";
 
 import { TBaseComponent, TProduct } from "@/types";
 
@@ -30,25 +35,36 @@ export const Card: React.FC<ICardProps> = ({
 	style,
 	...otherProps
 }) => {
+	const [, { addProduct, deleteProduct }] = useWishlist();
+
+	const router = useRouter();
+
 	const renderButtons = () =>
 		unique<string>(buttons).map((button) => {
 			let icon: any,
-				key: string = "";
+				key: string = "",
+				action = () => {};
 
 			switch (button) {
 				case "wishlist":
 					icon = IconFavorite;
 					key = "wishlist";
+					action = () => addProduct(product.id);
+
 					break;
 
 				case "view":
 					icon = IconView;
 					key = "view";
+					action = () => router.push(`/product/${product.id}`);
+
 					break;
 
 				case "delete":
 					icon = IconDelete;
 					key = "delete";
+					action = () => deleteProduct(product.id);
+
 					break;
 
 				default:
@@ -59,6 +75,7 @@ export const Card: React.FC<ICardProps> = ({
 				<Button
 					key={`card-button-${key}`}
 					type="icon"
+					onClick={action}
 					style={{
 						padding: 4,
 						backgroundColor: "#fff"

@@ -1,6 +1,6 @@
 "use client";
 
-import { Caption, Card, TCardButtons } from "@/lib/ui/components";
+import { Caption, Card } from "@/lib/ui/components";
 import { Button } from "@/lib/ui/elements";
 import { useProducts, useWishlist } from "@/service";
 
@@ -41,8 +41,10 @@ export const WishlistSection: React.FC = () => {
 			</div>
 			<div
 				style={{
-					display: "flex",
-					justifyContent: "space-between"
+					display: "grid",
+					gridTemplateColumns: "repeat(4, 270px)",
+					justifyContent: "space-between",
+					rowGap: 32
 				}}
 			>
 				{wishlistProducts.map((product) => (
