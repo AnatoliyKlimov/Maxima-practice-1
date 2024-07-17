@@ -19,7 +19,7 @@ export const FeaturedSection: React.FC = () => {
 				flexDirection: "column"
 			}}
 		>
-			<Caption text="Featured" style={{ marginBottom: 17 }} />
+			<Caption text="Featured" style={{ marginBottom: 24 }} />
 			<div
 				style={{
 					display: "flex",

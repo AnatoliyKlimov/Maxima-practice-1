@@ -26,7 +26,7 @@ export const CategoriesSection: React.FC = () => {
 				flexDirection: "column"
 			}}
 		>
-			<Caption text="Categories" style={{ marginBottom: 17 }} />
+			<Caption text="Categories" style={{ marginBottom: 24 }} />
 			<div
 				style={{
 					display: "flex",
@@ -35,20 +35,18 @@ export const CategoriesSection: React.FC = () => {
 					marginBottom: 60
 				}}
 			>
-				<div>
-					<h1
-						className={fontInter.className}
-						style={{
-							display: "inline",
-							fontSize: 36,
-							fontWeight: 600,
-							lineHeight: "48px",
-							letterSpacing: "0.04em"
-						}}
-					>
-						Browse By Category
-					</h1>
-				</div>
+				<h1
+					className={fontInter.className}
+					style={{
+						display: "inline",
+						fontSize: 36,
+						fontWeight: 600,
+						lineHeight: "48px",
+						letterSpacing: "0.04em"
+					}}
+				>
+					Browse By Category
+				</h1>
 				<div
 					style={{
 						display: "flex",
