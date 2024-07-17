@@ -1,20 +1,34 @@
 import { createSelector } from "@reduxjs/toolkit";
 
 import { RootState } from "@/store";
-import { TProduct } from "@/types";
+import { ArrayElement } from "@/lib/utils";
 
 type StateType = RootState["products"];
+type StateElementType = ArrayElement<StateType>;
+type IDType = StateElementType["id"];
 
-export type TProductIDSelector = (state: RootState, productID: TProduct["id"]) => TProduct["id"];
-export type TProductSelector = (state: RootState, productID: TProduct["id"]) => TProduct | undefined;
+export type TProductIDSelector = (state: RootState, productID: IDType) => IDType;
+export type TProductSelector = (
+	state: RootState,
+	productID: IDType
+) => StateElementType | undefined;
+
+export type TProductIDsSelector = (state: RootState, productIDs: IDType[]) => IDType[];
 export type TProductsSelector = (state: RootState) => StateType;
 
 export const selectProductID: TProductIDSelector = (_, productID) => productID;
+export const selectProductsIDs: TProductIDsSelector = (_, productIDs) => productIDs;
+
 export const selectProducts: TProductsSelector = (state) => state.products;
 
 export const selectProductByID = createSelector(
 	[selectProducts, selectProductID],
 	(products, productID) => products.find((product) => product.id == productID)
+);
+
+export const selectProductsByIDs = createSelector(
+	[selectProducts, selectProductsIDs],
+	(products, productsIDs) => products.filter((product) => productsIDs.includes(product.id))
 );
 
 export const selectTodaysProducts = createSelector([selectProducts], (products) =>

@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 import {
 	BannerSection,
 	CategoriesSection,
@@ -9,9 +11,14 @@ import {
 } from "@/sections/home";
 import { ServiceSection } from "@/sections";
 
+export const metadata: Metadata = {
+	title: "Home - Exclusive",
+	description: "Exclusive Shop"
+};
+
 export default function Home() {
 	return (
-		<main>
+		<main style={{ paddingBottom: 140 }}>
 			<MenuSection />
 			<div
 				style={{

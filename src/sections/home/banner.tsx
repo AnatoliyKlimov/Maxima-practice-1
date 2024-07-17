@@ -88,6 +88,7 @@ export const BannerSection: React.FC = () => {
 						height: "100%",
 						width: 504,
 						filter: "blur(200px)",
+						transform: "translate3d(0, 0, 0)",
 						background: "rgb(217, 217, 217)",
 						opacity: 0.3
 					}}

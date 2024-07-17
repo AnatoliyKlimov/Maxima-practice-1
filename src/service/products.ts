@@ -1,10 +1,13 @@
 import { productsSlice, productsSelectors } from "@/domain/products";
+import { RootState } from "@/store";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { ArrayElement } from "@/lib/utils";
 
-import { TProduct, TAddProductDTO, TDeleteProductDTO, TUpdateProductDTO } from "@/types";
+import { TAddProductDTO, TDeleteProductDTO, TUpdateProductDTO } from "@/types";
 
 const {
 	selectProducts,
+	selectProductsByIDs,
 	selectProductByID,
 	selectTodaysProducts,
 	selectThisMonthProducts,
@@ -13,18 +16,22 @@ const {
 
 type TProductsHookOptions =
 	| {
-			id: TProduct["id"];
+			id: ArrayElement<RootState["products"]>["id"];
 	  }
 	| {
-			type: TProduct["type"];
+			ids: ArrayElement<RootState["products"]>["id"][];
+	  }
+	| {
+			type: ArrayElement<RootState["products"]>["type"];
 	  };
 
-export const useProducts = (params: TProductsHookOptions) => {
+export const useProducts = (params?: TProductsHookOptions) => {
 	let productsSelector = selectProducts;
 	let productSelector = selectProductByID;
+
 	const dispatch = useAppDispatch();
 
-	if ("type" in params) {
+	if (params && "type" in params) {
 		switch (params.type) {
 			case "todays":
 				productsSelector = selectTodaysProducts;
@@ -44,7 +51,11 @@ export const useProducts = (params: TProductsHookOptions) => {
 	}
 
 	const selector = useAppSelector((state) =>
-		"id" in params ? productSelector(state, params.id) : productsSelector(state)
+		params && "id" in params
+			? productSelector(state, params.id)
+			: params && "ids" in params
+			? selectProductsByIDs(state, params.ids)
+			: productsSelector(state)
 	);
 
 	const {
