@@ -4,29 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08cc29c3-f8bb-4131-9ac7-bfd75d95f842" name="Changes" comment="">
-<<<<<<< HEAD
-      <change afterPath="$PROJECT_DIR$/src/lib/store/userSlise.ts" afterDir="false" />
+    <list default="true" id="d39b64e7-fffa-49c5-a426-41a95ddbce5a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/about/About.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/about/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SliderAbout/SliderAbout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SliderAbout/slick-custom.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/Emma.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/Tom.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/Will.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/icons/dollar-mist.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/icons/gift-mist.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/icons/money-mist.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/icons/shop-mistic.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/portrait-two-african.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/register/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginForm/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginForm/LoginForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RegisterForm/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterForm/RegisterForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/store/store.ts" afterDir="false" />
-=======
-      <change afterPath="$PROJECT_DIR$/src/app/sign-in/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/sign-up/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/CreateAccountPage.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/create-account.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/not-found.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navigation/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation/Navigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RegisterForm/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterForm/RegisterForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Slider/Slider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Slider/Slider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TopHeader/TopHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopHeader/TopHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/ui/elements/TextField/TextField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/ui/elements/TextField/TextField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sections/home/todays.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sections/home/todays.tsx" afterDir="false" />
->>>>>>> 39ebac80fe920d7327ee82fadcf20410cdfe8996
+      <change beforePath="$PROJECT_DIR$/src/app/contact/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/contact/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/sign-in/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sign-in/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,34 +31,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitToolBoxStore">
-    <option name="recentBranches">
-      <RecentBranches>
-        <option name="branchesForRepo">
-          <list>
-            <RecentBranchesForRepo>
-              <option name="branches">
-                <list>
-                  <RecentBranch>
-                    <option name="branchName" value="Denis" />
-                    <option name="lastUsedInstant" value="1720440501" />
-                  </RecentBranch>
-                </list>
-              </option>
-              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
-            </RecentBranchesForRepo>
-          </list>
-        </option>
-      </RecentBranches>
-    </option>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
 }</component>
-  <component name="ProjectId" id="2ixk4sQsaa30vnGQkJJYBXWjj7w" />
+  <component name="ProjectId" id="2jLrhBhMabW5Sz0Suugcll1nBXD" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -74,7 +49,6 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "Denis",
-    "last_opened_file_path": "/Users/denisshagimardanov/Desktop/Projects/Maxima-practice-1/src/app",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.stylelint": "true",
     "node.js.detected.package.tslint": "true",
@@ -82,54 +56,27 @@
     "node.js.selected.package.stylelint": "/Users/denisshagimardanov/Desktop/Projects/Maxima-practice-1/node_modules/stylelint",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "/usr/local/lib/node_modules/prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "settings.editor.selected.configurable": "preferences.editor",
     "ts.external.directory.path": "/Users/denisshagimardanov/Desktop/Projects/Maxima-practice-1/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/app" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/app" />
       <recent name="$PROJECT_DIR$/src/images" />
-      <recent name="$PROJECT_DIR$/src/components/Login" />
+      <recent name="$PROJECT_DIR$/src/images/icons" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="08cc29c3-f8bb-4131-9ac7-bfd75d95f842" name="Changes" comment="" />
-      <created>1720439428477</created>
+      <changelist id="d39b64e7-fffa-49c5-a426-41a95ddbce5a" name="Changes" comment="" />
+      <created>1721177317251</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1720439428477</updated>
-      <workItem from="1720439429517" duration="403000" />
-      <workItem from="1720439905763" duration="402000" />
-      <workItem from="1720440481283" duration="1190000" />
-      <workItem from="1720441681000" duration="292000" />
-      <workItem from="1720442150790" duration="13000" />
-      <workItem from="1720448371990" duration="882000" />
-      <workItem from="1720450737199" duration="3180000" />
-      <workItem from="1720454007987" duration="3000" />
-      <workItem from="1720624954595" duration="610000" />
-      <workItem from="1720639284209" duration="516000" />
-      <workItem from="1720688632783" duration="45000" />
-      <workItem from="1720781811090" duration="210000" />
-      <workItem from="1720801597953" duration="443000" />
-      <workItem from="1720817261343" duration="11000" />
-      <workItem from="1720867799721" duration="939000" />
-      <workItem from="1720922014189" duration="2128000" />
-      <workItem from="1720933288824" duration="1793000" />
-      <workItem from="1720936134122" duration="92000" />
-      <workItem from="1720953408303" duration="938000" />
-      <workItem from="1720962732655" duration="972000" />
-      <workItem from="1720963714972" duration="35000" />
-      <workItem from="1720963759343" duration="259000" />
-      <workItem from="1720964026473" duration="112000" />
-      <workItem from="1720964146810" duration="2757000" />
+      <updated>1721177317251</updated>
+      <workItem from="1721177319772" duration="385000" />
+      <workItem from="1721177965797" duration="6422000" />
     </task>
     <servers />
   </component>

@@ -10,7 +10,7 @@ export default function Contact() {
 		<main style={{
 			display: "flex",
 			flexDirection: "column",
-			gap: 0
+			gap: 0,
 		}}>
 			<Breadcrumb />
 			<section style={{
