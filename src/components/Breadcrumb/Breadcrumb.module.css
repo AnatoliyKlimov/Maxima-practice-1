@@ -1,0 +1,18 @@
+.breadcrumb {
+	display: flex;
+	list-style: none;
+	padding-top: 80px;
+}
+
+.breadcrumb-item {
+	margin-right: 5px;
+}
+
+.breadcrumb-item a {
+	text-decoration: none;
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.breadcrumb-item.active {
+	color: rgb(0, 0, 0);
+}

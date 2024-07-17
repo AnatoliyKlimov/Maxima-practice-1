@@ -4,6 +4,8 @@
 
 	font-weight: 400;
 	line-height: 24px;
+
+	width: 100%;
 }
 
 .textField_primary,
@@ -19,4 +21,23 @@
 	padding-bottom: 7.5px;
 
 	border-bottom: 1px solid var(--border);
+	border-radius: 0;
+}
+
+.textFieldContainer,
+.textAreaContainer {
+	position: relative;
+}
+
+.inputError {
+	border-color: red;
+}
+
+.errorMessage {
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+
+	color: red;
+	font-size: 12px;
 }
