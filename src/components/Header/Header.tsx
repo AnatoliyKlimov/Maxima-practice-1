@@ -8,8 +8,9 @@ import { fontInter } from "@/app/fonts";
 import Navigation from "@/components/Navigation";
 import Search from "@/lib/ui/components/Search";
 
-import { useUsers } from "@/service/users";
-import { useProducts, useWishlist } from "@/service";
+import { useProducts, useWishlist, useUsers } from "@/service";
+
+import { TProduct } from "@/types";
 
 import ImageWishlist from "@/images/icons/wishlist.svg";
 import ImageCart from "@/images/icons/cart.svg";
@@ -22,7 +23,10 @@ import DropLogout from "@/images/icons/logout-dropd.svg";
 
 import styles from "./Header.module.css";
 
-const Header: React.FC = () => {
+export const Header: React.FC = () => {
+	const [wishlist] = useWishlist();
+	const [products] = useProducts({ ids: wishlist });
+
 	const [dropdownVisible, setDropdownVisible] = useState(false);
 
 	const [, currentUser, { logoutUser }] = useUsers();
@@ -40,12 +44,6 @@ const Header: React.FC = () => {
 	const handleLogout = () => {
 		logoutUser();
 	};
-
-import { TProduct } from "@/types";
-
-export const Header: React.FC = () => {
-	const [wishlist] = useWishlist();
-	const [products] = useProducts({ ids: wishlist });
 
 	return (
 		<div className="container-wrapper">

@@ -15,7 +15,7 @@ const Breadcrumb: React.FC = () => {
 
 	return (
 		<nav aria-label="breadcrumb">
-			<ol className={styles.breadcrumb}>
+			<ul className={styles.breadcrumb}>
 				{pathnames.length > 0 ? (
 					<li className={styles["breadcrumb-item"]}>
 						<Link href="/">Home /</Link>
@@ -41,7 +41,7 @@ const Breadcrumb: React.FC = () => {
 						</li>
 					);
 				})}
-			</ol>
+			</ul>
 		</nav>
 	);
 };

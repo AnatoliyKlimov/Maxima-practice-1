@@ -16,7 +16,7 @@ import iconTwit from "@/images/icons/Icon-about-Twitter.svg";
 import iconInst from "@/images/icons/icon-about-instagram.svg";
 import iconLn from "@/images/icons/Icon-about-Linkedin.svg";
 
-import styles from "./About.module.css";
+import styles from "./about.module.css";
 
 export default function About() {
 	return (

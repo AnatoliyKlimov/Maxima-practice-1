@@ -26,4 +26,3 @@ export const StoreProvider: React.FC<React.PropsWithChildren> = ({ children }) =
 };
 
 export default StoreProvider;
-

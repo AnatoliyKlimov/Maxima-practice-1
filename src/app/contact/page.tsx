@@ -1,9 +1,12 @@
-import styles from "./Contact.module.css";
+import Image from "next/image";
+
+import Breadcrumb from "@/components/Breadcrumb";
+import { Button, TextArea, TextField } from "@/lib/ui/elements";
 
 import callIcon from "@/images/icons/phone-contact.svg";
 import mailIcon from "@/images/icons/mail-contact.svg";
-import Image from "next/image";
-import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
+
+import styles from "./contact.module.css";
 
 export default function Contact() {
 	return (
@@ -65,13 +68,30 @@ export default function Contact() {
 					</div>
 				</aside>
 				<form className={styles.contactForm}>
-					<input type="text" placeholder="Your Name*" className={styles.inputField} />
-					<input type="email" placeholder="Your Email*" className={styles.inputField} />
-					<input type="text" placeholder="Your Phone*" className={styles.inputField} />
-					<textarea placeholder="Your Message" className={styles.textArea}></textarea>
-					<button type="submit" className={styles.submitButton}>
+					<div
+						style={{
+							display: "flex",
+							justifyContent: "space-between",
+							width: "100%"
+						}}
+					>
+						<TextField placeholder="Your Name*" className={styles.inputField} />
+						<TextField
+							type="email"
+							placeholder="Your Email*"
+							className={styles.inputField}
+						/>
+						<TextField
+							type="tel"
+							pattern="\+[0-9]-[0-9]{3}-[0-9]{3}-[0-9]{4}"
+							placeholder="Your Phone*"
+							className={styles.inputField}
+						/>
+					</div>
+					<TextArea placeholder="Your Message" className={styles.textArea}></TextArea>
+					<Button type="primary" submit style={{ height: 59 }}>
 						Send Message
-					</button>
+					</Button>
 				</form>
 			</section>
 		</main>

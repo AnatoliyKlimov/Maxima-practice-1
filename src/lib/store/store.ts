@@ -5,16 +5,11 @@ import storage from "@/store/storage";
 import { productsSlice } from "@/domain/products";
 import { wishlistSlice } from "@/domain/wishlist";
 import { usersSlice } from "@/domain/users";
-
-const persistConfig = {
-	key: "state",
-	safelist: ["products", "wishlist", "user"],
-
 import { recommendationsSlice } from "@/domain/recommendations";
 
 const persistConfig = {
 	key: "state",
-	safelist: ["products", "wishlist", "recommendations"],
+	safelist: ["products", "wishlist", "user", "recommendations"],
 	timeout: 200,
 	storage
 };

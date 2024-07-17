@@ -14,12 +14,12 @@ export const TextField: React.FC<ITextFieldProps> = ({
 	...otherProps
 }) => {
 	return (
-		<div className={`${styles.textFieldContainer}`}>
+		<div className={`${styles.textFieldContainer} ${className}`}>
 			<input
 				{...otherProps}
 				className={`${styles.textField} ${styles["textField_" + as]} ${
 					error ? styles.inputError : ""
-				} ${className}`}
+				}`}
 			/>
 			{error && <span className={styles.errorMessage}>{error}</span>}
 		</div>
@@ -32,10 +32,10 @@ interface TTextAreaProps extends TBaseComponent<"textarea"> {
 
 export const TextArea: React.FC<TTextAreaProps> = ({ error, className = "", ...otherProps }) => {
 	return (
-		<div className={`${styles.textAreaContainer}`}>
+		<div className={`${styles.textAreaContainer} ${className}`}>
 			<textarea
 				{...otherProps}
-				className={`${styles.textArea} ${error ? styles.inputError : ""} ${className}`}
+				className={`${styles.textArea} ${error ? styles.inputError : ""}`}
 			/>
 			{error && <span className={styles.errorMessage}>{error}</span>}
 		</div>
