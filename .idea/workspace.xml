@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d39b64e7-fffa-49c5-a426-41a95ddbce5a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/images/icons/Icon-about-Linkedin.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/icons/Icon-about-Twitter.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/icons/icon-about-instagram.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/about/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/about/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/contact/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/contact/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/sign-in/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sign-in/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/sign-up/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sign-up/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Breadcrumb/Breadcrumb.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Breadcrumb/Breadcrumb.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sections/home/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sections/home/menu.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +14,27 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="Denis" />
+                    <option name="lastUsedInstant" value="1721245756" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -41,7 +53,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Denis",
+    "git-widget-placeholder": "d3826d79",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.stylelint": "true",
     "node.js.detected.package.tslint": "true",
@@ -71,7 +83,9 @@
       <updated>1721177317251</updated>
       <workItem from="1721177319772" duration="385000" />
       <workItem from="1721177965797" duration="6891000" />
-      <workItem from="1721207841469" duration="6461000" />
+      <workItem from="1721207841469" duration="6720000" />
+      <workItem from="1721214710223" duration="9000" />
+      <workItem from="1721245458543" duration="327000" />
     </task>
     <servers />
   </component>
