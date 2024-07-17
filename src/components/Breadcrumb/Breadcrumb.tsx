@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import React from "react";
+
 import styles from "./Breadcrumb.module.css";
 
 const capitalizeFirstLetter = (string: string) => {
@@ -28,7 +28,11 @@ const Breadcrumb: React.FC = () => {
 					const isLast = index === pathnames.length - 1;
 
 					return isLast ? (
-						<li key={name} className={`${styles["breadcrumb-item"]} ${styles.active}`} aria-current="page">
+						<li
+							key={name}
+							className={`${styles["breadcrumb-item"]} ${styles.active}`}
+							aria-current="page"
+						>
 							{capitalizeFirstLetter(name)}
 						</li>
 					) : (
