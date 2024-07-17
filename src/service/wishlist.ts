@@ -7,7 +7,6 @@ const { selectWishlistProducts } = wishlistSelectors;
 
 export const useWishlist = () => {
 	const dispatch = useAppDispatch();
-
 	const selector = useAppSelector((state) => selectWishlistProducts(state));
 
 	const {

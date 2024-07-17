@@ -41,8 +41,10 @@ export const WishlistSection: React.FC = () => {
 			</div>
 			<div
 				style={{
-					display: "flex",
-					justifyContent: "space-between"
+					display: "grid",
+					gridTemplateColumns: "repeat(4, 270px)",
+					justifyContent: "space-between",
+					rowGap: 32
 				}}
 			>
 				{wishlistProducts.map((product) => (

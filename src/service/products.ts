@@ -25,13 +25,13 @@ type TProductsHookOptions =
 			type: ArrayElement<RootState["products"]>["type"];
 	  };
 
-export const useProducts = (params: TProductsHookOptions) => {
+export const useProducts = (params?: TProductsHookOptions) => {
 	let productsSelector = selectProducts;
 	let productSelector = selectProductByID;
 
 	const dispatch = useAppDispatch();
 
-	if ("type" in params) {
+	if (params && "type" in params) {
 		switch (params.type) {
 			case "todays":
 				productsSelector = selectTodaysProducts;
@@ -51,9 +51,9 @@ export const useProducts = (params: TProductsHookOptions) => {
 	}
 
 	const selector = useAppSelector((state) =>
-		"id" in params
+		params && "id" in params
 			? productSelector(state, params.id)
-			: "ids" in params
+			: params && "ids" in params
 			? selectProductsByIDs(state, params.ids)
 			: productsSelector(state)
 	);
