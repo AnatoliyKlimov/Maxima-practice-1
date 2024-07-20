@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+
 import { usePathname } from "next/navigation";
 import { v4 as uuid } from "uuid";
 import { useTranslation } from "react-i18next";

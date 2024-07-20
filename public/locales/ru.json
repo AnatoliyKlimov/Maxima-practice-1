@@ -5,8 +5,59 @@
 		"home": "Главная",
 		"contact": "Контакты",
 		"about": "О нас",
-		"signup": "Регистрация"
+		"signup": "Регистрация",
+		"search": "Что вы ищете?"
+	},
+	"header": {
+		"account": "Аккаунт",
+		"myOrders": "Мои заказы",
+		"myCancellations": "Мои отмены",
+		"myReviews": "Мои отзывы",
+		"logout": "Выйти"
+	},
+	"categories": {
+		"woman": "Женская мода",
+		"men": "Мужская мода",
+		"electronics": "Электроника",
+		"home": "Дом и образ жизни",
+		"medicine": "Медицина",
+		"sports": "Спорт и активный отдых",
+		"baby": "Детские игрушки",
+		"groceries": "Товары для животных",
+		"health": "Здоровье и красота"
+	},
+	"footerAddress": "111 Биджой Сарани, Дакка, <br />DH 1515, Бангладеш",
+	"footer": {
+		"subscribe": "Подписаться",
+		"subscribeInfo": "Получите 10% на первый заказ",
+		"send": "Введите Вашу почту",
+		"contactInfo": {
+			"contact": "Поддержка"
+		},
+		"account": "Аккаунт",
+		"accountLinks": {
+			"myAccount": "Мой аккаунт",
+			"loginRegister": "Вход / Регистрация",
+			"cart": "Корзина",
+			"wishlist": "Список желаемого",
+			"shop": "Магазин"
+		},
+		"quickLink": "Ссылки",
+		"quickLinks": {
+			"privacyPolicy": "Конфиденциальность",
+			"termsOfUse": "Использование",
+			"faq": "Вопросы",
+			"contact": "Контакты"
+		},
+		"downloadApp": "Скачать ",
+		"appInfo": "Скидка $3 для новых пользователей",
+		"social": {
+			"facebook": "Facebook",
+			"twitter": "Twitter",
+			"instagram": "Instagram",
+			"linkedin": "LinkedIn"
+		},
+		"copyright": "© Авторские права Rimel 2022. Все права защищены"
 	}
-	
 }
 

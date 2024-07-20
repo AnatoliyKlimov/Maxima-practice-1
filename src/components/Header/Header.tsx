@@ -9,6 +9,7 @@ import Navigation from "@/components/Navigation";
 import Search from "@/lib/ui/components/Search";
 
 import { useWishlist, useCart, useUsers } from "@/service";
+import { useTranslation } from "react-i18next";
 
 import ImageWishlist from "@/images/icons/wishlist.svg";
 import ImageCart from "@/images/icons/cart.svg";
@@ -22,6 +23,7 @@ import DropLogout from "@/images/icons/logout-dropd.svg";
 import styles from "./Header.module.css";
 
 export const Header: React.FC = () => {
+	const { t } = useTranslation();
 	const [wishlist] = useWishlist();
 	const [cart] = useCart();
 
@@ -85,7 +87,7 @@ export const Header: React.FC = () => {
 						}}
 					>
 						<Search
-							placeholder="What are you looking for?"
+							placeholder={t("navigation.search")}
 							inputStyle={{ minWidth: 162 }}
 						/>
 						<div
@@ -192,7 +194,7 @@ export const Header: React.FC = () => {
 															height={32}
 															style={{ marginRight: 16 }}
 														/>
-														Account
+														{t("header.account")}
 													</span>
 												</Link>
 											</li>
@@ -208,12 +210,12 @@ export const Header: React.FC = () => {
 													>
 														<Image
 															src={DropOrder}
-															alt="Account Icon"
+															alt="Order Icon"
 															width={32}
 															height={32}
 															style={{ marginRight: 16 }}
 														/>
-														My Orders
+														{t("header.myOrders")}
 													</span>
 												</Link>
 											</li>
@@ -229,12 +231,12 @@ export const Header: React.FC = () => {
 													>
 														<Image
 															src={DropCancallations}
-															alt="Account Icon"
+															alt="Cancellations Icon"
 															width={32}
 															height={32}
 															style={{ marginRight: 16 }}
 														/>
-														My Cancellations
+														{t("header.myCancellations")}
 													</span>
 												</Link>
 											</li>
@@ -250,12 +252,12 @@ export const Header: React.FC = () => {
 													>
 														<Image
 															src={DropReviews}
-															alt="Account Icon"
+															alt="Reviews Icon"
 															width={32}
 															height={32}
 															style={{ marginRight: 16 }}
 														/>
-														My Reviews
+														{t("header.myReviews")}
 													</span>
 												</Link>
 											</li>
@@ -271,12 +273,12 @@ export const Header: React.FC = () => {
 													>
 														<Image
 															src={DropLogout}
-															alt="Account Icon"
+															alt="Logout Icon"
 															width={32}
 															height={32}
 															style={{ marginRight: 16 }}
 														/>
-														Logout
+														{t("header.logout")}
 													</span>
 												</a>
 											</li>
@@ -293,4 +295,3 @@ export const Header: React.FC = () => {
 };
 
 export default Header;
-

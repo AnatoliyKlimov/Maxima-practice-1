@@ -5,8 +5,59 @@
 		"home": "Home",
 		"contact": "Contact",
 		"about": "About",
-		"signup": "Sign Up"
+		"signup": "Sign Up",
+		"search": "What are you looking for?"
+	},
+	"header": {
+		"account": "Account",
+		"myOrders": "My Orders",
+		"myCancellations": "My Cancellations",
+		"myReviews": "My Reviews",
+		"logout": "Logout"
+	},
+	"categories": {
+		"woman": "Women's Fashion",
+		"men": "Men’s Fashion",
+		"electronics": "Electronics",
+		"home": "Home & Lifestyle",
+		"medicine": "Medicine",
+		"sports": "Sports & Outdoor",
+		"baby": "Baby's & Toys",
+		"groceries": "Groceries & Pets",
+		"health": "Health & Beauty"
+	},
+	"footerAddress": "111 Bijoy sarani, Dhaka, <br />DH 1515, Bangladesh.",
+	"footer": {
+		"subscribe": "Subscribe",
+		"subscribeInfo": "Get 10% off your first order",
+		"send": "Enter your email",
+		"contactInfo": {
+			"contact": "Support"
+		},
+		"account": "Account",
+		"accountLinks": {
+			"myAccount": "My Account",
+			"loginRegister": "Login / Register",
+			"cart": "Cart",
+			"wishlist": "Wishlist",
+			"shop": "Shop"
+		},
+		"quickLink": "Quick Link",
+		"quickLinks": {
+			"privacyPolicy": "Privacy Policy",
+			"termsOfUse": "Terms Of Use",
+			"faq": "FAQ",
+			"contact": "Contact"
+		},
+		"downloadApp": "Download App",
+		"appInfo": "Save $3 with App New User Only",
+		"social": {
+			"facebook": "Facebook",
+			"twitter": "Twitter",
+			"instagram": "Instagram",
+			"linkedin": "LinkedIn"
+		},
+		"copyright": "© Copyright Rimel 2022. All rights reserved"
 	}
-	
 }
 

@@ -1,9 +1,10 @@
 "use client";
+
 import Link from "next/link";
-import { useState } from "react";
+import { useTranslation } from "react-i18next";
+
 import Select from "@/lib/ui/elements/Select";
 import i18next from "@/lib/utils/i18n";
-import { useTranslation } from "react-i18next";
 
 export const TopHeader: React.FC = () => {
 	const { t } = useTranslation();

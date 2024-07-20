@@ -1,69 +1,69 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { v4 as uuid } from "uuid";
 
+import { useTranslation } from "react-i18next";
 import { TBaseComponent } from "@/types";
 
 import ImageArrow from "@/images/icons/drop-down.svg";
 
-const menuItems: {
-	key: string;
-	text: React.ReactNode;
-	url: string;
-	arrow?: boolean;
-}[] = [
-	{
-		key: uuid(),
-		text: "Woman’s Fashion",
-		url: "#",
-		arrow: true
-	},
-	{
-		key: uuid(),
-		text: "Men’s Fashion",
-		url: "#",
-		arrow: true
-	},
-	{
-		key: uuid(),
-		text: "Electronics",
-		url: "#"
-	},
-	{
-		key: uuid(),
-		text: "Home & Lifestyle",
-		url: "#"
-	},
-	{
-		key: uuid(),
-		text: "Medicine",
-		url: "#"
-	},
-	{
-		key: uuid(),
-		text: "Sports & Outdoor",
-		url: "#"
-	},
-	{
-		key: uuid(),
-		text: "Baby's & Toys",
-		url: "#"
-	},
-	{
-		key: uuid(),
-		text: "Groceries & Pets",
-		url: "#"
-	},
-	{
-		key: uuid(),
-		text: "Health & Beauty",
-		url: "#"
-	}
-];
-
 type TCategoriesMenu = TBaseComponent<"ul">;
 
 export const CategoriesMenu: React.FC<TCategoriesMenu> = ({ style, ...otherProps }) => {
+	const { t } = useTranslation();
+
+	// Массив menuItems перемещен внутрь компонента для использования функции перевода
+	const menuItems = [
+		{
+			key: "fashion-women",
+			text: t("categories.woman"),
+			url: "#",
+			arrow: true
+		},
+		{
+			key: "fashion-men",
+			text: t("categories.men"),
+			url: "#",
+			arrow: true
+		},
+		{
+			key: "electronics",
+			text: t("categories.electronics"),
+			url: "#"
+		},
+		{
+			key: "home-lifestyle",
+			text: t("categories.home"),
+			url: "#"
+		},
+		{
+			key: "medicine",
+			text: t("categories.medicine"),
+			url: "#"
+		},
+		{
+			key: "sports-outdoor",
+			text: t("categories.sports"),
+			url: "#"
+		},
+		{
+			key: "baby-toys",
+			text: t("categories.baby"),
+			url: "#"
+		},
+		{
+			key: "groceries-pets",
+			text: t("categories.groceries"),
+			url: "#"
+		},
+		{
+			key: "health-beauty",
+			text: t("categories.health"),
+			url: "#"
+		}
+	];
+
 	return (
 		<ul
 			style={{
@@ -90,13 +90,13 @@ export const CategoriesMenu: React.FC<TCategoriesMenu> = ({ style, ...otherProps
 						href={item.url}
 					>
 						{item.text}
-						{item.arrow ? (
+						{item.arrow && (
 							<Image
 								src={ImageArrow}
 								alt=""
 								style={{ transform: "rotate(-90deg)" }}
 							/>
-						) : null}
+						)}
 					</Link>
 				</li>
 			))}
