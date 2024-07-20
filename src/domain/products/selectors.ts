@@ -28,7 +28,8 @@ export const selectProductByID = createSelector(
 
 export const selectProductsByIDs = createSelector(
 	[selectProducts, selectProductsIDs],
-	(products, productsIDs) => products.filter((product) => productsIDs.includes(product.id))
+	(products, productsIDs) =>
+		productsIDs.map((productID) => products.find((product) => product.id == productID))
 );
 
 export const selectTodaysProducts = createSelector([selectProducts], (products) =>

@@ -1,8 +1,17 @@
+"use client";
 import Link from "next/link";
-
+import { useState } from "react";
 import Select from "@/lib/ui/elements/Select";
+import i18next from "@/lib/utils/i18n";
+import { useTranslation } from "react-i18next";
 
 export const TopHeader: React.FC = () => {
+	const { t } = useTranslation();
+
+	const handleLanguageChange = (language: string) => {
+		i18next.changeLanguage(language);
+	};
+
 	return (
 		<div className="container-wrapper" style={{ background: "#000" }}>
 			<div
@@ -24,7 +33,7 @@ export const TopHeader: React.FC = () => {
 						gap: 8
 					}}
 				>
-					<span>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!</span>
+					<span>{t("welcomeMessage")}</span>
 					<Link
 						href="#"
 						style={{
@@ -33,7 +42,7 @@ export const TopHeader: React.FC = () => {
 							textDecoration: "underline"
 						}}
 					>
-						Shop Now!
+						{t("buy")}
 					</Link>
 				</div>
 				<div
@@ -48,19 +57,15 @@ export const TopHeader: React.FC = () => {
 							{
 								key: "lang-select-eng",
 								text: "English",
-								value: "eng"
+								value: "en"
 							},
 							{
 								key: "lang-select-rus",
-								text: "Russian",
-								value: "rus"
-							},
-							{
-								key: "lang-select-chn",
-								text: "Chinese",
-								value: "chn"
+								text: "Русский",
+								value: "ru"
 							}
 						]}
+						onChange={(e) => handleLanguageChange(e.target.value)}
 					/>
 				</div>
 			</div>

@@ -18,6 +18,12 @@
 	color: #7a7a7a;
 }
 
+.textField_secondary {
+	padding: 8px 12px;
+
+	border: 1px solid var(--button-secondary);
+}
+
 .textField_flat {
 	padding-bottom: 7.5px;
 
