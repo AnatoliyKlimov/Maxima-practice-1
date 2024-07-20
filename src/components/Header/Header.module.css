@@ -8,13 +8,13 @@
 	position: absolute;
 	top: 100%;
 	right: 0;
-	box-shadow: 0 2px 10px rgba(0 0 0 / 10%);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	padding: 10px;
 	z-index: 10;
 	width: 225px;
 	border-radius: 4px;
-	background: rgb(2,0,36);
-	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(14,14,128,1) 29%, rgba(0,212,255,1) 100%);
+	background: rgb(122,100,128);
+	background: linear-gradient(90deg, rgba(122,100,128,1) 0%, rgba(0,0,0,1) 100%);
 }
 
 .userDropdown li a {
