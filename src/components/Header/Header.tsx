@@ -8,9 +8,7 @@ import { fontInter } from "@/app/fonts";
 import Navigation from "@/components/Navigation";
 import Search from "@/lib/ui/components/Search";
 
-import { useProducts, useWishlist, useUsers } from "@/service";
-
-import { TProduct } from "@/types";
+import { useWishlist, useCart, useUsers } from "@/service";
 
 import ImageWishlist from "@/images/icons/wishlist.svg";
 import ImageCart from "@/images/icons/cart.svg";
@@ -25,7 +23,7 @@ import styles from "./Header.module.css";
 
 export const Header: React.FC = () => {
 	const [wishlist] = useWishlist();
-	const [products] = useProducts({ ids: wishlist });
+	const [cart] = useCart();
 
 	const [dropdownVisible, setDropdownVisible] = useState(false);
 
@@ -99,10 +97,15 @@ export const Header: React.FC = () => {
 						>
 							<Link
 								href="/wishlist"
-								style={{ display: "flex", position: "relative" }}
+								style={{
+									display: "flex",
+									height: 32,
+									width: 32,
+									position: "relative"
+								}}
 							>
 								<Image src={ImageWishlist} alt="Wishlist" draggable={false} />
-								{products && (products as TProduct[]).length > 0 && (
+								{wishlist && wishlist.length > 0 && (
 									<div
 										style={{
 											display: "flex",
@@ -118,18 +121,40 @@ export const Header: React.FC = () => {
 											color: "#fff"
 										}}
 									>
-										<span
-											style={{
-												marginLeft: -2
-											}}
-										>
-											{(products as TProduct[]).length}
-										</span>
+										<span style={{ marginLeft: -2 }}>{wishlist.length}</span>
 									</div>
 								)}
 							</Link>
-							<Link href="/cart" style={{ display: "flex" }}>
+							<Link
+								href="/cart"
+								style={{
+									display: "flex",
+									alignItems: "center",
+									height: 32,
+									width: 32,
+									position: "relative"
+								}}
+							>
 								<Image src={ImageCart} alt="Cart" draggable={false} />
+								{cart && cart.length > 0 && (
+									<div
+										style={{
+											display: "flex",
+											justifyContent: "center",
+											alignItems: "center",
+											position: "absolute",
+											top: -2,
+											right: 0,
+											width: 17,
+											borderRadius: "50%",
+											backgroundColor: "var(--background-primary)",
+											fontSize: 12,
+											color: "#fff"
+										}}
+									>
+										<span style={{ marginLeft: -2 }}>{cart.length}</span>
+									</div>
+								)}
 							</Link>
 							<div
 								onMouseEnter={handleMouseEnter}
@@ -138,7 +163,7 @@ export const Header: React.FC = () => {
 							>
 								<Link
 									href={currentUser ? "#" : "/sign-up"}
-									style={{ display: "flex" }}
+									style={{ display: "flex", height: 32, width: 32 }}
 								>
 									<Image
 										src={ImageUser}

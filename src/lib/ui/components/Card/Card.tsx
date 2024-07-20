@@ -9,7 +9,7 @@ import Rating from "@/lib/ui/components/Rating";
 import Colors from "@/lib/ui/components/Colors";
 import { unique } from "@/lib/utils";
 
-import { useWishlist } from "@/service";
+import { useCart, useWishlist } from "@/service";
 
 import { TBaseComponent, TProduct } from "@/types";
 
@@ -36,6 +36,7 @@ export const Card: React.FC<ICardProps> = ({
 	...otherProps
 }) => {
 	const [, { addProduct, deleteProduct }] = useWishlist();
+	const [, { addProduct: addProductToCart }] = useCart();
 
 	const router = useRouter();
 
@@ -126,6 +127,7 @@ export const Card: React.FC<ICardProps> = ({
 				/>
 				<Button
 					type="incard"
+					onClick={() => addProductToCart({ id: product.id })}
 					className="incard-btn"
 					style={{
 						position: "absolute",
