@@ -13,8 +13,8 @@
 	z-index: 10;
 	width: 225px;
 	border-radius: 4px;
-	backdrop-filter: blur(150px);
-	background: rgba(0 0 0 / 4%);
+	background: rgb(2,0,36);
+	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(14,14,128,1) 29%, rgba(0,212,255,1) 100%);
 }
 
 .userDropdown li a {
