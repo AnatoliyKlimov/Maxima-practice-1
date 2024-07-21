@@ -8,10 +8,16 @@ export const slice = createSlice({
 	initialState: defaultRecommendations,
 	reducers: {
 		addRecommendProduct: (state, action: PayloadAction<TRecommendationAddDTO>) => {
-			state.push(action.payload);
+			const existingProductID = state.find((productID) => productID == action.payload);
+
+			if (!existingProductID) {
+				state.push(action.payload);
+			} else {
+				return state;
+			}
 		},
 		deleteRecommendProduct: (state, action: PayloadAction<TRecommendationDeleteDTO>) => {
-			let existingProductID = state.find((productID) => productID == action.payload);
+			const existingProductID = state.find((productID) => productID == action.payload);
 
 			if (existingProductID) {
 				return state.filter((productID) => productID != existingProductID);
