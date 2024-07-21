@@ -10,6 +10,7 @@ import Slider from "@/components/Slider";
 import Caption from "@/lib/ui/components/Caption";
 import Button from "@/lib/ui/elements/Button";
 
+import { useTranslation } from "react-i18next";
 import { DefaultCategories } from "@/types/__mocks__";
 
 import ImageArrow from "@/images/icons/arrow-left.svg";
@@ -17,6 +18,7 @@ import ImageArrow from "@/images/icons/arrow-left.svg";
 import styles from "./categories.module.css";
 
 export const CategoriesSection: React.FC = () => {
+	const { t } = useTranslation();
 	const categoriesSliderRef = useRef<SlickSlider>(null);
 
 	return (
@@ -26,7 +28,7 @@ export const CategoriesSection: React.FC = () => {
 				flexDirection: "column"
 			}}
 		>
-			<Caption text="Categories" style={{ marginBottom: 24 }} />
+			<Caption text={t("categ.categories")} style={{ marginBottom: 24 }} />
 			<div
 				style={{
 					display: "flex",
@@ -45,7 +47,7 @@ export const CategoriesSection: React.FC = () => {
 						letterSpacing: "0.04em"
 					}}
 				>
-					Browse By Category
+					{t("categ.brows")}
 				</h1>
 				<div
 					style={{

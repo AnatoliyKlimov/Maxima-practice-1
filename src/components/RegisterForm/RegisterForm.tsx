@@ -9,8 +9,10 @@ import { LoginGoogleButton } from "@/lib/ui/components";
 import { validatePhone, validatePassword } from "@/lib/utils/validation";
 
 import { useUsers } from "@/service/users";
+import { useTranslation } from "react-i18next";
 
 const RegisterForm: React.FC = () => {
+	const { t } = useTranslation();
 	const [name, setName] = useState("");
 	const [phone, setPhone] = useState("");
 	const [password, setPassword] = useState("");
@@ -55,9 +57,9 @@ const RegisterForm: React.FC = () => {
 					letterSpacing: "0.04em"
 				}}
 			>
-				Create an account
+				{t("cra.create")}
 			</h2>
-			<p style={{ margin: "24px 0 48px" }}>Enter your details below</p>
+			<p style={{ margin: "24px 0 48px" }}>{t("cra.enter")}</p>
 			<form
 				onSubmit={handleRegister}
 				style={{
@@ -72,7 +74,7 @@ const RegisterForm: React.FC = () => {
 					<TextField
 						as="flat"
 						type="text"
-						placeholder="Name"
+						placeholder={t("cra.name")}
 						value={name}
 						onChange={(e) => setName(e.target.value)}
 						error={errors.name!}
@@ -89,7 +91,7 @@ const RegisterForm: React.FC = () => {
 							as="flat"
 							type="text"
 							value={phone}
-							placeholder="Email or Phone Number"
+							placeholder={t("cra.email")}
 							onChange={(e) => setPhone(e.target.value)}
 							error={errors.phone!}
 						/>
@@ -98,7 +100,7 @@ const RegisterForm: React.FC = () => {
 				<div style={{ position: "relative" }}>
 					<TextField
 						as="flat"
-						placeholder="Password"
+						placeholder={t("cra.passw")}
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
@@ -106,7 +108,7 @@ const RegisterForm: React.FC = () => {
 					/>
 				</div>
 				<Button type="primary" submit style={{ margin: "40px 0 16px" }}>
-					Create Account
+					{t("cra.creatB")}
 				</Button>
 				<LoginGoogleButton />
 			</form>

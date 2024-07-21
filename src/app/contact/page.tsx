@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 
 import Breadcrumb from "@/components/Breadcrumb";
 import { Button, TextArea, TextField } from "@/lib/ui/elements";
+import { useTranslation } from "react-i18next";
 
 import callIcon from "@/images/icons/phone-contact.svg";
 import mailIcon from "@/images/icons/mail-contact.svg";
@@ -9,6 +12,7 @@ import mailIcon from "@/images/icons/mail-contact.svg";
 import styles from "./contact.module.css";
 
 export default function Contact() {
+	const { t } = useTranslation();
 	return (
 		<main
 			style={{
@@ -36,27 +40,27 @@ export default function Contact() {
 					<div className={styles.box}>
 						<h3>
 							<Image src={callIcon} alt="Call" />
-							Call To Us
+							{t("contact.call")}
 						</h3>
 						<p
 							style={{
 								marginTop: 24
 							}}
 						>
-							We are available 24/7, 7 days a week.
+							{t("contact.available")}
 						</p>
-						<p>Phone: +88015-88888-9999</p>
+						<p>{t("contact.phone")}: +88015-88888-9999</p>
 						<span></span>
 						<h3>
 							<Image src={mailIcon} alt="Mail" />
-							Write To Us
+							{t("contact.write")}
 						</h3>
 						<p
 							style={{
 								marginTop: 24
 							}}
 						>
-							Fill out our form and we will contact you within 24 hours.
+							{t("contact.message")}
 						</p>
 						<p>
 							Email:{" "}
@@ -75,22 +79,25 @@ export default function Contact() {
 							width: "100%"
 						}}
 					>
-						<TextField placeholder="Your Name*" className={styles.inputField} />
+						<TextField placeholder={t("contact.name")} className={styles.inputField} />
 						<TextField
 							type="email"
-							placeholder="Your Email*"
+							placeholder={t("contact.email")}
 							className={styles.inputField}
 						/>
 						<TextField
 							type="tel"
 							pattern="\+[0-9]-[0-9]{3}-[0-9]{3}-[0-9]{4}"
-							placeholder="Your Phone*"
+							placeholder={t("contact.phones")}
 							className={styles.inputField}
 						/>
 					</div>
-					<TextArea placeholder="Your Message" className={styles.textArea}></TextArea>
+					<TextArea
+						placeholder={t("contact.mess")}
+						className={styles.textArea}
+					></TextArea>
 					<Button type="primary" submit style={{ height: 59 }}>
-						Send Message
+						{t("contact.send")}
 					</Button>
 				</form>
 			</section>

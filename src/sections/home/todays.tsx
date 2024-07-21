@@ -12,11 +12,13 @@ import Button from "@/lib/ui/elements/Button";
 import Card from "@/lib/ui/components/Card";
 import { useProducts } from "@/service/products";
 
+import { useTranslation } from "react-i18next";
 import { TProduct } from "@/types";
 
 import ImageArrow from "@/images/icons/arrow-left.svg";
 
 export const TodaysSection: React.FC = () => {
+	const { t } = useTranslation();
 	const todaysSliderRef = useRef<SlickSlider>(null);
 
 	const [todaysProducts] = useProducts({ type: "todays" });
@@ -28,7 +30,7 @@ export const TodaysSection: React.FC = () => {
 				flexDirection: "column"
 			}}
 		>
-			<Caption text="Today's" style={{ marginBottom: 24 }} />
+			<Caption text={t("today.tod")} style={{ marginBottom: 24 }} />
 			<div
 				style={{
 					display: "flex",
@@ -49,7 +51,7 @@ export const TodaysSection: React.FC = () => {
 							letterSpacing: "0.04em"
 						}}
 					>
-						Flash Sales
+						{t("today.sales")}
 					</h1>
 					<Timer
 						remainingTime={{
@@ -111,7 +113,7 @@ export const TodaysSection: React.FC = () => {
 					marginBottom: 60
 				}}
 			>
-				View All Products
+				{t("today.view")}
 			</Button>
 			<hr />
 		</section>

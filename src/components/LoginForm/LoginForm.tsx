@@ -9,8 +9,10 @@ import { Button, TextField } from "@/lib/ui/elements";
 import { validatePhone, validatePassword } from "@/lib/utils/validation";
 
 import { useUsers } from "@/service/users";
+import { useTranslation } from "react-i18next";
 
 const LoginForm: React.FC = () => {
+	const { t } = useTranslation();
 	const [phone, setPhone] = useState("");
 	const [password, setPassword] = useState("");
 	const [errors, setErrors] = useState<{
@@ -55,9 +57,9 @@ const LoginForm: React.FC = () => {
 					letterSpacing: "0.04em"
 				}}
 			>
-				Log in to Exclusive
+				{t("login.title")}
 			</h2>
-			<p style={{ margin: "24px 0 45px" }}>Enter your details below</p>
+			<p style={{ margin: "24px 0 45px" }}>{t("login.subtitle")}</p>
 			<form
 				onSubmit={handleLogin}
 				style={{
@@ -73,7 +75,7 @@ const LoginForm: React.FC = () => {
 					<label htmlFor="phone"></label>
 					<TextField
 						as="flat"
-						placeholder="Email or Phone Number"
+						placeholder={t("login.phonePlaceholder")}
 						value={phone}
 						onChange={(e) => setPhone(e.target.value)}
 						error={errors?.phone!}
@@ -83,7 +85,7 @@ const LoginForm: React.FC = () => {
 					<label htmlFor="password"></label>
 					<TextField
 						as="flat"
-						placeholder="Password"
+						placeholder={t("login.passwordPlaceholder")}
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
@@ -104,7 +106,7 @@ const LoginForm: React.FC = () => {
 							margin: "40px 0 16px"
 						}}
 					>
-						Log In
+						{t("login.button")}
 					</Button>
 					<Link
 						href="/forgot-password"
@@ -113,7 +115,7 @@ const LoginForm: React.FC = () => {
 							marginTop: 25
 						}}
 					>
-						Forgot Password?
+						{t("login.forgotPassword")}
 					</Link>
 				</div>
 			</form>

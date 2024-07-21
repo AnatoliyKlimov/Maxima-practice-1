@@ -8,6 +8,7 @@ import IconSmartWatch from "@/images/icons/categories/smart-watch.svg";
 import IconCamera from "@/images/icons/categories/camera.svg";
 import IconHeadPhones from "@/images/icons/categories/headphones.svg";
 import IconGaming from "@/images/icons/categories/gaming.svg";
+import i18next from "i18next";
 
 export const DefaultCategories: TCategory[] = [
 	{
