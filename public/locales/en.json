@@ -186,6 +186,14 @@
 		"free": "Free",
 		"tot": "Total",
 		"process": "Process to checkout"
+	},
+	"table": {
+		"product": "Product",
+		"price": "Price",
+		"quantity": "Quantity",
+		"subtotal": "Subtotal",
+		"return": "Return To Shop",
+		"clear": "Clear Cart"
 	}
 }
 

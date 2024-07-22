@@ -5,7 +5,7 @@ import Image from "next/image";
 
 import { Button, TextField } from "@/lib/ui/elements";
 import { useCart, useProducts } from "@/service";
-
+import { useTranslation } from "react-i18next";
 import { cartMaxQuantity, TProduct } from "@/types";
 
 import IconClose from "@/images/icons/close.svg";
@@ -13,6 +13,7 @@ import IconClose from "@/images/icons/close.svg";
 import styles from "./table.module.css";
 
 export const TableSection: React.FC = () => {
+	const { t } = useTranslation();
 	const [cart, { updateProductQuantity, deleteProduct, clearCart }] = useCart();
 	const [products] = useProducts({ ids: cart.map((product) => product.id) });
 
@@ -26,10 +27,10 @@ export const TableSection: React.FC = () => {
 			<table className={styles.table}>
 				<thead>
 					<tr className={styles.tableRow}>
-						<th className={styles.tableCell}>Product</th>
-						<th className={styles.tableCell}>Price</th>
-						<th className={styles.tableCell}>Quantity</th>
-						<th className={styles.tableCell}>Subtotal</th>
+						<th className={styles.tableCell}>{t("table.product")}</th>
+						<th className={styles.tableCell}>{t("table.price")}</th>
+						<th className={styles.tableCell}>{t("table.quantity")}</th>
+						<th className={styles.tableCell}>{t("table.subtotal")}</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -114,10 +115,10 @@ export const TableSection: React.FC = () => {
 				}}
 			>
 				<Button as={Link} href="#" type="secondary">
-					Return To Shop
+					{t("table.return")}
 				</Button>
 				<Button type="secondary" onClick={() => clearCart()}>
-					Clear Cart
+					{t("table.clear")}
 				</Button>
 			</div>
 		</section>
