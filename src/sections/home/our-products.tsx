@@ -10,6 +10,7 @@ import Slider from "@/components/Slider";
 import Caption from "@/lib/ui/components/Caption";
 import Button from "@/lib/ui/elements/Button";
 import Card from "@/lib/ui/components/Card";
+
 import { useProducts } from "@/service/products";
 
 import { TProduct } from "@/types";
@@ -18,6 +19,7 @@ import ImageArrow from "@/images/icons/arrow-left.svg";
 
 export const OurProductsSection: React.FC = () => {
 	const { t } = useTranslation();
+
 	const outProductsSlider1Ref = useRef<SlickSlider>(null);
 	const outProductsSlider2Ref = useRef<SlickSlider>(null);
 

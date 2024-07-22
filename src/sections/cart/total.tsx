@@ -1,13 +1,15 @@
 "use client";
 
+import { useTranslation } from "react-i18next";
+
 import { Button, TextField } from "@/lib/ui/elements";
 import { useCart, useProducts } from "@/service";
-import { useTranslation } from "react-i18next";
 
 import { TProduct } from "@/types";
 
 export const TotalSection: React.FC = () => {
 	const { t } = useTranslation();
+
 	const [cart] = useCart();
 	const [products] = useProducts({ ids: cart.map((product) => product.id) });
 
@@ -91,7 +93,7 @@ export const TotalSection: React.FC = () => {
 								(acc, product) =>
 									product.priceOld
 										? acc +
-											(product.priceOld - product.price) * product.quantity
+										(product.priceOld - product.price) * product.quantity
 										: acc,
 								0
 							)}

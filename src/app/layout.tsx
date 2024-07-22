@@ -6,7 +6,6 @@ import TopHeader from "@/components/TopHeader";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-import i18n from "@/lib/utils/i18n";
 import "./globals.css";
 
 export const metadata: Metadata = {

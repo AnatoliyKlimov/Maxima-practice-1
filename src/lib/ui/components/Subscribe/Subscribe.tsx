@@ -32,7 +32,7 @@ export const Subscribe: React.FC<ISubscribeProps> = ({
 			<input
 				type="text"
 				style={{
-					marginRight: -100,
+					width: 200,
 					fontSize: 16,
 					fontWeight: 400,
 					lineHeight: "24px",

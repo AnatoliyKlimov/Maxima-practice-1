@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Trans, useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
 import Caption from "@/lib/ui/components/Caption";
-import { Trans, useTranslation } from "react-i18next";
 
 import ImagePlayStation5 from "@/images/playstation-5.png";
 import ImageWoman from "@/images/woman.jpg";
@@ -16,6 +16,7 @@ import styles from "./featured.module.css";
 
 export const FeaturedSection: React.FC = () => {
 	const { t } = useTranslation();
+
 	return (
 		<section
 			style={{

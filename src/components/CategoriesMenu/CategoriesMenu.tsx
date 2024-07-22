@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-
 import { useTranslation } from "react-i18next";
+
 import { TBaseComponent } from "@/types";
 
 import ImageArrow from "@/images/icons/drop-down.svg";
@@ -13,7 +13,6 @@ type TCategoriesMenu = TBaseComponent<"ul">;
 export const CategoriesMenu: React.FC<TCategoriesMenu> = ({ style, ...otherProps }) => {
 	const { t } = useTranslation();
 
-	// Массив menuItems перемещен внутрь компонента для использования функции перевода
 	const menuItems = [
 		{
 			key: "fashion-women",

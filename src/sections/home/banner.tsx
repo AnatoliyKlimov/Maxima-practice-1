@@ -1,16 +1,17 @@
 "use client";
 
 import Image from "next/image";
+import { Trans, useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
 import Timer from "@/lib/ui/components/Timer";
 import Button from "@/lib/ui/elements/Button";
 
 import ImageSmartSpeaker from "@/images/jbl-boombox-2.png";
-import { Trans, useTranslation } from "react-i18next";
 
 export const BannerSection: React.FC = () => {
 	const { t } = useTranslation();
+
 	return (
 		<section
 			style={{

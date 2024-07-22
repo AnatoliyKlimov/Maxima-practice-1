@@ -1,19 +1,20 @@
 "use client";
 
 import Link from "next/link";
-
 import { useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
 import Caption from "@/lib/ui/components/Caption";
 import Button from "@/lib/ui/elements/Button";
 import Card from "@/lib/ui/components/Card";
+
 import { useProducts } from "@/service/products";
 
 import { TProduct } from "@/types";
 
 export const ThisMonthProductsSection: React.FC = () => {
 	const { t } = useTranslation();
+
 	const [thisMonthProducts] = useProducts({ type: "this-month" });
 
 	return (

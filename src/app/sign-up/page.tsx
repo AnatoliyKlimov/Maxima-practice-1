@@ -2,14 +2,15 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 import RegisterForm from "@/components/RegisterForm";
 
 import productImage from "@/images/SideImage.png";
-import { useTranslation } from "react-i18next";
 
 export default function SignUpPage() {
 	const { t } = useTranslation();
+
 	return (
 		<main
 			style={{

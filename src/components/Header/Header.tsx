@@ -3,13 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
 import Navigation from "@/components/Navigation";
 import Search from "@/lib/ui/components/Search";
 
 import { useWishlist, useCart, useUsers } from "@/service";
-import { useTranslation } from "react-i18next";
 
 import ImageWishlist from "@/images/icons/wishlist.svg";
 import ImageCart from "@/images/icons/cart.svg";
@@ -24,6 +24,7 @@ import styles from "./Header.module.css";
 
 export const Header: React.FC = () => {
 	const { t } = useTranslation();
+
 	const [wishlist] = useWishlist();
 	const [cart] = useCart();
 

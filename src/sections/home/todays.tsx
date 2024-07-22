@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import SlickSlider from "react-slick";
+import { useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
 import Slider from "@/components/Slider";
@@ -10,15 +11,16 @@ import Timer from "@/lib/ui/components/Timer";
 import Caption from "@/lib/ui/components/Caption";
 import Button from "@/lib/ui/elements/Button";
 import Card from "@/lib/ui/components/Card";
+
 import { useProducts } from "@/service/products";
 
-import { useTranslation } from "react-i18next";
 import { TProduct } from "@/types";
 
 import ImageArrow from "@/images/icons/arrow-left.svg";
 
 export const TodaysSection: React.FC = () => {
 	const { t } = useTranslation();
+
 	const todaysSliderRef = useRef<SlickSlider>(null);
 
 	const [todaysProducts] = useProducts({ type: "todays" });

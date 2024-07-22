@@ -1,15 +1,16 @@
 "use client";
 
+import { useTranslation } from "react-i18next";
+
 import { Caption, Card } from "@/lib/ui/components";
 import { Button } from "@/lib/ui/elements";
 import { useProducts, useWishlist } from "@/service";
-import { useTranslation } from "react-i18next";
 
 import { TProduct, TWishlistProduct } from "@/types";
-import i18next from "i18next";
 
 export const WishlistSection: React.FC = () => {
 	const { t } = useTranslation();
+
 	const [wishlist] = useWishlist();
 	const [products] = useProducts({ ids: wishlist });
 

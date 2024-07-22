@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 import { Button, TextField } from "@/lib/ui/elements";
 import { useCart, useProducts } from "@/service";
-import { useTranslation } from "react-i18next";
+
 import { cartMaxQuantity, TProduct } from "@/types";
 
 import IconClose from "@/images/icons/close.svg";
@@ -14,6 +15,7 @@ import styles from "./table.module.css";
 
 export const TableSection: React.FC = () => {
 	const { t } = useTranslation();
+
 	const [cart, { updateProductQuantity, deleteProduct, clearCart }] = useCart();
 	const [products] = useProducts({ ids: cart.map((product) => product.id) });
 

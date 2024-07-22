@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-
 import { Trans, useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
@@ -15,6 +14,7 @@ import ImageArrow from "@/images/icons/arrow-left.svg";
 
 export const MenuSection: React.FC = () => {
 	const { t } = useTranslation();
+
 	return (
 		<section
 			style={{

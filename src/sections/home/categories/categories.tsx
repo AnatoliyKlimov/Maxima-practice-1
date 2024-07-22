@@ -4,13 +4,13 @@ import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import SlickSlider from "react-slick";
+import { useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
 import Slider from "@/components/Slider";
 import Caption from "@/lib/ui/components/Caption";
 import Button from "@/lib/ui/elements/Button";
 
-import { useTranslation } from "react-i18next";
 import { DefaultCategories } from "@/types/__mocks__";
 
 import ImageArrow from "@/images/icons/arrow-left.svg";
@@ -19,6 +19,7 @@ import styles from "./categories.module.css";
 
 export const CategoriesSection: React.FC = () => {
 	const { t } = useTranslation();
+
 	const categoriesSliderRef = useRef<SlickSlider>(null);
 
 	return (

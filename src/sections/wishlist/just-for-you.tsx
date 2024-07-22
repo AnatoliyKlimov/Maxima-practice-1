@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
+
 import { Caption, Card } from "@/lib/ui/components";
 import { Button } from "@/lib/ui/elements";
 import { useProducts, useRecommendations } from "@/service";
@@ -9,6 +10,7 @@ import { TProduct } from "@/types";
 
 export const JustForYouSection: React.FC = () => {
 	const { t } = useTranslation();
+
 	const [recommendations] = useRecommendations();
 	const [products] = useProducts({ ids: recommendations });
 

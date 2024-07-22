@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
 import Slider from "@/components/Slider";
-import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
+import Breadcrumb from "@/components/Breadcrumb";
 import { ServiceSection } from "@/sections";
-import { useTranslation } from "react-i18next";
 
 import portraitAfr from "@/images/portrait-two-african.png";
 import shopMistic from "@/images/icons/shop-mistic.svg";
@@ -23,6 +23,7 @@ import styles from "./about.module.css";
 
 export default function About() {
 	const { t } = useTranslation();
+
 	return (
 		<main
 			style={{

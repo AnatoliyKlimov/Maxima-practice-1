@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-
 import { Trans, useTranslation } from "react-i18next";
+
 import { fontInter } from "@/app/fonts";
 import Subscribe from "@/lib/ui/components/Subscribe";
 
@@ -19,6 +19,7 @@ import styles from "./Footer.module.css";
 
 export const Footer: React.FC = () => {
 	const { t } = useTranslation();
+
 	return (
 		<div
 			className="container-wrapper"

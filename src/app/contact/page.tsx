@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 import Breadcrumb from "@/components/Breadcrumb";
 import { Button, TextArea, TextField } from "@/lib/ui/elements";
-import { useTranslation } from "react-i18next";
 
 import callIcon from "@/images/icons/phone-contact.svg";
 import mailIcon from "@/images/icons/mail-contact.svg";
@@ -13,6 +13,7 @@ import styles from "./contact.module.css";
 
 export default function Contact() {
 	const { t } = useTranslation();
+
 	return (
 		<main
 			style={{

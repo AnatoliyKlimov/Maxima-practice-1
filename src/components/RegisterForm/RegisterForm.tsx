@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
 import { Button, TextField } from "@/lib/ui/elements";
@@ -9,10 +10,10 @@ import { LoginGoogleButton } from "@/lib/ui/components";
 import { validatePhone, validatePassword } from "@/lib/utils/validation";
 
 import { useUsers } from "@/service/users";
-import { useTranslation } from "react-i18next";
 
 const RegisterForm: React.FC = () => {
 	const { t } = useTranslation();
+
 	const [name, setName] = useState("");
 	const [phone, setPhone] = useState("");
 	const [password, setPassword] = useState("");

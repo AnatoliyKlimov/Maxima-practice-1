@@ -3,16 +3,17 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
 import { Button, TextField } from "@/lib/ui/elements";
 import { validatePhone, validatePassword } from "@/lib/utils/validation";
 
 import { useUsers } from "@/service/users";
-import { useTranslation } from "react-i18next";
 
 const LoginForm: React.FC = () => {
 	const { t } = useTranslation();
+
 	const [phone, setPhone] = useState("");
 	const [password, setPassword] = useState("");
 	const [errors, setErrors] = useState<{
