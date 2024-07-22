@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 import ImageDelivery from "@/images/icons/services/delivery.svg";
 import ImageCustomer from "@/images/icons/services/customer.svg";
@@ -10,6 +9,7 @@ import ImageMoneyBack from "@/images/icons/services/money-back.svg";
 
 export const ServiceSection: React.FC = () => {
 	const { t } = useTranslation();
+
 	return (
 		<section
 			style={{
@@ -37,7 +37,7 @@ export const ServiceSection: React.FC = () => {
 							lineHeight: "28px"
 						}}
 					>
-						{t("service.delivery")}
+						<Trans i18nKey="service.delivery" />
 					</h2>
 					<span
 						style={{
@@ -68,7 +68,7 @@ export const ServiceSection: React.FC = () => {
 							lineHeight: "28px"
 						}}
 					>
-						{t("service.customer")}
+						<Trans i18nKey="service.customer" />
 					</h2>
 					<span
 						style={{
@@ -99,7 +99,7 @@ export const ServiceSection: React.FC = () => {
 							lineHeight: "28px"
 						}}
 					>
-						{t("service.garantee")}
+						<Trans i18nKey="service.garantee" />
 					</h2>
 					<span
 						style={{

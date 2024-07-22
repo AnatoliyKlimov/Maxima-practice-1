@@ -124,7 +124,7 @@ export const Header: React.FC = () => {
 											color: "#fff"
 										}}
 									>
-										<span style={{ marginLeft: -2 }}>{wishlist.length}</span>
+										<span>{wishlist.length}</span>
 									</div>
 								)}
 							</Link>
@@ -133,6 +133,7 @@ export const Header: React.FC = () => {
 								style={{
 									display: "flex",
 									alignItems: "center",
+									justifyContent: "center",
 									height: 32,
 									width: 32,
 									position: "relative"
@@ -155,7 +156,7 @@ export const Header: React.FC = () => {
 											color: "#fff"
 										}}
 									>
-										<span style={{ marginLeft: -2 }}>{cart.length}</span>
+										<span>{cart.length}</span>
 									</div>
 								)}
 							</Link>
@@ -166,13 +167,19 @@ export const Header: React.FC = () => {
 							>
 								<Link
 									href={currentUser ? "#" : "/sign-up"}
-									style={{ display: "flex", height: 32, width: 32 }}
+									style={{
+										display: "flex",
+										alignItems: "center",
+										justifyContent: "center",
+										height: 32,
+										width: 32
+									}}
+									className={currentUser ? styles.userIconActive : ""}
 								>
 									<Image
 										src={ImageUser}
 										alt="User"
 										draggable={false}
-										className={currentUser ? styles.userIconActive : ""}
 									/>
 								</Link>
 								{currentUser && dropdownVisible && (

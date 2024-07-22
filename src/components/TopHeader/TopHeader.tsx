@@ -23,7 +23,7 @@ export const TopHeader: React.FC = () => {
 					position: "relative",
 					padding: "12px 0",
 					fontSize: 14,
-					lineHeight: "21px",
+					lineHeight: "24px",
 					color: "#fff"
 				}}
 			>

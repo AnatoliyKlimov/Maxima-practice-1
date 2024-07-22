@@ -37,7 +37,8 @@ const Navigation: React.FC = () => {
 		<ul
 			style={{
 				display: "inline-flex",
-				gap: 48
+				gap: 48,
+				fontWeight: 500
 			}}
 		>
 			{navItems.map((item) => (

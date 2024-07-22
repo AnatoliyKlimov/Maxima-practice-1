@@ -34,7 +34,9 @@ export default function SignUpPage() {
 					}}
 				>
 					<span>{t("cra.haveAcc")}</span>
-					<Link href="/sign-in">{t("cra.login")}</Link>
+					<Link href="/sign-in" style={{ borderBottom: "1px solid var(--foreground)" }}>
+						{t("cra.login")}
+					</Link>
 				</p>
 			</aside>
 		</main>

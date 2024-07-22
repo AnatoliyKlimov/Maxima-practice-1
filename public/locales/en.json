@@ -2,11 +2,17 @@
 	"welcomeMessage": "Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!",
 	"buy": "Shop Now",
 	"addToC": "Add To Cart",
+	"not-found": {
+		"status": "Not found",
+		"description": "Your visited page not found. You may go home page",
+		"action": "Back to home page"
+	},
 	"navigation": {
 		"home": "Home",
 		"contact": "Contact",
 		"about": "About",
 		"signup": "Sign Up",
+		"cart": "Cart",
 		"search": "What are you looking for?"
 	},
 	"header": {
@@ -63,7 +69,7 @@
 	"cra": {
 		"create": "Create an account",
 		"enter": "Enter your details below",
-		"name": "name",
+		"name": "Name",
 		"email": "Email or Phone Number",
 		"passw": "Password",
 		"creatB": "Create Account",
@@ -197,4 +203,3 @@
 		"clear": "Clear Cart"
 	}
 }
-
