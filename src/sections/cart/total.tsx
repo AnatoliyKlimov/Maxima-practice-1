@@ -2,10 +2,12 @@
 
 import { Button, TextField } from "@/lib/ui/elements";
 import { useCart, useProducts } from "@/service";
+import { useTranslation } from "react-i18next";
 
 import { TProduct } from "@/types";
 
 export const TotalSection: React.FC = () => {
+	const { t } = useTranslation();
 	const [cart] = useCart();
 	const [products] = useProducts({ ids: cart.map((product) => product.id) });
 
@@ -19,12 +21,12 @@ export const TotalSection: React.FC = () => {
 			<div style={{ display: "flex", alignItems: "flex-start", gap: 16, width: 527 }}>
 				<TextField
 					as="secondary"
-					placeholder="Coupon Code"
+					placeholder={t("total.coupon")}
 					style={{
 						padding: "16px 24px"
 					}}
 				/>
-				<Button type="primary">Apply Coupon</Button>
+				<Button type="primary">{t("total.apply")}</Button>
 			</div>
 			<div
 				style={{
@@ -46,7 +48,7 @@ export const TotalSection: React.FC = () => {
 						lineHeight: "28px"
 					}}
 				>
-					Cart Total
+					{t("total.cart")}
 				</h3>
 				<ul
 					style={{
@@ -65,7 +67,7 @@ export const TotalSection: React.FC = () => {
 							backgroundColor: "#fff"
 						}}
 					>
-						<span>Subtotal</span>
+						<span>{t("total.subtotal")}</span>
 						<span>
 							$
 							{cartProducts.reduce(
@@ -82,14 +84,14 @@ export const TotalSection: React.FC = () => {
 							backgroundColor: "#fff"
 						}}
 					>
-						<span>Discount</span>
+						<span>{t("total.discount")}</span>
 						<span>
 							$
 							{cartProducts.reduce(
 								(acc, product) =>
 									product.priceOld
 										? acc +
-										  (product.priceOld - product.price) * product.quantity
+											(product.priceOld - product.price) * product.quantity
 										: acc,
 								0
 							)}
@@ -103,8 +105,8 @@ export const TotalSection: React.FC = () => {
 							backgroundColor: "#fff"
 						}}
 					>
-						<span>Shipping</span>
-						<span>Free</span>
+						<span>{t("total.shipping")}</span>
+						<span>{t("total.free")}</span>
 					</li>
 					<li
 						style={{
@@ -114,7 +116,7 @@ export const TotalSection: React.FC = () => {
 							backgroundColor: "#fff"
 						}}
 					>
-						<span>Total</span>
+						<span>{t("total.tot")}</span>
 						<span>
 							$
 							{cartProducts.reduce(
@@ -124,7 +126,7 @@ export const TotalSection: React.FC = () => {
 						</span>
 					</li>
 				</ul>
-				<Button>Process to checkout</Button>
+				<Button>{t("total.process")}</Button>
 			</div>
 		</section>
 	);

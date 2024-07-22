@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+
+import { Trans, useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
 import Slider from "@/components/Slider";
@@ -10,6 +14,7 @@ import ImageIphone from "@/images/iphone.jpg";
 import ImageArrow from "@/images/icons/arrow-left.svg";
 
 export const MenuSection: React.FC = () => {
+	const { t } = useTranslation();
 	return (
 		<section
 			style={{
@@ -65,7 +70,7 @@ export const MenuSection: React.FC = () => {
 										}}
 									>
 										<Image src={ImageApple} alt="Apple" draggable={false} />
-										<span style={{ marginTop: 4 }}>iPhone 14 Series</span>
+										<span style={{ marginTop: 4 }}>{t("iphone.title")}</span>
 									</div>
 									<h1
 										className={fontInter.className}
@@ -76,9 +81,11 @@ export const MenuSection: React.FC = () => {
 											letterSpacing: "0.04em"
 										}}
 									>
-										Up to 10%
-										<br />
-										off Voucher
+										<Trans i18nKey="iphone.voucher">
+											Up to 10%
+											<br />
+											off Voucher
+										</Trans>
 									</h1>
 									<Link
 										href="#"
@@ -96,7 +103,7 @@ export const MenuSection: React.FC = () => {
 												borderBottom: "1px solid #fff"
 											}}
 										>
-											Shop Now!
+											{t("iphone.shop")}
 										</div>
 										<Image
 											src={ImageArrow}
@@ -150,7 +157,7 @@ export const MenuSection: React.FC = () => {
 										}}
 									>
 										<Image src={ImageApple} alt="Apple" draggable={false} />
-										<span style={{ marginTop: 4 }}>iPhone 14 Series</span>
+										<span style={{ marginTop: 4 }}>{t("iphone.title")}</span>
 									</div>
 									<h1
 										className={fontInter.className}
@@ -161,9 +168,11 @@ export const MenuSection: React.FC = () => {
 											letterSpacing: "0.04em"
 										}}
 									>
-										Up to 10%
-										<br />
-										off Voucher
+										<Trans i18nKey="iphone.voucher">
+											Up to 10%
+											<br />
+											off Voucher
+										</Trans>
 									</h1>
 									<Link
 										href="#"
@@ -181,7 +190,7 @@ export const MenuSection: React.FC = () => {
 												borderBottom: "1px solid #fff"
 											}}
 										>
-											Shop Now!
+											{t("iphone.shop")}
 										</div>
 										<Image
 											src={ImageArrow}
@@ -235,7 +244,7 @@ export const MenuSection: React.FC = () => {
 										}}
 									>
 										<Image src={ImageApple} alt="Apple" draggable={false} />
-										<span style={{ marginTop: 4 }}>iPhone 14 Series</span>
+										<span style={{ marginTop: 4 }}>{t("iphone.title")}</span>
 									</div>
 									<h1
 										className={fontInter.className}
@@ -246,9 +255,11 @@ export const MenuSection: React.FC = () => {
 											letterSpacing: "0.04em"
 										}}
 									>
-										Up to 10%
-										<br />
-										off Voucher
+										<Trans i18nKey="iphone.voucher">
+											Up to 10%
+											<br />
+											off Voucher
+										</Trans>
 									</h1>
 									<Link
 										href="#"
@@ -266,7 +277,7 @@ export const MenuSection: React.FC = () => {
 												borderBottom: "1px solid #fff"
 											}}
 										>
-											Shop Now!
+											{t("iphone.shop")}
 										</div>
 										<Image
 											src={ImageArrow}

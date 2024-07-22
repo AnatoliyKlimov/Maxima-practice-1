@@ -154,6 +154,38 @@
 		"speakersD": "Amazon wireless speakers",
 		"perfume": "Perfume",
 		"intense": "GUCCI INTENSE OUD EDP"
+	},
+	"products": {
+		"title": "Our Products",
+		"description": "Explore Our Products",
+		"view": "View All Products"
+	},
+	"month": {
+		"title": "This Month",
+		"description": "Best Selling Products",
+		"view": "View All"
+	},
+	"iphone": {
+		"title": "iPhone 14 Series",
+		"voucher": "Up to 10% <br /> off Voucher",
+		"shop": "Shop Now!"
+	},
+	"wishlist": {
+		"see": "See All",
+		"for": "Just For You",
+		"add": "Add All To Cart",
+		"wish": "Wishlist"
+	},
+	"total": {
+		"coupon": "Coupon Code",
+		"apply": "Apply Coupon",
+		"cart": "Cart Total",
+		"subtotal": "Subtotal",
+		"discount": "Discount",
+		"shipping": "Shipping",
+		"free": "Free",
+		"tot": "Total",
+		"process": "Process to checkout"
 	}
 }
 
