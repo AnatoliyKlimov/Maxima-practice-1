@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import i18next from "i18next";
 
 import Button from "@/lib/ui/elements/Button";
 import Rating from "@/lib/ui/components/Rating";
@@ -134,7 +135,7 @@ export const Card: React.FC<ICardProps> = ({
 						bottom: 0
 					}}
 				>
-					Add To Cart
+					{i18next.t("addToC")}
 				</Button>
 				<div
 					style={{

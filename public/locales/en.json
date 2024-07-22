@@ -1,6 +1,7 @@
 {
 	"welcomeMessage": "Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!",
 	"buy": "Shop Now",
+	"addToC": "Add To Cart",
 	"navigation": {
 		"home": "Home",
 		"contact": "Contact",
@@ -57,7 +58,7 @@
 			"instagram": "Instagram",
 			"linkedin": "LinkedIn"
 		},
-		"copyright": "© Copyright Rimel 2022. All rights reserved"
+		"copyright": "Copyright Rimel 2022. All rights reserved"
 	},
 	"cra": {
 		"create": "Create an account",
@@ -94,8 +95,8 @@
 	},
 	"about": {
 		"story": "Our Story",
-		"launced": "Launced in 2015, Exclusive is South Asia’s premier online shopping\n\t\t\t\t\t\tmakterplace with an active presense in Bangladesh. Supported by wide range\n\t\t\t\t\t\tof tailored marketing, data and service solutions, Exclusive has 10,500\n\t\t\t\t\t\tsallers and 300 brands and serves 3 millioons customers across the region.",
-		"has": "Exclusive has more than 1 Million products to offer, growing at a very fast.\n\t\t\t\t\t\tExclusive offers a diverse assotment in categories ranging from consumer.",
+		"launced": "Launced in 2015, Exclusive is South Asia’s premier online shopping makterplace with an active presense in Bangladesh. Supported by wide range of tailored marketing, data and service solutions, Exclusive has 10,500 sallers and 300 brands and serves 3 millioons customers across the region.",
+		"has": "Exclusive has more than 1 Million products to offer, growing at a very fast.Exclusive offers a diverse assotment in categories ranging from consumer.",
 		"sellers": "Sellers active our site",
 		"product": "Monthly Product Sale",
 		"customer": "Customer active in our site",

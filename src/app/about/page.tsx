@@ -68,7 +68,8 @@ export default function About() {
 				style={{
 					display: "flex",
 					justifyContent: "space-between",
-					padding: "98px 0"
+					padding: "98px 0",
+					gap: 18
 				}}
 			>
 				<div className={styles.box}>
