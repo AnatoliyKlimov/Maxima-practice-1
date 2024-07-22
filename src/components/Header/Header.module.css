@@ -1,5 +1,5 @@
 .userIconActive {
-	background: #0FF;
+	background: #0ff;
 	border-radius: 50%;
 	filter: invert(100%);
 }
@@ -8,13 +8,12 @@
 	position: absolute;
 	top: 100%;
 	right: 0;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
 	padding: 10px;
 	z-index: 10;
 	width: 225px;
 	border-radius: 4px;
-	background: rgb(122,100,128);
-	background: linear-gradient(90deg, rgba(122,100,128,1) 0%, rgba(0,0,0,1) 100%);
+	background: linear-gradient(90deg, rgb(122 100 128) 0%, rgb(0 0 0) 100%);
 }
 
 .userDropdown li a {
