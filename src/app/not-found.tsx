@@ -1,6 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 function NotFoundPage() {
+	const { t } = useTranslation();
+
 	return (
 		<div
 			style={{
@@ -19,7 +24,7 @@ function NotFoundPage() {
 					marginTop: "140px"
 				}}
 			>
-				404 Not found
+				404 {t("not-found.status")}
 			</h2>
 
 			<p
@@ -29,7 +34,7 @@ function NotFoundPage() {
 					padding: "40px 0 80px"
 				}}
 			>
-				Your visited page not found. You may go home page
+				{t("not-found.description")}
 			</p>
 
 			<Link
@@ -42,7 +47,7 @@ function NotFoundPage() {
 					marginBottom: "140px"
 				}}
 			>
-				Back to home page
+				{t("not-found.action")}
 			</Link>
 		</div>
 	);

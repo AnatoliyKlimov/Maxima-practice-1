@@ -3,42 +3,42 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { v4 as uuid } from "uuid";
+import { useTranslation } from "react-i18next";
 
-const navItems: {
-	key: string;
-	text: React.ReactNode;
-	url: string;
-}[] = [
-	{
-		key: uuid(),
-		text: "Home",
-		url: "/"
-	},
-	{
-		key: uuid(),
-		text: "Contact",
-		url: "/contact"
-	},
-	{
-		key: uuid(),
-		text: "About",
-		url: "/about"
-	},
-	{
-		key: uuid(),
-		text: "Sign Up",
-		url: "/sign-up"
-	}
-];
+const Navigation: React.FC = () => {
+	const { t } = useTranslation();
 
-export const Navigation: React.FC = () => {
 	const pathname = "/" + usePathname().split("/")[1];
+
+	const navItems = [
+		{
+			key: uuid(),
+			text: t("navigation.home"),
+			url: "/"
+		},
+		{
+			key: uuid(),
+			text: t("navigation.contact"),
+			url: "/contact"
+		},
+		{
+			key: uuid(),
+			text: t("navigation.about"),
+			url: "/about"
+		},
+		{
+			key: uuid(),
+			text: t("navigation.signup"),
+			url: "/sign-up"
+		}
+	];
 
 	return (
 		<ul
 			style={{
 				display: "inline-flex",
-				gap: 48
+				gap: 48,
+				fontWeight: 500
 			}}
 		>
 			{navItems.map((item) => (

@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { Trans, useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
 import Subscribe from "@/lib/ui/components/Subscribe";
@@ -15,6 +18,8 @@ import IconLinkedin from "@/images/social/linkedin.svg";
 import styles from "./Footer.module.css";
 
 export const Footer: React.FC = () => {
+	const { t } = useTranslation();
+
 	return (
 		<div
 			className="container-wrapper"
@@ -58,12 +63,12 @@ export const Footer: React.FC = () => {
 								</h1>
 							</Link>
 							<div className={styles.footerList}>
-								<h4>Subscribe</h4>
+								<h4>{t("footer.subscribe")}</h4>
 								<ul>
-									<li>Get 10% off your first order</li>
+									<li>{t("footer.subscribeInfo")}</li>
 									<li>
 										<Subscribe
-											placeholder="Enter your email"
+											placeholder={t("footer.send")}
 											iconStyle={{
 												filter: "invert(100%)"
 											}}
@@ -73,11 +78,13 @@ export const Footer: React.FC = () => {
 							</div>
 						</div>
 						<div className={styles.footerList}>
-							<h4>Support</h4>
+							<h4>{t("footer.contactInfo.contact")}</h4>
 							<ul>
 								<li>
-									111 Bijoy sarani, Dhaka, <br />
-									DH 1515, Bangladesh.
+									<Trans i18nKey="footerAddress">
+										111 Bijoy sarani, Dhaka, <br />
+										DH 1515, Bangladesh.
+									</Trans>
 								</li>
 								<li>
 									<a href="mailto:exclusive@gmail.com">exclusive@gmail.com</a>
@@ -88,44 +95,52 @@ export const Footer: React.FC = () => {
 							</ul>
 						</div>
 						<div className={styles.footerList}>
-							<h4>Account</h4>
+							<h4>{t("footer.account")}</h4>
 							<ul>
 								<li>
-									<Link href="/cabinet">My Account</Link>
+									<Link href="/cabinet">
+										{t("footer.accountLinks.myAccount")}
+									</Link>
 								</li>
 								<li>
-									<Link href="/sign-in">Login / Register</Link>
+									<Link href="/sign-in">
+										{t("footer.accountLinks.loginRegister")}
+									</Link>
 								</li>
 								<li>
-									<Link href="/cart">Cart</Link>
+									<Link href="/cart">{t("footer.accountLinks.cart")}</Link>
 								</li>
 								<li>
-									<Link href="/wishlist">Wishlist</Link>
+									<Link href="/wishlist">
+										{t("footer.accountLinks.wishlist")}
+									</Link>
 								</li>
 								<li>
-									<Link href="/shop">Shop</Link>
+									<Link href="/shop">{t("footer.accountLinks.shop")}</Link>
 								</li>
 							</ul>
 						</div>
 						<div className={styles.footerList}>
-							<h4>Quick Link</h4>
+							<h4>{t("footer.quickLink")}</h4>
 							<ul>
 								<li>
-									<Link href="/policy">Privacy Policy</Link>
+									<Link href="/policy">
+										{t("footer.quickLinks.privacyPolicy")}
+									</Link>
 								</li>
 								<li>
-									<Link href="/terms">Terms Of Use</Link>
+									<Link href="/terms">{t("footer.quickLinks.termsOfUse")}</Link>
 								</li>
 								<li>
-									<Link href="/faq">FAQ</Link>
+									<Link href="/faq">{t("footer.quickLinks.faq")}</Link>
 								</li>
 								<li>
-									<Link href="/contact">Contact</Link>
+									<Link href="/contact">{t("footer.quickLinks.contact")}</Link>
 								</li>
 							</ul>
 						</div>
 						<div className={styles.footerList}>
-							<h4>Download App</h4>
+							<h4>{t("footer.downloadApp")}</h4>
 							<div>
 								<p
 									style={{
@@ -136,7 +151,7 @@ export const Footer: React.FC = () => {
 										color: "#FAFAFA"
 									}}
 								>
-									Save $3 with App New User Only
+									{t("footer.appInfo")}
 								</p>
 								<div
 									style={{
@@ -207,8 +222,7 @@ export const Footer: React.FC = () => {
 						lineHeight: "24px"
 					}}
 				>
-					<span style={{ fontSize: 26 }}>©&nbsp;</span> Copyright Rimel 2022. All right
-					reserved
+					<span style={{ fontSize: 26 }}>©&nbsp;</span> {t("footer.copyright")}
 				</div>
 			</div>
 		</div>

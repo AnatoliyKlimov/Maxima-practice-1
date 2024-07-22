@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { useTranslation } from "react-i18next";
 import Image from "next/image";
 import SlickSlider from "react-slick";
 
@@ -9,6 +10,7 @@ import Slider from "@/components/Slider";
 import Caption from "@/lib/ui/components/Caption";
 import Button from "@/lib/ui/elements/Button";
 import Card from "@/lib/ui/components/Card";
+
 import { useProducts } from "@/service/products";
 
 import { TProduct } from "@/types";
@@ -16,6 +18,8 @@ import { TProduct } from "@/types";
 import ImageArrow from "@/images/icons/arrow-left.svg";
 
 export const OurProductsSection: React.FC = () => {
+	const { t } = useTranslation();
+
 	const outProductsSlider1Ref = useRef<SlickSlider>(null);
 	const outProductsSlider2Ref = useRef<SlickSlider>(null);
 
@@ -28,7 +32,7 @@ export const OurProductsSection: React.FC = () => {
 				flexDirection: "column"
 			}}
 		>
-			<Caption text="Our Products" style={{ marginBottom: 24 }} />
+			<Caption text={t("products.title")} style={{ marginBottom: 24 }} />
 			<div
 				style={{
 					display: "flex",
@@ -47,7 +51,7 @@ export const OurProductsSection: React.FC = () => {
 						letterSpacing: "0.04em"
 					}}
 				>
-					Explore Our Products
+					{t("products.description")}
 				</h1>
 				<div
 					style={{
@@ -109,7 +113,7 @@ export const OurProductsSection: React.FC = () => {
 				}))}
 				style={{ marginBottom: 60 }}
 			/>
-			<Button style={{ alignSelf: "center" }}>View All Products</Button>
+			<Button style={{ alignSelf: "center" }}>{t("products.view")}</Button>
 		</section>
 	);
 };

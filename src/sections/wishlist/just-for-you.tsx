@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslation } from "react-i18next";
+
 import { Caption, Card } from "@/lib/ui/components";
 import { Button } from "@/lib/ui/elements";
 import { useProducts, useRecommendations } from "@/service";
@@ -7,6 +9,8 @@ import { useProducts, useRecommendations } from "@/service";
 import { TProduct } from "@/types";
 
 export const JustForYouSection: React.FC = () => {
+	const { t } = useTranslation();
+
 	const [recommendations] = useRecommendations();
 	const [products] = useProducts({ ids: recommendations });
 
@@ -21,7 +25,7 @@ export const JustForYouSection: React.FC = () => {
 				}}
 			>
 				<Caption
-					text="Just For You"
+					text={t("wishlist.for")}
 					textStyle={{
 						color: "var(--foreground)",
 						fontSize: 20,
@@ -30,7 +34,7 @@ export const JustForYouSection: React.FC = () => {
 					bordered={false}
 				/>
 				<Button type="secondary">
-					<span style={{ fontWeight: 500 }}>See All</span>
+					<span style={{ fontWeight: 500 }}>{t("wishlist.see")}</span>
 				</Button>
 			</div>
 			<div

@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import SlickSlider from "react-slick";
+import { useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
 import Slider from "@/components/Slider";
@@ -17,6 +18,8 @@ import ImageArrow from "@/images/icons/arrow-left.svg";
 import styles from "./categories.module.css";
 
 export const CategoriesSection: React.FC = () => {
+	const { t } = useTranslation();
+
 	const categoriesSliderRef = useRef<SlickSlider>(null);
 
 	return (
@@ -26,7 +29,7 @@ export const CategoriesSection: React.FC = () => {
 				flexDirection: "column"
 			}}
 		>
-			<Caption text="Categories" style={{ marginBottom: 24 }} />
+			<Caption text={t("categ.categories")} style={{ marginBottom: 24 }} />
 			<div
 				style={{
 					display: "flex",
@@ -45,7 +48,7 @@ export const CategoriesSection: React.FC = () => {
 						letterSpacing: "0.04em"
 					}}
 				>
-					Browse By Category
+					{t("categ.brows")}
 				</h1>
 				<div
 					style={{
@@ -80,36 +83,40 @@ export const CategoriesSection: React.FC = () => {
 					slidesToShow: 6,
 					slidesToScroll: 6
 				}}
-				slides={DefaultCategories.map((category) => ({
-					key: `categories-${category.id}`,
-					content: (
-						<Link href={category.url} className="no-hover-link">
-							<div
-								className={styles.category}
-								style={{
-									display: "flex",
-									flexDirection: "column",
-									alignItems: "center",
-									justifyContent: "center",
-									gap: 16,
-									height: 145,
-									width: 170,
-									borderRadius: 4
-								}}
-							>
-								<Image
-									src={category.icon}
-									alt={category.title}
+				slides={DefaultCategories.map((category) => {
+					const categoryTitle = t(category.titleKey);
+
+					return {
+						key: `categories-${category.id}`,
+						content: (
+							<Link href={category.url} className="no-hover-link">
+								<div
+									className={styles.category}
 									style={{
-										height: 56,
-										width: 56
+										display: "flex",
+										flexDirection: "column",
+										alignItems: "center",
+										justifyContent: "center",
+										gap: 16,
+										height: 145,
+										width: 170,
+										borderRadius: 4
 									}}
-								/>
-								<span style={{ lineHeight: "24px" }}>{category.title}</span>
-							</div>
-						</Link>
-					)
-				}))}
+								>
+									<Image
+										src={category.icon}
+										alt={categoryTitle}
+										style={{
+											height: 56,
+											width: 56
+										}}
+									/>
+									<span style={{ lineHeight: "24px" }}>{categoryTitle}</span>
+								</div>
+							</Link>
+						)
+					};
+				})}
 				style={{ marginBottom: 70 }}
 			/>
 			<hr />

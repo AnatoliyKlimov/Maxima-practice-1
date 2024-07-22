@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
 import Slider from "@/components/Slider";
-import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
+import Breadcrumb from "@/components/Breadcrumb";
 import { ServiceSection } from "@/sections";
 
 import portraitAfr from "@/images/portrait-two-african.png";
@@ -19,6 +22,8 @@ import iconLn from "@/images/icons/Icon-about-Linkedin.svg";
 import styles from "./about.module.css";
 
 export default function About() {
+	const { t } = useTranslation();
+
 	return (
 		<main
 			style={{
@@ -47,21 +52,15 @@ export default function About() {
 							marginBottom: 40
 						}}
 					>
-						Our Story
+						{t("about.story")}
 					</h2>
-					<p>
-						Launced in 2015, Exclusive is South Asia’s premier online shopping
-						makterplace with an active presense in Bangladesh. Supported by wide range
-						of tailored marketing, data and service solutions, Exclusive has 10,500
-						sallers and 300 brands and serves 3 millioons customers across the region.{" "}
-					</p>
+					<p>{t("about.launced")}</p>
 					<p
 						style={{
 							marginTop: 24
 						}}
 					>
-						Exclusive has more than 1 Million products to offer, growing at a very fast.
-						Exclusive offers a diverse assotment in categories ranging from consumer.
+						{t("about.has")}
 					</p>
 				</div>
 				<Image src={portraitAfr} width={570} alt="Two girl" />
@@ -70,28 +69,53 @@ export default function About() {
 				style={{
 					display: "flex",
 					justifyContent: "space-between",
-					padding: "98px 0"
+					padding: "98px 0",
+					gap: 18
 				}}
 			>
 				<div className={styles.box}>
 					<Image src={shopMistic} alt="shop" />
 					<span>10.5k </span>
-					<span>Sallers active our site</span>
+					<span
+						style={{
+							textAlign: "center"
+						}}
+					>
+						{t("about.sellers")}
+					</span>
 				</div>
 				<div className={styles.box}>
 					<Image src={moneyMistic} alt="dollar" />
 					<span>33k </span>
-					<span>Mopnthly Produduct Sale</span>
+					<span
+						style={{
+							textAlign: "center"
+						}}
+					>
+						{t("about.product")}
+					</span>
 				</div>
 				<div className={styles.box}>
 					<Image src={giftMistic} alt="gift" />
 					<span>45.5k </span>
-					<span>Customer active in our site</span>
+					<span
+						style={{
+							textAlign: "center"
+						}}
+					>
+						{t("about.customer")}
+					</span>
 				</div>
 				<div className={styles.box}>
 					<Image src={moneyMistic} alt="money" />
 					<span>25k </span>
-					<span>Anual gross sale in our site</span>
+					<span
+						style={{
+							textAlign: "center"
+						}}
+					>
+						{t("about.annual")}
+					</span>
 				</div>
 			</section>
 
@@ -135,9 +159,9 @@ export default function About() {
 										<span
 											style={{ marginTop: 24, fontSize: 32, fontWeight: 500 }}
 										>
-											Tom Cruise
+											{t("about.slider.name_one")}
 										</span>
-										<span>Founder & Chairman</span>
+										<span>{t("about.slider.profession_one")}</span>
 										<span
 											style={{
 												display: "flex",
@@ -191,9 +215,9 @@ export default function About() {
 										<span
 											style={{ marginTop: 24, fontSize: 32, fontWeight: 500 }}
 										>
-											Emma Watson
+											{t("about.slider.name_two")}
 										</span>
-										<span>Managing Director</span>
+										<span>{t("about.slider.profession_two")}</span>
 										<span
 											style={{
 												display: "flex",
@@ -247,9 +271,9 @@ export default function About() {
 										<span
 											style={{ marginTop: 24, fontSize: 32, fontWeight: 500 }}
 										>
-											Will Smith
+											{t("about.slider.name_three")}
 										</span>
-										<span>Product Designer</span>
+										<span>{t("about.slider.profession_three")}</span>
 										<span
 											style={{
 												display: "flex",

@@ -6,10 +6,11 @@ import { productsSlice } from "@/domain/products";
 import { wishlistSlice } from "@/domain/wishlist";
 import { usersSlice } from "@/domain/users";
 import { recommendationsSlice } from "@/domain/recommendations";
+import { cartSlice } from "@/domain/cart";
 
 const persistConfig = {
 	key: "state",
-	safelist: ["products", "wishlist", "user", "recommendations"],
+	safelist: ["products", "wishlist", "user", "recommendations", "cart"],
 	timeout: 200,
 	storage
 };
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
 	products: productsSlice.slice.reducer,
 	wishlist: wishlistSlice.slice.reducer,
 	users: usersSlice.slice.reducer,
-	recommendations: recommendationsSlice.slice.reducer
+	recommendations: recommendationsSlice.slice.reducer,
+	cart: cartSlice.slice.reducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

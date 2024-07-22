@@ -1,0 +1,205 @@
+{
+	"welcomeMessage": "Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!",
+	"buy": "Shop Now",
+	"addToC": "Add To Cart",
+	"not-found": {
+		"status": "Not found",
+		"description": "Your visited page not found. You may go home page",
+		"action": "Back to home page"
+	},
+	"navigation": {
+		"home": "Home",
+		"contact": "Contact",
+		"about": "About",
+		"signup": "Sign Up",
+		"cart": "Cart",
+		"search": "What are you looking for?"
+	},
+	"header": {
+		"account": "Account",
+		"myOrders": "My Orders",
+		"myCancellations": "My Cancellations",
+		"myReviews": "My Reviews",
+		"logout": "Logout"
+	},
+	"categories": {
+		"woman": "Women's Fashion",
+		"men": "Men’s Fashion",
+		"electronics": "Electronics",
+		"home": "Home & Lifestyle",
+		"medicine": "Medicine",
+		"sports": "Sports & Outdoor",
+		"baby": "Baby's & Toys",
+		"groceries": "Groceries & Pets",
+		"health": "Health & Beauty"
+	},
+	"footerAddress": "111 Bijoy sarani, Dhaka, <br />DH 1515, Bangladesh.",
+	"footer": {
+		"subscribe": "Subscribe",
+		"subscribeInfo": "Get 10% off your first order",
+		"send": "Enter your email",
+		"contactInfo": {
+			"contact": "Support"
+		},
+		"account": "Account",
+		"accountLinks": {
+			"myAccount": "My Account",
+			"loginRegister": "Login / Register",
+			"cart": "Cart",
+			"wishlist": "Wishlist",
+			"shop": "Shop"
+		},
+		"quickLink": "Quick Link",
+		"quickLinks": {
+			"privacyPolicy": "Privacy Policy",
+			"termsOfUse": "Terms Of Use",
+			"faq": "FAQ",
+			"contact": "Contact"
+		},
+		"downloadApp": "Download App",
+		"appInfo": "Save $3 with App New User Only",
+		"social": {
+			"facebook": "Facebook",
+			"twitter": "Twitter",
+			"instagram": "Instagram",
+			"linkedin": "LinkedIn"
+		},
+		"copyright": "Copyright Rimel 2022. All rights reserved"
+	},
+	"cra": {
+		"create": "Create an account",
+		"enter": "Enter your details below",
+		"name": "Name",
+		"email": "Email or Phone Number",
+		"passw": "Password",
+		"creatB": "Create Account",
+		"haveAcc": "Already have account?",
+		"login": "Log in",
+		"error": "Invalid phone number or password"
+	},
+	"login": {
+		"title": "Log in to Exclusive",
+		"subtitle": "Enter your details below",
+		"phonePlaceholder": "Email or Phone Number",
+		"passwordPlaceholder": "Password",
+		"button": "Log In",
+		"forgotPassword": "Forgot Password?",
+		"error": "Invalid phone number or password",
+		"google": "Sign up with Google"
+	},
+	"contact": {
+		"call": "Call To Us",
+		"available": "We are available 24/7, 7 days a week.",
+		"phone": "Phone",
+		"write": "Write To Us",
+		"message": "Fill out our form and we will contact you within 24 hours.",
+		"name": "Your Name*",
+		"email": "Your Email*",
+		"phones": "Your Phone*",
+		"mess": "Your Message",
+		"send": "Send Message"
+	},
+	"about": {
+		"story": "Our Story",
+		"launced": "Launced in 2015, Exclusive is South Asia’s premier online shopping makterplace with an active presense in Bangladesh. Supported by wide range of tailored marketing, data and service solutions, Exclusive has 10,500 sallers and 300 brands and serves 3 millioons customers across the region.",
+		"has": "Exclusive has more than 1 Million products to offer, growing at a very fast.Exclusive offers a diverse assotment in categories ranging from consumer.",
+		"sellers": "Sellers active our site",
+		"product": "Monthly Product Sale",
+		"customer": "Customer active in our site",
+		"annual": "Annual gross sales on our website",
+		"slider": {
+			"name_one": "Tom Cruise",
+			"name_two": "Emma Watson",
+			"name_three": "Will Smith",
+			"profession_one": "Founder & Chairman",
+			"profession_two": "Managing Director",
+			"profession_three": "Product Designer"
+		}
+	},
+	"service": {
+		"delivery": "FREE AND FAST DELIVERY",
+		"delivery_description": "Free delivery for all orders over $140",
+		"customer": "24/7 CUSTOMER SERVICE",
+		"customer_description": "Friendly 24/7 customer support",
+		"garantee": "MONEY BACK GUARANTEE",
+		"garantee_description": "We return money within 30 days"
+	},
+	"timer": {
+		"days": "Days",
+		"hours": "Hours",
+		"minutes": "Minutes",
+		"seconds": "Seconds"
+	},
+	"today": {
+		"tod": "Today's",
+		"sales": "Flash Sales",
+		"view": "View All Products"
+	},
+	"categ": {
+		"categories": "Categories",
+		"brows": "Browse By Category",
+		"phones": "Phones",
+		"computers": "Computers",
+		"smartWatch": "SmartWatch",
+		"camera": "Camera",
+		"headPhones": "HeadPhones",
+		"gaming": "Gaming"
+	},
+	"bann": "Enhance Your <br /> Music Expirience",
+	"banner": {
+		"categ": "Categories",
+		"buy": "Buy Now"
+	},
+	"featured": {
+		"title": "Featured",
+		"new": "New Arrival",
+		"ps5Desc": "Black and White version of the PS5 <br /> coming out on sale.",
+		"shop": "Shop Now",
+		"woman": "Women’s Collections",
+		"womanC": "Featured woman collections that <br />give you another vibe.",
+		"speakers": "Speakers",
+		"speakersD": "Amazon wireless speakers",
+		"perfume": "Perfume",
+		"intense": "GUCCI INTENSE OUD EDP"
+	},
+	"products": {
+		"title": "Our Products",
+		"description": "Explore Our Products",
+		"view": "View All Products"
+	},
+	"month": {
+		"title": "This Month",
+		"description": "Best Selling Products",
+		"view": "View All"
+	},
+	"iphone": {
+		"title": "iPhone 14 Series",
+		"voucher": "Up to 10% <br /> off Voucher",
+		"shop": "Shop Now!"
+	},
+	"wishlist": {
+		"see": "See All",
+		"for": "Just For You",
+		"add": "Add All To Cart",
+		"wish": "Wishlist"
+	},
+	"total": {
+		"coupon": "Coupon Code",
+		"apply": "Apply Coupon",
+		"cart": "Cart Total",
+		"subtotal": "Subtotal",
+		"discount": "Discount",
+		"shipping": "Shipping",
+		"free": "Free",
+		"tot": "Total",
+		"process": "Process to checkout"
+	},
+	"table": {
+		"product": "Product",
+		"price": "Price",
+		"quantity": "Quantity",
+		"subtotal": "Subtotal",
+		"return": "Return To Shop",
+		"clear": "Clear Cart"
+	}
+}

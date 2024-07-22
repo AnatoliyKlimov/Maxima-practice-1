@@ -2,12 +2,15 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 import RegisterForm from "@/components/RegisterForm";
 
 import productImage from "@/images/SideImage.png";
 
 export default function SignUpPage() {
+	const { t } = useTranslation();
+
 	return (
 		<main
 			style={{
@@ -30,8 +33,10 @@ export default function SignUpPage() {
 						marginTop: 32
 					}}
 				>
-					<span>Already have account?</span>
-					<Link href="/sign-in">Log in</Link>
+					<span>{t("cra.haveAcc")}</span>
+					<Link href="/sign-in" style={{ borderBottom: "1px solid var(--foreground)" }}>
+						{t("cra.login")}
+					</Link>
 				</p>
 			</aside>
 		</main>
