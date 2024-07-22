@@ -8,42 +8,41 @@ import IconSmartWatch from "@/images/icons/categories/smart-watch.svg";
 import IconCamera from "@/images/icons/categories/camera.svg";
 import IconHeadPhones from "@/images/icons/categories/headphones.svg";
 import IconGaming from "@/images/icons/categories/gaming.svg";
-import i18next from "i18next";
 
 export const DefaultCategories: TCategory[] = [
 	{
 		id: uuid(),
-		title: "Phones",
+		titleKey: "categ.phones",
 		icon: IconPhones,
 		url: "/phones"
 	},
 	{
 		id: uuid(),
-		title: "Computers",
+		titleKey: "categ.computers",
 		icon: IconComputers,
 		url: "/computers"
 	},
 	{
 		id: uuid(),
-		title: "SmartWatch",
+		titleKey: "categ.smartWatch",
 		icon: IconSmartWatch,
 		url: "/smart-watch"
 	},
 	{
 		id: uuid(),
-		title: "Camera",
+		titleKey: "categ.camera",
 		icon: IconCamera,
 		url: "/camera"
 	},
 	{
 		id: uuid(),
-		title: "HeadPhones",
+		titleKey: "categ.headPhones",
 		icon: IconHeadPhones,
 		url: "/headphones"
 	},
 	{
 		id: uuid(),
-		title: "Gaming",
+		titleKey: "categ.gaming",
 		icon: IconGaming,
 		url: "/gaming"
 	}
