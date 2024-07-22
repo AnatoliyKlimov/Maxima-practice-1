@@ -1,16 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
 import Caption from "@/lib/ui/components/Caption";
 import Button from "@/lib/ui/elements/Button";
 import Card from "@/lib/ui/components/Card";
+
 import { useProducts } from "@/service/products";
 
 import { TProduct } from "@/types";
 
 export const ThisMonthProductsSection: React.FC = () => {
+	const { t } = useTranslation();
+
 	const [thisMonthProducts] = useProducts({ type: "this-month" });
 
 	return (
@@ -20,7 +24,7 @@ export const ThisMonthProductsSection: React.FC = () => {
 				flexDirection: "column"
 			}}
 		>
-			<Caption text="This Month" style={{ marginBottom: 24 }} />
+			<Caption text={t("month.title")} style={{ marginBottom: 24 }} />
 			<div
 				style={{
 					display: "flex",
@@ -40,7 +44,7 @@ export const ThisMonthProductsSection: React.FC = () => {
 						letterSpacing: "0.04em"
 					}}
 				>
-					Best Selling Products
+					{t("month.description")}
 				</h1>
 				<Button
 					type="primary"
@@ -52,7 +56,7 @@ export const ThisMonthProductsSection: React.FC = () => {
 						right: 0
 					}}
 				>
-					View All
+					{t("month.view")}
 				</Button>
 			</div>
 			<div

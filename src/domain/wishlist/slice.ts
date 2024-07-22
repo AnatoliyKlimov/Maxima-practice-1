@@ -8,10 +8,16 @@ export const slice = createSlice({
 	initialState: defaultWishlist,
 	reducers: {
 		addWishlistProduct: (state, action: PayloadAction<TWishlistAddDTO>) => {
-			state.push(action.payload);
+			const existingProductID = state.find((productID) => productID == action.payload);
+
+			if (!existingProductID) {
+				state.push(action.payload);
+			} else {
+				return state;
+			}
 		},
 		deleteWishlistProduct: (state, action: PayloadAction<TWishlistDeleteDTO>) => {
-			let existingProductID = state.find((productID) => productID == action.payload);
+			const existingProductID = state.find((productID) => productID == action.payload);
 
 			if (existingProductID) {
 				return state.filter((productID) => productID != existingProductID);

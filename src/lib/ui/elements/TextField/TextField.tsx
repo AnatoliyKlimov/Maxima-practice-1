@@ -3,7 +3,7 @@ import { TBaseComponent } from "@/types";
 import styles from "./TextField.module.css";
 
 interface ITextFieldProps extends TBaseComponent<"input"> {
-	as?: "primary" | "flat";
+	as?: "primary" | "secondary" | "flat";
 	error?: string;
 }
 

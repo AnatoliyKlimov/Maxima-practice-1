@@ -2,14 +2,13 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 import styles from "./Breadcrumb.module.css";
 
-const capitalizeFirstLetter = (string: string) => {
-	return string.charAt(0).toUpperCase() + string.slice(1);
-};
-
 const Breadcrumb: React.FC = () => {
+	const { t } = useTranslation();
+
 	const pathname = usePathname();
 	const pathnames = pathname.split("/").filter((x) => x);
 
@@ -18,10 +17,12 @@ const Breadcrumb: React.FC = () => {
 			<ul className={styles.breadcrumb}>
 				{pathnames.length > 0 ? (
 					<li className={styles["breadcrumb-item"]}>
-						<Link href="/">Home /</Link>
+						<Link href="/">{t("navigation.home")} /</Link>
 					</li>
 				) : (
-					<li className={`${styles["breadcrumb-item"]} ${styles.active}`}>Home</li>
+					<li className={`${styles["breadcrumb-item"]} ${styles.active}`}>
+						{t("navigation.home")}
+					</li>
 				)}
 				{pathnames.map((name, index) => {
 					const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
@@ -33,11 +34,11 @@ const Breadcrumb: React.FC = () => {
 							className={`${styles["breadcrumb-item"]} ${styles.active}`}
 							aria-current="page"
 						>
-							{capitalizeFirstLetter(name)}
+							{t(`navigation.${name}`)}
 						</li>
 					) : (
 						<li key={name} className={styles["breadcrumb-item"]}>
-							<Link href={routeTo}>{capitalizeFirstLetter(name)}</Link>
+							<Link href={routeTo}>{t(`navigation.${name}`)}</Link>
 						</li>
 					);
 				})}

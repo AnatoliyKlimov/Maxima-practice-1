@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { fontPoppins } from "@/app/fonts";
+import { fontOpenSans } from "@/app/fonts";
 import StoreProvider from "@/store/provider";
 import TopHeader from "@/components/TopHeader";
 import Header from "@/components/Header";
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={fontPoppins.className}>
+			<body className={fontOpenSans.className}>
 				<StoreProvider>
 					<div
 						style={{

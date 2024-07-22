@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslation } from "react-i18next";
+
 import { Caption, Card } from "@/lib/ui/components";
 import { Button } from "@/lib/ui/elements";
 import { useProducts, useWishlist } from "@/service";
@@ -7,6 +9,8 @@ import { useProducts, useWishlist } from "@/service";
 import { TProduct, TWishlistProduct } from "@/types";
 
 export const WishlistSection: React.FC = () => {
+	const { t } = useTranslation();
+
 	const [wishlist] = useWishlist();
 	const [products] = useProducts({ ids: wishlist });
 
@@ -27,7 +31,7 @@ export const WishlistSection: React.FC = () => {
 				}}
 			>
 				<Caption
-					text={`Wishlist (${(products as TProduct[]).length})`}
+					text={`${t("wishlist.wish")} (${(products as TProduct[]).length})`}
 					textStyle={{
 						color: "var(--foreground)",
 						fontSize: 20,
@@ -36,7 +40,7 @@ export const WishlistSection: React.FC = () => {
 					bordered={false}
 				/>
 				<Button type="secondary">
-					<span style={{ fontWeight: 500 }}>Add All To Cart</span>
+					<span style={{ fontWeight: 500 }}>{t("wishlist.add")}</span>
 				</Button>
 			</div>
 			<div

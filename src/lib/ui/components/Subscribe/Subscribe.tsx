@@ -25,13 +25,14 @@ export const Subscribe: React.FC<ISubscribeProps> = ({
 				padding: "12px 16px",
 				border: "2px solid #fff",
 				borderRadius: 4,
+				maxWidth: 280,
 				...style
 			}}
 		>
 			<input
 				type="text"
 				style={{
-					marginRight: 30,
+					width: 200,
 					fontSize: 16,
 					fontWeight: 400,
 					lineHeight: "24px",

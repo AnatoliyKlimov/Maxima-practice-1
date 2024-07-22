@@ -3,13 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import i18next from "i18next";
 
 import Button from "@/lib/ui/elements/Button";
 import Rating from "@/lib/ui/components/Rating";
 import Colors from "@/lib/ui/components/Colors";
 import { unique } from "@/lib/utils";
 
-import { useWishlist } from "@/service";
+import { useCart, useWishlist } from "@/service";
 
 import { TBaseComponent, TProduct } from "@/types";
 
@@ -36,6 +37,7 @@ export const Card: React.FC<ICardProps> = ({
 	...otherProps
 }) => {
 	const [, { addProduct, deleteProduct }] = useWishlist();
+	const [, { addProduct: addProductToCart }] = useCart();
 
 	const router = useRouter();
 
@@ -126,13 +128,14 @@ export const Card: React.FC<ICardProps> = ({
 				/>
 				<Button
 					type="incard"
+					onClick={() => addProductToCart({ id: product.id })}
 					className="incard-btn"
 					style={{
 						position: "absolute",
 						bottom: 0
 					}}
 				>
-					Add To Cart
+					{i18next.t("addToC")}
 				</Button>
 				<div
 					style={{

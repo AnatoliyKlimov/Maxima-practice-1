@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { Trans, useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
 import Caption from "@/lib/ui/components/Caption";
@@ -12,6 +15,8 @@ import ImagePerfume from "@/images/perfume.png";
 import styles from "./featured.module.css";
 
 export const FeaturedSection: React.FC = () => {
+	const { t } = useTranslation();
+
 	return (
 		<section
 			style={{
@@ -19,7 +24,7 @@ export const FeaturedSection: React.FC = () => {
 				flexDirection: "column"
 			}}
 		>
-			<Caption text="Featured" style={{ marginBottom: 24 }} />
+			<Caption text={t("featured.title")} style={{ marginBottom: 24 }} />
 			<div
 				style={{
 					display: "flex",
@@ -39,7 +44,7 @@ export const FeaturedSection: React.FC = () => {
 							letterSpacing: "0.04em"
 						}}
 					>
-						New Arrival
+						{t("featured.new")}
 					</h1>
 				</div>
 			</div>
@@ -92,10 +97,12 @@ export const FeaturedSection: React.FC = () => {
 								lineHeight: "21px"
 							}}
 						>
-							Black and White version of the PS5
-							<br /> coming out on sale.
+							<Trans i18nKey="featured.ps5Desc">
+								Black and White version of the PS5
+								<br /> coming out on sale.
+							</Trans>
 						</p>
-						<Link href="#">Shop Now</Link>
+						<Link href="#">{t("featured.shop")}</Link>
 					</div>
 				</div>
 				<div className={styles.featuredBlock} style={{ gridArea: "women" }}>
@@ -128,7 +135,7 @@ export const FeaturedSection: React.FC = () => {
 								letterSpacing: "0.03em"
 							}}
 						>
-							Women’s Collections
+							{t("featured.woman")}
 						</h2>
 						<p
 							style={{
@@ -136,10 +143,12 @@ export const FeaturedSection: React.FC = () => {
 								lineHeight: "21px"
 							}}
 						>
-							Featured woman collections that <br />
-							give you another vibe.
+							<Trans i18nKey="featured.womanC">
+								Featured woman collections that <br />
+								give you another vibe.
+							</Trans>
 						</p>
-						<Link href="#">Shop Now</Link>
+						<Link href="#">{t("featured.shop")}</Link>
 					</div>
 				</div>
 				<div className={styles.featuredBlock} style={{ gridArea: "speakers" }}>
@@ -179,7 +188,7 @@ export const FeaturedSection: React.FC = () => {
 								letterSpacing: "0.03em"
 							}}
 						>
-							Speakers
+							{t("featured.speakers")}
 						</h2>
 						<p
 							style={{
@@ -187,9 +196,9 @@ export const FeaturedSection: React.FC = () => {
 								lineHeight: "21px"
 							}}
 						>
-							Amazon wireless speakers
+							{t("featured.speakersD")}
 						</p>
-						<Link href="#">Shop Now</Link>
+						<Link href="#">{t("featured.shop")}</Link>
 					</div>
 				</div>
 				<div className={styles.featuredBlock} style={{ gridArea: "perfume" }}>
@@ -229,7 +238,7 @@ export const FeaturedSection: React.FC = () => {
 								letterSpacing: "0.03em"
 							}}
 						>
-							Perfume
+							{t("featured.perfume")}
 						</h2>
 						<p
 							style={{
@@ -237,9 +246,9 @@ export const FeaturedSection: React.FC = () => {
 								lineHeight: "21px"
 							}}
 						>
-							GUCCI INTENSE OUD EDP
+							{t("featured.intense")}
 						</p>
-						<Link href="#">Shop Now</Link>
+						<Link href="#">{t("featured.shop")}</Link>
 					</div>
 				</div>
 			</div>

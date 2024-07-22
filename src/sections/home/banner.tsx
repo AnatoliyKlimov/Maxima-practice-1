@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { Trans, useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
 import Timer from "@/lib/ui/components/Timer";
@@ -7,6 +10,8 @@ import Button from "@/lib/ui/elements/Button";
 import ImageSmartSpeaker from "@/images/jbl-boombox-2.png";
 
 export const BannerSection: React.FC = () => {
+	const { t } = useTranslation();
+
 	return (
 		<section
 			style={{
@@ -42,7 +47,7 @@ export const BannerSection: React.FC = () => {
 						}}
 					>
 						<span style={{ marginTop: 4, color: "var(--button-green)" }}>
-							Categories
+							{t("banner.categ")}
 						</span>
 					</div>
 					<h1
@@ -54,9 +59,10 @@ export const BannerSection: React.FC = () => {
 							letterSpacing: "0.04em"
 						}}
 					>
-						Enhance Your
-						<br />
-						Music Expirience
+						<Trans i18nKey="bann">
+							Enhance Your <br />
+							Music Expirience
+						</Trans>
 					</h1>
 					<Timer
 						remainingTime={{
@@ -77,7 +83,7 @@ export const BannerSection: React.FC = () => {
 							marginTop: 12
 						}}
 					>
-						Buy Now
+						{t("banner.buy")}
 					</Button>
 				</div>
 				<div

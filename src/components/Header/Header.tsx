@@ -3,14 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
 import Navigation from "@/components/Navigation";
 import Search from "@/lib/ui/components/Search";
 
-import { useProducts, useWishlist, useUsers } from "@/service";
-
-import { TProduct } from "@/types";
+import { useWishlist, useCart, useUsers } from "@/service";
 
 import ImageWishlist from "@/images/icons/wishlist.svg";
 import ImageCart from "@/images/icons/cart.svg";
@@ -24,8 +23,10 @@ import DropLogout from "@/images/icons/logout-dropd.svg";
 import styles from "./Header.module.css";
 
 export const Header: React.FC = () => {
+	const { t } = useTranslation();
+
 	const [wishlist] = useWishlist();
-	const [products] = useProducts({ ids: wishlist });
+	const [cart] = useCart();
 
 	const [dropdownVisible, setDropdownVisible] = useState(false);
 
@@ -87,7 +88,7 @@ export const Header: React.FC = () => {
 						}}
 					>
 						<Search
-							placeholder="What are you looking for?"
+							placeholder={t("navigation.search")}
 							inputStyle={{ minWidth: 162 }}
 						/>
 						<div
@@ -99,10 +100,15 @@ export const Header: React.FC = () => {
 						>
 							<Link
 								href="/wishlist"
-								style={{ display: "flex", position: "relative" }}
+								style={{
+									display: "flex",
+									height: 32,
+									width: 32,
+									position: "relative"
+								}}
 							>
 								<Image src={ImageWishlist} alt="Wishlist" draggable={false} />
-								{products && (products as TProduct[]).length > 0 && (
+								{wishlist && wishlist.length > 0 && (
 									<div
 										style={{
 											display: "flex",
@@ -118,18 +124,41 @@ export const Header: React.FC = () => {
 											color: "#fff"
 										}}
 									>
-										<span
-											style={{
-												marginLeft: -2
-											}}
-										>
-											{(products as TProduct[]).length}
-										</span>
+										<span>{wishlist.length}</span>
 									</div>
 								)}
 							</Link>
-							<Link href="/cart" style={{ display: "flex" }}>
+							<Link
+								href="/cart"
+								style={{
+									display: "flex",
+									alignItems: "center",
+									justifyContent: "center",
+									height: 32,
+									width: 32,
+									position: "relative"
+								}}
+							>
 								<Image src={ImageCart} alt="Cart" draggable={false} />
+								{cart && cart.length > 0 && (
+									<div
+										style={{
+											display: "flex",
+											justifyContent: "center",
+											alignItems: "center",
+											position: "absolute",
+											top: -2,
+											right: 0,
+											width: 17,
+											borderRadius: "50%",
+											backgroundColor: "var(--background-primary)",
+											fontSize: 12,
+											color: "#fff"
+										}}
+									>
+										<span>{cart.length}</span>
+									</div>
+								)}
 							</Link>
 							<div
 								onMouseEnter={handleMouseEnter}
@@ -138,13 +167,19 @@ export const Header: React.FC = () => {
 							>
 								<Link
 									href={currentUser ? "#" : "/sign-up"}
-									style={{ display: "flex" }}
+									style={{
+										display: "flex",
+										alignItems: "center",
+										justifyContent: "center",
+										height: 32,
+										width: 32
+									}}
+									className={currentUser ? styles.userIconActive : ""}
 								>
 									<Image
 										src={ImageUser}
 										alt="User"
 										draggable={false}
-										className={currentUser ? styles.userIconActive : ""}
 									/>
 								</Link>
 								{currentUser && dropdownVisible && (
@@ -167,7 +202,7 @@ export const Header: React.FC = () => {
 															height={32}
 															style={{ marginRight: 16 }}
 														/>
-														Account
+														{t("header.account")}
 													</span>
 												</Link>
 											</li>
@@ -183,12 +218,12 @@ export const Header: React.FC = () => {
 													>
 														<Image
 															src={DropOrder}
-															alt="Account Icon"
+															alt="Order Icon"
 															width={32}
 															height={32}
 															style={{ marginRight: 16 }}
 														/>
-														My Orders
+														{t("header.myOrders")}
 													</span>
 												</Link>
 											</li>
@@ -204,12 +239,12 @@ export const Header: React.FC = () => {
 													>
 														<Image
 															src={DropCancallations}
-															alt="Account Icon"
+															alt="Cancellations Icon"
 															width={32}
 															height={32}
 															style={{ marginRight: 16 }}
 														/>
-														My Cancellations
+														{t("header.myCancellations")}
 													</span>
 												</Link>
 											</li>
@@ -225,12 +260,12 @@ export const Header: React.FC = () => {
 													>
 														<Image
 															src={DropReviews}
-															alt="Account Icon"
+															alt="Reviews Icon"
 															width={32}
 															height={32}
 															style={{ marginRight: 16 }}
 														/>
-														My Reviews
+														{t("header.myReviews")}
 													</span>
 												</Link>
 											</li>
@@ -246,12 +281,12 @@ export const Header: React.FC = () => {
 													>
 														<Image
 															src={DropLogout}
-															alt="Account Icon"
+															alt="Logout Icon"
 															width={32}
 															height={32}
 															style={{ marginRight: 16 }}
 														/>
-														Logout
+														{t("header.logout")}
 													</span>
 												</a>
 											</li>

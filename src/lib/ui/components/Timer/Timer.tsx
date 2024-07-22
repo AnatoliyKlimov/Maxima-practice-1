@@ -6,6 +6,7 @@ import { fontInter } from "@/app/fonts";
 import { TBaseComponent } from "@/types";
 
 import styles from "./Timer.module.css";
+import { useTranslation } from "react-i18next";
 
 interface IRemaining {
 	seconds: number;
@@ -72,6 +73,7 @@ export const Timer: React.FC<ITimerProps> = ({
 		};
 	}, [remainingTime, direction]);
 
+	const { t } = useTranslation();
 	return (
 		<div
 			style={{
@@ -83,7 +85,7 @@ export const Timer: React.FC<ITimerProps> = ({
 		>
 			<span
 				className={`${styles.timerStrokeWrapper} ${inBanner ? styles.timerStrokeWrapperInBanner : ""}`}
-				data-label="Days"
+				data-label={t("timer.days")}
 			>
 				<span className={`${styles.timerStroke} ${fontInter.className}`}>
 					{`${remaining.days.toString().padStart(2, "0")}`}
@@ -92,7 +94,7 @@ export const Timer: React.FC<ITimerProps> = ({
 			{!inBanner && <span className={styles.timerSeparator}>:</span>}
 			<span
 				className={`${styles.timerStrokeWrapper} ${inBanner ? styles.timerStrokeWrapperInBanner : ""}`}
-				data-label="Hours"
+				data-label={t("timer.hours")}
 			>
 				<span className={`${styles.timerStroke} ${fontInter.className}`}>
 					{`${remaining.hours.toString().padStart(2, "0")}`}
@@ -101,7 +103,7 @@ export const Timer: React.FC<ITimerProps> = ({
 			{!inBanner && <span className={styles.timerSeparator}>:</span>}
 			<span
 				className={`${styles.timerStrokeWrapper} ${inBanner ? styles.timerStrokeWrapperInBanner : ""}`}
-				data-label="Minutes"
+				data-label={t("timer.minutes")}
 			>
 				<span className={`${styles.timerStroke} ${fontInter.className}`}>
 					{`${remaining.minutes.toString().padStart(2, "0")}`}
@@ -110,7 +112,7 @@ export const Timer: React.FC<ITimerProps> = ({
 			{!inBanner && <span className={styles.timerSeparator}>:</span>}
 			<span
 				className={`${styles.timerStrokeWrapper} ${inBanner ? styles.timerStrokeWrapperInBanner : ""}`}
-				data-label="Seconds"
+				data-label={t("timer.seconds")}
 			>
 				<span className={`${styles.timerStroke} ${fontInter.className}`}>
 					{`${remaining.seconds.toString().padStart(2, "0")}`}
