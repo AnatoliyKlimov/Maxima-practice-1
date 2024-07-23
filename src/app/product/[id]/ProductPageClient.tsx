@@ -4,6 +4,9 @@ import { notFound } from "next/navigation";
 import { useProducts } from "@/service/products";
 import { TProduct } from "@/types";
 import Breadcrumb from "@/components/Breadcrumb";
+import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+import { TodaysSection } from "@/sections/home";
+import { JustForYouSection } from "@/sections/wishlist";
 
 interface ProductPageClientProps {
 	id: string;
@@ -17,6 +20,30 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 	if (!product) {
 		notFound();
 	}
+
+	//функция для рендера звезд
+	const renderStars = (rating: number) => {
+		const fullStars = Math.floor(rating);
+		const hasHalfStar = rating % 1 >= 0.5;
+		const emptyStars = 5 - Math.ceil(rating);
+		const starColor = "#FFAD33";
+
+		return (
+			<>
+				{Array(fullStars)
+					.fill(null)
+					.map((_, index) => (
+						<FaStar key={`full-${index}`} color={starColor} />
+					))}
+				{hasHalfStar && <FaStarHalfAlt key="half" color={starColor} />}
+				{Array(emptyStars)
+					.fill(null)
+					.map((_, index) => (
+						<FaRegStar key={`empty-${index}`} color={starColor} />
+					))}
+			</>
+		);
+	};
 
 	return (
 		<>
@@ -70,8 +97,8 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 						style={{
 							width: "100%",
 							height: "100%",
-							objectFit: "cover",
-							borderRadius: 4
+							borderRadius: 4,
+							padding: "0 20px"
 						}}
 					/>
 				</div>
@@ -80,12 +107,22 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 						marginLeft: 80
 					}}
 				>
-					<h2>{product.title}</h2>
-					<p>Price: ${product.price}</p>
-					{product.priceOld && <p>Old Price: ${product.priceOld}</p>}
-					<p>Discount: {product.discountPercent}%</p>
+					<h2
+						style={{
+							fontSize: 24,
+							fontWeight: 600
+						}}
+					>
+						{product.title}
+					</h2>
 					<p>
-						Rating: {product.rating.value} ({product.rating.reviewsCount} reviews)
+						{renderStars(product.rating.value)} ({product.rating.reviewsCount} reviews)
+					</p>
+					<p>${product.price}</p>
+					{product.priceOld && <p>Old Price: ${product.priceOld}</p>}
+					<p>
+						PlayStation 5 Controller Skin High quality vinyl with air channel adhesive
+						for easy bubble free install & mess free removal Pressure sensitive.
 					</p>
 					{product.colors && (
 						<div>
@@ -100,6 +137,13 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 						</div>
 					)}
 				</div>
+			</div>
+			<div
+				style={{
+					paddingBottom: 140
+				}}
+			>
+				<JustForYouSection />
 			</div>
 		</>
 	);
