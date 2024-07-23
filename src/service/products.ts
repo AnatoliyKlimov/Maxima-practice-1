@@ -54,8 +54,8 @@ export const useProducts = (params?: TProductsHookOptions) => {
 		params && "id" in params
 			? productSelector(state, params.id)
 			: params && "ids" in params
-			? selectProductsByIDs(state, params.ids)
-			: productsSelector(state)
+				? selectProductsByIDs(state, params.ids)
+				: productsSelector(state)
 	);
 
 	const {

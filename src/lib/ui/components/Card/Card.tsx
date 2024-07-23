@@ -34,7 +34,7 @@ export const Card: React.FC<ICardProps> = ({
 	const router = useRouter();
 
 	const handleCardClick = () => {
-		router.push(`${product.id}`);
+		router.push(`/product/${product.id}`);
 	};
 
 	const renderButtons = () =>
@@ -58,7 +58,7 @@ export const Card: React.FC<ICardProps> = ({
 					key = "view";
 					action = (e: React.MouseEvent) => {
 						e.stopPropagation();
-						router.push(`${product.id}`);
+						router.push(`/product/${product.id}`);
 					};
 					break;
 
@@ -203,7 +203,7 @@ export const Card: React.FC<ICardProps> = ({
 					fontWeight: 500
 				}}
 			>
-				<Link href={`/product/${product.id}`}>{product.title}</Link>
+				<Link href={`/products/${product.id}`}>{product.title}</Link>
 			</h4>
 			<div
 				style={{
