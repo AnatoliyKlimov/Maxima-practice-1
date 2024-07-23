@@ -180,7 +180,7 @@ export const Card: React.FC<ICardProps> = ({
 								color: "#fff"
 							}}
 						>
-							NEW
+							{i18next.t("card.new")}
 						</div>
 					)}
 				</div>
@@ -203,7 +203,7 @@ export const Card: React.FC<ICardProps> = ({
 					fontWeight: 500
 				}}
 			>
-				<Link href={`/products/${product.id}`}>{product.title}</Link>
+				<Link href={`/product/${product.id}`}>{product.title}</Link>
 			</h4>
 			<div
 				style={{
