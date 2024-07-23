@@ -1,7 +1,11 @@
-import { useDispatch, useSelector, useStore } from "react-redux";
-
+import { TypedUseSelectorHook, useDispatch, useSelector, useStore } from "react-redux";
 import type { RootState, AppDispatch, AppStore } from "@/store";
 
-export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
-export const useAppSelector = useSelector.withTypes<RootState>();
-export const useAppStore = useStore.withTypes<AppStore>();
+// Хук для получения диспатчера с типами
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+
+// Хук для селектора с типами состояния
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+
+// Пример, если вам нужен хук для использования хранилища с типами
+export const useAppStore = () => useStore<AppStore>();

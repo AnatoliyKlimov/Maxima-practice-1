@@ -1,23 +1,16 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import i18next from "i18next";
-
 import Button from "@/lib/ui/elements/Button";
 import Rating from "@/lib/ui/components/Rating";
 import Colors from "@/lib/ui/components/Colors";
 import { unique } from "@/lib/utils";
-
 import { useCart, useWishlist } from "@/service";
-
 import { TBaseComponent, TProduct } from "@/types";
-
 import IconFavorite from "@/images/icons/favorite.svg";
 import IconView from "@/images/icons/view.svg";
 import IconDelete from "@/images/icons/delete.svg";
-
 import "./Card.css";
 
 type TCardButton = "wishlist" | "view" | "delete";
@@ -38,35 +31,44 @@ export const Card: React.FC<ICardProps> = ({
 }) => {
 	const [, { addProduct, deleteProduct }] = useWishlist();
 	const [, { addProduct: addProductToCart }] = useCart();
-
 	const router = useRouter();
+
+	const handleCardClick = () => {
+		router.push(`${product.id}`);
+	};
 
 	const renderButtons = () =>
 		unique<string>(buttons).map((button) => {
 			let icon: any,
 				key: string = "",
-				action = () => {};
+				action = (e: React.MouseEvent) => {};
 
 			switch (button) {
 				case "wishlist":
 					icon = IconFavorite;
 					key = "wishlist";
-					action = () => addProduct(product.id);
-
+					action = (e: React.MouseEvent) => {
+						e.stopPropagation();
+						addProduct(product.id);
+					};
 					break;
 
 				case "view":
 					icon = IconView;
 					key = "view";
-					action = () => router.push(`/product/${product.id}`);
-
+					action = (e: React.MouseEvent) => {
+						e.stopPropagation();
+						router.push(`${product.id}`);
+					};
 					break;
 
 				case "delete":
 					icon = IconDelete;
 					key = "delete";
-					action = () => deleteProduct(product.id);
-
+					action = (e: React.MouseEvent) => {
+						e.stopPropagation();
+						deleteProduct(product.id);
+					};
 					break;
 
 				default:
@@ -99,6 +101,7 @@ export const Card: React.FC<ICardProps> = ({
 				width: 270,
 				...style
 			}}
+			onClick={handleCardClick}
 			{...otherProps}
 		>
 			<div
@@ -128,7 +131,10 @@ export const Card: React.FC<ICardProps> = ({
 				/>
 				<Button
 					type="incard"
-					onClick={() => addProductToCart({ id: product.id })}
+					onClick={(e) => {
+						e.stopPropagation();
+						addProductToCart({ id: product.id });
+					}}
 					className="incard-btn"
 					style={{
 						position: "absolute",
