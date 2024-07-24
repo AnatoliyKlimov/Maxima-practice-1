@@ -13,6 +13,7 @@
 		"about": "About",
 		"signup": "Sign Up",
 		"cart": "Cart",
+		"order": "Checkout",
 		"search": "What are you looking for?"
 	},
 	"header": {
@@ -201,5 +202,26 @@
 		"subtotal": "Subtotal",
 		"return": "Return To Shop",
 		"clear": "Clear Cart"
+	},
+	"checkout": {
+		"header": "Billing details",
+		"submit": "Place Order",
+		"billingDetails": {
+			"firstName": "First Name",
+			"companyName": "Company Name (optional)",
+			"streetAddress": "Street Address",
+			"apartment": "Apartment, floor, etc. (optional)",
+			"city": "Town/City",
+			"phone": "Phone Number",
+			"email": "Email Address"
+		},
+		"paymentMethod": {
+			"bank": "Bank",
+			"cash": "Cash on delivery"
+		},
+		"validation": {
+			"required": "This field is required",
+			"email": "Please type a valid email"
+		}
 	}
 }

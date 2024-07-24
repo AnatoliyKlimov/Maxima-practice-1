@@ -1,0 +1,32 @@
+.radioContainer {
+	display: flex;
+	gap: 34px;
+}
+
+.radioContainer_horizontal {
+	flex-direction: row;
+}
+
+.radioContainer_vertical {
+	flex-direction: column;
+}
+
+.radio {
+	&:checked {
+		border: 3px solid #fff;
+		background-color: #000 !important;
+	}
+}
+
+.inputError {
+	border-color: red;
+}
+
+.errorMessage {
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+
+	color: red;
+	font-size: 12px;
+}
