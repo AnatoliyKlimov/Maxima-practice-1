@@ -54,7 +54,8 @@ export const RadioGroup: React.FC<IRadioGroupProps> = ({
 						marginRight: 16,
 						backgroundColor: "transparent",
 						outline: "2px solid #000",
-						cursor: "pointer"
+						cursor: "pointer",
+						...inputStyle
 					}}
 					value={option.value}
 					checked={value === option.value}
