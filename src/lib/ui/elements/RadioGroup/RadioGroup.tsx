@@ -15,6 +15,7 @@ interface IRadioGroupProps extends TBaseComponent<"input"> {
 	name: string;
 	options: TRadioOption[];
 	mode?: "horizontal" | "vertical";
+	inputStyle?: CSSProperties;
 	labelStyle?: CSSProperties;
 	error?: string;
 }
@@ -24,6 +25,7 @@ export const RadioGroup: React.FC<IRadioGroupProps> = ({
 	options,
 	mode = "horizontal",
 	style,
+	inputStyle,
 	labelStyle,
 	value,
 	error,
