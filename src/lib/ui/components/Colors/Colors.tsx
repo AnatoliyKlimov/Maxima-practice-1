@@ -1,7 +1,7 @@
 "use client";
 
-import { TBaseComponent, TColors } from "@/types";
 import { useRadioButtons } from "@/lib/utils/hooks";
+import { TBaseComponent, TColors } from "@/types";
 
 import styles from "./Colors.module.css";
 

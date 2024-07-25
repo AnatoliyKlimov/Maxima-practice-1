@@ -17,6 +17,7 @@ import ImageReturn from "@/images/icons/IconReturn.svg";
 import ImageWishList from "@/images/icons/wishlist.svg";
 import Minus from "@/images/icons/Minus.svg";
 import Plus from "@/images/icons/Plus.svg";
+import { RadioGroup } from "@/lib/ui/elements";
 
 interface ProductPageClientProps {
 	id: string;
@@ -208,6 +209,7 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 							}}
 						>
 							<p style={{ marginRight: 10 }}>Size:</p>
+							<RadioGroup name={} options={} />
 							{["XS", "S", "M", "L", "XL"].map((size, index) => (
 								<Button
 									key={index}
