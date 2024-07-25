@@ -218,7 +218,8 @@ export const Card: React.FC<ICardProps> = ({
 					<span
 						style={{
 							color: "var(--foreground-semi)",
-							textDecoration: "line-through solid var(--foreground-semi)"
+							textDecoration: "line-through solid var(--foreground-semi)",
+							WebkitTextDecoration: "line-through solid var(--foreground-semi)"
 						}}
 					>
 						${product.priceOld}
