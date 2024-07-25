@@ -1,23 +1,24 @@
 "use client";
 
-import { notFound } from "next/navigation";
-import { useProducts } from "@/service/products";
-import { TProduct } from "@/types";
-
-import Breadcrumb from "@/components/Breadcrumb";
 import { useState } from "react";
-import Button from "@/lib/ui/elements/Button";
-import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
-import { TodaysSection } from "@/sections/home";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+
+import { fontInter } from "@/app/fonts";
+import { RadioGroup, Button } from "@/lib/ui/elements";
+import Breadcrumb from "@/components/Breadcrumb";
+import { Colors, Rating } from "@/lib/ui/components";
 import { JustForYouSection } from "@/sections/wishlist";
 
-import Image from "next/image";
+import { useProducts, useCart, useWishlist } from "@/service";
+
+import { TProduct } from "@/types";
+
 import ImageDelivery from "@/images/icons/iconDelivery.svg";
 import ImageReturn from "@/images/icons/IconReturn.svg";
 import ImageWishList from "@/images/icons/wishlist.svg";
 import Minus from "@/images/icons/Minus.svg";
 import Plus from "@/images/icons/Plus.svg";
-import { RadioGroup } from "@/lib/ui/elements";
 
 interface ProductPageClientProps {
 	id: string;
@@ -29,49 +30,18 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 	});
 
 	const [quantity, setQuantity] = useState(1);
-	const [selectedSize, setSelectedSize] = useState<string | null>(null);
+	const [sizeValue, setSizeValue] = useState("M");
+
+	const [, { addProduct: addWishlistProduct }] = useWishlist();
+	const [, { addProduct: addCartProduct }] = useCart();
+
+	const handleSizeSelection = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setSizeValue(e.target.value);
+	};
 
 	if (!product) {
 		notFound();
 	}
-
-	// функция для рендера звезд
-	const renderStars = (rating: number) => {
-		const fullStars = Math.floor(rating);
-		const hasHalfStar = rating % 1 >= 0.5;
-		const emptyStars = 5 - Math.ceil(rating);
-		const starColor = "#FFAD33";
-
-		return (
-			<>
-				{Array(fullStars)
-					.fill(null)
-					.map((_, index) => (
-						<FaStar key={`full-${index}`} color={starColor} />
-					))}
-				{hasHalfStar && <FaStarHalfAlt key="half" color={starColor} />}
-				{Array(emptyStars)
-					.fill(null)
-					.map((_, index) => (
-						<FaRegStar key={`empty-${index}`} color={starColor} />
-					))}
-			</>
-		);
-	};
-
-	const handleQuantityChange = (increment: boolean) => {
-		setQuantity((prev) => (increment ? prev + 1 : prev - 1 > 0 ? prev - 1 : 1));
-	};
-
-	const handleSizeSelection = (size: string) => {
-		setSelectedSize(size);
-	};
-
-	const handleBuyNow = () => {
-		if (product) {
-			addProduct({ ...product, quantity, size: selectedSize });
-		}
-	};
 
 	return (
 		<>
@@ -97,13 +67,14 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 							.map((_, index) => (
 								<img
 									key={index}
-									src={product.image}
-									alt={product.title}
+									src={(product as TProduct).image}
+									alt={(product as TProduct).title}
 									style={{
 										width: 170,
 										height: 138,
 										background: "rgb(245, 245, 245)",
 										borderRadius: 4,
+										objectFit: "contain",
 										padding: 20
 									}}
 								/>
@@ -114,26 +85,30 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 					style={{
 						position: "relative",
 						width: 500,
-						height: 600, // Изменено на 600
+						height: 600,
 						background: "rgb(245, 245, 245)",
 						borderRadius: 4,
 						marginLeft: 30
 					}}
 				>
 					<img
-						src={product.image}
-						alt={product.title}
+						src={(product as TProduct).image}
+						alt={(product as TProduct).title}
 						style={{
 							width: "100%",
 							height: "100%",
 							borderRadius: 4,
-							padding: "20px 20px"
+							padding: "20px 20px",
+							objectFit: "contain"
 						}}
 					/>
 				</div>
 				<div
 					style={{
-						marginLeft: 80
+						marginLeft: 80,
+						display: "flex",
+						flexDirection: "column",
+						gap: 16
 					}}
 				>
 					<h2
@@ -142,7 +117,7 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 							fontWeight: 600
 						}}
 					>
-						{product.title}
+						{(product as TProduct).title}
 					</h2>
 					<p
 						style={{
@@ -151,29 +126,39 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 							gap: 8
 						}}
 					>
-						{renderStars(product.rating.value)}
-						<span style={{ opacity: 0.6 }}>
-							({product.rating.reviewsCount} Reviews)
+						<Rating rating={product.rating} />
+						<span
+							style={{
+								marginTop: -2
+							}}
+						>
+							|
 						</span>
 						<span style={{ color: "green", marginLeft: 8 }}>In Stock</span>
 					</p>
-					<div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-						<p style={{ color: "red", fontWeight: "bold", fontSize: "24px" }}>
-							${product.price}
-						</p>
-						{product.priceOld && (
+					<div
+						className={fontInter.className}
+						style={{ display: "flex", alignItems: "center", gap: 10 }}
+					>
+						<p style={{ fontSize: 24 }}>${(product as TProduct).price}</p>
+						{(product as TProduct).priceOld && (
 							<p
 								style={{
+									fontSize: 24,
 									color: "var(--foreground-semi)",
 									textDecoration: "line-through",
 									WebkitTextDecoration: "line-through"
 								}}
 							>
-								${product.priceOld}
+								${(product as TProduct).priceOld}
 							</p>
 						)}
 					</div>
-					<p>
+					<p
+						style={{
+							margin: "8px 0 28px"
+						}}
+					>
 						PlayStation 5 Controller Skin High quality vinyl with air channel adhesive
 						for easy bubble free install & mess free removal Pressure sensitive.
 					</p>
@@ -184,22 +169,26 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 							paddingBottom: 20
 						}}
 					>
-						<div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-							<p style={{ marginRight: 10 }}>Colours:</p>
-							{product.colors &&
-								product.colors.map((color, index) => (
-									<div
-										key={index}
-										style={{
-											width: 20,
-											height: 20,
-											backgroundColor: color.value,
-											borderRadius: "50%",
-											border: "1px solid #E0E0E0"
-										}}
-									></div>
-								))}
-						</div>
+						{product.colors && (
+							<div
+								style={{
+									display: "flex",
+									alignItems: "center",
+									gap: 10,
+									marginTop: 24
+								}}
+							>
+								<p style={{ marginRight: 10 }}>Colours:</p>
+								<Colors
+									style={{
+										marginTop: 4
+									}}
+									name={"productColors"}
+									colors={(product as TProduct).colors}
+								/>
+							</div>
+						)}
+
 						<div
 							style={{
 								display: "flex",
@@ -209,28 +198,39 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 							}}
 						>
 							<p style={{ marginRight: 10 }}>Size:</p>
-							<RadioGroup name={} options={} />
-							{["XS", "S", "M", "L", "XL"].map((size, index) => (
-								<Button
-									key={index}
-									style={{
-										padding: "5px 10px",
-										border:
-											selectedSize === size
-												? "1px solid rgb(219, 68, 68)"
-												: "1px solid rgba(0, 0, 0, 0.5)",
-										borderRadius: 4,
-										background:
-											selectedSize === size ? "rgb(219, 68, 68)" : "none",
-										color: selectedSize === size ? "white" : "inherit",
-										cursor: "pointer",
-										transition: "background 0.3s, border 0.3s, color 0.3s"
-									}}
-									onClick={() => handleSizeSelection(size)}
-								>
-									{size}
-								</Button>
-							))}
+							<RadioGroup
+								inputStyle={{ display: "none" }}
+								style={{ gap: 16 }}
+								name={"sizeRadio"}
+								options={["XS", "S", "M", "L", "XL"].map((size, index) => ({
+									value: size,
+									content: (
+										<div
+											key={index}
+											style={{
+												padding: "5px 10px",
+												border:
+													sizeValue === size
+														? "1px solid rgb(219, 68, 68)"
+														: "1px solid rgba(0, 0, 0, 0.5)",
+												borderRadius: 4,
+												background:
+													sizeValue === size
+														? "rgb(219, 68, 68)"
+														: "none",
+												color: sizeValue === size ? "white" : "inherit",
+												cursor: "pointer",
+												transition:
+													"background 0.3s, border 0.3s, color 0.3s"
+											}}
+										>
+											{size}
+										</div>
+									)
+								}))}
+								value={sizeValue}
+								onChange={handleSizeSelection}
+							/>
 						</div>
 						<div
 							style={{
@@ -256,7 +256,7 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 										cursor: "pointer",
 										transition: "background 0.3s, color 0.3s"
 									}}
-									onClick={() => handleQuantityChange(false)}
+									onClick={() => setQuantity((quantity) => quantity - 1)}
 								>
 									<Image src={Minus} alt="Minus" />
 								</Button>
@@ -282,7 +282,7 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 										cursor: "pointer",
 										transition: "background 0.3s, color 0.3s"
 									}}
-									onClick={() => handleQuantityChange(true)}
+									onClick={() => setQuantity((quantity) => quantity + 1)}
 								>
 									<Image
 										src={Plus}
@@ -299,6 +299,7 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 									display: "flex",
 									alignItems: "center"
 								}}
+								onClick={() => addCartProduct({ id: (product as TProduct).id })}
 							>
 								Buy Now
 							</Button>
@@ -311,9 +312,7 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 									color: "inherit",
 									cursor: "pointer"
 								}}
-								onClick={() => {
-									/* добавить в понравившиеся */
-								}}
+								onClick={() => addWishlistProduct((product as TProduct).id)}
 							>
 								<Image src={ImageWishList} alt="WishList" />
 							</Button>
