@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
 import { Button, TextField } from "@/lib/ui/elements";
@@ -128,7 +129,7 @@ export const TotalSection: React.FC = () => {
 						</span>
 					</li>
 				</ul>
-				<Button>{t("total.process")}</Button>
+				<Button as={Link} href="/order">{t("total.process")}</Button>
 			</div>
 		</section>
 	);

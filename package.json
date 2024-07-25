@@ -10,6 +10,8 @@
 	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^2.2.6",
+		"formik": "^2.4.6",
+		"i18next-browser-languagedetector": "^8.0.0",
 		"next": "14.2.4",
 		"react": "^18",
 		"react-dom": "^18",
@@ -19,7 +21,8 @@
 		"redux-persist": "^6.0.0",
 		"sharp": "^0.33.4",
 		"slick-carousel": "^1.8.1",
-		"uuid": "^10.0.0"
+		"uuid": "^10.0.0",
+		"yup": "^1.4.0"
 	},
 	"devDependencies": {
 		"@types/node": "^20",
