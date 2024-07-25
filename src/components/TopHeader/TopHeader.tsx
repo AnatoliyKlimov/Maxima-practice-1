@@ -4,13 +4,13 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
 import Select from "@/lib/ui/elements/Select";
-import i18next from "@/lib/utils/i18n";
+import i18n from "@/lib/utils/i18n";
 
 export const TopHeader: React.FC = () => {
 	const { t } = useTranslation();
 
 	const handleLanguageChange = (language: string) => {
-		i18next.changeLanguage(language);
+		i18n.changeLanguage(language);
 	};
 
 	return (
@@ -66,6 +66,7 @@ export const TopHeader: React.FC = () => {
 								value: "ru"
 							}
 						]}
+						defaultValue={i18n.resolvedLanguage}
 						onChange={(e) => handleLanguageChange(e.target.value)}
 					/>
 				</div>
