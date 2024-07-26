@@ -18,6 +18,7 @@
 			"@/store/*": ["./src/lib/store/*"],
 			"@/store": ["./src/lib/store"]
 		},
+		"typeRoots": ["./types", "./node_modules"],
 		"types": ["redux-persist"]
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

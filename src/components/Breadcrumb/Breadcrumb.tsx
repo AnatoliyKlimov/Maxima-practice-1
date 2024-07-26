@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
 import styles from "./Breadcrumb.module.css";
-import product from "@/sections/product";
 
 interface IBreadcrumbProps {
 	isProductView?: string;

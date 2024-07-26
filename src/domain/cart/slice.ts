@@ -10,31 +10,18 @@ export const slice = createSlice({
 		addCartProduct: (state, action: PayloadAction<TCartAddDTO>) => {
 			const existingProduct = state.find((product) => product.id == action.payload.id);
 
-			if (existingProduct) {
-				existingProduct.quantity++;
-			} else {
-				state.push({ id: action.payload.id, quantity: 1 });
-			}
+			if (existingProduct) existingProduct.quantity++;
+			else state.push({ id: action.payload.id, quantity: 1 });
 		},
 		updateCartProductQuantity: (state, action: PayloadAction<TCartUpdateDTO>) => {
 			const existingProduct = state.find((product) => product.id == action.payload.id);
 
-			if (existingProduct) {
-				existingProduct.quantity = action.payload.quantity;
-			} else {
-				// TODO: Обработка ошибок
-				return state;
-			}
+			if (existingProduct) existingProduct.quantity = action.payload.quantity;
 		},
 		deleteCartProduct: (state, action: PayloadAction<TCartDeleteDTO>) => {
 			const existingProduct = state.find((product) => product.id == action.payload.id);
 
-			if (existingProduct) {
-				return state.filter((product) => product.id != existingProduct.id);
-			} else {
-				// TODO: Обработка ошибок
-				return state;
-			}
+			if (existingProduct) return state.filter((product) => product.id != existingProduct.id);
 		},
 		clearCart: () => []
 	}

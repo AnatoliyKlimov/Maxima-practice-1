@@ -3,7 +3,7 @@ import { RootState } from "@/store";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { ArrayElement } from "@/lib/utils";
 
-import { TDeleteUserDTO, TUpdateUserDTO, TUser, TUserLoginDTO } from "@/types";
+import { TUser, TUserLoginDTO, TUpdateUserDTO, TDeleteUserDTO } from "@/types";
 
 const { selectUsers, selectUserByName, selectCurrentUser } = usersSelectors;
 

@@ -1,17 +1,19 @@
 export type TUser = {
+	username: string;
 	name: string;
-	phone: string;
 	password: string;
+	phone?: string;
+	email?: string;
 	firstName?: string;
 	lastName?: string;
 	address?: string;
 };
 
-export type TUserLoginDTO = Omit<TUser, "name">;
-export type TUpdateUserDTO = Partial<TUser>;
-export type TDeleteUserDTO = Pick<TUser, "name">;
+export type TUserLoginDTO = Pick<TUser, "username" | "password">;
+export type TUpdateUserDTO = Pick<TUser, "username"> & Omit<Partial<TUser>, "username">;
+export type TDeleteUserDTO = Pick<TUser, "username">;
 
 export type TUsersState = {
 	users: TUser[];
-	currentUser: TUser["name"] | null;
+	currentUser: TUser["username"] | null;
 };
