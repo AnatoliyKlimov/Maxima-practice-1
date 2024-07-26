@@ -216,7 +216,8 @@
 			"apartment": "Apartment, floor, etc. (optional)",
 			"city": "Town/City",
 			"phone": "Phone Number",
-			"email": "Email Address"
+			"email": "Email Address",
+			"save": "Save this information for faster check-out next time"
 		},
 		"paymentMethod": {
 			"bank": "Bank",

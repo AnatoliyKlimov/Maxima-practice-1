@@ -1,20 +1,27 @@
 "use client";
 
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Image from "next/image";
 
 import { fontInter } from "@/app/fonts";
-import { Button, TextField } from "@/lib/ui/elements";
+import { Button, CheckBox, TextField } from "@/lib/ui/elements";
 import { BillingForm, PaymentForm, TFormValues } from "@/components/CheckoutForm";
 
-import { useCart, useProducts } from "@/service";
+import { useBillingDetails, useCart, useProducts } from "@/service";
 
 import { TProduct } from "@/types";
 
 export const OrderSection: React.FC = () => {
 	const { t } = useTranslation();
+
+	const [
+		billingDetails,
+		billingDetailsSaved,
+		{ save: saveBillingDetails, clear: clearBillingDetails }
+	] = useBillingDetails();
 
 	const [cart] = useCart();
 	const [products] = useProducts({ ids: cart.map((product) => product.id) });
@@ -25,15 +32,7 @@ export const OrderSection: React.FC = () => {
 	}));
 
 	const initialValues: TFormValues = {
-		billingDetails: {
-			firstName: "",
-			companyName: "",
-			streetAddress: "",
-			apartment: "",
-			city: "",
-			phone: "",
-			email: ""
-		},
+		billingDetails,
 		paymentMethod: "bank"
 	};
 
@@ -62,6 +61,16 @@ export const OrderSection: React.FC = () => {
 			console.log(values);
 		}
 	});
+
+	useEffect(() => {
+		if (billingDetailsSaved) saveBillingDetails(formik.values.billingDetails);
+		else clearBillingDetails();
+	}, [
+		formik.values.billingDetails,
+		saveBillingDetails,
+		clearBillingDetails,
+		billingDetailsSaved
+	]);
 
 	return (
 		<div
@@ -98,6 +107,14 @@ export const OrderSection: React.FC = () => {
 					}}
 				>
 					<BillingForm formik={formik} validationSchema={validationSchemaBilling} />
+					<CheckBox
+						label={t("checkout.billingDetails.save")}
+						checked={billingDetailsSaved}
+						onChange={(e) => {
+							if (e.target.checked) saveBillingDetails(formik.values.billingDetails);
+							else clearBillingDetails();
+						}}
+					/>
 				</section>
 				<section
 					style={{
@@ -203,7 +220,7 @@ export const OrderSection: React.FC = () => {
 										(acc, product) =>
 											product.priceOld
 												? acc +
-													(product.priceOld - product.price) *
+												  (product.priceOld - product.price) *
 														product.quantity
 												: acc,
 										0
@@ -263,3 +280,4 @@ export const OrderSection: React.FC = () => {
 		</div>
 	);
 };
+

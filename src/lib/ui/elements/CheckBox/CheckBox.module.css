@@ -1,0 +1,26 @@
+.checkboxContainer {
+	display: flex;
+	gap: 34px;
+}
+
+.checkbox {
+	&:checked {
+		background-color: var(--background-primary) !important;
+		background-image: url("../../../../images/icons/checked.svg");
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+}
+
+.inputError {
+	border-color: red;
+}
+
+.errorMessage {
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+
+	color: red;
+	font-size: 12px;
+}
