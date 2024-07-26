@@ -5,8 +5,13 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
 import styles from "./Breadcrumb.module.css";
+import product from "@/sections/product";
 
-const Breadcrumb: React.FC = () => {
+interface IBreadcrumbProps {
+	isProductView?: string;
+}
+
+const Breadcrumb: React.FC<IBreadcrumbProps> = ({ isProductView = false }) => {
 	const { t } = useTranslation();
 
 	const pathname = usePathname();
@@ -24,24 +29,34 @@ const Breadcrumb: React.FC = () => {
 						{t("navigation.home")}
 					</li>
 				)}
-				{pathnames.map((name, index) => {
-					const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
-					const isLast = index === pathnames.length - 1;
+				{!isProductView &&
+					pathnames.map((name, index) => {
+						const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
+						const isLast = index === pathnames.length - 1;
 
-					return isLast ? (
-						<li
-							key={name}
-							className={`${styles["breadcrumb-item"]} ${styles.active}`}
-							aria-current="page"
-						>
-							{t(`navigation.${name}`)}
-						</li>
-					) : (
-						<li key={name} className={styles["breadcrumb-item"]}>
-							<Link href={routeTo}>{t(`navigation.${name}`)}</Link>
-						</li>
-					);
-				})}
+						return isLast ? (
+							<li
+								key={name}
+								className={`${styles["breadcrumb-item"]} ${styles.active}`}
+								aria-current="page"
+							>
+								{t(`navigation.${name}`)}
+							</li>
+						) : (
+							<li key={name} className={styles["breadcrumb-item"]}>
+								<Link href={routeTo}>{t(`navigation.${name}`)}</Link>
+							</li>
+						);
+					})}
+				{isProductView && (
+					<li
+						key={"product-view-breadcrumb"}
+						className={`${styles["breadcrumb-item"]} ${styles.active}`}
+						aria-current="page"
+					>
+						{isProductView}
+					</li>
+				)}
 			</ul>
 		</nav>
 	);
