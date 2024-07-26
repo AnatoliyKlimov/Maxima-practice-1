@@ -203,6 +203,9 @@
 		"return": "Return To Shop",
 		"clear": "Clear Cart"
 	},
+	"card": {
+		"new": "New"
+	},
 	"checkout": {
 		"header": "Billing details",
 		"submit": "Place Order",
@@ -224,5 +227,17 @@
 			"required": "This field is required",
 			"email": "Please type a valid email"
 		}
+	},
+	"renderingProduct": {
+		"stock": "In Stock",
+		"description": "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
+		"size": "size:",
+		"buy": "Buy Now",
+		"delivery": "Free Delivery",
+		"deliveryDescription": "Enter your postal code for Delivery Availability",
+		"return": "Return Delivery",
+		"returnDetails": "Free 30 Days Delivery Returns.",
+		"returnLink": "Details",
+		"colors": "Colors:"
 	}
 }
