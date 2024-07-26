@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -34,6 +35,8 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 
 	const [, { addProduct: addWishlistProduct }] = useWishlist();
 	const [, { addProduct: addCartProduct }] = useCart();
+
+	const { t } = useTranslation();
 
 	const handleSizeSelection = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSizeValue(e.target.value);
@@ -144,7 +147,9 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 						>
 							|
 						</span>
-						<span style={{ color: "green", marginLeft: 8 }}>In Stock</span>
+						<span style={{ color: "green", marginLeft: 8 }}>
+							{t("renderingProduct.stock")}
+						</span>
 					</p>
 					<div
 						className={fontInter.className}
@@ -169,8 +174,7 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 							margin: "8px 0 28px"
 						}}
 					>
-						PlayStation 5 Controller Skin High quality vinyl with air channel adhesive
-						for easy bubble free install & mess free removal Pressure sensitive.
+						{t("renderingProduct.description")}
 					</p>
 					<div
 						style={{
@@ -188,7 +192,7 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 									marginTop: 24
 								}}
 							>
-								<p style={{ marginRight: 10 }}>Colours:</p>
+								<p style={{ marginRight: 10 }}>{t("renderingProduct.colors")}</p>
 								<Colors
 									style={{
 										marginTop: 4
@@ -207,7 +211,7 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 								margin: "24px 0"
 							}}
 						>
-							<p style={{ marginRight: 10 }}>Size:</p>
+							<p style={{ marginRight: 10 }}>{t("renderingProduct.size")}</p>
 							<RadioGroup
 								inputStyle={{ display: "none" }}
 								style={{ gap: 16 }}
@@ -311,7 +315,7 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 								}}
 								onClick={() => addCartProduct({ id: (product as TProduct).id })}
 							>
-								Buy Now
+								{t("renderingProduct.buy")}
 							</Button>
 							<Button
 								style={{
@@ -340,9 +344,9 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 						>
 							<Image src={ImageDelivery} alt="Free Delivery" width={30} height={30} />
 							<div>
-								<p style={{ margin: 0 }}>Free Delivery</p>
+								<p style={{ margin: 0 }}>{t("renderingProduct.delivery")}</p>
 								<p style={{ margin: 0, fontSize: "12px", color: "grey" }}>
-									Enter your postal code for Delivery Availability
+									{t("renderingProduct.deliveryDescription")}
 								</p>
 							</div>
 						</div>
@@ -357,9 +361,10 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 						>
 							<Image src={ImageReturn} alt="Return Delivery" width={30} height={30} />
 							<div>
-								<p style={{ margin: 0 }}>Return Delivery</p>
+								<p style={{ margin: 0 }}>{t("renderingProduct.return")}</p>
 								<p style={{ margin: 0, fontSize: "12px", color: "grey" }}>
-									Free 30 Days Delivery Returns. <a href="#">Details</a>
+									{t("renderingProduct.returnDetails")}{" "}
+									<a href="#">{t("renderingProduct.returnLink")}</a>
 								</p>
 							</div>
 						</div>
