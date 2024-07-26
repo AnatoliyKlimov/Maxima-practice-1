@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
-function NotFoundPage() {
+export default function NotFoundPage() {
 	const { t } = useTranslation();
 
 	return (
@@ -36,7 +36,6 @@ function NotFoundPage() {
 			>
 				{t("not-found.description")}
 			</p>
-
 			<Link
 				href="/"
 				style={{
@@ -52,5 +51,3 @@ function NotFoundPage() {
 		</div>
 	);
 }
-
-export default NotFoundPage;

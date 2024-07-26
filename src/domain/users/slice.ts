@@ -12,19 +12,26 @@ export const slice = createSlice({
 	initialState,
 	reducers: {
 		registerUser: (state, action: PayloadAction<TUser>) => {
-			state.users.push(action.payload);
-		},
-		loginUser: (state, action: PayloadAction<TUserLoginDTO>) => {
-			const user = state.users.find(
-				(user) =>
-					user.phone == action.payload.phone && user.password == action.payload.password
+			const existingUser = state.users.find(
+				(user) => user.username == action.payload.username
 			);
 
-			state.currentUser = user?.name || null;
+			if (!existingUser) {
+				state.users.push(action.payload);
+
+				state.currentUser = action.payload.username;
+			}
 		},
-		logoutUser: (state) => {
-			state.currentUser = null;
+		loginUser: (state, action: PayloadAction<TUserLoginDTO>) => {
+			const existingUser = state.users.find(
+				(user) =>
+					user.username == action.payload.username &&
+					user.password == action.payload.password
+			);
+
+			state.currentUser = existingUser?.username || null;
 		},
+		logoutUser: (state) => void (state.currentUser = null),
 		updateUser: (state, action: PayloadAction<TUpdateUserDTO>) => {
 			const { name } = action.payload;
 
@@ -36,18 +43,15 @@ export const slice = createSlice({
 				if (action.payload.firstName) existingUser.firstName = action.payload.firstName;
 				if (action.payload.lastName) existingUser.lastName = action.payload.lastName;
 				if (action.payload.address) existingUser.address = action.payload.address;
-			} else {
-				// TODO: Обработка ошибок
 			}
 		},
 		deleteUser: (state, action: PayloadAction<TDeleteUserDTO>) => {
-			const { name } = action.payload;
+			const existingUser = state.users.find(
+				(user) => user.username == action.payload.username
+			);
 
-			let existingUser = state.users.find((user) => user.name == name);
-
-			if (existingUser) {
-				state.users = state.users.filter((user) => user.name != existingUser.name);
-			}
+			if (existingUser)
+				state.users = state.users.filter((user) => user.username != existingUser.username);
 		},
 		clearUsers: (state) => {
 			state.users = [];

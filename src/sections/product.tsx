@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 
 import { fontInter } from "@/app/fonts";
 import { RadioGroup, Button } from "@/lib/ui/elements";
-import Breadcrumb from "@/components/Breadcrumb";
 import { Colors, Rating } from "@/lib/ui/components";
 import { JustForYouSection } from "@/sections/wishlist";
+import Breadcrumb from "@/components/Breadcrumb";
 
 import { useProducts, useCart, useWishlist } from "@/service";
 
@@ -18,25 +18,27 @@ import { TProduct } from "@/types";
 import ImageDelivery from "@/images/icons/iconDelivery.svg";
 import ImageReturn from "@/images/icons/IconReturn.svg";
 import ImageWishList from "@/images/icons/wishlist.svg";
-import Minus from "@/images/icons/Minus.svg";
-import Plus from "@/images/icons/Plus.svg";
+import ImageMinus from "@/images/icons/Minus.svg";
+import ImagePlus from "@/images/icons/Plus.svg";
 
-interface IProductPageClientProps {
+interface IProductSectionProps {
 	id: string;
 }
 
-export const ProductSection = ({ id }: IProductPageClientProps) => {
-	const [product, { addProduct, updateProduct, deleteProduct, clearProducts }] = useProducts({
-		id
-	});
+export const ProductSection: React.FC<IProductSectionProps> = ({ id }) => {
+	const { t } = useTranslation();
 
-	const [quantity, setQuantity] = useState(1);
-	const [sizeValue, setSizeValue] = useState("M");
+	const [productSuspense] = useProducts({ id });
+
+	if (!productSuspense) notFound();
+
+	const product = productSuspense as TProduct;
 
 	const [, { addProduct: addWishlistProduct }] = useWishlist();
 	const [, { addProduct: addCartProduct }] = useCart();
 
-	const { t } = useTranslation();
+	const [quantity, setQuantity] = useState(1);
+	const [sizeValue, setSizeValue] = useState("M");
 
 	const handleSizeSelection = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSizeValue(e.target.value);
@@ -50,14 +52,15 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 		setQuantity((prevQuantity) => prevQuantity + 1);
 	};
 
-	if (!product) {
-		notFound();
-	}
-
 	return (
-		<>
-			<Breadcrumb isProductView={(product as TProduct).title} />
-
+		<main
+			style={{
+				display: "flex",
+				flexDirection: "column",
+				gap: 0
+			}}
+		>
+			<Breadcrumb isProductView={product.title} />
 			<div
 				style={{
 					display: "grid",
@@ -78,8 +81,8 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 							.map((_, index) => (
 								<Image
 									key={index}
-									src={(product as TProduct).image}
-									alt={(product as TProduct).title}
+									src={product.image}
+									alt={product.title}
 									width={178}
 									height={138}
 									style={{
@@ -103,8 +106,8 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 					}}
 				>
 					<Image
-						src={(product as TProduct).image}
-						alt={(product as TProduct).title}
+						src={product.image}
+						alt={product.title}
 						width={500}
 						height={600}
 						style={{
@@ -121,7 +124,8 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 						marginLeft: 80,
 						display: "flex",
 						flexDirection: "column",
-						gap: 16
+						alignItems: "stretch",
+						justifyContent: "space-between"
 					}}
 				>
 					<h2
@@ -130,33 +134,29 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 							fontWeight: 600
 						}}
 					>
-						{(product as TProduct).title}
+						{product.title}
 					</h2>
-					<p
-						style={{
-							display: "flex",
-							alignItems: "center",
-							gap: 8
-						}}
-					>
-						<Rating rating={product.rating} />
-						<span
+					{product.rating && (
+						<div
 							style={{
-								marginTop: -2
+								display: "flex",
+								alignItems: "center",
+								gap: 8
 							}}
 						>
-							|
-						</span>
-						<span style={{ color: "green", marginLeft: 8 }}>
-							{t("renderingProduct.stock")}
-						</span>
-					</p>
+							<Rating rating={product.rating} />
+							<span style={{ marginTop: -2 }}>|</span>
+							<span style={{ color: "green", marginLeft: 8 }}>
+								{t("renderingProduct.stock")}
+							</span>
+						</div>
+					)}
 					<div
 						className={fontInter.className}
 						style={{ display: "flex", alignItems: "center", gap: 10 }}
 					>
-						<p style={{ fontSize: 24 }}>${(product as TProduct).price}</p>
-						{(product as TProduct).priceOld && (
+						<p style={{ fontSize: 24 }}>${product.price}</p>
+						{product.priceOld && (
 							<p
 								style={{
 									fontSize: 24,
@@ -165,22 +165,23 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 									WebkitTextDecoration: "line-through"
 								}}
 							>
-								${(product as TProduct).priceOld}
+								${product.priceOld}
 							</p>
 						)}
 					</div>
-					<p
-						style={{
-							margin: "8px 0 28px"
-						}}
-					>
-						{t("renderingProduct.description")}
-					</p>
+					<p style={{ margin: "8px 0 10px" }}>{t("renderingProduct.description")}</p>
 					<div
 						style={{
-							borderTop: "1px solid #E0E0E0",
-							marginBottom: 20,
-							paddingBottom: 20
+							borderTop: "1px solid #E0E0E0"
+						}}
+					></div>
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							gap: 24,
+							marginTop: 10,
+							marginBottom: 40
 						}}
 					>
 						{product.colors && (
@@ -188,30 +189,25 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 								style={{
 									display: "flex",
 									alignItems: "center",
-									gap: 10,
-									marginTop: 24
+									gap: 10
 								}}
 							>
-								<p style={{ marginRight: 10 }}>{t("renderingProduct.colors")}</p>
+								<p style={{ marginRight: 10 }}>{t("renderingProduct.colors")}:</p>
 								<Colors
-									style={{
-										marginTop: 4
-									}}
+									style={{ marginTop: 4 }}
 									name={"productColors"}
-									colors={(product as TProduct).colors}
+									colors={product.colors}
 								/>
 							</div>
 						)}
-
 						<div
 							style={{
 								display: "flex",
 								alignItems: "center",
-								gap: 10,
-								margin: "24px 0"
+								gap: 10
 							}}
 						>
-							<p style={{ marginRight: 10 }}>{t("renderingProduct.size")}</p>
+							<p style={{ marginRight: 10 }}>{t("renderingProduct.size")}:</p>
 							<RadioGroup
 								inputStyle={{ display: "none" }}
 								style={{ gap: 16 }}
@@ -250,8 +246,7 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 							style={{
 								display: "flex",
 								alignItems: "center",
-								gap: 10,
-								marginTop: 20
+								justifyContent: "space-between"
 							}}
 						>
 							<div
@@ -261,22 +256,20 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 								}}
 							>
 								<Button
+									type="icon"
 									style={{
-										padding: "20.5px 12px",
+										padding: "20px 12px",
 										border: "1px solid #E0E0E0",
 										borderRadius: "4px 0px 0px 4px",
-										background: "none",
-										color: "inherit",
-										cursor: "pointer",
-										transition: "background 0.3s, color 0.3s"
+										background: "none"
 									}}
 									onClick={handleDecreaseQuantity}
 								>
-									<Image src={Minus} alt="Minus" />
+									<Image src={ImageMinus} alt="Minus" />
 								</Button>
 								<span
 									style={{
-										fontSize: 20,
+										fontSize: 19,
 										fontWeight: 500,
 										textAlign: "center",
 										borderBottom: "1px solid #E0E0E0",
@@ -287,59 +280,64 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 									{quantity}
 								</span>
 								<Button
+									type="icon"
 									style={{
-										padding: "9.5px 8px",
+										padding: "9px 8px",
 										border: "1px solid #E0E0E0",
 										borderRadius: "0px 4px 4px 0px",
-										background: "none",
-										color: "inherit",
-										cursor: "pointer",
-										transition: "background 0.3s, color 0.3s"
+										background: "none"
 									}}
 									onClick={handleIncreaseQuantity}
 								>
 									<Image
-										src={Plus}
+										src={ImagePlus}
 										alt="Plus"
 										style={{ filter: "invert(100%)" }}
 									/>
 								</Button>
 							</div>
-
 							<Button
 								style={{
-									height: 44,
-									width: 165,
 									display: "flex",
-									alignItems: "center"
+									alignItems: "center",
+									height: 44
 								}}
-								onClick={() => addCartProduct({ id: (product as TProduct).id })}
+								onClick={() => addCartProduct({ id: product.id })}
 							>
 								{t("renderingProduct.buy")}
 							</Button>
 							<Button
+								type="icon"
 								style={{
 									padding: 5,
 									border: "1px solid #E0E0E0",
 									borderRadius: 4,
-									background: "none",
-									color: "inherit",
-									cursor: "pointer"
+									background: "none"
 								}}
-								onClick={() => addWishlistProduct((product as TProduct).id)}
+								onClick={() => addWishlistProduct(product.id)}
 							>
 								<Image src={ImageWishList} alt="WishList" />
 							</Button>
 						</div>
 					</div>
-					<div>
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							gap: 1,
+							backgroundColor: "var(--button-secondary)",
+							border: "1px solid var(--button-secondary)",
+							borderRadius: 4,
+							overflow: "hidden"
+						}}
+					>
 						<div
 							style={{
 								display: "flex",
 								alignItems: "center",
 								gap: 10,
-								border: "1px solid rgba(0, 0, 0, 0.5)",
-								padding: "16px 0 16px 16px"
+								padding: 16,
+								background: "#fff"
 							}}
 						>
 							<Image src={ImageDelivery} alt="Free Delivery" width={30} height={30} />
@@ -355,8 +353,8 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 								display: "flex",
 								alignItems: "center",
 								gap: 10,
-								border: "1px solid rgba(0, 0, 0, 0.5)",
-								padding: "24px 0 16px 16px"
+								padding: 16,
+								background: "#fff"
 							}}
 						>
 							<Image src={ImageReturn} alt="Return Delivery" width={30} height={30} />
@@ -371,14 +369,18 @@ export const ProductSection = ({ id }: IProductPageClientProps) => {
 					</div>
 				</div>
 			</div>
-			<div
-				style={{
-					paddingBottom: 140
-				}}
-			>
-				<JustForYouSection />
+			<div style={{ paddingBottom: 140 }}>
+				<JustForYouSection
+					borderedCaption={true}
+					captionTextStyle={{
+						fontSize: 16,
+						fontWeight: 500,
+						lineHeight: "21px",
+						color: "var(--background-primary)"
+					}}
+				/>
 			</div>
-		</>
+		</main>
 	);
 };
 

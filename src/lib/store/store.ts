@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer } from "redux-persist";
 
 import storage from "@/store/storage";
+
 import { productsSlice } from "@/domain/products";
 import { wishlistSlice } from "@/domain/wishlist";
 import { usersSlice } from "@/domain/users";
@@ -10,8 +11,8 @@ import { cartSlice } from "@/domain/cart";
 import { billingDetailsSlice } from "@/domain/billing-details";
 
 const persistConfig = {
-	key: "state",
-	safelist: ["products", "wishlist", "user", "recommendations", "cart", "billingDetails"],
+	key: "state:v1",
+	whitelist: ["products", "wishlist", "users", "recommendations", "cart", "billingDetails"],
 	timeout: 200,
 	storage
 };
