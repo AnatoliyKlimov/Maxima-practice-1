@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import ProductPageClient from "./ProductPageClient";
+import ProductSection from "@/sections/product";
 import { defaultProducts } from "@/types/__mocks__";
 
 interface ProductPageProps {
@@ -14,7 +14,7 @@ const ProductPage = ({ params }: ProductPageProps) => {
 		notFound();
 	}
 
-	return <ProductPageClient id={id} />;
+	return <ProductSection id={id} />;
 };
 
 export default ProductPage;

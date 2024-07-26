@@ -20,11 +20,11 @@ import ImageWishList from "@/images/icons/wishlist.svg";
 import Minus from "@/images/icons/Minus.svg";
 import Plus from "@/images/icons/Plus.svg";
 
-interface ProductPageClientProps {
+interface IProductPageClientProps {
 	id: string;
 }
 
-const ProductPageClient = ({ id }: ProductPageClientProps) => {
+export const ProductSection = ({ id }: IProductPageClientProps) => {
 	const [product, { addProduct, updateProduct, deleteProduct, clearProducts }] = useProducts({
 		id
 	});
@@ -39,13 +39,21 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 		setSizeValue(e.target.value);
 	};
 
+	const handleDecreaseQuantity = () => {
+		setQuantity((prevQuantity) => Math.max(1, prevQuantity - 1));
+	};
+
+	const handleIncreaseQuantity = () => {
+		setQuantity((prevQuantity) => prevQuantity + 1);
+	};
+
 	if (!product) {
 		notFound();
 	}
 
 	return (
 		<>
-			<Breadcrumb />
+			<Breadcrumb isProductView={(product as TProduct).title} />
 
 			<div
 				style={{
@@ -65,13 +73,13 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 						{Array(4)
 							.fill(null)
 							.map((_, index) => (
-								<img
+								<Image
 									key={index}
 									src={(product as TProduct).image}
 									alt={(product as TProduct).title}
+									width={178}
+									height={138}
 									style={{
-										width: 170,
-										height: 138,
 										background: "rgb(245, 245, 245)",
 										borderRadius: 4,
 										objectFit: "contain",
@@ -91,9 +99,11 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 						marginLeft: 30
 					}}
 				>
-					<img
+					<Image
 						src={(product as TProduct).image}
 						alt={(product as TProduct).title}
+						width={500}
+						height={600}
 						style={{
 							width: "100%",
 							height: "100%",
@@ -256,7 +266,7 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 										cursor: "pointer",
 										transition: "background 0.3s, color 0.3s"
 									}}
-									onClick={() => setQuantity((quantity) => quantity - 1)}
+									onClick={handleDecreaseQuantity}
 								>
 									<Image src={Minus} alt="Minus" />
 								</Button>
@@ -282,7 +292,7 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 										cursor: "pointer",
 										transition: "background 0.3s, color 0.3s"
 									}}
-									onClick={() => setQuantity((quantity) => quantity + 1)}
+									onClick={handleIncreaseQuantity}
 								>
 									<Image
 										src={Plus}
@@ -305,7 +315,7 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 							</Button>
 							<Button
 								style={{
-									padding: "10px",
+									padding: 5,
 									border: "1px solid #E0E0E0",
 									borderRadius: 4,
 									background: "none",
@@ -328,11 +338,7 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 								padding: "16px 0 16px 16px"
 							}}
 						>
-							<Image
-								src={ImageDelivery}
-								alt="Free Delivery"
-								style={{ width: 30, height: 30 }}
-							/>
+							<Image src={ImageDelivery} alt="Free Delivery" width={30} height={30} />
 							<div>
 								<p style={{ margin: 0 }}>Free Delivery</p>
 								<p style={{ margin: 0, fontSize: "12px", color: "grey" }}>
@@ -349,11 +355,7 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 								padding: "24px 0 16px 16px"
 							}}
 						>
-							<Image
-								src={ImageReturn}
-								alt="Return Delivery"
-								style={{ width: 30, height: 30 }}
-							/>
+							<Image src={ImageReturn} alt="Return Delivery" width={30} height={30} />
 							<div>
 								<p style={{ margin: 0 }}>Return Delivery</p>
 								<p style={{ margin: 0, fontSize: "12px", color: "grey" }}>
@@ -375,4 +377,4 @@ const ProductPageClient = ({ id }: ProductPageClientProps) => {
 	);
 };
 
-export default ProductPageClient;
+export default ProductSection;
