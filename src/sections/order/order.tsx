@@ -220,7 +220,7 @@ export const OrderSection: React.FC = () => {
 										(acc, product) =>
 											product.priceOld
 												? acc +
-												  (product.priceOld - product.price) *
+													(product.priceOld - product.price) *
 														product.quantity
 												: acc,
 										0
@@ -280,4 +280,3 @@ export const OrderSection: React.FC = () => {
 		</div>
 	);
 };
-

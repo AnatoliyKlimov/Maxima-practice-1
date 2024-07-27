@@ -7,10 +7,10 @@ import { Trans, useTranslation } from "react-i18next";
 import { fontInter } from "@/app/fonts";
 import Caption from "@/lib/ui/components/Caption";
 
-import ImagePlayStation5 from "@/images/playstation-5.png";
-import ImageWoman from "@/images/woman.jpg";
-import ImageSpeakers from "@/images/speakers.png";
-import ImagePerfume from "@/images/perfume.png";
+import ImagePlayStation5 from "@/images/playstation-5.webp";
+import ImageWoman from "@/images/woman.webp";
+import ImageSpeakers from "@/images/speakers.webp";
+import ImagePerfume from "@/images/perfume.webp";
 
 import styles from "./featured.module.css";
 
