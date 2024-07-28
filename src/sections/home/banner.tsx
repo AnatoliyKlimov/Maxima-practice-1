@@ -7,7 +7,7 @@ import { fontInter } from "@/app/fonts";
 import Timer from "@/lib/ui/components/Timer";
 import Button from "@/lib/ui/elements/Button";
 
-import ImageSmartSpeaker from "@/images/jbl-boombox-2.png";
+import ImageSmartSpeaker from "@/images/jbl-boombox-2.webp";
 
 export const BannerSection: React.FC = () => {
 	const { t } = useTranslation();

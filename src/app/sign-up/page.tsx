@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 import SignUpForm from "@/components/SignUpForm";
 
-import ImageProduct from "@/images/SideImage.png";
+import ImageProduct from "@/images/SideImage.webp";
 
 export default function SignUpPage() {
 	const { t } = useTranslation();

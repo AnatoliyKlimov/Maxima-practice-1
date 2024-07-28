@@ -7,9 +7,9 @@ import { Trans, useTranslation } from "react-i18next";
 import { fontInter } from "@/app/fonts";
 import Subscribe from "@/lib/ui/components/Subscribe";
 
-import ImageQRCode from "@/images/qr-code.jpg";
-import ImageGooglePlay from "@/images/google-play.png";
-import ImageAppStore from "@/images/app-store.png";
+import ImageQRCode from "@/images/qr-code.webp";
+import ImageGooglePlay from "@/images/google-play.webp";
+import ImageAppStore from "@/images/app-store.webp";
 import IconFacebook from "@/images/social/facebook.svg";
 import IconTwitter from "@/images/social/twitter.svg";
 import IconInstagram from "@/images/social/instagram.svg";

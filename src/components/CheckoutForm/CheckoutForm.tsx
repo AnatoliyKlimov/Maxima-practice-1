@@ -10,7 +10,7 @@ import { isRequiredField } from "@/lib/utils/validation";
 
 import { TOrder } from "@/types";
 
-import ImagePayment from "@/images/payment.png";
+import ImagePayment from "@/images/payment.webp";
 
 export type TFormValues = Omit<TOrder, "products">;
 

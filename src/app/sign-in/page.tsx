@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import SignInForm from "@/components/SignInForm";
 
-import ImageProduct from "@/images/SideImage.png";
+import ImageProduct from "@/images/SideImage.webp";
 
 export default function SignInPage() {
 	return (

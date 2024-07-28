@@ -8,8 +8,8 @@ import { fontInter } from "@/app/fonts";
 import Slider from "@/components/Slider";
 import CategoriesMenu from "@/components/CategoriesMenu";
 
-import ImageApple from "@/images/apple-logo.png";
-import ImageIphone from "@/images/iphone.jpg";
+import ImageApple from "@/images/apple-logo.webp";
+import ImageIphone from "@/images/iphone.webp";
 import ImageArrow from "@/images/icons/arrow-left.svg";
 
 export const MenuSection: React.FC = () => {
