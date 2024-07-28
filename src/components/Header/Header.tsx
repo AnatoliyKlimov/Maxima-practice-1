@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import Image from "next/image";
-import { useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
 import Navigation from "@/components/Navigation";
@@ -40,10 +40,6 @@ export const Header: React.FC = () => {
 
 	const handleMouseLeave = () => {
 		setDropdownVisible(false);
-	};
-
-	const handleLogout = () => {
-		logoutUser();
 	};
 
 	return (
@@ -176,18 +172,14 @@ export const Header: React.FC = () => {
 									}}
 									className={currentUser ? styles.userIconActive : ""}
 								>
-									<Image
-										src={ImageUser}
-										alt="User"
-										draggable={false}
-									/>
+									<Image src={ImageUser} alt="User" draggable={false} />
 								</Link>
 								{currentUser && dropdownVisible && (
 									<div className={styles.userDropdown}>
 										<ul>
 											<li>
 												<Link href="/manage-account">
-													<span
+													<div
 														style={{
 															display: "flex",
 															alignItems: "center",
@@ -203,12 +195,12 @@ export const Header: React.FC = () => {
 															style={{ marginRight: 16 }}
 														/>
 														{t("header.account")}
-													</span>
+													</div>
 												</Link>
 											</li>
 											<li>
 												<Link href="/my-orders">
-													<span
+													<div
 														style={{
 															display: "flex",
 															alignItems: "center",
@@ -224,12 +216,12 @@ export const Header: React.FC = () => {
 															style={{ marginRight: 16 }}
 														/>
 														{t("header.myOrders")}
-													</span>
+													</div>
 												</Link>
 											</li>
 											<li>
 												<Link href="/my-cancellations">
-													<span
+													<div
 														style={{
 															display: "flex",
 															alignItems: "center",
@@ -245,12 +237,12 @@ export const Header: React.FC = () => {
 															style={{ marginRight: 16 }}
 														/>
 														{t("header.myCancellations")}
-													</span>
+													</div>
 												</Link>
 											</li>
 											<li>
 												<Link href="/my-reviews">
-													<span
+													<div
 														style={{
 															display: "flex",
 															alignItems: "center",
@@ -266,12 +258,15 @@ export const Header: React.FC = () => {
 															style={{ marginRight: 16 }}
 														/>
 														{t("header.myReviews")}
-													</span>
+													</div>
 												</Link>
 											</li>
 											<li>
-												<a onClick={handleLogout} className={styles.logout}>
-													<span
+												<a
+													onClick={() => logoutUser()}
+													className={styles.logout}
+												>
+													<div
 														style={{
 															display: "flex",
 															alignItems: "center",
@@ -287,7 +282,7 @@ export const Header: React.FC = () => {
 															style={{ marginRight: 16 }}
 														/>
 														{t("header.logout")}
-													</span>
+													</div>
 												</a>
 											</li>
 										</ul>

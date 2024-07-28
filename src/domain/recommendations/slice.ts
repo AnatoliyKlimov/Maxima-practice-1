@@ -10,21 +10,13 @@ export const slice = createSlice({
 		addRecommendProduct: (state, action: PayloadAction<TRecommendationAddDTO>) => {
 			const existingProductID = state.find((productID) => productID == action.payload);
 
-			if (!existingProductID) {
-				state.push(action.payload);
-			} else {
-				return state;
-			}
+			if (!existingProductID) state.push(action.payload);
 		},
 		deleteRecommendProduct: (state, action: PayloadAction<TRecommendationDeleteDTO>) => {
 			const existingProductID = state.find((productID) => productID == action.payload);
 
-			if (existingProductID) {
+			if (existingProductID)
 				return state.filter((productID) => productID != existingProductID);
-			} else {
-				// TODO: Обработка ошибок
-				return state;
-			}
 		},
 		clearRecommendations: () => []
 	}

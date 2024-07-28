@@ -18,9 +18,7 @@ export const slice = createSlice({
 			});
 		},
 		updateProduct: (state, action: PayloadAction<TUpdateProductDTO>) => {
-			const { id } = action.payload;
-
-			let existingProduct = state.find((product) => product.id == id);
+			let existingProduct = state.find((product) => product.id == action.payload.id);
 
 			if (existingProduct) {
 				if (action.payload.title) existingProduct.title = action.payload.title;
@@ -34,21 +32,12 @@ export const slice = createSlice({
 					existingProduct.discountPercent = action.payload.discountPercent;
 				if (action.payload.rating) existingProduct.rating = action.payload.rating;
 				if (action.payload.colors) existingProduct.colors = action.payload.colors;
-			} else {
-				// TODO: Обработка ошибок
 			}
 		},
 		deleteProduct: (state, action: PayloadAction<TDeleteProductDTO>) => {
-			const { id } = action.payload;
+			let existingProduct = state.find((product) => product.id == action.payload.id);
 
-			let existingProduct = state.find((product) => product.id == id);
-
-			if (existingProduct) {
-				return state.filter((product) => product.id != existingProduct.id);
-			} else {
-				// TODO: Обработка ошибок
-				return state;
-			}
+			if (existingProduct) return state.filter((product) => product.id != existingProduct.id);
 		},
 		clearProducts: () => []
 	}

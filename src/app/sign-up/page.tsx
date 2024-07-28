@@ -4,9 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
-import RegisterForm from "@/components/RegisterForm";
+import SignUpForm from "@/components/SignUpForm";
 
-import productImage from "@/images/SideImage.png";
+import ImageProduct from "@/images/SideImage.png";
 
 export default function SignUpPage() {
 	const { t } = useTranslation();
@@ -22,9 +22,9 @@ export default function SignUpPage() {
 				margin: "60px 0 140px"
 			}}
 		>
-			<Image src={productImage} width={680} alt="Product" priority />
+			<Image src={ImageProduct} width={680} alt="Product" priority />
 			<aside style={{ width: 371 }}>
-				<RegisterForm />
+				<SignUpForm />
 				<p
 					style={{
 						display: "flex",

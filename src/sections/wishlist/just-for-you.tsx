@@ -1,5 +1,6 @@
 "use client";
 
+import { CSSProperties } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Caption, Card } from "@/lib/ui/components";
@@ -8,7 +9,15 @@ import { useProducts, useRecommendations } from "@/service";
 
 import { TProduct } from "@/types";
 
-export const JustForYouSection: React.FC = () => {
+interface IJustForYouSectionProps {
+	borderedCaption?: boolean;
+	captionTextStyle?: CSSProperties;
+}
+
+export const JustForYouSection: React.FC<IJustForYouSectionProps> = ({
+	borderedCaption = false,
+	captionTextStyle
+}) => {
 	const { t } = useTranslation();
 
 	const [recommendations] = useRecommendations();
@@ -29,9 +38,10 @@ export const JustForYouSection: React.FC = () => {
 					textStyle={{
 						color: "var(--foreground)",
 						fontSize: 20,
-						lineHeight: "26px"
+						lineHeight: "26px",
+						...captionTextStyle
 					}}
-					bordered={false}
+					bordered={borderedCaption}
 				/>
 				<Button type="secondary">
 					<span style={{ fontWeight: 500 }}>{t("wishlist.see")}</span>

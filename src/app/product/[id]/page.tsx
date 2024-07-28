@@ -1,12 +1,14 @@
 import { notFound } from "next/navigation";
+
 import ProductSection from "@/sections/product";
+
 import { defaultProducts } from "@/types/__mocks__";
 
 interface ProductPageProps {
 	params: { id: string };
 }
 
-const ProductPage = ({ params }: ProductPageProps) => {
+export default function ProductPage({ params }: ProductPageProps) {
 	const { id } = params;
 	const product = defaultProducts.find((product) => product.id === id);
 
@@ -15,9 +17,7 @@ const ProductPage = ({ params }: ProductPageProps) => {
 	}
 
 	return <ProductSection id={id} />;
-};
-
-export default ProductPage;
+}
 
 export async function generateStaticParams() {
 	const paths = defaultProducts.map((product) => ({

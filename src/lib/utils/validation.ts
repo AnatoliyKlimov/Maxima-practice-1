@@ -1,21 +1,29 @@
-import { ObjectSchema } from "yup";
+import * as Yup from "yup";
 
-export const validatePhone = (phone: string): string | null => {
-	const phoneRegex = /^\+?[1-9]\d{1,14}$/;
-	if (!phoneRegex.test(phone)) {
-		return "Invalid phone number.";
-	}
-	return null;
-};
+const phoneRegex =
+	/^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/gm;
+const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
-export const validatePassword = (password: string): string | null => {
-	if (password.length < 6) {
-		return "Password must be at least 6 characters long.";
-	}
-	return null;
-};
+export function phoneNumber(this: Yup.StringSchema, errorMessage: string) {
+	return this.test(`test-phone-number`, errorMessage, function (value) {
+		const { path, createError } = this;
 
-export const isRequiredField = (validationSchema: ObjectSchema<any>, fieldName: string) => {
+		return (value && phoneRegex.test(value)) || createError({ path, message: errorMessage });
+	});
+}
+
+export function emailOrPhoneNumber(this: Yup.StringSchema, errorMessage: string) {
+	return this.test(`test-phone-number`, errorMessage, function (value) {
+		const { path, createError } = this;
+
+		return (
+			(value && (phoneRegex.test(value) || emailRegex.test(value))) ||
+			createError({ path, message: errorMessage })
+		);
+	});
+}
+
+export const isRequiredField = (validationSchema: Yup.ObjectSchema<any>, fieldName: string) => {
 	const schemaDescription = validationSchema.describe();
 	const field = schemaDescription.fields[fieldName];
 

@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-import LoginForm from "@/components/LoginForm";
+import SignInForm from "@/components/SignInForm";
 
-import productImage from "@/images/SideImage.png";
+import ImageProduct from "@/images/SideImage.png";
 
-export default function LoginPage() {
+export default function SignInPage() {
 	return (
 		<main
 			style={{
@@ -16,9 +16,9 @@ export default function LoginPage() {
 				margin: "60px 0 140px"
 			}}
 		>
-			<Image src={productImage} width={680} alt="Product" priority />
+			<Image src={ImageProduct} width={680} alt="Product" priority />
 			<aside style={{ width: 371 }}>
-				<LoginForm />
+				<SignInForm />
 			</aside>
 		</main>
 	);
