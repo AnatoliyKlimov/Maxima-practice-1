@@ -15,6 +15,7 @@ import { useUsers } from "@/service/users";
 
 import { TSignUp } from "@/types";
 
+/** @public */
 export const SignUpForm: React.FC = () => {
 	const { t } = useTranslation();
 	const router = useRouter();
@@ -127,4 +128,5 @@ export const SignUpForm: React.FC = () => {
 	);
 };
 
+/** @alias */
 export default SignUpForm;

@@ -4,8 +4,7 @@ import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
-import Slider from "@/components/Slider";
-import Breadcrumb from "@/components/Breadcrumb";
+import { Breadcrumb, Slider } from "@/components";
 import { ServiceSection } from "@/sections";
 
 import portraitAfr from "@/images/portrait-two-african.webp";

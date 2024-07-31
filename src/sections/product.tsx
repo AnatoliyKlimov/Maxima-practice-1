@@ -25,6 +25,7 @@ interface IProductSectionProps {
 	id: string;
 }
 
+/** @public */
 export const ProductSection: React.FC<IProductSectionProps> = ({ id }) => {
 	const { t } = useTranslation();
 
@@ -161,8 +162,7 @@ export const ProductSection: React.FC<IProductSectionProps> = ({ id }) => {
 								style={{
 									fontSize: 24,
 									color: "var(--foreground-semi)",
-									textDecoration: "line-through",
-									WebkitTextDecoration: "line-through"
+									textDecoration: "line-through"
 								}}
 							>
 								${product.priceOld}
@@ -384,4 +384,5 @@ export const ProductSection: React.FC<IProductSectionProps> = ({ id }) => {
 	);
 };
 
+/** @alias */
 export default ProductSection;

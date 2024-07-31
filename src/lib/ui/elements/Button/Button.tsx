@@ -13,6 +13,7 @@ type TButtonProps<E extends ElementType> = IButtonOwnProps<E> &
 
 const defaultElement = "button";
 
+/** @public */
 export const Button: React.FC<TButtonProps<ElementType>> = <
 	E extends ElementType = typeof defaultElement
 >({
@@ -40,4 +41,5 @@ export const Button: React.FC<TButtonProps<ElementType>> = <
 	);
 };
 
+/** @alias */
 export default Button;

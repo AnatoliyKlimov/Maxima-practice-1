@@ -20,6 +20,7 @@ interface ISliderProps extends TBaseComponent {
 	slides: TSlide[];
 }
 
+/** @public */
 export const Slider = forwardRef<SlickSlider, ISliderProps>(
 	({ slides, config, ...otherProps }, ref) => {
 		return (
@@ -36,4 +37,5 @@ export const Slider = forwardRef<SlickSlider, ISliderProps>(
 
 Slider.displayName = "Slider";
 
+/** @alias */
 export default Slider;

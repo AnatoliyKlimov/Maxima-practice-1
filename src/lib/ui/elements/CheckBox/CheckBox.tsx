@@ -13,6 +13,7 @@ interface ICheckBoxProps extends TBaseComponent<"input"> {
 	error?: string;
 }
 
+/** @public */
 export const CheckBox: React.FC<ICheckBoxProps> = ({
 	label,
 	style,
@@ -55,3 +56,6 @@ export const CheckBox: React.FC<ICheckBoxProps> = ({
 		</div>
 	);
 };
+
+/** @alias */
+export default CheckBox;

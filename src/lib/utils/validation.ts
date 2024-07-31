@@ -4,6 +4,7 @@ const phoneRegex =
 	/^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/gm;
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
+/** @public */
 export function phoneNumber(this: Yup.StringSchema, errorMessage: string) {
 	return this.test(`test-phone-number`, errorMessage, function (value) {
 		const { path, createError } = this;
@@ -12,6 +13,7 @@ export function phoneNumber(this: Yup.StringSchema, errorMessage: string) {
 	});
 }
 
+/** @public */
 export function emailOrPhoneNumber(this: Yup.StringSchema, errorMessage: string) {
 	return this.test(`test-phone-number`, errorMessage, function (value) {
 		const { path, createError } = this;
@@ -23,6 +25,7 @@ export function emailOrPhoneNumber(this: Yup.StringSchema, errorMessage: string)
 	});
 }
 
+/** @public */
 export const isRequiredField = (validationSchema: Yup.ObjectSchema<any>, fieldName: string) => {
 	const schemaDescription = validationSchema.describe();
 	const field = schemaDescription.fields[fieldName];

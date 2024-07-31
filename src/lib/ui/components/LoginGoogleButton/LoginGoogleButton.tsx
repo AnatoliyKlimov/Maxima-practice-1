@@ -9,6 +9,7 @@ import IconGoogle from "@/images/icons/google.svg";
 
 type TLoginGoogleButton = TBaseComponent<"button">;
 
+/** @public */
 export const LoginGoogleButton: React.FC<TLoginGoogleButton> = ({ ...otherProps }) => {
 	const { t } = useTranslation();
 
@@ -20,4 +21,5 @@ export const LoginGoogleButton: React.FC<TLoginGoogleButton> = ({ ...otherProps 
 	);
 };
 
+/** @alias */
 export default LoginGoogleButton;

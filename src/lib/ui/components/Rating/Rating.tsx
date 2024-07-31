@@ -10,6 +10,7 @@ interface IRatingProps extends TBaseComponent {
 	rating: TRating;
 }
 
+/** @public */
 export const Rating: React.FC<IRatingProps> = ({
 	rating: { value, reviewsCount },
 	style,
@@ -68,4 +69,5 @@ export const Rating: React.FC<IRatingProps> = ({
 	);
 };
 
+/** @alias */
 export default Rating;

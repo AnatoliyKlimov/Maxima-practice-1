@@ -13,7 +13,7 @@ interface ISelectProps extends TBaseComponent<"select"> {
 	selectStyle?: CSSProperties;
 }
 
-// TODO: Стилизация options
+/** @public */
 export const Select: React.FC<ISelectProps> = ({ options, selectStyle, style, ...otherProps }) => {
 	return (
 		<div className={styles.select} style={style}>
@@ -28,4 +28,5 @@ export const Select: React.FC<ISelectProps> = ({ options, selectStyle, style, ..
 	);
 };
 
+/** @alias */
 export default Select;

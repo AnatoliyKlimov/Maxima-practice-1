@@ -15,6 +15,7 @@ import { useUsers } from "@/service/users";
 
 import { TSignIn } from "@/types";
 
+/** @public */
 export const SignInForm: React.FC = () => {
 	const { t } = useTranslation();
 	const router = useRouter();
@@ -123,4 +124,5 @@ export const SignInForm: React.FC = () => {
 	);
 };
 
+/** @alias */
 export default SignInForm;

@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 
 import { fontOpenSans } from "@/app/fonts";
+import { TopHeader, Header, Footer } from "@/components";
 import StoreProvider from "@/store/provider";
-import TopHeader from "@/components/TopHeader";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 import "./globals.css";
 
