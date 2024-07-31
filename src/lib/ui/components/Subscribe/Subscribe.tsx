@@ -10,6 +10,7 @@ interface ISubscribeProps extends TBaseComponent<"input"> {
 	iconStyle?: CSSProperties;
 }
 
+/** @public */
 export const Subscribe: React.FC<ISubscribeProps> = ({
 	inputStyle,
 	iconStyle,
@@ -50,4 +51,5 @@ export const Subscribe: React.FC<ISubscribeProps> = ({
 	);
 };
 
+/** @alias */
 export default Subscribe;

@@ -10,6 +10,7 @@ interface IColorsProps extends TBaseComponent<"input"> {
 	colors: TColors;
 }
 
+/** @public */
 export const Colors: React.FC<IColorsProps> = ({ name, colors, style, ...otherProps }) => {
 	const [colorsValue, colorsInputProps] = useRadioButtons(`colors-${name}`, colors[0].value);
 
@@ -40,4 +41,5 @@ export const Colors: React.FC<IColorsProps> = ({ name, colors, style, ...otherPr
 	);
 };
 
+/** @alias */
 export default Colors;

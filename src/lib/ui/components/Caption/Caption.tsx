@@ -8,6 +8,7 @@ interface ICaptionProps extends TBaseComponent {
 	bordered?: boolean;
 }
 
+/** @public */
 export const Caption: React.FC<ICaptionProps> = ({
 	text,
 	textStyle,
@@ -50,4 +51,5 @@ export const Caption: React.FC<ICaptionProps> = ({
 	);
 };
 
+/** @alias */
 export default Caption;

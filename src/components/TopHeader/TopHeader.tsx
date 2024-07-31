@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import Select from "@/lib/ui/elements/Select";
 import i18n from "@/lib/utils/i18n";
 
+/** @public */
 export const TopHeader: React.FC = () => {
 	const { t } = useTranslation();
 
@@ -75,4 +76,5 @@ export const TopHeader: React.FC = () => {
 	);
 };
 
+/** @alias */
 export default TopHeader;

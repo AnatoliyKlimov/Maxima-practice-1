@@ -17,6 +17,7 @@ import IconLinkedin from "@/images/social/linkedin.svg";
 
 import styles from "./Footer.module.css";
 
+/** @public */
 export const Footer: React.FC = () => {
 	const { t } = useTranslation();
 
@@ -229,4 +230,5 @@ export const Footer: React.FC = () => {
 	);
 };
 
+/** @alias */
 export default Footer;

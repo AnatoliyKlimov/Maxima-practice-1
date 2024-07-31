@@ -26,6 +26,7 @@ interface ICardProps extends TBaseComponent {
 	wrapRating?: boolean;
 }
 
+/** @public */
 export const Card: React.FC<ICardProps> = ({
 	product,
 	buttons,
@@ -206,8 +207,7 @@ export const Card: React.FC<ICardProps> = ({
 					<span
 						style={{
 							color: "var(--foreground-semi)",
-							textDecoration: "line-through solid var(--foreground-semi)",
-							WebkitTextDecoration: "line-through solid var(--foreground-semi)"
+							textDecoration: "line-through solid var(--foreground-semi)"
 						}}
 					>
 						${product.priceOld}
@@ -231,4 +231,5 @@ export const Card: React.FC<ICardProps> = ({
 	);
 };
 
+/** @alias */
 export default Card;

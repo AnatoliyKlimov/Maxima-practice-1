@@ -1,4 +1,4 @@
-export type TColor = {
+type TColor = {
 	name: string;
 	value: string;
 };

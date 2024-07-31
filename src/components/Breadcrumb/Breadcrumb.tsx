@@ -10,7 +10,8 @@ interface IBreadcrumbProps {
 	isProductView?: string;
 }
 
-const Breadcrumb: React.FC<IBreadcrumbProps> = ({ isProductView = false }) => {
+/** @public */
+export const Breadcrumb: React.FC<IBreadcrumbProps> = ({ isProductView = false }) => {
 	const { t } = useTranslation();
 
 	const pathname = usePathname();
@@ -61,4 +62,5 @@ const Breadcrumb: React.FC<IBreadcrumbProps> = ({ isProductView = false }) => {
 	);
 };
 
+/** @alias */
 export default Breadcrumb;

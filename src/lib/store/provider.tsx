@@ -7,6 +7,7 @@ import { persistStore } from "redux-persist";
 
 import { makeStore, AppStore } from "@/store";
 
+/** @public */
 export const StoreProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
 	const storeRef = useRef<AppStore>();
 
@@ -25,4 +26,5 @@ export const StoreProvider: React.FC<React.PropsWithChildren> = ({ children }) =
 	);
 };
 
+/** @alias */
 export default StoreProvider;

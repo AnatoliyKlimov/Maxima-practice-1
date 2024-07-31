@@ -22,6 +22,7 @@ import DropLogout from "@/images/icons/logout-dropd.svg";
 
 import styles from "./Header.module.css";
 
+/** @public */
 export const Header: React.FC = () => {
 	const { t } = useTranslation();
 
@@ -297,4 +298,5 @@ export const Header: React.FC = () => {
 	);
 };
 
+/** @alias */
 export default Header;
