@@ -1,0 +1,19 @@
+.breadcrumb {
+	display: flex;
+
+	padding-top: 80px;
+}
+
+.breadcrumb-item {
+	margin-right: 5px;
+}
+
+.breadcrumb-item a {
+	color: rgba(0 0 0 50%);
+
+	text-decoration: none;
+}
+
+.breadcrumb-item.active {
+	color: rgb(0 0 0);
+}
