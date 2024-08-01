@@ -20,6 +20,7 @@ interface IRadioGroupProps extends TBaseComponent<"input"> {
 	error?: string;
 }
 
+/** @public */
 export const RadioGroup: React.FC<IRadioGroupProps> = ({
 	name,
 	options,
@@ -46,12 +47,13 @@ export const RadioGroup: React.FC<IRadioGroupProps> = ({
 					{...otherProps}
 					className={`${styles.radio} ${error ? styles.inputError : ""}`}
 					style={{
-						borderRadius: "50%",
+						flexShrink: 0,
 						width: 18,
 						height: 18,
 						marginTop: 2,
 						marginLeft: 2,
 						marginRight: 16,
+						borderRadius: "50%",
 						backgroundColor: "transparent",
 						outline: "2px solid #000",
 						cursor: "pointer",
@@ -76,3 +78,6 @@ export const RadioGroup: React.FC<IRadioGroupProps> = ({
 		</div>
 	);
 };
+
+/** @alias */
+export default RadioGroup;

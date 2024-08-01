@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation";
 import { v4 as uuid } from "uuid";
 import { useTranslation } from "react-i18next";
 
-const Navigation: React.FC = () => {
+/** @public */
+export const Navigation: React.FC = () => {
 	const { t } = useTranslation();
 
 	const pathname = "/" + usePathname().split("/")[1];
@@ -56,4 +57,5 @@ const Navigation: React.FC = () => {
 	);
 };
 
+/** @alias */
 export default Navigation;

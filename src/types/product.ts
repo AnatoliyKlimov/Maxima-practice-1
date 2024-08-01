@@ -2,7 +2,7 @@ import { CSSProperties } from "react";
 
 import { TRating, TColors } from "@/types";
 
-export type TProductType = "todays" | "this-month" | "our-products";
+type TProductType = "todays" | "this-month" | "our-products";
 
 export type TProduct = {
 	id: string;

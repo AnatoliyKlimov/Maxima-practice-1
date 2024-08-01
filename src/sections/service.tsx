@@ -7,6 +7,7 @@ import ImageDelivery from "@/images/icons/services/delivery.svg";
 import ImageCustomer from "@/images/icons/services/customer.svg";
 import ImageMoneyBack from "@/images/icons/services/money-back.svg";
 
+/** @public */
 export const ServiceSection: React.FC = () => {
 	const { t } = useTranslation();
 
@@ -115,3 +116,6 @@ export const ServiceSection: React.FC = () => {
 		</section>
 	);
 };
+
+/** @alias */
+export default ServiceSection;

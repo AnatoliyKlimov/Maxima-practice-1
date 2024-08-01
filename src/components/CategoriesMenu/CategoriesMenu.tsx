@@ -10,6 +10,7 @@ import ImageArrow from "@/images/icons/drop-down.svg";
 
 type TCategoriesMenu = TBaseComponent<"ul">;
 
+/** @public */
 export const CategoriesMenu: React.FC<TCategoriesMenu> = ({ style, ...otherProps }) => {
 	const { t } = useTranslation();
 
@@ -103,4 +104,5 @@ export const CategoriesMenu: React.FC<TCategoriesMenu> = ({ style, ...otherProps
 	);
 };
 
+/** @alias */
 export default CategoriesMenu;

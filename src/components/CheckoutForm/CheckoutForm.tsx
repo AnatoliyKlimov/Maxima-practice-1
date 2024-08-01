@@ -10,7 +10,7 @@ import { isRequiredField } from "@/lib/utils/validation";
 
 import { TOrder } from "@/types";
 
-import ImagePayment from "@/images/payment.png";
+import ImagePayment from "@/images/payment.webp";
 
 export type TFormValues = Omit<TOrder, "products">;
 
@@ -23,6 +23,7 @@ interface IBillingFormProps {
 	validationSchema: ObjectSchema<any>;
 }
 
+/** @public */
 export const PaymentForm: React.FC<IPaymentFormProps> = ({ formik }) => {
 	const { t } = useTranslation();
 
@@ -60,6 +61,7 @@ export const PaymentForm: React.FC<IPaymentFormProps> = ({ formik }) => {
 	);
 };
 
+/** @public */
 export const BillingForm: React.FC<IBillingFormProps> = ({ formik, validationSchema }) => {
 	const { t } = useTranslation();
 

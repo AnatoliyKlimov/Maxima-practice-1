@@ -7,17 +7,13 @@ type StateType = RootState["products"];
 type StateElementType = ArrayElement<StateType>;
 type IDType = StateElementType["id"];
 
-export type TProductIDSelector = (state: RootState, productID: IDType) => IDType;
-export type TProductSelector = (
-	state: RootState,
-	productID: IDType
-) => StateElementType | undefined;
+type TProductIDSelector = (state: RootState, productID: IDType) => IDType;
 
-export type TProductIDsSelector = (state: RootState, productIDs: IDType[]) => IDType[];
-export type TProductsSelector = (state: RootState) => StateType;
+type TProductIDsSelector = (state: RootState, productIDs: IDType[]) => IDType[];
+type TProductsSelector = (state: RootState) => StateType;
 
-export const selectProductID: TProductIDSelector = (_, productID) => productID;
-export const selectProductsIDs: TProductIDsSelector = (_, productIDs) => productIDs;
+const selectProductID: TProductIDSelector = (_, productID) => productID;
+const selectProductsIDs: TProductIDsSelector = (_, productIDs) => productIDs;
 
 export const selectProducts: TProductsSelector = (state) => state.products;
 

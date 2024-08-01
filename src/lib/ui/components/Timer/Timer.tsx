@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
+
 import { TBaseComponent } from "@/types";
 
 import styles from "./Timer.module.css";
-import { useTranslation } from "react-i18next";
 
 interface IRemaining {
 	seconds: number;
@@ -25,6 +26,7 @@ interface ITimerProps extends TBaseComponent {
 	inBanner?: boolean;
 }
 
+/** @public */
 export const Timer: React.FC<ITimerProps> = ({
 	remainingTime = {
 		days: 0,
@@ -68,12 +70,11 @@ export const Timer: React.FC<ITimerProps> = ({
 			});
 		}, 1000);
 
-		return () => {
-			clearInterval(interval.current);
-		};
+		return () => clearInterval(interval.current);
 	}, [remainingTime, direction]);
 
 	const { t } = useTranslation();
+
 	return (
 		<div
 			style={{
@@ -84,7 +85,9 @@ export const Timer: React.FC<ITimerProps> = ({
 			{...otherProps}
 		>
 			<span
-				className={`${styles.timerStrokeWrapper} ${inBanner ? styles.timerStrokeWrapperInBanner : ""}`}
+				className={`${styles.timerStrokeWrapper} ${
+					inBanner ? styles.timerStrokeWrapperInBanner : ""
+				}`}
 				data-label={t("timer.days")}
 			>
 				<span className={`${styles.timerStroke} ${fontInter.className}`}>
@@ -93,7 +96,9 @@ export const Timer: React.FC<ITimerProps> = ({
 			</span>
 			{!inBanner && <span className={styles.timerSeparator}>:</span>}
 			<span
-				className={`${styles.timerStrokeWrapper} ${inBanner ? styles.timerStrokeWrapperInBanner : ""}`}
+				className={`${styles.timerStrokeWrapper} ${
+					inBanner ? styles.timerStrokeWrapperInBanner : ""
+				}`}
 				data-label={t("timer.hours")}
 			>
 				<span className={`${styles.timerStroke} ${fontInter.className}`}>
@@ -102,7 +107,9 @@ export const Timer: React.FC<ITimerProps> = ({
 			</span>
 			{!inBanner && <span className={styles.timerSeparator}>:</span>}
 			<span
-				className={`${styles.timerStrokeWrapper} ${inBanner ? styles.timerStrokeWrapperInBanner : ""}`}
+				className={`${styles.timerStrokeWrapper} ${
+					inBanner ? styles.timerStrokeWrapperInBanner : ""
+				}`}
 				data-label={t("timer.minutes")}
 			>
 				<span className={`${styles.timerStroke} ${fontInter.className}`}>
@@ -111,7 +118,9 @@ export const Timer: React.FC<ITimerProps> = ({
 			</span>
 			{!inBanner && <span className={styles.timerSeparator}>:</span>}
 			<span
-				className={`${styles.timerStrokeWrapper} ${inBanner ? styles.timerStrokeWrapperInBanner : ""}`}
+				className={`${styles.timerStrokeWrapper} ${
+					inBanner ? styles.timerStrokeWrapperInBanner : ""
+				}`}
 				data-label={t("timer.seconds")}
 			>
 				<span className={`${styles.timerStroke} ${fontInter.className}`}>
@@ -122,4 +131,5 @@ export const Timer: React.FC<ITimerProps> = ({
 	);
 };
 
+/** @alias */
 export default Timer;

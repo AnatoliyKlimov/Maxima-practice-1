@@ -4,17 +4,16 @@ import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
 import { fontInter } from "@/app/fonts";
-import Slider from "@/components/Slider";
-import Breadcrumb from "@/components/Breadcrumb";
+import { Breadcrumb, Slider } from "@/components";
 import { ServiceSection } from "@/sections";
 
-import portraitAfr from "@/images/portrait-two-african.png";
+import portraitAfr from "@/images/portrait-two-african.webp";
 import shopMistic from "@/images/icons/shop-mistic.svg";
 import moneyMistic from "@/images/icons/money-mist.svg";
 import giftMistic from "@/images/icons/gift-mist.svg";
-import sliderTom from "@/images/Tom.png";
-import sliderEmma from "@/images/Emma.png";
-import sliderWill from "@/images/Will.png";
+import sliderTom from "@/images/Tom.webp";
+import sliderEmma from "@/images/Emma.webp";
+import sliderWill from "@/images/Will.webp";
 import iconTwit from "@/images/icons/Icon-about-Twitter.svg";
 import iconInst from "@/images/icons/icon-about-instagram.svg";
 import iconLn from "@/images/icons/Icon-about-Linkedin.svg";

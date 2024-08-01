@@ -9,6 +9,7 @@ interface ISearchProps extends TBaseComponent<"input"> {
 	inputStyle?: CSSProperties;
 }
 
+/** @public */
 export const Search: React.FC<ISearchProps> = ({ inputStyle, style, ...otherProps }) => {
 	return (
 		<div
@@ -38,4 +39,5 @@ export const Search: React.FC<ISearchProps> = ({ inputStyle, style, ...otherProp
 	);
 };
 
+/** @alias */
 export default Search;

@@ -1,0 +1,11 @@
+{
+	"ignoreExportsUsedInFile": {
+		"interface": false,
+		"type": false,
+		"class": true,
+		"enum": true,
+		"function": true,
+		"member": true
+	},
+	"ignoreDependencies": ["sharp"]
+}
