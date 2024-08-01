@@ -1,21 +1,18 @@
 import { Metadata } from "next";
 
-import { WishlistSection, JustForYouSection } from "@/sections/wishlist";
+import { WishlistSection, JustForYouSection } from "@/client/sections/wishlist";
 
 export const metadata: Metadata = {
-	title: "Wishlist - Exclusive",
-	description: "Exclusive Shop"
+	title: "Wishlist"
 };
 
 export default function WishlistPage() {
 	return (
 		<main
 			style={{
-				display: "flex",
-				flexDirection: "column",
 				gap: 80,
-				paddingTop: 80,
-				paddingBottom: 140
+				marginTop: 80,
+				marginBottom: 140
 			}}
 		>
 			<WishlistSection />

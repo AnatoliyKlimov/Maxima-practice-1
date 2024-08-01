@@ -1,0 +1,24 @@
+.footerList {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+
+	color: #fff;
+
+	& h4 {
+		font-size: 20px;
+		font-weight: 500;
+		line-height: 28px;
+	}
+
+	& ul {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+
+		& li a {
+			font-size: 16px;
+			line-height: 24px;
+		}
+	}
+}
