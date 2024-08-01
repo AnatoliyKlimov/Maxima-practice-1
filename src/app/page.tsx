@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 
-import {
+import { homeSections, ServiceSection } from "@/client/sections";
+
+const {
 	BannerSection,
 	CategoriesSection,
 	MenuSection,
@@ -8,12 +10,10 @@ import {
 	TodaysSection,
 	ThisMonthProductsSection,
 	FeaturedSection
-} from "@/sections/home";
-import { ServiceSection } from "@/sections";
+} = homeSections;
 
 export const metadata: Metadata = {
-	title: "Home - Exclusive",
-	description: "Exclusive Shop"
+	title: "Home"
 };
 
 export default function Home() {

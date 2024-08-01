@@ -1,12 +1,16 @@
-import Breadcrumb from "@/components/Breadcrumb";
-import { TableSection, TotalSection } from "@/sections/cart";
+import { Metadata } from "next";
+
+import Breadcrumb from "@/client/components/Breadcrumb";
+import { TableSection, TotalSection } from "@/client/sections/cart";
+
+export const metadata: Metadata = {
+	title: "Cart"
+};
 
 export default function CartPage() {
 	return (
 		<main
 			style={{
-				display: "flex",
-				flexDirection: "column",
 				gap: 0
 			}}
 		>

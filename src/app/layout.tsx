@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 
 import { fontOpenSans } from "@/app/fonts";
-import { TopHeader, Header, Footer } from "@/components";
+import { TopHeader, Header, Footer } from "@/client/components";
 import StoreProvider from "@/store/provider";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
-	title: "Exclusive",
+	title: {
+		default: "Exclusive",
+		template: "%s - Exclusive"
+	},
 	description: "Exclusive Shop"
 };
 
