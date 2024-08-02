@@ -59,7 +59,10 @@ const AccountPage: React.FC = () => {
 			>
 				<Breadcrumb />
 				<p>
-					{t("office.welcome")} {formik.values.firstName} {formik.values.lastName}
+					{t("office.welcome")}{" "}
+					<span style={{ color: "var(--background-primary" }}>
+						{formik.values.firstName} {formik.values.lastName}
+					</span>
 				</p>
 			</span>
 			<div style={{ display: "flex", justifyContent: "space-between" }}>
