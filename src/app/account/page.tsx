@@ -73,46 +73,58 @@ const AccountPage: React.FC = () => {
 			</div>
 
 			<div style={{ width: 870, padding: "40px 80px", boxShadow: "0px 1px 13px 0px rgba(0, 0, 0, 0.05)" }}>
-				<h2 style={{ fontSize: 20, fontWeight: 500, marginBottom: "20px", color: "var(--background-primary)" }}>Edit Your Profile</h2>
+				<h2 style={{ fontSize: 20, fontWeight: 500, marginBottom: 16, color: "var(--background-primary)" }}>Edit Your Profile</h2>
 				<form onSubmit={formik.handleSubmit}>
-					<div style={{ display: "flex", gap: "20px", marginBottom: "20px" }}>
-						<TextField
-							name="firstName"
-							placeholder="First Name"
-							value={formik.values.firstName}
-							onChange={formik.handleChange}
-							onBlur={formik.handleBlur}
-							error={formik.errors.firstName}
-						/>
-						<TextField
-							name="lastName"
-							placeholder="Last Name"
-							value={formik.values.lastName}
-							onChange={formik.handleChange}
-							onBlur={formik.handleBlur}
-							error={formik.errors.lastName}
-						/>
+					<div style={{ display: "flex", gap: 50, marginBottom: 30 }}>
+						<div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+							<h4 style={{ marginBottom: 8 }}>First Name</h4>
+							<TextField
+								name="firstName"
+								placeholder="First Name"
+								value={formik.values.firstName}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
+								error={formik.errors.firstName}
+							/>
+						</div>
+						<div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+							<h4 style={{ marginBottom: 8 }}>Last Name</h4>
+							<TextField
+								name="lastName"
+								placeholder="Last Name"
+								value={formik.values.lastName}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
+								error={formik.errors.lastName}
+							/>
+						</div>
 					</div>
-					<div style={{ display: "flex", gap: "20px", marginBottom: "20px" }}>
-						<TextField
-							name="email"
-							placeholder="Email"
-							value={formik.values.email}
-							onChange={formik.handleChange}
-							onBlur={formik.handleBlur}
-							error={formik.errors.email}
-						/>
-						<TextField
-							name="address"
-							placeholder="Address"
-							value={formik.values.address}
-							onChange={formik.handleChange}
-							onBlur={formik.handleBlur}
-							error={formik.errors.address}
-						/>
+					<div style={{ display: "flex", gap: 50, marginBottom: 28 }}>
+						<div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+							<h4 style={{ marginBottom: 8 }}>Email</h4>
+							<TextField
+								name="email"
+								placeholder="Email"
+								value={formik.values.email}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
+								error={formik.errors.email}
+							/>
+						</div>
+						<div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+							<h4 style={{ marginBottom: 8 }}>Address</h4>
+							<TextField
+								name="address"
+								placeholder="Address"
+								value={formik.values.address}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
+								error={formik.errors.address}
+							/>
+						</div>
 					</div>
-					<h3 style={{ marginBottom: "10px" }}>Password Changes</h3>
-					<div style={{ marginBottom: "20px" }}>
+					<h4 style={{ marginBottom: 8 }}>Password Changes</h4>
+					<div style={{ display: "flex", flexDirection: "column", marginBottom: 20 }}>
 						<TextField
 							name="currentPassword"
 							type="password"
@@ -144,8 +156,8 @@ const AccountPage: React.FC = () => {
 							error={formik.errors.confirmPassword}
 						/>
 					</div>
-					<div style={{ display: "flex", justifyContent: "space-between" }}>
-						<Button type="secondary" >
+					<div style={{ display: "flex", justifyContent: "flex-end", gap: 32 }}>
+						<Button type="secondary">
 							Cancel
 						</Button>
 						<Button>
