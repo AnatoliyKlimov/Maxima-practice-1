@@ -244,5 +244,35 @@
 		"returnDetails": "Free 30 Days Delivery Returns.",
 		"returnLink": "Details",
 		"colors": "Colors"
+	},
+	"office": {
+		"welcome": "Welcome!",
+		"manage": "Manage My Account",
+		"profile": "My Profile",
+		"address": "Address Book",
+		"payment": "My Payment Options",
+		"orders": "My Orders",
+		"returns": "My Returns",
+		"cancel": "My Cancellations",
+		"wishlist": "My WishList",
+		"edit": "Edit Your Profile",
+		"first": "First Name",
+		"last": "Last Name",
+		"email": "Email",
+		"addr": "Address",
+		"change": "Password Changes",
+		"current": "Current Password",
+		"newPassword": "New Password",
+		"confirmNew": "Confirm New Password",
+		"cancelBtn": "Cancel",
+		"saveBtn": "Save Changes"
+	},
+	"validation": {
+		"first": "First name is required",
+		"last": "Last name is required",
+		"emInv": "Invalid email",
+		"emReq": "Email is required",
+		"passw": "Password must be at least 6 characters",
+		"passwNew": "Passwords must match"
 	}
 }
