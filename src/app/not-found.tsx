@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
+import Button from "@/lib/ui/elements/Button";
+
 export default function NotFoundPage() {
 	const { t } = useTranslation();
 
@@ -18,36 +20,25 @@ export default function NotFoundPage() {
 		>
 			<h2
 				style={{
-					fontWeight: "500",
-					fontSize: "110px",
+					fontWeight: 500,
+					fontSize: 110,
 					lineHeight: "115px",
-					marginTop: "140px"
+					marginTop: 140
 				}}
 			>
-				404 {t("not-found.status")}
+				404 {t("errors.notFound.status")}
 			</h2>
-
 			<p
 				style={{
-					fontSize: "16px",
 					lineHeight: "24px",
 					padding: "40px 0 80px"
 				}}
 			>
-				{t("not-found.description")}
+				{t("errors.notFound.description")}
 			</p>
-			<Link
-				href="/"
-				style={{
-					borderRadius: "4px",
-					background: "#db4444",
-					color: "#fff",
-					padding: "16px 48px",
-					marginBottom: "140px"
-				}}
-			>
-				{t("not-found.action")}
-			</Link>
+			<Button as={Link} href="/" style={{ marginBottom: 140 }}>
+				{t("errors.notFound.action")}
+			</Button>
 		</div>
 	);
 }
