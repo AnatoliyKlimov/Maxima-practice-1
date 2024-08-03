@@ -76,7 +76,7 @@ export const AccountSection: React.FC = () => {
 				<p>
 					{t("office.welcome")}{" "}
 					<span style={{ color: "var(--background-primary" }}>
-						{formik.values.firstName} {formik.values.lastName}
+						{currentUser.firstName} {currentUser.lastName}
 					</span>
 				</p>
 			</div>
@@ -138,7 +138,12 @@ export const AccountSection: React.FC = () => {
 					>
 						{t("office.edit")}
 					</h2>
-					<form onSubmit={formik.handleSubmit}>
+					<form
+						onSubmit={formik.handleSubmit}
+						style={{
+							lineHeight: "50px"
+						}}
+					>
 						<div style={{ display: "flex", gap: 50, marginBottom: 30 }}>
 							<div style={{ display: "flex", flexDirection: "column", width: "50%" }}>
 								<label htmlFor="firstName" style={{ marginBottom: 8 }}>
