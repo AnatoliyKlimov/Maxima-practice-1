@@ -99,7 +99,7 @@ export const Footer: React.FC = () => {
 							<h4>{t("footer.account")}</h4>
 							<ul>
 								<li>
-									<Link href="/cabinet">
+									<Link href="/account">
 										{t("footer.accountLinks.myAccount")}
 									</Link>
 								</li>
