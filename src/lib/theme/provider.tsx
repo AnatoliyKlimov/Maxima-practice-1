@@ -11,11 +11,16 @@ export const AntdThemeProvider: React.FC<TBaseComponent> = ({ children }) => {
 			theme={{
 				token: {
 					fontFamily: "inherit",
-					fontSize: 16
+					fontSize: 15,
+					colorText: "var(--foreground)"
 				},
 				components: {
-					Layout: {
+					Table: {
 						headerBg: "#fff"
+					},
+					Select: {
+						optionSelectedColor: "inherit",
+						optionSelectedFontWeight: 500
 					}
 				}
 			}}
