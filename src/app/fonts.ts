@@ -1,8 +1,13 @@
-import { Inter, Open_Sans } from "next/font/google";
+import { Inter, Open_Sans, Public_Sans } from "next/font/google";
 
 export const fontOpenSans = Open_Sans({
 	weight: ["400", "500"],
 	subsets: ["latin", "cyrillic"]
+});
+
+export const fontPublicSans = Public_Sans({
+	weight: ["400", "500"],
+	subsets: ["latin"]
 });
 
 export const fontInter = Inter({
