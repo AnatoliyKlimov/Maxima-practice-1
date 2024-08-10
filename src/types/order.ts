@@ -38,8 +38,10 @@ export type TUpdateOrderDTO = Partial<TOrder>;
 export type TDeleteOrderDTO = Pick<TOrder, "id">;
 
 export type TOrderExtended = Pick<TOrder, "id" | "createdAt" | "status"> & {
-	key: string;
 	customer: TOrder["billingDetails"]["firstName"];
+	subtotal: number;
+	shipping: number;
+	discount: number;
 	total: number;
 	profit: number;
 	products: (ArrayElement<TOrder["productsParsed"]> & {

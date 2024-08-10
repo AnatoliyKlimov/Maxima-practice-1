@@ -76,6 +76,17 @@ export const OrdersSection: React.FC = () => {
 		key: `order-${order.id}`,
 		createdAt: order.createdAt,
 		customer: order.billingDetails.firstName,
+		subtotal: order.productsParsed.reduce(
+			(acc, product) => acc + (product.priceOld || product.price) * product.quantity,
+			0
+		),
+		shipping: 0, // Мокаем
+		discount: order.productsParsed.reduce(
+			(acc, product) =>
+				acc +
+				(product.priceOld ? (product.priceOld - product.price) * product.quantity : 0),
+			0
+		),
 		total: order.productsParsed.reduce(
 			(acc, product) => acc + product.price * product.quantity,
 			0
@@ -263,6 +274,7 @@ export const OrdersSection: React.FC = () => {
 				pagination={{
 					position: ["bottomRight"],
 					itemRender: (_page, _type, element) => (paginationVisible ? element : null),
+					showSizeChanger: false,
 					showTotal: (total) => (
 						<Flex gap={8}>
 							<span style={{ lineHeight: "31px" }}>Showing</span>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { OrdersSection } from "@/admin/sections/orders";
+import { OrdersSection } from "@/admin/sections";
 
 export const metadata: Metadata = {
 	title: "Order management"
