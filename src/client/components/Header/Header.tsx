@@ -179,7 +179,7 @@ export const Header: React.FC = () => {
 									<div className={styles.userDropdown}>
 										<ul>
 											<li>
-												<Link href="/manage-account">
+												<Link href="/account">
 													<div
 														style={{
 															display: "flex",

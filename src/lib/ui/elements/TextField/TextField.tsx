@@ -1,6 +1,11 @@
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
+import Image from "next/image";
+
+import Button from "@/lib/ui/elements/Button";
 
 import { TBaseComponent } from "@/types";
+
+import IconView from "@/images/icons/view.svg";
 
 import styles from "./TextField.module.css";
 
@@ -15,16 +20,38 @@ export const TextField: React.FC<ITextFieldProps> = ({
 	wrapperStyle,
 	error,
 	className = "",
+	type,
 	...otherProps
 }) => {
+	const [inputType, setInputType] = useState("password");
+
 	return (
 		<div style={wrapperStyle} className={`${styles.textFieldContainer} ${className}`}>
 			<input
 				{...otherProps}
+				type={inputType}
 				className={`${styles.textField} ${styles["textField_" + as]} ${
 					error ? styles.inputError : ""
 				}`}
 			/>
+			{type == "password" && (
+				<Button
+					type="icon"
+					onClick={() =>
+						setInputType((prevType) => (prevType == "password" ? "text" : "password"))
+					}
+					style={{
+						position: "absolute",
+						right: 0,
+						top: 0,
+						backgroundColor: "transparent",
+						width: 16,
+						height: 16
+					}}
+				>
+					<Image src={IconView} alt="" width={16} height={16}></Image>
+				</Button>
+			)}
 			{error && <span className={styles.errorMessage}>{error}</span>}
 		</div>
 	);

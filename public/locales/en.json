@@ -2,10 +2,16 @@
 	"welcomeMessage": "Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!",
 	"buy": "Shop Now",
 	"addToC": "Add To Cart",
-	"not-found": {
-		"status": "Not found",
-		"description": "Your visited page not found. You may go home page",
-		"action": "Back to home page"
+	"errors": {
+		"notFound": {
+			"status": "Not found",
+			"description": "Your visited page not found. You may go home page",
+			"action": "Back to home page"
+		},
+		"forbidden": {
+			"status": "Forbidden",
+			"action": "Try again"
+		}
 	},
 	"navigation": {
 		"home": "Home",
@@ -14,7 +20,8 @@
 		"signup": "Sign Up",
 		"cart": "Cart",
 		"order": "Checkout",
-		"search": "What are you looking for?"
+		"search": "What are you looking for?",
+		"account": "My Account"
 	},
 	"header": {
 		"account": "Account",
@@ -244,5 +251,35 @@
 		"returnDetails": "Free 30 Days Delivery Returns.",
 		"returnLink": "Details",
 		"colors": "Colors"
+	},
+	"office": {
+		"welcome": "Welcome!",
+		"manage": "Manage My Account",
+		"profile": "My Profile",
+		"address": "Address Book",
+		"payment": "My Payment Options",
+		"orders": "My Orders",
+		"returns": "My Returns",
+		"cancel": "My Cancellations",
+		"wishlist": "My WishList",
+		"edit": "Edit Your Profile",
+		"first": "First Name",
+		"last": "Last Name",
+		"email": "Email",
+		"addr": "Address",
+		"change": "Password Changes",
+		"current": "Current Password",
+		"newPassword": "New Password",
+		"confirmNew": "Confirm New Password",
+		"cancelBtn": "Cancel",
+		"saveBtn": "Save Changes",
+		"validation": {
+			"firstNameRequired": "First name is required",
+			"lastNameRequired": "Last name is required",
+			"emailInvalid": "Invalid email",
+			"emailRequired": "Email is required",
+			"passwordLength": "Password must be at least 6 characters",
+			"passwordsMatch": "Passwords must match"
+		}
 	}
 }

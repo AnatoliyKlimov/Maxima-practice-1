@@ -10,7 +10,7 @@ import { fontInter } from "@/app/fonts";
 import { BillingForm, PaymentForm, TFormValues } from "@/client/components/CheckoutForm";
 import { Button, CheckBox, TextField } from "@/lib/ui/elements";
 
-import { useBillingDetails, useCart, useProducts } from "@/service";
+import { useBillingDetails, useCart, useOrders, useProducts } from "@/service";
 
 import { TProduct } from "@/types";
 
@@ -23,6 +23,7 @@ export const OrderSection: React.FC = () => {
 		billingDetailsSaved,
 		{ save: saveBillingDetails, clear: clearBillingDetails }
 	] = useBillingDetails();
+	const [, { createOrder }] = useOrders();
 
 	const [cart] = useCart();
 	const [products] = useProducts({ ids: cart.map((product) => product.id) });
@@ -57,10 +58,14 @@ export const OrderSection: React.FC = () => {
 	const formik = useFormik<TFormValues>({
 		initialValues,
 		validationSchema,
-		onSubmit: (values) => {
-			// TODO: Сохранить в состояние
-			console.log(values);
-		}
+		onSubmit: (values) =>
+			createOrder({
+				...values,
+				products: cart,
+				productsParsed: checkoutProducts,
+				status: "pending",
+				createdAt: new Date().toString()
+			})
 	});
 
 	useEffect(() => {

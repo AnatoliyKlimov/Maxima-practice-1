@@ -33,11 +33,12 @@ export const slice = createSlice({
 		},
 		logoutUser: (state) => void (state.currentUser = null),
 		updateUser: (state, action: PayloadAction<TUpdateUserDTO>) => {
-			const { name } = action.payload;
+			const { username } = action.payload;
 
-			let existingUser = state.users.find((user) => user.name == name);
+			let existingUser = state.users.find((user) => user.username == username);
 
 			if (existingUser) {
+				if (action.payload.email) existingUser.email = action.payload.email;
 				if (action.payload.phone) existingUser.phone = action.payload.phone;
 				if (action.payload.password) existingUser.password = action.payload.password;
 				if (action.payload.firstName) existingUser.firstName = action.payload.firstName;

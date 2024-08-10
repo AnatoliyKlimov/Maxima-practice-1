@@ -3,19 +3,19 @@ import { RootState } from "@/store";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { ArrayElement } from "@/lib/utils";
 
-import { TUser, TUserLoginDTO, TUpdateUserDTO, TDeleteUserDTO } from "@/types";
+import type { TUser, TUserLoginDTO, TUpdateUserDTO, TDeleteUserDTO } from "@/types";
 
 const { selectUsers, selectUserByName, selectCurrentUser } = usersSelectors;
 
 type TUsersHookOptions = {
-	name: ArrayElement<RootState["users"]["users"]>["name"];
+	username: ArrayElement<RootState["users"]["users"]>["username"];
 };
 
 export const useUsers = (params?: TUsersHookOptions) => {
 	const dispatch = useAppDispatch();
 
 	const selector = useAppSelector((state) =>
-		params?.name ? selectUserByName(state, params.name) : selectUsers(state)
+		params?.username ? selectUserByName(state, params.username) : selectUsers(state)
 	);
 
 	const {
