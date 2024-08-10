@@ -12,7 +12,8 @@ export const AntdThemeProvider: React.FC<TBaseComponent> = ({ children }) => {
 				token: {
 					fontFamily: "inherit",
 					fontSize: 15,
-					colorText: "var(--foreground)"
+					colorText: "var(--foreground)",
+					colorPrimary: "#0f60ff"
 				},
 				components: {
 					Table: {
@@ -21,6 +22,11 @@ export const AntdThemeProvider: React.FC<TBaseComponent> = ({ children }) => {
 					Select: {
 						optionSelectedColor: "inherit",
 						optionSelectedFontWeight: 500
+					},
+					Pagination: {
+						itemBg: "#f1f2f6",
+						itemActiveBg: "var(--foreground-active)",
+						itemLinkBg: "#f1f2f6"
 					}
 				}
 			}}

@@ -7,5 +7,5 @@
 		"function": true,
 		"member": true
 	},
-	"ignoreDependencies": ["sharp"]
+	"ignoreDependencies": ["sharp", "prettier"]
 }

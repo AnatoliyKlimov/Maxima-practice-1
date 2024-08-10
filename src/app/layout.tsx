@@ -4,6 +4,7 @@ import { fontOpenSans } from "@/app/fonts";
 import StoreProvider from "@/store/provider";
 
 export const metadata: Metadata = {
+	metadataBase: new URL("http://localhost:300"),
 	title: {
 		default: "Exclusive",
 		template: "%s - Exclusive"

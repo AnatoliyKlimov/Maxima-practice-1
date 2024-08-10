@@ -1,0 +1,11 @@
+.order-summary-table {
+	margin-bottom: 24px;
+
+	& .product-print-button:hover {
+		background-color: #ddd !important;
+	}
+
+	& .ant-table-cell {
+		background-color: var(--background) !important;
+	}
+}
