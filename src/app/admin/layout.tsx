@@ -54,7 +54,7 @@ export default function RootLayout({
 						</Sider>
 						<Layout style={{ paddingRight: 20, backgroundColor: "var(--background)" }}>
 							<Header />
-							<Content>{children}</Content>
+							<Content style={{ paddingBottom: 48 }}>{children}</Content>
 						</Layout>
 					</Layout>
 				</Flex>

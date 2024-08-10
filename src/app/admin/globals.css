@@ -1,5 +1,6 @@
 :root {
 	--foreground: #23272e;
+	--foreground-semi: #8b909a;
 	--foreground-active: #0f60ff;
 
 	--background: #fafafa;
@@ -67,10 +68,6 @@ a {
 
 ul {
 	list-style: none;
-}
-
-a:not(a.no-hover-link):hover {
-	opacity: 0.8;
 }
 
 button,
@@ -145,4 +142,44 @@ hr {
 	border: 0;
 
 	background-color: #d7d7d7;
+}
+
+.ant-select-arrow {
+	color: inherit !important;
+}
+
+.ant-pagination {
+	color: var(--foreground-semi);
+}
+
+.ant-pagination-total-text {
+	flex-grow: 1 !important;
+}
+
+.ant-pagination-item a {
+	color: var(--foreground-semi) !important;
+}
+
+.ant-pagination-item-active a {
+	font-weight: 400;
+	color: #fff !important;
+}
+
+.ant-pagination-prev,
+.ant-pagination-next {
+	background-color: #f1f2f6;
+
+	& > button {
+		font-size: 14px !important;
+		line-height: 14px;
+		color: var(--foreground-semi) !important;
+	}
+}
+
+.ant-pagination-disabled .ant-pagination-item-link {
+	color: rgba(0 0 0 / 20%) !important;
+}
+
+.ant-table {
+	margin-inline: 0 !important;
 }
