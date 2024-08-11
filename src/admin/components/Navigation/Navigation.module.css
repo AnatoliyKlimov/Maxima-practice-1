@@ -1,0 +1,30 @@
+.navItem {
+	display: flex !important;
+	align-items: center !important;
+
+	margin-block: 8px !important;
+	padding-inline: 16px !important;
+
+	font-weight: 500;
+	color: var(--foreground) !important;
+
+	opacity: 60% !important;
+
+	&:hover {
+		color: var(--foreground) !important;
+
+		opacity: 100% !important;
+	}
+
+	& span {
+		line-height: 39px !important;
+	}
+}
+
+.navItemGroup {
+	& > div {
+		padding: 8px 22px !important;
+		font-size: 11px !important;
+		font-weight: 500 !important;
+	}
+}

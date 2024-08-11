@@ -12,14 +12,14 @@ import { TOrder } from "@/types";
 
 import ImagePayment from "@/images/payment.webp";
 
-export type TFormValues = Omit<TOrder, "products">;
+export type TFormValues = Pick<TOrder, "paymentMethod" | "billingDetails">;
 
 interface IPaymentFormProps {
-	formik: FormikProps<Omit<TOrder, "products">>;
+	formik: FormikProps<TFormValues>;
 }
 
 interface IBillingFormProps {
-	formik: FormikProps<Omit<TOrder, "products">>;
+	formik: FormikProps<TFormValues>;
 	validationSchema: ObjectSchema<any>;
 }
 
