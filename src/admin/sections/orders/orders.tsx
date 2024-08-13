@@ -14,7 +14,8 @@ import {
 	Button,
 	Space,
 	Empty,
-	Select
+	Select,
+	Tooltip
 } from "antd";
 import { FilterDropdownProps } from "antd/es/table/interface";
 
@@ -160,23 +161,23 @@ export const OrdersSection: React.FC = () => {
 					<Button onClick={() => clearFilters && handleReset(clearFilters, confirm)}>
 						Clear
 					</Button>
-					<Button
-						type="link"
-						onClick={() => {
-							confirm();
-							setSearchText((selectedKeys as string[])[0]);
-							setSearchedColumn(dataIndex);
-						}}
-					>
-						Apply
-					</Button>
 					<Button type="link" size="middle" onClick={() => close()}>
 						Close
 					</Button>
 				</Space>
 			</div>
 		),
-		filterIcon: () => <Image src={IconSearch} alt="" style={{ opacity: "30%" }} />,
+		filterIcon: () => (
+			<Tooltip
+				title="Click to search"
+				trigger={["hover"]}
+				overlayStyle={{ fontSize: 14 }}
+				overlayInnerStyle={{ paddingTop: 5 }}
+				color="#0f60ff"
+			>
+				<Image src={IconSearch} alt="" style={{ opacity: "30%" }} />
+			</Tooltip>
+		),
 		onFilter: (value, record) =>
 			record[dataIndex]
 				.toString()
