@@ -6,7 +6,7 @@ export const fontOpenSans = Open_Sans({
 });
 
 export const fontPublicSans = Public_Sans({
-	weight: ["400", "500"],
+	weight: ["400", "500", "800"],
 	subsets: ["latin"]
 });
 

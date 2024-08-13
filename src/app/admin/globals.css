@@ -4,7 +4,11 @@
 	--foreground-active: #0f60ff;
 
 	--background: #fafafa;
+	--background-success: #1eb564;
 	--background-error: #ea5455;
+
+	--arrow-up: #1eb564;
+	--arrow-down: #d02626;
 
 	--badge-discount-text: #28c76f;
 	--badge-discount-background: rgba(40 199 111 / 16%);

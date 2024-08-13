@@ -123,6 +123,7 @@ export const Navigation: React.FC = () => {
 				display: "flex",
 				flexDirection: "column",
 				gap: 18,
+				marginTop: -16,
 				padding: "0 14px",
 				borderInlineEnd: "none"
 			}}
