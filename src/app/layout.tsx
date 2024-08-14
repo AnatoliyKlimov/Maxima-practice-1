@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextTopLoader from "nextjs-toploader";
 
 import { fontOpenSans } from "@/app/fonts";
 import StoreProvider from "@/store/provider";
@@ -20,7 +21,10 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={fontOpenSans.className}>
-				<StoreProvider>{children}</StoreProvider>
+				<StoreProvider>
+					<NextTopLoader color="#0f60ff" />
+					{children}
+				</StoreProvider>
 			</body>
 		</html>
 	);

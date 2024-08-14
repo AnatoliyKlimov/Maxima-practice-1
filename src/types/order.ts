@@ -1,6 +1,7 @@
 import { ArrayElement } from "@/lib/utils";
 
 import { TCart, TProduct } from "@/types";
+import { Key } from "react";
 
 type TOrderProducts = (TProduct & { quantity: number })[];
 
@@ -38,6 +39,7 @@ export type TUpdateOrderDTO = Partial<TOrder>;
 export type TDeleteOrderDTO = Pick<TOrder, "id">;
 
 export type TOrderExtended = Pick<TOrder, "id" | "createdAt" | "status"> & {
+	key: Key;
 	customer: TOrder["billingDetails"]["firstName"];
 	subtotal: number;
 	shipping: number;
