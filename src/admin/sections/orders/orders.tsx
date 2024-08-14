@@ -1,6 +1,6 @@
 "use client";
 
-import { MouseEvent, useRef, useState } from "react";
+import { Key, MouseEvent, useRef, useState } from "react";
 import Image from "next/image";
 import Highlighter from "react-highlight-words";
 
@@ -14,7 +14,8 @@ import {
 	Button,
 	Space,
 	Empty,
-	Select
+	Select,
+	Tooltip
 } from "antd";
 import { FilterDropdownProps } from "antd/es/table/interface";
 
@@ -47,14 +48,13 @@ const profitPercent = 16;
 /** @public */
 export const OrdersSection: React.FC = () => {
 	const [shown, setShown] = useState(shownOptions[0]);
+	const [expandedKey, setExpandedKey] = useState<Key>("");
 
 	const [filteredByStatus, setFilteredByStatus] = useState("");
 	const [filteredByDateRange, setFilteredByDateRange] = useState("range");
 	const [filteredByID, setFilteredByID] = useState("");
 
 	const [orders, { updateOrder }] = useOrders();
-
-	const [paginationVisible, setPaginationVisible] = useState(shown < orders.length);
 
 	const ordersFilteredByStatus =
 		filteredByStatus != ""
@@ -70,6 +70,8 @@ export const OrdersSection: React.FC = () => {
 					order.id.toString().toLowerCase().includes(filteredByID.toLowerCase())
 				)
 			: ordersFilteredByDateRange;
+
+	const [paginationVisible, setPaginationVisible] = useState(shown < ordersFilteredByID.length);
 
 	const tableData: TOrderExtended[] = ordersFilteredByID.map((order) => ({
 		id: order.id,
@@ -159,23 +161,23 @@ export const OrdersSection: React.FC = () => {
 					<Button onClick={() => clearFilters && handleReset(clearFilters, confirm)}>
 						Clear
 					</Button>
-					<Button
-						type="link"
-						onClick={() => {
-							confirm();
-							setSearchText((selectedKeys as string[])[0]);
-							setSearchedColumn(dataIndex);
-						}}
-					>
-						Apply
-					</Button>
 					<Button type="link" size="middle" onClick={() => close()}>
 						Close
 					</Button>
 				</Space>
 			</div>
 		),
-		filterIcon: () => <Image src={IconSearch} alt="" style={{ opacity: "30%" }} />,
+		filterIcon: () => (
+			<Tooltip
+				title="Click to search"
+				trigger={["hover"]}
+				overlayStyle={{ fontSize: 14 }}
+				overlayInnerStyle={{ paddingTop: 5 }}
+				color="#0f60ff"
+			>
+				<Image src={IconSearch} alt="" style={{ opacity: "30%" }} />
+			</Tooltip>
+		),
 		onFilter: (value, record) =>
 			record[dataIndex]
 				.toString()
@@ -211,9 +213,10 @@ export const OrdersSection: React.FC = () => {
 					}))
 				]}
 				defaultSelectedKeys={["all"]}
-				onSelect={({ selectedKeys }) =>
-					setFilteredByStatus(selectedKeys[0] == "all" ? "" : selectedKeys[0])
-				}
+				onSelect={({ selectedKeys }) => {
+					setFilteredByStatus(selectedKeys[0] == "all" ? "" : selectedKeys[0]);
+					setExpandedKey("");
+				}}
 				style={{ backgroundColor: "transparent" }}
 			/>
 			<Flex justify="space-between">
@@ -269,8 +272,11 @@ export const OrdersSection: React.FC = () => {
 				}}
 				showSorterTooltip={{
 					title: "Click to sort",
-					overlayStyle: { fontSize: 14 }
+					overlayStyle: { fontSize: 14 },
+					overlayInnerStyle: { paddingTop: 5 },
+					color: "#0f60ff"
 				}}
+				onChange={() => setExpandedKey("")}
 				pagination={{
 					position: ["bottomRight"],
 					itemRender: (_page, _type, element) => (paginationVisible ? element : null),
@@ -280,10 +286,7 @@ export const OrdersSection: React.FC = () => {
 							<span style={{ lineHeight: "31px" }}>Showing</span>
 							<Select
 								className="table-pagination-select"
-								options={shownOptions.map((value) => ({
-									value,
-									label: value
-								}))}
+								options={shownOptions.map((value) => ({ value, label: value }))}
 								value={shown}
 								onChange={(value) => {
 									const valueParsed = Number(value);
@@ -296,13 +299,18 @@ export const OrdersSection: React.FC = () => {
 							<span style={{ lineHeight: "31px" }}>of {total}</span>
 						</Flex>
 					),
+					hideOnSinglePage: true,
 					pageSize: shown
 				}}
 				expandable={{
 					columnWidth: 64,
 					expandIconColumnIndex: 10,
-					expandedRowRender: (order) => <OrderDetails order={order} />,
 					rowExpandable: () => true,
+					expandedRowRender: (order) => <OrderDetails order={order} />,
+					onExpand: (_, order) => {
+						setExpandedKey((prev) => (prev != order.key ? order.key : ""));
+					},
+					expandedRowKeys: [expandedKey],
 					expandIcon: ({ expanded, onExpand, record }) => (
 						<Flex>
 							<ClientButton

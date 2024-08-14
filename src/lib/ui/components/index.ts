@@ -6,3 +6,4 @@ export { Card } from "./Card";
 export { Colors } from "./Colors";
 export { Rating } from "./Rating";
 export { Timer } from "./Timer";
+export { Pane } from "./Pane";

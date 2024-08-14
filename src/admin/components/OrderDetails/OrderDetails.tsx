@@ -1,11 +1,11 @@
 "use client";
 
+import { ReactNode } from "react";
 import Image from "next/image";
 
 import { Dropdown, Flex, MenuProps, Table } from "antd";
 
 import Button from "@/lib/ui/elements/Button";
-import { capitalize } from "@/lib/utils";
 
 import { TOrderExtended, TOrderProduct } from "@/types";
 
@@ -15,7 +15,14 @@ import IconMenu from "@/images/icons/menu-dots.svg";
 import "./OrderDetails.css";
 
 type TOrderSummaryRow = Partial<TOrderProduct> & {
-	summaryDataIndex?: keyof Pick<TOrderExtended, "subtotal" | "shipping" | "discount" | "total">;
+	summary?: {
+		key: string;
+		summaryDataIndex: keyof Pick<
+			TOrderExtended,
+			"subtotal" | "shipping" | "discount" | "total"
+		>;
+		summaryCellLabel: string;
+	}[];
 };
 
 interface IOrderDetailsProps {
@@ -39,12 +46,67 @@ const printContent: MenuProps["items"] = [
 
 /** @public */
 export const OrderDetails: React.FC<IOrderDetailsProps> = ({ order }) => {
+	const renderSummaryList = (items: TOrderSummaryRow["summary"], method: "labels" | "values") => (
+		<ul
+			style={{
+				display: "flex",
+				flexDirection: "column",
+				gap: 16,
+				marginTop: 12
+			}}
+		>
+			{items?.map((summaryCell) => {
+				if (method == "labels")
+					return <li key={summaryCell.key}>{summaryCell.summaryCellLabel}</li>;
+				else if (method == "values") {
+					const summaryValue = order[summaryCell.summaryDataIndex];
+
+					let cell: ReactNode;
+
+					if (summaryCell.summaryDataIndex == "discount")
+						cell = (
+							<span
+								style={{
+									color: `var(${summaryValue > 0 ? "--background-error" : "--badge-discount-text"})`
+								}}
+							>
+								${summaryValue}
+							</span>
+						);
+					else cell = summaryValue == 0 ? "Free" : `$${summaryValue?.toFixed(2)}`;
+
+					return <li key={summaryCell.key}>{cell}</li>;
+				}
+			})}
+		</ul>
+	);
+
 	const tableData: TOrderSummaryRow[] = [
 		...order.products,
-		{ key: "summary-subtotal", summaryDataIndex: "subtotal" },
-		{ key: "summary-shipping", summaryDataIndex: "shipping" },
-		{ key: "summary-discount", summaryDataIndex: "discount" },
-		{ key: "summary-total", summaryDataIndex: "total" }
+		{
+			summary: [
+				{
+					key: "summary-subtotal",
+					summaryDataIndex: "subtotal",
+					summaryCellLabel: "Subtotal"
+				},
+				{
+					key: "summary-shipping",
+					summaryDataIndex: "shipping",
+					summaryCellLabel: "Shipping"
+				},
+				{
+					key: "summary-discount",
+					summaryDataIndex: "discount",
+					summaryCellLabel: "Discount"
+				},
+				{
+					key: "summary-total",
+					summaryDataIndex: "total",
+					summaryCellLabel: "Total"
+				}
+			]
+		}
 	];
 
 	return (
@@ -77,7 +139,7 @@ export const OrderDetails: React.FC<IOrderDetailsProps> = ({ order }) => {
 				}
 				dataIndex="id"
 				key="sku"
-				render={(_, { id, summaryDataIndex }) => (summaryDataIndex ? "" : `#${id}`)}
+				render={(_, { id, summary }) => (summary ? "" : `#${id}`)}
 			/>
 			<Table.Column<TOrderSummaryRow>
 				title={
@@ -93,8 +155,8 @@ export const OrderDetails: React.FC<IOrderDetailsProps> = ({ order }) => {
 				}
 				dataIndex="title"
 				key="title"
-				render={(_, { title, summaryDataIndex }) =>
-					summaryDataIndex ? "" : <span style={{ fontWeight: 600 }}>{title}</span>
+				render={(_, { title, summary }) =>
+					summary ? "" : <span style={{ fontWeight: 600 }}>{title}</span>
 				}
 			/>
 			<Table.Column<TOrderSummaryRow>
@@ -111,8 +173,8 @@ export const OrderDetails: React.FC<IOrderDetailsProps> = ({ order }) => {
 				}
 				dataIndex="price"
 				key="price"
-				render={(_, { price, priceOld, summaryDataIndex }) =>
-					summaryDataIndex ? "" : `$${(priceOld || price)?.toFixed(2)}`
+				render={(_, { price, priceOld, summary }) =>
+					summary ? "" : `$${(priceOld || price)?.toFixed(2)}`
 				}
 			/>
 			<Table.Column<TOrderSummaryRow>
@@ -129,8 +191,8 @@ export const OrderDetails: React.FC<IOrderDetailsProps> = ({ order }) => {
 				}
 				dataIndex="quantity"
 				key="quantity"
-				render={(_, { quantity, summaryDataIndex }) =>
-					summaryDataIndex ? capitalize(summaryDataIndex) : `x${quantity}`
+				render={(_, { quantity, summary }) =>
+					summary ? renderSummaryList(summary, "labels") : `x${quantity}`
 				}
 			/>
 			<Table.Column<TOrderSummaryRow>
@@ -147,8 +209,8 @@ export const OrderDetails: React.FC<IOrderDetailsProps> = ({ order }) => {
 				}
 				dataIndex="discount"
 				key="discount"
-				render={(_, { discount, summaryDataIndex }) =>
-					summaryDataIndex ? (
+				render={(_, { discount, summary }) =>
+					summary ? (
 						""
 					) : discount && discount > 0 ? (
 						<span style={{ color: "var(--background-error)" }}>{discount}%</span>
@@ -171,26 +233,9 @@ export const OrderDetails: React.FC<IOrderDetailsProps> = ({ order }) => {
 				}
 				dataIndex="total"
 				key="total"
-				render={(_, { total, summaryDataIndex }) => {
-					if (summaryDataIndex) {
-						const summaryValue = order[summaryDataIndex];
-
-						if (summaryDataIndex == "discount")
-							return (
-								<span
-									style={{
-										color: `var(${summaryValue > 0 ? "--background-error" : "--badge-discount-text"})`
-									}}
-								>
-									${summaryValue}
-								</span>
-							);
-
-						return summaryValue == 0 ? "Free" : `$${summaryValue?.toFixed(2)}`;
-					}
-
-					return `$${total?.toFixed(2)}`;
-				}}
+				render={(_, { total, summary }) =>
+					summary ? renderSummaryList(summary, "values") : `$${total?.toFixed(2)}`
+				}
 			/>
 			<Table.Column<TOrderSummaryRow>
 				title={
@@ -208,8 +253,8 @@ export const OrderDetails: React.FC<IOrderDetailsProps> = ({ order }) => {
 					</Flex>
 				}
 				key="print"
-				render={(_, { summaryDataIndex }) =>
-					!summaryDataIndex && (
+				render={(_, { summary }) =>
+					!summary && (
 						<Flex>
 							<Dropdown
 								menu={{ items: printContent }}
