@@ -12,7 +12,7 @@ import { useUsers } from "@/service/users";
 
 import type { TUser } from "@/types";
 
-type TFormValues = Omit<TUser, "username" | "password" | "phone"> & {
+type TFormValues = Omit<TUser, "username" | "password" | "phone" | "createdAt"> & {
 	currentPassword: string;
 	newPassword: string;
 	confirmPassword: string;
