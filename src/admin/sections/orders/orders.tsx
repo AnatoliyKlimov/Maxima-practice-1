@@ -1,6 +1,6 @@
 "use client";
 
-import { Key, MouseEvent, useRef, useState } from "react";
+import { Key, MouseEvent, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Highlighter from "react-highlight-words";
 
@@ -111,6 +111,10 @@ export const OrdersSection: React.FC = () => {
 			total: product.price * product.quantity
 		}))
 	}));
+
+	useEffect(() => {
+		setPaginationVisible(shown < tableData.length);
+	}, [shown, tableData.length]);
 
 	const [searchText, setSearchText] = useState("");
 	const [searchedColumn, setSearchedColumn] = useState("");
@@ -287,19 +291,14 @@ export const OrdersSection: React.FC = () => {
 							<Select
 								className="table-pagination-select"
 								options={shownOptions.map((value) => ({ value, label: value }))}
+								disabled={shownOptions[0] >= total}
 								value={shown}
-								onChange={(value) => {
-									const valueParsed = Number(value);
-
-									setShown(valueParsed);
-									setPaginationVisible(valueParsed < total);
-								}}
+								onChange={(value) => setShown(Number(value))}
 								style={{ width: 62 }}
 							/>
 							<span style={{ lineHeight: "31px" }}>of {total}</span>
 						</Flex>
 					),
-					hideOnSinglePage: true,
 					pageSize: shown
 				}}
 				expandable={{

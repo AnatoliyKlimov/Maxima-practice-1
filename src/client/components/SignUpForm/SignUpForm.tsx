@@ -50,7 +50,7 @@ export const SignUpForm: React.FC = () => {
 		initialValues,
 		validationSchema,
 		onSubmit: (values) => {
-			registerUser({ ...values, firstName: values.name });
+			registerUser({ ...values, firstName: values.name, createdAt: new Date().toString() });
 
 			// Ошибка показывается в случае успеха с момента логина до редиректа
 			// и это не исправить, т. к. сейчас авторизация работает только на клиенте

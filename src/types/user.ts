@@ -6,6 +6,7 @@ export type TUser = {
 	firstName?: string;
 	lastName?: string;
 	address?: string;
+	createdAt: string;
 };
 
 export type TUserLoginDTO = Pick<TUser, "username" | "password">;
