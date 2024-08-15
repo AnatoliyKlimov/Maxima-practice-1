@@ -1,243 +1,175 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { Input, Table, Space, Empty, Select, Button, Tooltip } from "antd";
-import Highlighter from "react-highlight-words";
-import type { InputRef } from "antd";
-import type { FilterDropdownProps } from "antd/es/table/interface";
 
-import IconSearch from "@/images/icons/search.svg";
-import type { TUser } from "@/types";
+import { Input, Table, Space, Empty, Button, Pagination } from "antd";
+
 import { useUsers } from "@/service/users";
 
-type DataIndex = keyof TUser;
-
-const shownOptions = [10, 25, 50];
+import AvatarPlaceholder from "@/images/icons/avatar-placeholder.jpg"; // Заглушка для аватара
+import IconEdit from "@/images/icons/edit.svg";
+import IconBlock from "@/images/icons/block.svg";
+import IconDelete from "@/images/icons/delete.svg";
+import IconSearch from "@/images/icons/search.svg";
 
 export const CustomersSection: React.FC = () => {
 	const [searchText, setSearchText] = useState("");
-	const [searchedColumn, setSearchedColumn] = useState<DataIndex | "">("");
-	const [shown, setShown] = useState(shownOptions[0]);
+	const [currentPage, setCurrentPage] = useState(1);
+	const [shown, setShown] = useState(10);
 
 	const [customers, , { deleteUser }] = useUsers();
 
-	const searchInput = useRef<InputRef>(null);
+	const filteredCustomers = customers.filter(
+		(customer) =>
+			customer.name.toLowerCase().includes(searchText.toLowerCase()) ||
+			customer.email.toLowerCase().includes(searchText.toLowerCase()) ||
+			(customer.phone && customer.phone.includes(searchText))
+	);
 
-	const handleSearch = (
-		selectedKeys: string[],
-		confirm: FilterDropdownProps["confirm"],
-		dataIndex: DataIndex
-	) => {
-		confirm();
-		setSearchText(selectedKeys[0]);
-		setSearchedColumn(dataIndex);
-	};
-
-	const handleReset = (clearFilters: () => void, confirm: FilterDropdownProps["confirm"]) => {
-		clearFilters();
-		confirm();
-		setSearchText("");
-	};
-
-	const getColumnSearchProps = (dataIndex: DataIndex) => ({
-		filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
-			<div style={{ padding: 8 }} onKeyDown={(e) => e.stopPropagation()}>
-				<Input
-					ref={searchInput}
-					placeholder={`Search ${dataIndex}`}
-					value={selectedKeys[0]}
-					onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-					onPressEnter={() => handleSearch(selectedKeys as string[], confirm, dataIndex)}
-					style={{ marginBottom: 8, display: "block" }}
-				/>
-				<Space>
-					<Button
-						type="primary"
-						onClick={() => handleSearch(selectedKeys as string[], confirm, dataIndex)}
-						icon={<Image src={IconSearch} alt="" style={{ filter: "invert(100%)" }} />}
-					>
-						Find
-					</Button>
-					<Button onClick={() => clearFilters && handleReset(clearFilters, confirm)}>
-						Clear
-					</Button>
-					<Button type="link" size="middle" onClick={() => close()}>
-						Close
-					</Button>
-				</Space>
-			</div>
-		),
-		filterIcon: () => (
-			<Tooltip
-				title="Click to search"
-				trigger={["hover"]}
-				overlayStyle={{ fontSize: 14 }}
-				overlayInnerStyle={{ paddingTop: 5 }}
-				color="#0f60ff"
-			>
-				<Image src={IconSearch} alt="" style={{ opacity: "30%" }} />
-			</Tooltip>
-		),
-		onFilter: (value, record) =>
-			record[dataIndex]
-				.toString()
-				.toLowerCase()
-				.includes((value as string).toLowerCase()),
-		onFilterDropdownOpenChange: (visible) => {
-			if (visible) {
-				setTimeout(() => searchInput.current?.select(), 100);
-			}
-		},
-		render: (text: string) =>
-			searchedColumn === dataIndex ? (
-				<Highlighter
-					highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
-					searchWords={[searchText]}
-					autoEscape
-					textToHighlight={text ? text.toString() : ""}
-				/>
-			) : (
-				text
-			)
-	});
-
-	const handleDelete = (id: number) => {
-		const userToDelete = customers.find((user) => user.id === id);
-		if (userToDelete) {
-			deleteUser({ username: userToDelete.username });
-		} else {
-			console.error("User not found");
-		}
-	};
-
-	const editCustomer = (id: number) => {
-		// Logic to edit the customer
-	};
-
-	const blockCustomer = (id: number) => {
-		// Logic to block the customer from changes
-	};
-
-	const tableData = customers.map((customer) => ({
-		key: `customer-${customer.id}`,
-		name: (
-			<div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-				<span>{customer.name}</span>
-				<span style={{ fontSize: 12, color: "rgba(0, 0, 0, 0.5)" }}>{customer.email}</span>
-			</div>
-		),
-		phone: customer.phone,
-		created: customer.createdAt,
-		action: (
-			<Space size="middle">
-				<Button type="link" onClick={() => editCustomer(customer.id)}>
-					Edit
-				</Button>
-				<Button type="link" onClick={() => blockCustomer(customer.id)}>
-					Block
-				</Button>
-				<Button type="link" danger onClick={() => handleDelete(customer.id)}>
-					Delete
-				</Button>
-			</Space>
-		)
-	}));
+	const paginatedData = filteredCustomers.slice((currentPage - 1) * shown, currentPage * shown);
 
 	return (
-		<div style={{ display: "flex", flexDirection: "column", gap: "25px" }}>
+		<div style={{ display: "flex", flexDirection: "column" }}>
 			<Input
 				variant="borderless"
-				placeholder="Search by customer name"
+				placeholder="Search..."
 				onChange={(e) => setSearchText(e.target.value)}
+				value={searchText}
 				suffix={
 					<Image
 						src={IconSearch}
 						alt=""
-						height={18}
-						width={18}
+						height={15}
+						width={15}
 						style={{ opacity: "30%" }}
 					/>
 				}
 				style={{
-					width: 200,
+					width: 272,
 					padding: "8px 16px",
-					backgroundColor: "#fff",
-					color: "var(--foreground-semi)",
-					boxShadow: "0px 4px 16px 0px rgba(0, 0, 0, 0.04)"
+					marginBottom: 18,
+					backgroundColor: "white"
 				}}
 			/>
 			<Table
-				dataSource={tableData}
+				dataSource={paginatedData.map((customer) => ({
+					key: `customer-${customer.id}`,
+					name: (
+						<div
+							style={{
+								display: "flex",
+								alignItems: "center",
+								gap: 8
+							}}
+						>
+							<Image
+								src={AvatarPlaceholder}
+								alt="Avatar"
+								width={40}
+								height={40}
+								style={{ borderRadius: "50%" }}
+							/>
+							<div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+								<span>{customer.name}</span>
+								<span style={{ fontSize: 12, color: "rgba(0, 0, 0, 0.5)" }}>
+									{customer.email}
+								</span>
+							</div>
+						</div>
+					),
+					phone: customer.phone || customer.email,
+					created: customer.createdAt,
+					action: (
+						<Space size="middle">
+							<Button
+								type="link"
+								icon={<Image src={IconEdit} alt="Edit" />}
+								onClick={() => editCustomer(customer.id)}
+							/>
+							<Button
+								type="link"
+								icon={<Image src={IconBlock} alt="Block" />}
+								onClick={() => blockCustomer(customer.id)}
+							/>
+							<Button
+								type="link"
+								danger
+								icon={<Image src={IconDelete} alt="Delete" />}
+								onClick={() => deleteUser({ ...customer })}
+							/>
+						</Space>
+					)
+				}))}
+				columns={[
+					{
+						title: (
+							<span style={{ fontSize: 13, fontWeight: 500, opacity: "50%" }}>
+								NAME
+							</span>
+						),
+						dataIndex: "name",
+						key: "name",
+						width: 272
+					},
+					{
+						title: (
+							<span style={{ fontSize: 13, fontWeight: 500, opacity: "50%" }}>
+								PHONE NUMBER / EMAIL
+							</span>
+						),
+						dataIndex: "phone",
+						key: "phone",
+						width: 272
+					},
+					{
+						title: (
+							<span style={{ fontSize: 13, fontWeight: 500, opacity: "50%" }}>
+								CREATED
+							</span>
+						),
+						dataIndex: "created",
+						key: "created",
+						width: 272
+					},
+					{
+						title: (
+							<span style={{ fontSize: 13, fontWeight: 500, opacity: "50%" }}>
+								ACTION
+							</span>
+						),
+						dataIndex: "action",
+						key: "action",
+						width: 272
+					}
+				]}
 				locale={{
 					emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="No data" />
 				}}
-				showSorterTooltip={{
-					title: "Click to sort",
-					overlayStyle: { fontSize: 14 },
-					overlayInnerStyle: { paddingTop: 5 },
-					color: "#0f60ff"
-				}}
-				pagination={{
-					position: ["bottomRight"],
-					itemRender: (_page, _type, element) =>
-						shown < tableData.length ? element : null,
-					showSizeChanger: false,
-					showTotal: (total) => (
-						<div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-							<span>Showing</span>
-							<Select
-								className="table-pagination-select"
-								options={shownOptions.map((value) => ({ value, label: value }))}
-								value={shown}
-								onChange={(value) => setShown(value)}
-								style={{ width: 62 }}
-							/>
-							<span>of {total}</span>
-						</div>
-					),
-					hideOnSinglePage: true,
-					pageSize: shown
+				pagination={false}
+				bordered={false}
+			/>
+			<div
+				style={{
+					display: "flex",
+					justifyContent: "space-between",
+					alignItems: "center",
+					backgroundColor: "white",
+					borderRadius: "0 0 16px 16px"
 				}}
 			>
-				<Table.Column<TUser>
-					title={
-						<span style={{ fontSize: 13, fontWeight: 400, opacity: "50%" }}>Name</span>
-					}
-					dataIndex="name"
-					key="name"
-					{...getColumnSearchProps("name")}
+				<span style={{ padding: "16px 24px" }}>
+					Showing {paginatedData.length} of {filteredCustomers.length}
+				</span>
+				<Pagination
+					total={filteredCustomers.length}
+					pageSize={shown}
+					current={currentPage}
+					onChange={(page) => setCurrentPage(page)}
+					showSizeChanger={false}
+					style={{ padding: "16px 24px" }}
 				/>
-				<Table.Column<TUser>
-					title={
-						<span style={{ fontSize: 13, fontWeight: 400, opacity: "50%" }}>
-							Phone Number
-						</span>
-					}
-					dataIndex="phone"
-					key="phone"
-					{...getColumnSearchProps("phone")}
-				/>
-				<Table.Column<TUser>
-					title={
-						<span style={{ fontSize: 13, fontWeight: 400, opacity: "50%" }}>
-							Created
-						</span>
-					}
-					dataIndex="created"
-					key="created"
-					{...getColumnSearchProps("created")}
-				/>
-				<Table.Column<TUser>
-					title={
-						<span style={{ fontSize: 13, fontWeight: 400, opacity: "50%" }}>
-							Action
-						</span>
-					}
-					dataIndex="action"
-					key="action"
-				/>
-			</Table>
+			</div>
 		</div>
 	);
 };
