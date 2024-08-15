@@ -1,65 +1,134 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-
-import { Flex, Input, Table, Space, Empty, Select, Button } from "antd";
-
-import { usersSelectors } from "@/domain/users";
-import { useAppSelector } from "@/store/hooks";
-import type { TUser } from "@/types";
+import { Input, Table, Space, Empty, Select, Button, Tooltip } from "antd";
+import Highlighter from "react-highlight-words";
+import type { InputRef } from "antd";
+import type { FilterDropdownProps } from "antd/es/table/interface";
 
 import IconSearch from "@/images/icons/search.svg";
+import type { TUser } from "@/types";
+import { useUsers } from "@/service/users";
+
+type DataIndex = keyof TUser;
 
 const shownOptions = [10, 25, 50];
 
-/** @public */
 export const CustomersSection: React.FC = () => {
 	const [searchText, setSearchText] = useState("");
+	const [searchedColumn, setSearchedColumn] = useState<DataIndex | "">("");
 	const [shown, setShown] = useState(shownOptions[0]);
 
-	const customers = useAppSelector(usersSelectors.selectUsers);
+	const [customers, , { deleteUser }] = useUsers();
 
-	const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setSearchText(e.target.value);
+	const searchInput = useRef<InputRef>(null);
+
+	const handleSearch = (
+		selectedKeys: string[],
+		confirm: FilterDropdownProps["confirm"],
+		dataIndex: DataIndex
+	) => {
+		confirm();
+		setSearchText(selectedKeys[0]);
+		setSearchedColumn(dataIndex);
 	};
 
-	const filteredCustomers = customers.filter(
-		(customer) =>
-			(customer.name && customer.name.toLowerCase().includes(searchText.toLowerCase())) ||
-			(customer.email && customer.email.toLowerCase().includes(searchText.toLowerCase()))
-	);
+	const handleReset = (clearFilters: () => void, confirm: FilterDropdownProps["confirm"]) => {
+		clearFilters();
+		confirm();
+		setSearchText("");
+	};
+
+	const getColumnSearchProps = (dataIndex: DataIndex) => ({
+		filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+			<div style={{ padding: 8 }} onKeyDown={(e) => e.stopPropagation()}>
+				<Input
+					ref={searchInput}
+					placeholder={`Search ${dataIndex}`}
+					value={selectedKeys[0]}
+					onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+					onPressEnter={() => handleSearch(selectedKeys as string[], confirm, dataIndex)}
+					style={{ marginBottom: 8, display: "block" }}
+				/>
+				<Space>
+					<Button
+						type="primary"
+						onClick={() => handleSearch(selectedKeys as string[], confirm, dataIndex)}
+						icon={<Image src={IconSearch} alt="" style={{ filter: "invert(100%)" }} />}
+					>
+						Find
+					</Button>
+					<Button onClick={() => clearFilters && handleReset(clearFilters, confirm)}>
+						Clear
+					</Button>
+					<Button type="link" size="middle" onClick={() => close()}>
+						Close
+					</Button>
+				</Space>
+			</div>
+		),
+		filterIcon: () => (
+			<Tooltip
+				title="Click to search"
+				trigger={["hover"]}
+				overlayStyle={{ fontSize: 14 }}
+				overlayInnerStyle={{ paddingTop: 5 }}
+				color="#0f60ff"
+			>
+				<Image src={IconSearch} alt="" style={{ opacity: "30%" }} />
+			</Tooltip>
+		),
+		onFilter: (value, record) =>
+			record[dataIndex]
+				.toString()
+				.toLowerCase()
+				.includes((value as string).toLowerCase()),
+		onFilterDropdownOpenChange: (visible) => {
+			if (visible) {
+				setTimeout(() => searchInput.current?.select(), 100);
+			}
+		},
+		render: (text: string) =>
+			searchedColumn === dataIndex ? (
+				<Highlighter
+					highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
+					searchWords={[searchText]}
+					autoEscape
+					textToHighlight={text ? text.toString() : ""}
+				/>
+			) : (
+				text
+			)
+	});
+
+	const handleDelete = (id: number) => {
+		const userToDelete = customers.find((user) => user.id === id);
+		if (userToDelete) {
+			deleteUser({ username: userToDelete.username });
+		} else {
+			console.error("User not found");
+		}
+	};
 
 	const editCustomer = (id: number) => {
-		// Логика для редактирования пользователя
-		console.log(`Edit customer with id ${id}`);
-		// Здесь можно добавить навигацию на страницу редактирования или модальное окно для редактирования
+		// Logic to edit the customer
 	};
 
 	const blockCustomer = (id: number) => {
-		// Логика для блокировки пользователя
-		console.log(`Block customer with id ${id}`);
-		// Здесь можно изменить состояние пользователя на заблокированное
+		// Logic to block the customer from changes
 	};
 
-	const deleteCustomer = (id: number) => {
-		// Логика для удаления пользователя
-		console.log(`Delete customer with id ${id}`);
-		// Здесь можно вызвать action для удаления пользователя из хранилища
-	};
-
-	const tableData = filteredCustomers.map((customer) => ({
+	const tableData = customers.map((customer) => ({
 		key: `customer-${customer.id}`,
 		name: (
-			<Flex vertical gap={5}>
-				<span>{customer.name || "N/A"}</span>
-				<span style={{ fontSize: 12, color: "rgba(0, 0, 0, 0.5)" }}>
-					{customer.email || "N/A"}
-				</span>
-			</Flex>
+			<div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+				<span>{customer.name}</span>
+				<span style={{ fontSize: 12, color: "rgba(0, 0, 0, 0.5)" }}>{customer.email}</span>
+			</div>
 		),
-		phone: customer.phone || "N/A",
-		created: customer.createdAt || "N/A",
+		phone: customer.phone,
+		created: customer.createdAt,
 		action: (
 			<Space size="middle">
 				<Button type="link" onClick={() => editCustomer(customer.id)}>
@@ -68,7 +137,7 @@ export const CustomersSection: React.FC = () => {
 				<Button type="link" onClick={() => blockCustomer(customer.id)}>
 					Block
 				</Button>
-				<Button type="link" danger onClick={() => deleteCustomer(customer.id)}>
+				<Button type="link" danger onClick={() => handleDelete(customer.id)}>
 					Delete
 				</Button>
 			</Space>
@@ -76,11 +145,11 @@ export const CustomersSection: React.FC = () => {
 	}));
 
 	return (
-		<Flex vertical gap={25}>
+		<div style={{ display: "flex", flexDirection: "column", gap: "25px" }}>
 			<Input
 				variant="borderless"
 				placeholder="Search by customer name"
-				onChange={handleSearch}
+				onChange={(e) => setSearchText(e.target.value)}
 				suffix={
 					<Image
 						src={IconSearch}
@@ -103,12 +172,20 @@ export const CustomersSection: React.FC = () => {
 				locale={{
 					emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="No data" />
 				}}
+				showSorterTooltip={{
+					title: "Click to sort",
+					overlayStyle: { fontSize: 14 },
+					overlayInnerStyle: { paddingTop: 5 },
+					color: "#0f60ff"
+				}}
 				pagination={{
 					position: ["bottomRight"],
+					itemRender: (_page, _type, element) =>
+						shown < tableData.length ? element : null,
 					showSizeChanger: false,
 					showTotal: (total) => (
-						<Flex gap={8}>
-							<span style={{ lineHeight: "31px" }}>Showing</span>
+						<div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+							<span>Showing</span>
 							<Select
 								className="table-pagination-select"
 								options={shownOptions.map((value) => ({ value, label: value }))}
@@ -116,8 +193,8 @@ export const CustomersSection: React.FC = () => {
 								onChange={(value) => setShown(value)}
 								style={{ width: 62 }}
 							/>
-							<span style={{ lineHeight: "31px" }}>of {total}</span>
-						</Flex>
+							<span>of {total}</span>
+						</div>
 					),
 					hideOnSinglePage: true,
 					pageSize: shown
@@ -129,6 +206,7 @@ export const CustomersSection: React.FC = () => {
 					}
 					dataIndex="name"
 					key="name"
+					{...getColumnSearchProps("name")}
 				/>
 				<Table.Column<TUser>
 					title={
@@ -138,6 +216,7 @@ export const CustomersSection: React.FC = () => {
 					}
 					dataIndex="phone"
 					key="phone"
+					{...getColumnSearchProps("phone")}
 				/>
 				<Table.Column<TUser>
 					title={
@@ -147,6 +226,7 @@ export const CustomersSection: React.FC = () => {
 					}
 					dataIndex="created"
 					key="created"
+					{...getColumnSearchProps("created")}
 				/>
 				<Table.Column<TUser>
 					title={
@@ -158,9 +238,8 @@ export const CustomersSection: React.FC = () => {
 					key="action"
 				/>
 			</Table>
-		</Flex>
+		</div>
 	);
 };
 
-/** @alias */
 export default CustomersSection;
