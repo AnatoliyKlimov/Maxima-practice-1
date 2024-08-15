@@ -174,4 +174,5 @@ export const CustomersSection: React.FC = () => {
 	);
 };
 
+/** @alias */
 export default CustomersSection;
