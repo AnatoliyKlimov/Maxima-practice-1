@@ -21,6 +21,7 @@
 		"i18next": "^23.12.2",
 		"i18next-browser-languagedetector": "^8.0.0",
 		"next": "14.2.4",
+		"nextjs-toploader": "^1.6.12",
 		"react": "^18",
 		"react-dom": "^18",
 		"react-highlight-words": "^0.20.0",

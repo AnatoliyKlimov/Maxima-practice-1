@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { Flex, Button } from "antd";
 
@@ -34,9 +35,9 @@ export default function NotFoundPage() {
 			>
 				{t("errors.notFound.description")}
 			</p>
-			<Button href="/admin">
-				{t("errors.notFound.action")}
-			</Button>
+			<Link href="/admin" passHref>
+				<Button>{t("errors.notFound.action")}</Button>
+			</Link>
 		</Flex>
 	);
 }

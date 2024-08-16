@@ -10,6 +10,12 @@
 
 	opacity: 60% !important;
 
+	transition:
+		border-color 0.3s,
+		background 0.3s,
+		padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+		opacity 0.3s !important;
+
 	&:hover {
 		color: var(--foreground) !important;
 

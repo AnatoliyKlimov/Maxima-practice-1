@@ -23,7 +23,8 @@ export const TextField: React.FC<ITextFieldProps> = ({
 	type,
 	...otherProps
 }) => {
-	const [inputType, setInputType] = useState("password");
+
+	const [inputType, setInputType] = useState(type);
 
 	return (
 		<div style={wrapperStyle} className={`${styles.textFieldContainer} ${className}`}>
