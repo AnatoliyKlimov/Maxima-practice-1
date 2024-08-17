@@ -10,16 +10,18 @@ import { Pane } from "@/lib/ui/components";
 
 import IconArrow from "@/images/charts/arrow-up.svg";
 
+const { makeDataset, gradientFill } = chartHelpers;
+
 const chartLabels: ChartData<"line">["labels"] = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 
 const chartDatasets: ChartDataset<"line">[] = [
-	{
+	makeDataset({
 		fill: true,
 		label: "Sales",
 		data: [2, 3.83, 3.8, 4.2, 5.9, 7, 6.2],
-		pointStyle: false,
+		borderWidth: 4,
 		borderColor: "#0F60FF",
-		backgroundColor: chartHelpers.gradientFill([
+		backgroundColor: gradientFill([
 			{
 				offset: 0,
 				color: "rgba(15, 96, 255, 0)"
@@ -28,16 +30,15 @@ const chartDatasets: ChartDataset<"line">[] = [
 				offset: 1,
 				color: "rgba(15, 96, 255, 0.08)"
 			}
-		]),
-		tension: 0.4
-	},
-	{
+		])
+	}),
+	makeDataset({
 		fill: true,
 		label: "Cost",
 		data: [0, 1.83, 1.8, 2.2, 3.9, 5, 4.2],
-		pointStyle: false,
+		borderWidth: 4,
 		borderColor: "#0FB7FF",
-		backgroundColor: chartHelpers.gradientFill([
+		backgroundColor: gradientFill([
 			{
 				offset: 0,
 				color: "rgba(15, 183, 255, 0)"
@@ -46,9 +47,8 @@ const chartDatasets: ChartDataset<"line">[] = [
 				offset: 1,
 				color: "rgba(15, 183, 255, 0.08)"
 			}
-		]),
-		tension: 0.4
-	}
+		])
+	})
 ];
 
 const dropdownContent: MenuProps["items"] = [
@@ -72,7 +72,7 @@ export const TotalSalesCostsPane: React.FC = () => {
 			dropdown={{
 				menu: { items: dropdownContent },
 				placement: "bottomLeft",
-				trigger: ["click"]
+				trigger: ["hover"]
 			}}
 			style={{
 				display: "flex",

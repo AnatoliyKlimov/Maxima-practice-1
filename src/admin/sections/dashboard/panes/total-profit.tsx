@@ -1,12 +1,35 @@
 "use client";
 
 import Image from "next/image";
+import type { ChartDataset } from "chart.js";
+
 import { Flex, MenuProps, Space } from "antd";
 
+import { Chart, chartHelpers } from "@/admin/components/Chart";
 import { Pane } from "@/lib/ui/components";
 
 import IconArrow from "@/images/charts/arrow-up.svg";
-import Chart from "@/images/charts/total-profit.svg";
+
+const { makeDataset, gradientFill } = chartHelpers;
+
+const chartDatasets: ChartDataset<"line">[] = [
+	makeDataset({
+		fill: true,
+		label: "Profit",
+		data: [2, 2.95, 2.9, 2.6, 2.7, 3.15],
+		borderColor: "#1EB564",
+		backgroundColor: gradientFill([
+			{
+				offset: 0,
+				color: "rgba(30, 181, 100, 0)"
+			},
+			{
+				offset: 1,
+				color: "rgba(30, 181, 100, 0.08)"
+			}
+		])
+	})
+];
 
 const dropdownContent: MenuProps["items"] = [
 	{
@@ -29,7 +52,7 @@ export const TotalProfitPane: React.FC = () => {
 			dropdown={{
 				menu: { items: dropdownContent },
 				placement: "bottomLeft",
-				trigger: ["click"]
+				trigger: ["hover"]
 			}}
 			style={{
 				display: "flex",
@@ -90,7 +113,13 @@ export const TotalProfitPane: React.FC = () => {
 				</Flex>
 			</Flex>
 			<Flex align="flex-end">
-				<Image src={Chart} alt="" draggable={false} style={{ width: 150, marginTop: 3 }} />
+				<Chart
+					id="total-profit"
+					type="line"
+					datasets={chartDatasets}
+					hasLegend={false}
+					style={{ width: 150, height: 117 }}
+				/>
 			</Flex>
 		</Pane>
 	);

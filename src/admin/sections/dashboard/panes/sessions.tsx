@@ -1,12 +1,35 @@
 "use client";
 
 import Image from "next/image";
+import type { ChartDataset } from "chart.js";
+
 import { Flex, MenuProps, Space } from "antd";
 
+import { Chart, chartHelpers } from "@/admin/components/Chart";
 import { Pane } from "@/lib/ui/components";
 
 import IconArrow from "@/images/charts/arrow-down.svg";
-import Chart from "@/images/charts/sessions.svg";
+
+const { makeDataset, gradientFill } = chartHelpers;
+
+const chartDatasets: ChartDataset<"line">[] = [
+	makeDataset({
+		fill: true,
+		label: "Sessions",
+		data: [2.5, 2.75, 2.7, 2.6, 2.65, 2.9].reverse(),
+		borderColor: "#D02626",
+		backgroundColor: gradientFill([
+			{
+				offset: 0,
+				color: "rgba(208, 38, 38, 0)"
+			},
+			{
+				offset: 1,
+				color: "rgba(208, 38, 38, 0.08)"
+			}
+		])
+	})
+];
 
 const dropdownContent: MenuProps["items"] = [
 	{
@@ -90,7 +113,13 @@ export const SessionsPane: React.FC = () => {
 				</Flex>
 			</Flex>
 			<Flex align="flex-end">
-				<Image src={Chart} alt="" draggable={false} style={{ width: 221, marginTop: 3 }} />
+				<Chart
+					id="sessions"
+					type="line"
+					datasets={chartDatasets}
+					hasLegend={false}
+					style={{ width: 200, height: 117 }}
+				/>
 			</Flex>
 		</Pane>
 	);

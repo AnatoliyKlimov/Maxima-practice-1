@@ -30,9 +30,11 @@ ChartJS.defaults.font.size = 12;
 
 interface IChartProps extends TBaseComponent {
 	type: ChartType;
-	labelsX: ChartData["labels"];
+	labelsX?: ChartData["labels"];
 	datasets: ChartData["datasets"];
 	hasLegend?: boolean;
+	hasGrid?: boolean;
+	hasTicks?: boolean;
 	limitsY?: {
 		min?: ScaleOptions["min"];
 		max?: ScaleOptions["max"];
@@ -46,6 +48,8 @@ export const Chart: React.FC<IChartProps> = ({
 	labelsX,
 	datasets,
 	hasLegend = true,
+	hasGrid = false,
+	hasTicks = false,
 	limitsY,
 	style
 }) => {
@@ -77,24 +81,36 @@ export const Chart: React.FC<IChartProps> = ({
 		scales: {
 			x: {
 				grid: {
-					display: false
+					display: hasGrid
 				},
 				border: {
 					display: false
 				},
 				ticks: {
-					display: false
+					display: hasTicks
 				}
 			},
 			y: {
-				display: false,
+				grid: {
+					display: hasGrid
+				},
+				border: {
+					display: false
+				},
+				ticks: {
+					display: hasTicks
+				},
 				min: limitsY?.min,
 				max: limitsY?.max
 			}
 		}
 	};
 
-	const data: ChartData<typeof type> = { labels: labelsX, datasets };
+	const data: ChartData<typeof type> = {
+		labels: labelsX || datasets[0].data.map((data) => data),
+		datasets
+	};
+
 	const plugins: Plugin<typeof type>[] = [];
 
 	if (hasLegend) plugins.push(htmlLegendPlugin(`${id}-chart-legend`));
@@ -111,7 +127,7 @@ export const Chart: React.FC<IChartProps> = ({
 							redraw={true}
 						/>
 						{labelsX && (
-							<Flex justify="space-between" style={{ padding: "0 4px" }}>
+							<Flex justify="space-between" style={{ padding: "0 6px" }}>
 								{labelsX.map((label, i) => (
 									<span
 										key={`chart-label-x-${i}`}
