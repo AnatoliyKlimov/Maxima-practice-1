@@ -31,7 +31,8 @@ export const Pane: React.FC<IPaneProps> = ({ dropdown, style, children }) => {
 						style={{
 							position: "absolute",
 							top: 24,
-							right: 24
+							right: 24,
+							zIndex: 10
 						}}
 					>
 						<Button
