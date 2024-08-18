@@ -1,12 +1,35 @@
 "use client";
 
 import Image from "next/image";
+import type { ChartDataset } from "chart.js";
+
 import { Flex, MenuProps, Space } from "antd";
 
+import { Chart, chartHelpers } from "@/admin/components/Chart";
 import { Pane } from "@/lib/ui/components";
 
 import IconArrow from "@/images/charts/arrow-up.svg";
-import Chart from "@/images/charts/total-orders.svg";
+
+const { makeDataset, gradientFill } = chartHelpers;
+
+const chartDatasets: ChartDataset<"line">[] = [
+	makeDataset({
+		fill: true,
+		label: "Orders",
+		data: [2.4, 2.75, 2.72, 2.65, 2.7, 3],
+		borderColor: "#1EB564",
+		backgroundColor: gradientFill([
+			{
+				offset: 0,
+				color: "rgba(30, 181, 100, 0)"
+			},
+			{
+				offset: 1,
+				color: "rgba(30, 181, 100, 0.08)"
+			}
+		])
+	})
+];
 
 const dropdownContent: MenuProps["items"] = [
 	{
@@ -90,7 +113,13 @@ export const TotalOrdersPane: React.FC = () => {
 				</Flex>
 			</Flex>
 			<Flex align="flex-end">
-				<Image src={Chart} alt="" draggable={false} style={{ width: 150, marginTop: 3 }} />
+				<Chart
+					id="total-orders"
+					type="line"
+					datasets={chartDatasets}
+					hasLegend={false}
+					style={{ width: 150, height: 117 }}
+				/>
 			</Flex>
 		</Pane>
 	);
